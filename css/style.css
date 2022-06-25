@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+body {
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+	background-color: #eee;
+}
+
+h1 {
+	font-size: 2em;
+	line-height: 2em;
+}
+
+h2 {
+	font-size: 1.5em;		
+}
+
+img {
+	padding-top: 1em;
+	padding-bottom: 2.5em;
+}
+
+header h1 {
+	font-size: 3em;
+	line-height: 1em;
+	font-weight: bolder;
+}
+header h2 {
+	color: #eee;
+	font-size: 1em;
+}
+header h2:hover {
+	color: #f00;
+}
+
+header p {
+	font-style: italic;
+}
+
+.abstract {
+	font-size: .9em;
+}
+
+.stages {
+	color: #eee;
+	background-color: #333;
+	font-size: .75em;
+	border: 1em solid #eee;
+	text-align: center;
+}
+
+.stages h2 {
+	font-weight: bolder;
+	margin-top: 1em;
+}
+
+.bios {
+	text-align: center;
+}
