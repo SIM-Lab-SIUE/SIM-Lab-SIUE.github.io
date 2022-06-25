@@ -15,7 +15,7 @@ h2 {
 }
 
 img {
-	padding-top: 1em;
+	padding-top: .75em;
 	padding-bottom: 2.5em;
 }
 
@@ -55,4 +55,9 @@ header p {
 
 .bios {
 	text-align: center;
+}
+
+.bios h3 {
+	font-size: 1.25em;
+	line-height: .75em;
 }
