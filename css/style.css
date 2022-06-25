@@ -5,6 +5,10 @@ body {
 	background-color: #eee;
 }
 
+h1, h2, h3 {
+	font-weight: bolder;
+}
+
 h1 {
 	font-size: 2em;
 	line-height: 2em;
@@ -22,7 +26,6 @@ img {
 header h1 {
 	font-size: 3em;
 	line-height: 1em;
-	font-weight: bolder;
 }
 header h2 {
 	color: #eee;
@@ -49,7 +52,6 @@ header p {
 }
 
 .stages h2 {
-	font-weight: bolder;
 	margin-top: 1em;
 }
 
