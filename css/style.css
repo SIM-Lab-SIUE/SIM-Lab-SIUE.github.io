@@ -29,26 +29,41 @@ a:hover {
 }
 
 nav {
+	padding-top: 1em;
+	text-align: center;
+	background-color: #333333;
+}
+
+nav a:link, nav a:visited {
+	color: #eeeeee;
+	text-decoration: underline;
+}
+nav a:hover {
+	color: #ff0000;
+	text-decoration: none;
+}
+
+header {
   text-align: center;
   padding-top: 1em;
+  display:flex;
+  align-items:center;
 }
 
 
-nav h1 {
+header h1 {
 	font-size: 3.5em;
 	line-height: 1em;
 }
-nav h2 {
+header h2 {
 	color: #eee;
 	font-size: 1em;
 }
-nav h2:hover {
+header h2:hover {
 	color: #f00;
 }
 
 header {
-	display:flex;
-	align-items:center;
 }
 
 header p {
@@ -58,6 +73,9 @@ header p {
 img {
 	padding-top: .75em;
 	padding-bottom: 2.5em;
+}
+
+.tumblr-post {
 }
 
 .nsf {
@@ -96,13 +114,12 @@ img {
 }
 
 footer {
+	padding-top: 2.5em;
 	background-color: #333333;
 	color: #eeeeee;
 }
 
 footer p {
-	padding: 1.5em;
-	padding-top: 2.5em;
 	text-align: center;
 }
 
