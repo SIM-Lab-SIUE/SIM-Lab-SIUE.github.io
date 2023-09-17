@@ -1,29 +1,13 @@
 @charset "utf-8";
 
-
-
-/* 
-Purple: #802BB1
-Dark: #2D283E
-Mid: #565F6F
-Grey: #4C495D
-Light: #D1D7E0
-*/
-
-
-
 body {
-	font-family: "Roboto";
-	background-color: #2D283E;
+	font-family: "Courier New", "monospace";
+	background-color: #eee;
 	font-size: 1em;
-	color: #D1D7E0;
 }
 
 h1, h2, h3 {
-	font-family: "Orbitron";
 	font-weight: bolder;
-	color: #802BB1;
-
 }
 
 h1 {
@@ -36,26 +20,26 @@ h2 {
 }
 
 a:link, a:visited {
-	color: #D1D7E0;
+	color: #333333;
 	text-decoration: underline;
 }
 a:hover {
-	color: #802BB1;
+	color: #ff0000;
 	text-decoration: none;
 }
 
 nav {
 	padding-top: 1em;
 	text-align: center;
-	background-color: #565F6F;
+	background-color: #333333;
 }
 
 nav a:link, nav a:visited {
-	color: #D1D7E0;
+	color: #eeeeee;
 	text-decoration: underline;
 }
 nav a:hover {
-	color: #802BB1;
+	color: #ff0000;
 	text-decoration: none;
 }
 
@@ -69,14 +53,14 @@ header {
 
 header h1 {
 	font-size: 3.5em;
-	line-height: 1em;                   
+	line-height: 1em;
 }
 header h2 {
-	color: #D1D7E0;
+	color: #eee;
 	font-size: 1em;
 }
 header h2:hover {
-	color: #802BB1;
+	color: #f00;
 }
 
 header {
@@ -84,7 +68,6 @@ header {
 
 header p {
 	font-style: italic;
-	padding-top: .5em;
 }
 
 img {
@@ -110,10 +93,10 @@ img {
 }
 
 .stages {
-	color: #2D283E;
-	background-color: #D1D7E0;
+	color: #eee;
+	background-color: #333;
 	font-size: .75em;
-	border: 1em solid #2D283E;
+	border: 1em solid #eee;
 	text-align: center;
 }
 
@@ -131,9 +114,9 @@ img {
 }
 
 footer {
-	padding-top: 1em;
-	background-color: #565F6F;
-	color: #D1D7E0;
+	padding-top: 2.5em;
+	background-color: #333333;
+	color: #eeeeee;
 }
 
 footer p {
@@ -141,12 +124,12 @@ footer p {
 }
 
 footer a:link, footer a:visited {
-	color: #D1D7E0;
+	color: #eeeeee;
 	text-decoration: underline;
 }
 
 footer a:hover {
-	color: #802BB1;
+	color: #ff0000;
 	text-decoration: underline;
 }
 
