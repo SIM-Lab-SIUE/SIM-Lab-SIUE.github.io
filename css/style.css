@@ -56,7 +56,6 @@ a:hover {
 nav, footer {
 	padding-bottom: 1em;
 	text-align: center;
-	background-color: var(--color1);
 }
 
 footer {
@@ -66,13 +65,12 @@ footer {
 
 nav .nav-link, footer a {
 	font-family: var(--font1);
-	color: var(--color3) !important;
 }
 
 nav .nav-link:hover, footer a:hover {
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--color4) !important;
+	color: var(--color4);
 }
 
 header {
@@ -121,4 +119,15 @@ img {
 	width: 25%;
 	padding-left: 1.5em;
 	min-width: 200px
+}
+
+.dark, .dark nav, .dark .navbar, .dark footer, .dark h3, .dark a:link, .dark a:visited, .dark .nav-link:link,
+.dark .nav-link:visited, .dark footer a {
+	background-color: var(--color3);
+	color: var(--color1);
+}
+
+.change img {
+	width: 50px !important;
+	height: auto !important;
 }

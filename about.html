@@ -11,7 +11,7 @@
 		<link rel="icon" type="image/x-icon" href="img/logo.png">
 		<!-- Bootstrap -->
 		<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet" type="text/css"> </head>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -33,10 +33,12 @@
 						<li class="nav-item">
 							<a class="nav-link" href="projects.html">PROJECTS</a>
 						</li>
+						<li class=""> 
+							<span class="change"><img src="img/day.png" alt="Day Mode"></span>
+						</li>
 					</ul>
 				</div>
 			</nav>
-
 			<header class="row">
 				<div class="col-sm-12">
 					<h1>SIM Lab @ SIUE</h1>
@@ -227,6 +229,18 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap-4.4.1.js"></script>
+		<script>
+			$(".change").on("click", function () {
+					if ($("body").hasClass("dark")) {
+						$("body").removeClass("dark"); 
+						$(".change img").attr("src", "img/day.png").attr("alt", "Day Mode");
+					} else {
+						$("body").addClass("dark");
+						$(".change img").attr("src", "img/night.png").attr("alt", "Night Mode");
+					}
+				});
+
+		</script>
 
 	</body>
 </html>
