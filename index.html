@@ -35,6 +35,9 @@
 							<li class="nav-item">
 								<a class="nav-link" href="projects.html">PROJECTS</a>
 							</li>
+							<li class="">
+								<span class="change"><img src="img/day_mode_large.png" alt="Day Mode"></span>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -96,6 +99,17 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap-4.4.1.js"></script>
+		<script>
+			$(".change").on("click", function () {
+				if ($("body").hasClass("dark")) {
+					$("body").removeClass("dark");
+					$(".change img").attr("src", "img/day_mode_large.png").attr("alt", "Day Mode");
+				} else {
+					$("body").addClass("dark");
+					$(".change img").attr("src", "img/night_mode_large.png").attr("alt", "Night Mode");
+				}
+			});
 
+		</script>
 	</body>
 </html>
