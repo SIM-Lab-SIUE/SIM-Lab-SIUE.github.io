@@ -31,7 +31,7 @@
 	margin: 0;
 	height: 100%;
 	font-weight: normal;
-	line-height: 1;
+	line-height: .5em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -102,7 +102,7 @@
 }
 
 .tabsnav--ibai .tabsnav__item {
-	height: 50px;
+	height: 33px;
 }
 
 .tabsnav--ibai .tabsnav__bar {
