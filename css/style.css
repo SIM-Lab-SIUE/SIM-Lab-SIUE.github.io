@@ -1,55 +1,66 @@
 @charset "utf-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&family=Oswald&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-	--color1: #fef8f4;
-	--color2: #645E5D;
-	--color3: #2b231e;
-	--color4: #ea4335;
-	--font1: "Oswald";
-	--font2: "Fira Sans Extra Condensed";
-	--font3: "Roboto";
+	--white-color: #ffffff;
+	--10-grey-color: #f2f2f2;
+	--90-grey-color: #1a1a1a;
+	--black-color: #000000;
+	--accent-one: #ea4335;
+	--header-font: "Lexend";
+	--body-font: "Public Sans";
 }
 
-
-
+/* Global Styles */
 body {
-	font-family: var(--font3);
-	background-color: var(--color1);
-	font-size: 18px;
-	color: var(--color2);
+	font-family: var(--body-font);
+	color: var(--90-grey-color);
+	background-color: var(--white-color);
+	max-width: 1440px;
+	margin: auto;
+	font-size: 1em;
+	line-height: 2em;
 }
 
-h1, h2, h3 {
-	font-family: var(--font1);
-	font-weight: 900;
-	color: var(--color4);
+
+.wrapper {
+	padding: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--accent-one);
+	font-family: var(--title-font);
+	font-weight: 700;
+	font-style: normal;
+	text-transform: uppercase;
 }
 
 h1 {
 	font-size: 2em;
-	line-height: 1.5em;
+	font-weight: 900;
 }
 
 h2 {
-	font-size: 1.5em;		
+	font-size: 1.5em;
+	font-weight: 800;
 }
 
 h3 {
 	font-size: 1.25em;
-	font-family: var(--font2);
-	color: var(--color2)
+	font-family: var(--title-font);
+	color: var(--90-grey-color)
 }
 
 a:link, a:visited {
-	font-family: var(--font3);
+	font-family: var(--body-font);
 	font-weight: 400;
-	color: var(--color3);
+	color: var(--90-grey-color);
 	text-decoration: none;
 }
+
 a:hover {
-	color: var(--color4);
+	color: var(--accent-one);
 	font-weight: 600;
 }
 
@@ -59,18 +70,18 @@ nav, footer {
 }
 
 footer {
-	padding-top: 1em;
-	text-align: right;
+	padding-top: 2.5em;
 }
 
 nav .nav-link, footer a {
-	font-family: var(--font1);
+	font-family: var(--title-font);
 }
 
 nav .nav-link:hover, footer a:hover {
-	font-weight: 600;
-	text-decoration: none;
-	color: var(--color4);
+	border: var(--90-grey-color) 2px solid;
+	border-radius: 20px;
+	background-color: var(--accent-one);
+	color: var(--10-grey-color) !important;
 }
 
 header {
@@ -83,18 +94,58 @@ header {
 header h1 {
 	font-size: 4em;
 	line-height: 1em;
-	font-weight: 700;
 }
-header h3 {
-	color: var(--color2);
+header h2 {
+	color: var(--90-grey-color);
 	font-size: 1.5em;
-	padding: .5em
+	font-style: italic;
 
+}
+
+.box-top {
+	background-color: var(--accent-one);
+	background-image: url("../img/buttons.svg");
+	background-repeat: no-repeat;
+	background-size: auto 250%;
+	background-position-x: 1.5%;
+	border: 2px solid var(--90-grey-color);
+	border-bottom: none;
+	margin: 20px 0px -20px 0px;
+	border-radius: 20px 20px 0px 0px;
+	padding-right: 15px;
+	padding-top: 4px;
+	height: 2em;
+}
+   
+.box-top h4 {
+	line-height: 1.5;
+	height: 1.25em;
+	font-size: 1em;
+	vertical-align: middle;
+	text-align: right;
+	font-family: var(--body-font);
+	font-weight: bolder;
+	text-transform: lowercase;
+	color: var(--90-grey-color);
+}
+
+.text-box {
+	background-color: var(--10-grey-color);
+	padding: 20px 10px;
+	border: 2px solid var(--90-grey-color);
+	margin: 20px 0px;
+}
+
+.grid-dots {
+	background-image: url(../img/grid.png); 
+	background-size: 75%; 
+	background-repeat: repeat; 
+	background-position: 0 0;
 }
 
 .author {
 	font-weight: 900;
-	color: var(--color4);
+	color: var(--accent-one);
 }
 
 .student {
@@ -102,32 +153,131 @@ header h3 {
 }
 
 .stages {
-	background-color: var(--color4);
-	color: var(--color1);
+	background-color: var(--accent-one);
+	color: var(--white-color);
 	text-align: center;
-	border: var(--color1) 5px solid;
+	border: var(--white-color) 5px solid;
 }
 
-.stages h3 {
-	color: var(--color3);
-	font-size: 1.5em;
-	margin-top: .5em;
-}
-
-img {
-	float: right;
-	width: 25%;
-	padding-left: 1.5em;
-	min-width: 200px
-}
 
 .dark, .dark nav, .dark .navbar, .dark footer, .dark h3, .dark a:link, .dark a:visited, .dark .nav-link:link,
 .dark .nav-link:visited, .dark footer a {
-	background-color: var(--color3);
-	color: var(--color1);
+	background-color: var(--90-grey-color);
+	color: var(--white-color);
 }
 
-.change img {
-	width: 50px !important;
-	height: auto !important;
+
+
+a {
+	color: var(--90-grey-color)
+}
+
+nav .navbar .nav-item {
+	background-color: var(--10-grey-color) !important;
+}
+
+nav .navbar-nav .nav-item .nav-link {
+	font-size: 1.5em;
+	font-family: var(--body-font);
+}
+
+nav .navbar-nav .nav-item .nav-link {
+	font-family: var(--body-font);
+}
+
+nav .nav-item .nav-link a{
+	width: 250px;
+	border: 5px var(--90-grey-color) solid;
+	font: var(--body-font);
+}
+
+
+.text-primary {
+	color: var(--90-grey-color) !important;
+}
+
+.filler {
+height: 5vh;
+}
+
+.list-inline-item {
+font-size: 2em;
+}
+
+section {
+	padding-top: 50px
+}
+
+#home h1 {
+	color: var(--accent-one);
+	font-size: 4em;
+}
+
+#home h3 {
+	font-size: 2.5rem;
+}
+
+#home .box-top {
+	background-color: var(--accent-one);
+}
+
+#home .box-top:hover, #home .text-box:hover{
+	box-shadow: 10px 10px var(--accent-one);
+}
+
+#home-link:hover {
+	box-shadow: 5px 5px var(--accent-one);
+}
+
+#home-link a:hover, #home a:hover {
+	color: var(--accent-one)
+}
+
+#about h1 {
+	color: var(--accent-one);
+	font-size: 4em;
+}
+
+#about h3 {
+	font-size: 2.5rem;
+}
+
+#about .box-top {
+	background-color: var(--accent-one);
+}
+
+#about .box-top:hover, #about .text-box:hover{
+	box-shadow: 10px 10px var(--accent-one);
+}
+
+#about-link:hover {
+	box-shadow: 5px 5px var(--accent-one);
+}
+
+#about-link a:hover, #about a:hover {
+	color: var(--accent-one)
+}
+
+#projects h1 {
+	color: var(--accent-two)
+}
+
+#projects .box-top {
+	background-color: var(--accent-two);
+}
+
+.history {
+	line-height: 1em;
+}
+
+#projects .box-top:hover, #projects .text-box:hover{
+	box-shadow: 10px 10px var(--accent-two);
+}
+
+#projects-link:hover {
+box-shadow: 5px 5px var(--accent-two);
+}
+
+#projects-link a:hover, #projects a:hover {
+color: var(--accent-two)
 }
