@@ -1,0 +1,23 @@
+HTTrack3.49-2+htsswf+htsjava launched on Mon, 30 Dec 2024 14:53:09 at https://mberberet15.wixsite.com/portfolio +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://mberberet15.wixsite.com/portfolio -O1 "D:\OneDrive - Southern Illinois University Edwardsville\APsidian\Service\Tech Committee\Website Committee\senior-portfolios\mberberet" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:53:20	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/i (from https://mberberet15.wixsite.com/portfolio)
+14:53:20	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/t (from https://mberberet15.wixsite.com/portfolio)
+14:53:20	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/ (from https://mberberet15.wixsite.com/portfolio)
+14:54:37	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/sitemap.xml (from https://mberberet15.wixsite.com/portfolio)
+14:54:38	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/feed.xml (from https://mberberet15.wixsite.com/portfolio)
+14:55:45	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/decodeURIComponent(e (from https://mberberet15.wixsite.com/portfolio)
+14:55:45	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/portfolio/i (from https://mberberet15.wixsite.com/portfolio/resume)
+14:55:46	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/portfolio/t (from https://mberberet15.wixsite.com/portfolio/resume)
+14:55:46	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/portfolio/robots.txt (from https://mberberet15.wixsite.com/portfolio/resume)
+14:55:50	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/portfolio/sitemap.xml (from https://mberberet15.wixsite.com/portfolio/resume)
+14:56:55	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/portfolio/feed.xml (from https://mberberet15.wixsite.com/portfolio/resume)
+14:56:56	Error: 	"Not Found" (404) at link https://mberberet15.wixsite.com/portfolio/decodeURIComponent(e (from https://mberberet15.wixsite.com/portfolio/resume)
+
+HTTrack Website Copier/3.49-2 mirror complete in 3 minutes 47 seconds : 52 links scanned, 39 files written (3653514 bytes overall) [1565354 bytes received at 6895 bytes/sec], 2927413 bytes transferred using HTTP compression in 28 files, ratio 25%, 1.1 requests per connection
+(12 errors, 0 warnings, 0 messages)

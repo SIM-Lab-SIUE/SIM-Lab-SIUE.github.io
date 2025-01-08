@@ -1,0 +1,33 @@
+HTTrack3.49-2+htsswf+htsjava launched on Mon, 30 Dec 2024 14:37:23 at https://www.johnstauffer.net +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f0#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.johnstauffer.net -O1 "D:\OneDrive - Southern Illinois University Edwardsville\APsidian\Service\Tech Committee\Website Committee\senior-portfolios\jstauffer" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:37:36	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/i (from https://www.johnstauffer.net/)
+14:37:36	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/t (from https://www.johnstauffer.net/)
+14:37:41	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/feed.xml (from https://www.johnstauffer.net/)
+14:37:41	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/decodeURIComponent(e (from https://www.johnstauffer.net/)
+14:38:59	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/i (from https://www.johnstauffer.net/portfolio-collections/my-portfolio)
+14:39:00	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/t (from https://www.johnstauffer.net/portfolio-collections/my-portfolio)
+14:41:33	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/robots.txt (from https://www.johnstauffer.net/portfolio-collections/my-portfolio)
+14:41:34	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/sitemap.xml (from https://www.johnstauffer.net/portfolio-collections/my-portfolio)
+14:41:35	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/feed.xml (from https://www.johnstauffer.net/portfolio-collections/my-portfolio)
+14:41:36	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/decodeURIComponent(e (from https://www.johnstauffer.net/portfolio-collections/my-portfolio)
+14:41:47	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/my-portfolio/i (from https://www.johnstauffer.net/portfolio-collections/my-portfolio/fb-maryville-landing-page-video)
+14:41:48	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/my-portfolio/t (from https://www.johnstauffer.net/portfolio-collections/my-portfolio/fb-maryville-landing-page-video)
+14:42:53	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/my-portfolio/robots.txt (from https://www.johnstauffer.net/portfolio-collections/my-portfolio/fb-maryville-landing-page-video)
+14:42:53	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/my-portfolio/sitemap.xml (from https://www.johnstauffer.net/portfolio-collections/my-portfolio/fb-maryville-landing-page-video)
+14:42:55	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/my-portfolio/feed.xml (from https://www.johnstauffer.net/portfolio-collections/my-portfolio/fb-maryville-landing-page-video)
+14:42:57	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/my-portfolio/decodeURIComponent(e (from https://www.johnstauffer.net/portfolio-collections/my-portfolio/fb-maryville-landing-page-video)
+14:46:23	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/global-village-collection/i (from https://www.johnstauffer.net/portfolio-collections/global-village-collection/global-village-intro-spring-2024)
+14:46:23	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/global-village-collection/t (from https://www.johnstauffer.net/portfolio-collections/global-village-collection/global-village-intro-spring-2024)
+14:46:23	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/global-village-collection/robots.txt (from https://www.johnstauffer.net/portfolio-collections/global-village-collection/global-village-intro-spring-2024)
+14:46:23	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/global-village-collection/sitemap.xml (from https://www.johnstauffer.net/portfolio-collections/global-village-collection/global-village-intro-spring-2024)
+14:46:23	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/global-village-collection/feed.xml (from https://www.johnstauffer.net/portfolio-collections/global-village-collection/global-village-intro-spring-2024)
+14:46:23	Error: 	"Not Found" (404) at link https://www.johnstauffer.net/portfolio-collections/global-village-collection/decodeURIComponent(e (from https://www.johnstauffer.net/portfolio-collections/global-village-collection/global-village-intro-spring-2024)
+
+HTTrack Website Copier/3.49-2 mirror complete in 9 minutes 0 seconds : 175 links scanned, 152 files written (21906836 bytes overall) [13160112 bytes received at 24370 bytes/sec], 17638037 bytes transferred using HTTP compression in 57 files, ratio 21%, 1.9 requests per connection
+(22 errors, 0 warnings, 0 messages)
