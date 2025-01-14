@@ -1,14 +1,82 @@
+h1, h2, h3, h4, h5 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+/* Link styles for default, visited, and hover states */
+a:link {
+  color: #111111; /* Default link color */
+  text-decoration: none; /* Removes the underline */
+}
+
+a:visited {
+  color: #555555; /* Visited link color */
+  text-decoration: none; /* Removes the underline */
+}
+
+a:hover {
+  color: #ff6600; /* Hover link color */
+  text-decoration: underline; /* Adds an underline on hover */
+}
+
+img {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #ffffff; /* Ensure the icons are white to match the theme */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffcc00; /* Change color on hover */
+}
+
+.navbar-nav .nav-item .fab {
+  font-size: 1.5em; /* Adjust icon size */
+}
+
+
+/* Override footer background color */
+footer.bg-primary {
+  background-color: #222222 !important;
+}
+
+
+/* Existing styles */
 p.caption {
-  color: #777;
+  color: #222222;
   margin-top: 10px;
 }
+
 p code {
   white-space: inherit;
 }
+
 pre {
   word-break: normal;
   word-wrap: normal;
 }
+
 pre code {
   white-space: inherit;
+}
+
+pre, code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
 }

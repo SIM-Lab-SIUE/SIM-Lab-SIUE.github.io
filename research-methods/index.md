@@ -1,40 +1,43 @@
 ---
-title: "Quantitative Research in Mass Communications"
-subtitle: "R and RStudio"
-author:
-  - AP Leith^[Southern Illinois University Edwardsville, aleith@siue.edu]
-date: "2024-02-27"
+title: "An Introduction to Research Methods in Mass Media"
+author: "Alex P Leith"
+date: "2025-01-14"
 site: bookdown::bookdown_site
+output: bookdown::gitbook
+mainfont: Roboto Mono
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  This is a working document that will eventually become the official textbook for all of Dr. Alex P. Leith's MC 451 course at Southern Illinois University Edwardsville.
+bibliography: [book.bib]
 biblio-style: apalike
-csl: chicago-fullnote-bibliography.csl
+link-citations: yes
+github-repo: SIM-Lab-SIUE/mc451-fall24
+url: https://github.com/SIM-Lab-SIUE/mc451-fall24
+cover-image: images/cover.jpg
+description: "This is the textbook for MC 451 at SIU Edwardsville."
 ---
 
-# Preface
+# Preface {.unnumbered}
 
-Welcome to "Quantitative Research in Mass Communications: R and RStudio," a comprehensive guide designed to navigate the intricate pathways of quantitative research in the ever-evolving field of mass communications. This textbook is a culmination of my journey in academia and a reflection of my commitment to advancing the understanding of mass communication research methods, particularly through the lens of quantitative analysis using R and RStudio.
+Research is the foundation upon which knowledge is built, and this textbook is designed to empower students with the tools and insights necessary to navigate the dynamic field of social science research. As the world grows increasingly interconnected and information-driven, the ability to conduct rigorous, ethical, and impactful research is more important than ever. Whether you are studying mass communication, media studies, or broader social science disciplines, the principles and methods outlined in this book will prepare you to address complex societal challenges and contribute meaningfully to your field.
 
-![Book Cover (created by Ella Ackman)](images/Book%201%20Cover.png){width="100%"}
+At its core, this textbook reflects a commitment to bridging theory and practice. It offers a comprehensive exploration of the methodologies that define social science research, from qualitative and quantitative approaches to the integrative power of mixed methods. Along the way, it provides practical applications specific to media and communication studies, equipping students with the skills to analyze audience behavior, media effects, and cultural narratives. By emphasizing ethical research practices and the critical role of institutional oversight, this text ensures that students not only produce high-quality work but also contribute responsibly to the scholarly and public discourse.
 
-I am Dr. Alex P. Leith, currently serving as an Assistant Professor in the Department of Mass Communications at Southern Illinois University Edwardsville. My academic journey, which began with a Ph.D. in Information and Media from Michigan State University, has been a blend of rigorous research and practical application in the fields of digital media, virtual reality, and the social dimensions of digital media. My dissertation, "Gameplay Livestreaming: Agents of Gamespace," set the stage for my ongoing exploration of contemporary digital media trends.
+This book is also a resource for navigating the unique opportunities available at Southern Illinois University Edwardsville (SIUE). From the comprehensive research support provided by Lovejoy Library and the Writing Center to the hands-on opportunities through the Undergraduate Research and Creative Activities (URCA) program, this text integrates SIUE's robust academic infrastructure into the research journey. By highlighting these resources, the textbook helps students leverage institutional tools to enhance their learning and engagement.
 
-![Vtuber Model of Dr. AP Leith](images/fat_red_hoody_profile.png){width="100%"}
+Key features of this textbook include:
 
-My professional trajectory has been diverse, encompassing roles as a Graduate Assistant at Michigan State University, an Adjunct Instructor at McKendree University and St. Louis College of Pharmacy, and a Marketing Manager at Brigham Young University – Idaho. These experiences have enriched my understanding of the multifaceted nature of mass communications, both in academic and practical contexts.
+-   **Structured Modules**: Each module breaks down essential components of social science research, from its history and ethical foundations to advanced methodologies and analytical techniques.
+-   **Focus on Media and Communication Studies**: Examples, case studies, and applications are tailored to address the unique challenges and opportunities in mass communication research.
+-   **Hands-On Guidance**: Practical tools, templates, and examples empower students to apply concepts in real-world research scenarios.
+-   **Ethical Considerations**: Emphasis on the ethical principles that guide research ensures students are prepared to conduct studies that respect participants and contribute positively to society.
 
-This textbook is a unique endeavor, coalesced with the assistance of ChatGPT 4, a state-of-the-art language model developed by OpenAI. The collaboration with ChatGPT 4 has enabled the integration of advanced AI insights into the book's development, ensuring a blend of human expertise and technological innovation.
+This textbook reflects the collective expertise and dedication of faculty, researchers, and professionals in the field of mass communication. As an instructor and researcher at SIUE, I have designed this text to not only teach foundational research skills but also to inspire curiosity and innovation. My own journey---from exploring parasocial relationships to examining the dynamics of digital media---has shown me the transformative power of research in shaping our understanding of human behavior and communication.
 
-"Quantitative Research in Mass Communications" is structured to guide readers from the foundational aspects of mass communication research and ethics, through the complexities of IRB certification, to the development of research interests and the intricacies of conducting literature reviews. It further delves into the practicalities of formulating research questions, designing quantitative studies, and harnessing the power of R and RStudio for data management, analysis, and visualization. The book culminates with insights into engaging public audiences, writing for them, and presenting research findings effectively.
+Whether you are embarking on your first research project or refining advanced methodologies, this textbook is your guide to navigating the exciting and ever-evolving landscape of social science research. I hope it inspires you to think critically, explore boldly, and contribute meaningfully to the academic and professional communities you engage with.
 
-My research, reflected in publications like "Psychology of Popular Media" and "IEEE Transactions on Games," and my success in securing funding for research projects have significantly influenced the content of this textbook. The book aims not only to impart knowledge but also to inspire innovation and critical thinking in the field of mass communications.
+**Alex P. Leith, Ph.D.**\
+Assistant Professor, Department of Mass Communications\
+Southern Illinois University Edwardsville
 
-As readers embark on this journey through "Quantitative Research in Mass Communications," my hope is that this textbook serves as a valuable resource, aiding in the development of skilled, insightful, and ethically grounded researchers in the dynamic realm of mass communications.
-
-## Licensing
+#### Licensing {.unnumbered}
 
 This book is published under a Creative Commons BY-SA license (CC BY-SA) version 4.0. This means that this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA. <https://creativecommons.org/licenses/by-sa/4.0/>
