@@ -64,6 +64,22 @@ a:hover {
 	font-weight: 600;
 }
 
+
+
+nav {
+	background-color: var(--10-grey-color);
+}
+
+nav .navbar.nav-item {
+	background-color: var(--10-grey-color) !important;
+}
+
+nav .navbar-nav .nav-item .nav-link {
+	font-size: 1em;
+	font-family: var(--body-font);
+}
+
+
 nav, footer {
 	padding-bottom: 1em;
 	text-align: center;
