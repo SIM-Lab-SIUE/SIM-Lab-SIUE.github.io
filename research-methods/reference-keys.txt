@@ -16,10 +16,9 @@ information-technology-services-its---advanced-computing-resources
 undergraduate-research-and-creative-activities-urca
 interdisciplinary-research-and-informatics-scholarship-iris
 introduction-to-research-papers
-write
-examples-of-formal-reports
-find
-read
+structuring-a-research-paper
+finding-research-papers
+readings-research-papers
 developing-research-questions-and-hypotheses
 conceptual-definitions-and-operationalization
 identifying-independent-and-dependent-variables
