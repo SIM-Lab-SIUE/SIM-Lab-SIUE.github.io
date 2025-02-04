@@ -16,13 +16,24 @@ By identifying trends, testing theories, and proposing solutions to pressing iss
 
 ### Ethical Foundations of Social Science Research {.unnumbered}
 
-Ethical principles are at the core of social science research, ensuring that studies are conducted with respect for participants and with an emphasis on minimizing harm while maximizing benefits. This focus on ethics emerged in response to historical instances of unethical research, such as the Tuskegee Syphilis Study, which caused significant harm and violated participants' rights. Today, institutional review boards (IRBs) and frameworks like the **Belmont Report** provide ethical guidance, emphasizing: 1. **Respect for Persons**: Ensuring informed consent and safeguarding participants' autonomy. 2. **Beneficence**: Designing studies to maximize benefits and minimize harm. 3. **Justice**: Ensuring fair treatment and equitable distribution of research risks and benefits.
+Ethical principles are at the core of social science research, ensuring that studies are conducted with respect for participants and with an emphasis on minimizing harm while maximizing benefits. This focus on ethics emerged in response to historical instances of unethical research, such as the Tuskegee Syphilis Study, which caused significant harm and violated participants' rights. Today, institutional review boards (IRBs) and frameworks like the **Belmont Report** provide ethical guidance, emphasizing:
+
+1.  **Respect for Persons**: Ensuring informed consent and safeguarding participants' autonomy.
+2.  **Beneficence**: Designing studies to maximize benefits and minimize harm.
+3.  **Justice**: Ensuring fair treatment and equitable distribution of research risks and benefits.
 
 These principles are particularly critical in media research, where studies may involve sensitive topics like privacy, media representation, or the psychological effects of media exposure.
 
 ### The Systematic Approach of Social Science Research {.unnumbered}
 
-Social science research is characterized by its structured methodology, encompassing several interconnected stages: 1. **Identifying a Research Question**: This step focuses the inquiry on a specific issue or phenomenon. 2. **Reviewing Existing Literature**: Researchers build on prior knowledge to contextualize their study and refine their focus. 3. **Designing the Study**: This includes selecting appropriate methods, defining variables, and determining a sample. 4. **Data Collection**: Methods such as surveys, interviews, experiments, or content analysis are used to gather information. 5. **Data Analysis**: Researchers employ statistical or qualitative techniques to identify patterns and draw conclusions. 6. **Disseminating Findings**: Results are shared through academic publications, presentations, or public reports, contributing to ongoing discussions and future research.
+Social science research is characterized by its structured methodology, encompassing several interconnected stages:
+
+1.  **Identifying a Research Question**: This step focuses the inquiry on a specific issue or phenomenon.
+2.  **Reviewing Existing Literature**: Researchers build on prior knowledge to contextualize their study and refine their focus.
+3.  **Designing the Study**: This includes selecting appropriate methods, defining variables, and determining a sample.
+4.  **Data Collection**: Methods such as surveys, interviews, experiments, or content analysis are used to gather information.
+5.  **Data Analysis**: Researchers employ statistical or qualitative techniques to identify patterns and draw conclusions.
+6.  **Disseminating Findings**: Results are shared through academic publications, presentations, or public reports, contributing to ongoing discussions and future research.
 
 ![Content analysis of newspaper text.](images/newspaper_content.jpg){width="100%"}
 
@@ -93,7 +104,7 @@ Today, social science research is inherently interdisciplinary, integrating psyc
 
 ## Importance of Social Science Research
 
-Social science research is a cornerstone for understanding human behavior, societal dynamics, and the functioning of institutions. By employing systematic investigation, it provides invaluable insights into how individuals and groups interact, how societal structures influence behavior, and how to address complex real-world challenges. This research is vital not only for advancing academic knowledge but also for informing policies, shaping communication strategies, and improving lives globally.
+Social science research is a cornerstone for understanding human behavior, societal dynamics, and the functioning of institutions. By employing systematic investigation, it provides invaluable insights into how individuals sand groups interact, how societal structures influence behavior, and how to address complex real-world challenges. This research is vital not only for advancing academic knowledge but also for informing policies, shaping communication strategies, and improving lives globally.
 
 ### Evidence-Based Policymaking {.unnumbered}
 
