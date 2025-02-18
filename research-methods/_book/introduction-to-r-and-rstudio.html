@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media</title>
+<meta name="author" content="Alex P Leith">
+<meta name="description" content="[Chunk Version]  8.1 What is R and RStudio?  What is R? R is an open-source statistical programming language designed for data manipulation, analysis, and visualization. It provides researchers...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/introduction-to-r-and-rstudio.html">
+<meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
+<meta property="og:description" content="[Chunk Version]  8.1 What is R and RStudio?  What is R? R is an open-source statistical programming language designed for data manipulation, analysis, and visualization. It provides researchers...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media">
+<meta name="twitter:description" content="[Chunk Version]  8.1 What is R and RStudio?  What is R? R is an open-source statistical programming language designed for data manipulation, analysis, and visualization. It provides researchers...">
+<meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">An Introduction to Research Methods in Mass Media</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="an-introduction-to-social-science-research.html"><span class="header-section-number">1</span> An Introduction to Social Science Research</a></li>
+<li><a class="" href="the-many-siue-resources.html"><span class="header-section-number">2</span> The Many SIUE Resources</a></li>
+<li><a class="" href="introduction-to-research-papers.html"><span class="header-section-number">3</span> Introduction to Research Papers</a></li>
+<li><a class="" href="defining-scope.html"><span class="header-section-number">4</span> Defining Scope</a></li>
+<li><a class="" href="communication-theories.html"><span class="header-section-number">5</span> Communication Theories</a></li>
+<li><a class="" href="selecting-and-adapting-research-scales.html"><span class="header-section-number">6</span> Selecting and Adapting Research Scales</a></li>
+<li><a class="" href="designing-quantitative-research.html"><span class="header-section-number">7</span> Designing Quantitative Research</a></li>
+<li><a class="active" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">8</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="data-management.html"><span class="header-section-number">9</span> Data Management</a></li>
+<li><a class="" href="descriptive-analysis.html"><span class="header-section-number">10</span> Descriptive Analysis</a></li>
+<li><a class="" href="inferential-analysis.html"><span class="header-section-number">11</span> Inferential Analysis</a></li>
+<li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></li>
+<li><a class="" href="writing-for-a-public-audience.html"><span class="header-section-number">13</span> Writing for a Public Audience</a></li>
+<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">14</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="appendix-1.html"><span class="header-section-number">15</span> Appendix</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-r-and-rstudio" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Introduction to R and RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-r-and-rstudio"><i class="fas fa-link"></i></a>
+</h1>
+<p><a href="_book/files/07-intro_R-chunks.Rmd">[Chunk Version]</a></p>
+<div id="what-is-r-and-rstudio" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> What is R and RStudio?<a class="anchor" aria-label="anchor" href="#what-is-r-and-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<div id="what-is-r" class="section level3 unnumbered">
+<h3>What is R?<a class="anchor" aria-label="anchor" href="#what-is-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>R is an open-source statistical programming language designed for data manipulation, analysis, and visualization. It provides researchers with a flexible framework for executing complex statistical models, handling large datasets, and creating sophisticated graphical representations. In the context of mass communication research, R allows for the rigorous analysis of quantitative data, such as survey results, social media metrics, and media content analysis, making it an indispensable tool for both academic and industry research.</p>
+<p>Unlike traditional spreadsheet programs or point-and-click statistical software, R offers a command-line interface, where users write scripts to execute functions. This characteristic makes it highly adaptable to various research needs, whether analyzing audience engagement with news content or modeling the spread of information through social networks. Researchers can write custom scripts and share them, making research more transparent and reproducible.</p>
+<p>The strength of R lies in its extensive package ecosystem, which covers nearly every imaginable statistical method. The packages extend the functionality of R, allowing researchers to handle everything from basic descriptive statistics to advanced machine learning techniques. With packages like <code>tidyverse</code> for data wrangling and <code>ggplot2</code> for visualization, R offers a comprehensive suite for mass communication research.</p>
+</div>
+<div id="what-is-rstudio" class="section level3 unnumbered">
+<h3>What is RStudio?<a class="anchor" aria-label="anchor" href="#what-is-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>RStudio is an integrated development environment (IDE) for R, designed to simplify the process of writing and executing R code. It combines a user-friendly interface with powerful tools that enhance productivity, making it easier for both beginners and experienced users to work efficiently. For students and researchers in mass communication, RStudio offers a practical way to interact with R without being overwhelmed by its command-line interface.</p>
+<p>RStudio provides features such as syntax highlighting, auto-completion, and a visual interface for plots and data frames, making it accessible for users at all levels. It organizes R’s functionality into easily navigable panels, including a script editor, a console, a workspace viewer, and a file browser. Additionally, it offers seamless integration with version control systems (e.g., Git), enabling researchers to track changes and collaborate more effectively on data analysis projects.</p>
+<p>For mass communication researchers, who often handle large datasets from surveys or media content analysis, RStudio’s tools streamline data wrangling and visualization. The IDE supports the generation of reproducible reports using R Markdown, which combines narrative text and R code to produce dynamic, interactive documents. This feature is especially useful when presenting research findings, as it allows researchers to include live code and results in their reports, ensuring accuracy and transparency in the research process.</p>
+</div>
+</div>
+<div id="why-use-r-and-rstudio" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Why Use R and RStudio?<a class="anchor" aria-label="anchor" href="#why-use-r-and-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>R and RStudio offer significant advantages for students and researchers in mass communication. The combination of these tools provides unparalleled access to robust statistical capabilities, cutting-edge data visualization, and a framework for reproducible and transparent research. Below are some key reasons why R and RStudio are essential for mass communication research.</p>
+<div id="open-source" class="section level3 unnumbered">
+<h3>Open Source<a class="anchor" aria-label="anchor" href="#open-source"><i class="fas fa-link"></i></a>
+</h3>
+<p>One of the primary advantages of R is its open-source nature. Unlike many other statistical software packages that require expensive licenses, R is completely free to download and use. This accessibility ensures that anyone, regardless of institutional resources, can take advantage of its powerful features. Moreover, the open-source community behind R is continually developing and sharing new packages, which means researchers have access to cutting-edge tools without additional costs.</p>
+<p>For mass communication researchers, this is particularly beneficial, as the field often requires interdisciplinary methods and techniques. The vast array of packages and tools available in R enables researchers to adapt their workflows to meet the specific needs of their projects—whether analyzing large datasets, scraping data from social media, or conducting sentiment analysis on user-generated content.</p>
+</div>
+<div id="data-analysis-and-visualization" class="section level3 unnumbered">
+<h3>Data Analysis and Visualization<a class="anchor" aria-label="anchor" href="#data-analysis-and-visualization"><i class="fas fa-link"></i></a>
+</h3>
+<p>R excels in data analysis and visualization, providing tools that go beyond the basics offered by many standard software packages. With R, users can perform complex statistical analyses, such as regression modeling, hypothesis testing, and machine learning, all within a single platform. Furthermore, packages like <code>ggplot2</code> allow users to create visually appealing and highly customizable graphs, which are essential for communicating research findings effectively.</p>
+<p>For mass communication students and researchers, this means having the ability to explore data from surveys, media analytics, or content studies in a rigorous and visually compelling way. Visualizations such as bar charts, scatter plots, and network diagrams are critical for illustrating patterns in media consumption or audience behavior, helping researchers make their findings more accessible and impactful.</p>
+</div>
+<div id="reproducible-research" class="section level3 unnumbered">
+<h3>Reproducible Research<a class="anchor" aria-label="anchor" href="#reproducible-research"><i class="fas fa-link"></i></a>
+</h3>
+<p>A growing demand in academic research is the ability to reproduce and validate results. RStudio supports this through its integration with R Markdown, which allows researchers to create dynamic documents that combine text, code, and output (e.g., tables, charts) in a single report. This means that anyone reviewing the research can trace the exact steps taken, from data importation to analysis, and reproduce the results with accuracy.</p>
+<p><a href="https://geohackweek.github.io/reproducible-research/01-reproducible/"><img src="images/reproducibility.png" style="width:100.0%" alt="Reproducibility Spectrum"></a></p>
+<p>For mass communication researchers, this capability ensures transparency and integrity, which are particularly important when dealing with potentially sensitive or high-impact media data. Whether publishing a report on social media trends or presenting findings on audience demographics, R and RStudio help researchers document and share their work in a way that is fully traceable.</p>
+</div>
+<div id="flexibility-and-customization" class="section level3 unnumbered">
+<h3>Flexibility and Customization<a class="anchor" aria-label="anchor" href="#flexibility-and-customization"><i class="fas fa-link"></i></a>
+</h3>
+<p>R’s flexibility is one of its standout features. Unlike other statistical software, which may be limited by pre-built functions or rigid workflows, R allows users to customize their analyses by writing their own scripts. This adaptability is crucial in mass communication research, where the types of data (e.g., textual data, video metrics, user interactions) can vary widely and often require bespoke approaches.</p>
+<p>Additionally, R’s package system allows for almost limitless customization. Users can download packages specific to their field of research or even create their own, making it easier to tailor the analysis to the exact needs of a project. For example, mass communication researchers studying digital engagement might use packages designed for sentiment analysis, network visualization, or web scraping, all of which are readily available in the R ecosystem.</p>
+</div>
+</div>
+<div id="how-to-install-r-and-rstudio" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> How to Install R and RStudio<a class="anchor" aria-label="anchor" href="#how-to-install-r-and-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>R and RStudio are essential tools for data analysis, visualization, and reproducible research. This section will guide you through the steps to install both R and RStudio on your computer, ensuring you are ready to start coding and analyzing data efficiently.</p>
+<div id="how-to-install-r" class="section level3 unnumbered">
+<h3>How to Install R<a class="anchor" aria-label="anchor" href="#how-to-install-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>R can be downloaded from the Comprehensive R Archive Network (CRAN) at <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. Follow the steps below to install R on your machine:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Visit the CRAN website</strong>: Navigate to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</li>
+<li>
+<strong>Select your operating system</strong>: Choose the appropriate option for your computer—Windows, Mac, or Linux.
+<ul>
+<li>
+<strong>Windows</strong>: Click on “Download R for Windows,” and then choose “base” to download the most recent version. Follow the installation prompts.</li>
+<li>
+<strong>Mac</strong>: Click on “Download R for macOS,” and choose the version compatible with your operating system. Follow the installation prompts.</li>
+<li>
+<strong>Linux</strong>: Select “Download R for Linux” and follow the specific instructions for your Linux distribution (e.g., Ubuntu, Debian, Fedora).</li>
+</ul>
+</li>
+<li>
+<strong>Complete the installation</strong>: Once the download is complete, open the installer and follow the on-screen instructions to complete the installation. After installation, R should be ready to use on your system.</li>
+</ol>
+<p><a href="https://cran.r-project.org/"><img src="images/install-r.png" style="width:100.0%" alt="Install R Page"></a></p>
+</div>
+<div id="how-to-install-rstudio" class="section level3 unnumbered">
+<h3>How to Install RStudio<a class="anchor" aria-label="anchor" href="#how-to-install-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>After installing R, you need to install RStudio, a powerful Integrated Development Environment (IDE) that enhances your coding experience and workflow. Follow the steps below to install RStudio:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Visit the RStudio download page</strong>: Go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>.</li>
+</ol>
+<p><a href="https://posit.co/download/rstudio-desktop/"><img src="images/r-studio.png" style="width:100.0%" alt="RStudio Download Page for Windows (auto-loads for local OS)"></a></p>
+<ol start="2" style="list-style-type: decimal">
+<li>
+<strong>Choose the free version</strong>: Select “RStudio Desktop – Open Source License” to download the free version of RStudio.</li>
+<li>
+<strong>Select your operating system</strong>: Choose the installer for your operating system (Windows, Mac, or Linux) and download the appropriate file.
+<ul>
+<li>
+<strong>Windows</strong>: Download the installer and run it. Follow the setup prompts to install RStudio.</li>
+<li>
+<strong>Mac</strong>: Download the installer for macOS, open the .dmg file, and drag RStudio into your Applications folder.</li>
+<li>
+<strong>Linux</strong>: Follow the instructions provided on the RStudio download page for your specific Linux distribution.</li>
+</ul>
+</li>
+<li>
+<strong>Launch RStudio</strong>: After installation, open RStudio. You should see the RStudio interface with the console panel, ready for you to start writing and running R code.</li>
+</ol>
+</div>
+</div>
+<div id="getting-started-with-r-and-rstudio" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Getting Started with R and RStudio<a class="anchor" aria-label="anchor" href="#getting-started-with-r-and-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<div id="the-rstudio-interface" class="section level3 unnumbered">
+<h3>The RStudio Interface<a class="anchor" aria-label="anchor" href="#the-rstudio-interface"><i class="fas fa-link"></i></a>
+</h3>
+<p>RStudio enhances the R experience by providing a user-friendly interface that simplifies coding, analysis, and visualization. The workspace is divided into four main panels, each serving a distinct function:</p>
+<ul>
+<li>
+<strong>Script Panel:</strong> The script panel is where you write and edit your R scripts. Scripts are collections of commands that can be saved and reused, which promotes reproducibility and efficiency in your research. By saving your code as scripts, you can run the same analysis on different datasets or share the exact steps with collaborators.</li>
+</ul>
+<div class="float">
+<img src="images/script-panel.png" style="width:100.0%" alt="Script Panel with iPlastic Theme"><div class="figcaption">Script Panel with iPlastic Theme</div>
+</div>
+<ul>
+<li>
+<strong>Console Panel:</strong> The console is the interactive component where R executes commands. You can type commands directly into the console or run them from a script. The console also displays output, including error messages and other system feedback. This real-time interaction is helpful for testing snippets of code before integrating them into your larger script.</li>
+</ul>
+<div class="float">
+<img src="images/console-panel.png" style="width:100.0%" alt="Console Panel with iPlastic Theme"><div class="figcaption">Console Panel with iPlastic Theme</div>
+</div>
+<ul>
+<li>
+<strong>Environment Panel:</strong> The environment panel displays all the objects—such as datasets, variables, and functions—currently stored in memory during your R session. It provides an overview of the data and variables you are working with, allowing you to inspect, remove, or modify them easily.</li>
+</ul>
+<div class="float">
+<img src="images/environment-panel.png" style="width:100.0%" alt="Environment Panel with iPlastic Theme"><div class="figcaption">Environment Panel with iPlastic Theme</div>
+</div>
+<ul>
+<li>
+<strong>Plots/Help/Files Panels:</strong> This multifunctional area is where RStudio displays generated plots and visualizations. It also gives access to R’s extensive help files and documentation, helping users troubleshoot or learn about specific functions. Additionally, the file browser in this panel lets you navigate your computer’s files and directories, making it easy to locate and import data into R.</li>
+</ul>
+<div class="float">
+<img src="images/files-panel.png" style="width:100.0%" alt="Plots/Help/Files Panel with iPlastic Theme"><div class="figcaption">Plots/Help/Files Panel with iPlastic Theme</div>
+</div>
+</div>
+<div id="setting-up-a-new-project" class="section level3 unnumbered">
+<h3>Setting Up a New Project<a class="anchor" aria-label="anchor" href="#setting-up-a-new-project"><i class="fas fa-link"></i></a>
+</h3>
+<p>RStudio’s project management system helps keep your work organized, especially when handling multiple files or analyses. Setting up a project ensures that all related files, scripts, and outputs are in one place.</p>
+<ul>
+<li>
+<strong>Creating a Project:</strong> To start a new project, go to <code>File &gt; New Project...</code>. RStudio allows you to group all the scripts, data files, and visual outputs related to a specific research question or analysis into one project, making it easier to manage your workflow.</li>
+</ul>
+<div class="float">
+<img src="images/new-project.jpg" style="width:100.0%" alt="New Project Menu"><div class="figcaption">New Project Menu</div>
+</div>
+<ul>
+<li><p><strong>Choosing a Location:</strong> You can create a new directory for your project or associate it with an existing folder. Creating projects within dedicated directories is crucial for managing your work, as it ensures all related files are in one location and that relative file paths are maintained. This makes it easier to share your project with others or run it on a different machine without breaking file links.</p></li>
+<li><p><strong>Version Control:</strong> If you use version control tools like Git, RStudio seamlessly integrates with them. During the project setup, you can create or link a Git repository, allowing you to track changes and collaborate with others effectively. Version control ensures that every modification to your scripts is documented, which is especially useful when working in teams.</p></li>
+<li><p><strong>Project Management:</strong> RStudio projects save the state of your workspace, including open files, console history, and the working directory. When you reopen the project, RStudio restores this state, enabling you to continue where you left off without needing to reconfigure your environment.</p></li>
+</ul>
+</div>
+<div id="file-management" class="section level3 unnumbered">
+<h3>File Management<a class="anchor" aria-label="anchor" href="#file-management"><i class="fas fa-link"></i></a>
+</h3>
+<p>Effective file management is critical for maintaining an organized and efficient workflow in RStudio. Below are some guidelines for managing different types of files:</p>
+<div id="r-script-vs.-r-markdown" class="section level4 unnumbered">
+<h4>R Script vs. R Markdown<a class="anchor" aria-label="anchor" href="#r-script-vs.-r-markdown"><i class="fas fa-link"></i></a>
+</h4>
+<p>R scripts (<code>.R</code> files) are text files where you can write and run R commands. These are best used when the focus is purely on data analysis. On the other hand, R Markdown (<code>.Rmd</code> files) allows you to integrate narrative text, R code, and output (e.g., plots, tables) into a single document. R Markdown is useful for generating reproducible reports, making it ideal for assignments, papers, and presentations.</p>
+<ul>
+<li>
+<strong>When to use R Script</strong>: Use an R script when you are solely focused on coding and analyzing data without needing additional explanation or documentation.</li>
+<li>
+<strong>When to use R Markdown</strong>: Use R Markdown when you want to combine text, code, and results in a report format that can be converted into HTML, PDF, or Word documents.</li>
+</ul>
+<div class="float">
+<img src="images/script-md.jpg" style="width:100.0%" alt="R Script on Left and R Markdown on Right"><div class="figcaption">R Script on Left and R Markdown on Right</div>
+</div>
+</div>
+<div id="csv-vs.-excel" class="section level4 unnumbered">
+<h4>CSV vs. Excel<a class="anchor" aria-label="anchor" href="#csv-vs.-excel"><i class="fas fa-link"></i></a>
+</h4>
+<p>For most data analysis tasks in R, <strong>CSV</strong> (Comma Separated Values) files are the preferred format due to their simplicity and compatibility with R’s data manipulation functions. R also provides tools for reading <strong>Excel</strong> files (<code>.xlsx</code>), but Excel files often introduce complexities, such as multiple sheets or hidden formatting, which can complicate data analysis.</p>
+<ul>
+<li>
+<strong>Use CSV files</strong> for straightforward, clean datasets that will be frequently used in your analysis.</li>
+<li>
+<strong>Use Excel files</strong> when working with collaborators who require Excel formatting or when the dataset contains multiple sheets or more complex structure.</li>
+</ul>
+</div>
+<div id="subfolders" class="section level4 unnumbered">
+<h4>Subfolders<a class="anchor" aria-label="anchor" href="#subfolders"><i class="fas fa-link"></i></a>
+</h4>
+<p>When working on large projects, use subfolders within your project directory to organize your files. Common subfolders might include: - <code>data/</code> for storing raw and processed datasets. - <code>scripts/</code> for organizing your R scripts. - <code>output/</code> for saving graphs, tables, and other generated outputs. - <code>reports/</code> for storing R Markdown files or other documents that summarize your findings.</p>
+<p>This hierarchical organization makes it easier to locate files and ensures that your project remains structured as it grows in complexity.</p>
+</div>
+<div id="other-files" class="section level4 unnumbered">
+<h4>Other Files<a class="anchor" aria-label="anchor" href="#other-files"><i class="fas fa-link"></i></a>
+</h4>
+<p>In addition to scripts and datasets, you may work with a variety of other file types, such as: - <strong>Text files (<code>.txt</code>)</strong> for plain text data. - <strong>Image files (<code>.png</code>, <code>.jpeg</code>)</strong> for embedding visualizations or outputs into reports. - <strong>RData files (<code>.RData</code>)</strong> for saving your R workspace so you can quickly reload objects in future sessions.</p>
+<p>By keeping your files organized and labeled consistently, you can streamline your workflow and reduce the likelihood of errors when collaborating or revisiting older projects.</p>
+</div>
+</div>
+</div>
+<div id="package-management" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Package Management<a class="anchor" aria-label="anchor" href="#package-management"><i class="fas fa-link"></i></a>
+</h2>
+<p>R’s strength lies in its extensive ecosystem of packages, which extend its core functionality to support specific types of analysis, visualization, and data manipulation. Packages are collections of R functions, data, and documentation, tailored for different tasks. In mass communication research, several packages can aid in content analysis, media trend studies, and social network analysis.</p>
+<div id="installing-packages" class="section level3 unnumbered">
+<h3>Installing Packages<a class="anchor" aria-label="anchor" href="#installing-packages"><i class="fas fa-link"></i></a>
+</h3>
+<p>To install a package in R, you need to use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function. This only needs to be done once per package:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span></code></pre></div>
+<p>In RStudio, you can run this code in a code chunk or type it directly into the console. For example, to install a package in R Markdown, use the following code chunk:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span></code></pre></div>
+<p>After installation, load the package into your R session using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+<p>This makes the package’s functions available for use during your R session.</p>
+</div>
+<div id="commonly-used-packages" class="section level3 unnumbered">
+<h3>Commonly Used Packages<a class="anchor" aria-label="anchor" href="#commonly-used-packages"><i class="fas fa-link"></i></a>
+</h3>
+<p>Some packages particularly useful for mass communication research include: - <strong><code>ggplot2</code></strong>: For creating high-quality data visualizations. - <strong><code>dplyr</code></strong>: For data manipulation and cleaning. - <strong><code>tm</code></strong>: For text mining and content analysis, useful for analyzing media content. - <strong><code>rtweet</code></strong>: For collecting and analyzing Twitter data, essential in social media research. - <strong><code>quanteda</code></strong>: For text analysis, commonly used for media content studies.</p>
+<p>Once installed, packages can be updated periodically using the <code><a href="https://rdrr.io/r/utils/update.packages.html">update.packages()</a></code> function.</p>
+</div>
+</div>
+<div id="basics-of-r-programming" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Basics of R Programming<a class="anchor" aria-label="anchor" href="#basics-of-r-programming"><i class="fas fa-link"></i></a>
+</h2>
+<p>This section introduces basic R programming concepts relevant to mass communication research. We assume no prior knowledge of coding, so we’ll start from scratch. The examples below are designed to be used in R Markdown, which allows you to combine code, text, and output into a single, reproducible document.</p>
+<div id="code-chunks-in-r-markdown" class="section level3 unnumbered">
+<h3>Code Chunks in R Markdown<a class="anchor" aria-label="anchor" href="#code-chunks-in-r-markdown"><i class="fas fa-link"></i></a>
+</h3>
+<p>In R Markdown, code is written inside “chunks.” These chunks execute code and display the output directly in the document. To insert a code chunk in R Markdown, use three backticks followed by <code>{r}</code> to indicate you are writing R code. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># This is a code chunk</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Hello, World!"</span><span class="op">)</span></span></code></pre></div>
+<p><em>Output: “Hello, World!”</em></p>
+<p>The code inside the chunk runs when you “knit” the document, and the output will appear in the resulting file.</p>
+</div>
+<div id="manually-inputting-data" class="section level3 unnumbered">
+<h3>Manually Inputting Data<a class="anchor" aria-label="anchor" href="#manually-inputting-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Data can be input directly into R, which is useful for small datasets or examples. Below is how you manually input data as a vector (a list of numbers or words):</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Inputting numerical data</span></span>
+<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">23</span>, <span class="fl">21</span>, <span class="fl">30</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Inputting character data</span></span>
+<span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Carol"</span>, <span class="st">"David"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div id="commenting-and-organizing-code" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">8.7</span> Commenting and Organizing Code<a class="anchor" aria-label="anchor" href="#commenting-and-organizing-code"><i class="fas fa-link"></i></a>
+</h2>
+<p>Clear, well-commented, and organized code is crucial for making your analysis reproducible and understandable, especially when sharing it with others or revisiting it later.</p>
+<div id="commenting-code" class="section level3 unnumbered">
+<h3>Commenting Code<a class="anchor" aria-label="anchor" href="#commenting-code"><i class="fas fa-link"></i></a>
+</h3>
+<p>In R, comments are created using the <code>#</code> symbol. Anything written after <code>#</code> is ignored by R and is only meant for humans reading the code. Commenting is useful for explaining what each section of the code does or noting important details about the analysis:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># This is a comment</span></span>
+<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">23</span>, <span class="fl">21</span>, <span class="fl">30</span><span class="op">)</span>  <span class="co"># Vector of ages</span></span></code></pre></div>
+<p>Use comments to explain the purpose of code sections, especially when performing key analyses. For example:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># This code reads data from an online CSV file</span></span>
+<span><span class="va">billboard</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-09-14/billboard.csv"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="organizing-code-with-sections" class="section level3 unnumbered">
+<h3>Organizing Code with Sections<a class="anchor" aria-label="anchor" href="#organizing-code-with-sections"><i class="fas fa-link"></i></a>
+</h3>
+<p>To organize larger scripts, you can use headers or dividers to mark different sections. This makes it easier to navigate the code:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># ===========================</span></span>
+<span><span class="co"># Section: Data Preparation</span></span>
+<span><span class="co"># ===========================</span></span></code></pre></div>
+<p>In R Markdown, you can organize code sections using headings in markdown format:</p>
+</div>
+</div>
+<div id="data-preparation" class="section level2" number="8.8">
+<h2>
+<span class="header-section-number">8.8</span> Data Preparation<a class="anchor" aria-label="anchor" href="#data-preparation"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Code for preparing data goes here</span></span></code></pre></div>
+<div id="keeping-code-tidy" class="section level3 unnumbered">
+<h3>Keeping Code Tidy<a class="anchor" aria-label="anchor" href="#keeping-code-tidy"><i class="fas fa-link"></i></a>
+</h3>
+<p>Organized, readable code is essential, especially in collaborative research projects. Some tips for keeping your code tidy: - Use consistent indentation for better readability. - Break long lines of code into multiple lines. - Avoid excessive nesting of functions; instead, break them into separate steps.</p>
+<p>By commenting effectively and organizing your code logically, you make it easier for others (and yourself) to understand your analysis, contributing to better research practices.</p>
+</div>
+</div>
+<div id="basic-operations-in-r" class="section level2" number="8.9">
+<h2>
+<span class="header-section-number">8.9</span> Basic Operations in R<a class="anchor" aria-label="anchor" href="#basic-operations-in-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>Understanding the basic operations in R is vital for embarking on more complex data analysis and programming tasks. These operations include arithmetic calculations, variable assignments, and function calls.</p>
+<div id="arithmetic-operations" class="section level3 unnumbered">
+<h3>Arithmetic Operations<a class="anchor" aria-label="anchor" href="#arithmetic-operations"><i class="fas fa-link"></i></a>
+</h3>
+<div id="overview" class="section level4 unnumbered">
+<h4>Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
+</h4>
+<p>Arithmetic operations form the basis of numerical calculations in R. These operations can be conducted directly in the R console and include addition, subtraction, multiplication, division, exponentiation, and other mathematical functions (Chambers, 2008).</p>
+</div>
+<div id="common-arithmetic-operators" class="section level4 unnumbered">
+<h4>Common Arithmetic Operators<a class="anchor" aria-label="anchor" href="#common-arithmetic-operators"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<strong>Addition (<code>+</code>)</strong>: Adds two numbers.</li>
+<li>
+<strong>Subtraction (<code>-</code>)</strong>: Subtracts the right-hand operand from the left-hand operand.</li>
+<li>
+<strong>Multiplication (<code>*</code>)</strong>: Multiplies two numbers.</li>
+<li>
+<strong>Division (<code>/</code>)</strong>: Divides the left-hand operand by the right-hand operand.</li>
+<li>
+<strong>Exponentiation (<code>^</code>)</strong>: Raises the left-hand operand to the power of the right-hand operand.</li>
+<li>
+<strong>Modulus (<code>%%</code>)</strong>: Gives the remainder of the division between two numbers.</li>
+</ul>
+</div>
+<div id="examples" class="section level4 unnumbered">
+<h4>Examples<a class="anchor" aria-label="anchor" href="#examples"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can execute these basic arithmetic operations directly in the R console.</p>
+<p><strong><em>Addition</em></strong></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">5</span> <span class="op">+</span> <span class="fl">3</span></span></code></pre></div>
+<p><em>Output: 8</em></p>
+<p><strong><em>Subtraction</em></strong></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">5</span> <span class="op">-</span> <span class="fl">3</span></span></code></pre></div>
+<p><em>Output: 2</em></p>
+<p><strong><em>Multiplication</em></strong></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">5</span> <span class="op">*</span> <span class="fl">3</span></span></code></pre></div>
+<p><em>Output: 15</em></p>
+<p><strong><em>Division</em></strong></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">5</span> <span class="op">/</span> <span class="fl">3</span></span></code></pre></div>
+<p><em>Output: 1.666667</em></p>
+<p><strong><em>Exponentiation</em></strong></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">5</span> <span class="op">^</span> <span class="fl">3</span></span></code></pre></div>
+<p><em>Output: 125</em></p>
+</div>
+</div>
+<div id="variables" class="section level3 unnumbered">
+<h3>Variables<a class="anchor" aria-label="anchor" href="#variables"><i class="fas fa-link"></i></a>
+</h3>
+<div id="what-are-variables" class="section level4 unnumbered">
+<h4>What Are Variables?<a class="anchor" aria-label="anchor" href="#what-are-variables"><i class="fas fa-link"></i></a>
+</h4>
+<p>Variables act as storage containers for data, including numbers, strings, vectors, and other complex data types. Variable assignment is a crucial aspect of programming and data management in R (Wickham, 2014).</p>
+</div>
+<div id="assignment-operators" class="section level4 unnumbered">
+<h4>Assignment Operators<a class="anchor" aria-label="anchor" href="#assignment-operators"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<strong>Leftward (<code>&lt;-</code>)</strong>: Assigns the value on the right to the variable on the left.</li>
+<li>
+<strong>Equal (<code>=</code>)</strong>: Can also be used for assignment, though <code>&lt;-</code> is traditionally preferred in R.</li>
+</ul>
+</div>
+<div id="examples-1" class="section level4 unnumbered">
+<h4>Examples<a class="anchor" aria-label="anchor" href="#examples-1"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Assigning a numerical value to a variable using &lt;-</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
+<span></span>
+<span><span class="co"># Assigning a string value to a variable using =</span></span>
+<span><span class="va">text_variable</span> <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<span></span>
+<span><span class="co"># Printing variables</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">text_variable</span><span class="op">)</span></span></code></pre></div>
+<p><em>Output:10</em> <em>“Hello, World!”</em></p>
+</div>
+</div>
+<div id="functions" class="section level3 unnumbered">
+<h3>Functions<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
+</h3>
+<div id="function-overview" class="section level4 unnumbered">
+<h4>Function Overview<a class="anchor" aria-label="anchor" href="#function-overview"><i class="fas fa-link"></i></a>
+</h4>
+<p>Functions are predefined sets of operations that perform specific tasks. Functions in R can be either built-in, such as <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> or <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, or user-defined for more customized operations (Chambers, 2008).</p>
+</div>
+<div id="built-in-functions" class="section level4 unnumbered">
+<h4>Built-in Functions<a class="anchor" aria-label="anchor" href="#built-in-functions"><i class="fas fa-link"></i></a>
+</h4>
+<p>Examples of common built-in functions include: dz - <strong><code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code></strong>: Calculates the sum of all the values in a numeric vector. - <strong><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></strong>: Calculates the arithmetic mean of a numeric vector. - <strong><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code></strong>: Calculates the square root of a number.</p>
+<p><strong><em>Using sum function</em></strong></p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<p><em>Output: 6</em></p>
+<p><strong><em>Using mean function</em></strong></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><em>Output: 2.5</em></p>
+<p><strong><em>Using sqrt function</em></strong></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">16</span><span class="op">)</span></span></code></pre></div>
+<p><em>Output: 4</em></p>
+
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="designing-quantitative-research.html"><span class="header-section-number">7</span> Designing Quantitative Research</a></div>
+<div class="next"><a href="data-management.html"><span class="header-section-number">9</span> Data Management</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-r-and-rstudio"><span class="header-section-number">8</span> Introduction to R and RStudio</a></li>
+<li>
+<a class="nav-link" href="#what-is-r-and-rstudio"><span class="header-section-number">8.1</span> What is R and RStudio?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-is-r">What is R?</a></li>
+<li><a class="nav-link" href="#what-is-rstudio">What is RStudio?</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#why-use-r-and-rstudio"><span class="header-section-number">8.2</span> Why Use R and RStudio?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#open-source">Open Source</a></li>
+<li><a class="nav-link" href="#data-analysis-and-visualization">Data Analysis and Visualization</a></li>
+<li><a class="nav-link" href="#reproducible-research">Reproducible Research</a></li>
+<li><a class="nav-link" href="#flexibility-and-customization">Flexibility and Customization</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#how-to-install-r-and-rstudio"><span class="header-section-number">8.3</span> How to Install R and RStudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#how-to-install-r">How to Install R</a></li>
+<li><a class="nav-link" href="#how-to-install-rstudio">How to Install RStudio</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#getting-started-with-r-and-rstudio"><span class="header-section-number">8.4</span> Getting Started with R and RStudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-rstudio-interface">The RStudio Interface</a></li>
+<li><a class="nav-link" href="#setting-up-a-new-project">Setting Up a New Project</a></li>
+<li><a class="nav-link" href="#file-management">File Management</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#package-management"><span class="header-section-number">8.5</span> Package Management</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#installing-packages">Installing Packages</a></li>
+<li><a class="nav-link" href="#commonly-used-packages">Commonly Used Packages</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#basics-of-r-programming"><span class="header-section-number">8.6</span> Basics of R Programming</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#code-chunks-in-r-markdown">Code Chunks in R Markdown</a></li>
+<li><a class="nav-link" href="#manually-inputting-data">Manually Inputting Data</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#commenting-and-organizing-code"><span class="header-section-number">8.7</span> Commenting and Organizing Code</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#commenting-code">Commenting Code</a></li>
+<li><a class="nav-link" href="#organizing-code-with-sections">Organizing Code with Sections</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#data-preparation"><span class="header-section-number">8.8</span> Data Preparation</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#keeping-code-tidy">Keeping Code Tidy</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#basic-operations-in-r"><span class="header-section-number">8.9</span> Basic Operations in R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#arithmetic-operations">Arithmetic Operations</a></li>
+<li><a class="nav-link" href="#variables">Variables</a></li>
+<li><a class="nav-link" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-02-18.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
