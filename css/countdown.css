@@ -1,14 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&family=Oswald&family=Roboto&family=Rubik+Mono+One&display=swap');
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root {
+	--white-color: #ffffff;
+	--10-grey-color: #f2f2f2;
+	--90-grey-color: #1a1a1a;
+	--black-color: #000000;
+	--accent-one: #ea4335;
+	--header-font: "Lexend";
+	--body-font: "Public Sans";
+}
+
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: var(--body-font);
 	margin: 0;
 	padding: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	font-size: 1.5em;
+	font-size: 1em;
 }
 
 .container {
@@ -18,8 +32,20 @@ body {
 
 button {
 	margin: 10px;
-	color: #025474;
-	font-size: 1.5em;
+	color: var(--90-grey-color);
+	font-size: 1.25em;
+	font-weight: 900;
+	background-color: var(--white-color);
+	border: 2px solid var(--10-grey-color);
+}
+
+button:hover {
+	margin: 10px;
+	color: var(--accent-one);
+	font-size: 1.25em;
+	font-weight: 900;
+	background-color: var(--10-grey-color);
+	border: 2px solid var(--90-grey-color);
 }
 
 p {
@@ -31,16 +57,28 @@ p {
 }
 
 .selected {
-	background-color: #025474;
-	color: #e8d6b9;
+	background-color: var(--accent-one);
+	color: var(--white-color);
 }
 
 .book.font-family-1 {
 }
 
-h1 {
+h1{
 	font-size: 3em;
 }
+
+h1, h3 {
+	font-family: var(--header-font);
+	color: var(--accent-one);
+}
+
+#generate, #givenNumbers, #targetNumber {
+	padding: 5px;
+}
+
+
+
 
 .rules-section {
 	padding: 25px;
