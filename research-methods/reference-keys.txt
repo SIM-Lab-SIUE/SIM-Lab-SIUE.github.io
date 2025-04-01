@@ -61,6 +61,7 @@ defining-data
 variables-and-observations
 inputting-data
 manipulating-data
+cleaning-the-data-to-include-only-valid-survey-responses
 descriptive-analysis
 measures-of-central-tendency
 measures-of-dispersion

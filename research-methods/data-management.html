@@ -192,7 +192,7 @@
 <p>The <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> function is part of base R and can be used to import CSV files directly into your environment:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Reading the IMDb_Economist_tv_ratings dataset using read.csv from base R</span></span>
-<span><span class="va">csv_base</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">csv_base</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>This code imports the dataset from the URL provided. The <code>header = TRUE</code> argument indicates that the first row contains variable names, and <code>stringsAsFactors = FALSE</code> prevents character strings from being converted to factors.</p>
 <p>Use <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> to write a data frame to a csv.</p>
 </div>
@@ -208,7 +208,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Reading the IMDb_Economist_tv_ratings dataset using read_csv from readr</span></span>
-<span><span class="va">csv_readr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">csv_readr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function is faster than <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> and automatically detects data types, making it easier to handle larger datasets efficiently.</p>
 <p>Use <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> to write a data frame to a csv.</p>
 </div>
@@ -224,7 +224,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Reading the IMDb_Economist_tv_ratings dataset using fread from data.table</span></span>
-<span><span class="va">csv_datatable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">csv_datatable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread()</a></code> function provides high-speed reading for large CSV files, making it ideal for processing extensive datasets.</p>
 <p>Use <code><a href="https://rdatatable.gitlab.io/data.table/reference/fwrite.html">fwrite()</a></code> to write a data frame to a csv.</p>
 </div>
@@ -240,7 +240,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vroom.r-lib.org">vroom</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Reading the IMDb_Economist_tv_ratings dataset using fread from data.table</span></span>
-<span><span class="va">csv_vroom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vroom.r-lib.org/reference/vroom.html">vroom</a></span><span class="op">(</span><span class="st">"https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">csv_vroom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vroom.r-lib.org/reference/vroom.html">vroom</a></span><span class="op">(</span><span class="st">"https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="https://vroom.r-lib.org/reference/vroom.html">vroom()</a></code> function provides the fastest current read for .csv files.</p>
 <p>Use <code><a href="https://vroom.r-lib.org/reference/vroom_write.html">vroom_write()</a></code> to write a data frame to a csv.</p>
 </div>
@@ -264,7 +264,11 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>Load the <strong>gaming_anxiety</strong> dataset from an online file</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Load the data.table package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://r-datatable.com">"data.table"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#@ Load the gaming_anxiety dataset</span></span>
+<span><span class="va">gaming_anxiety</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="the-pipe-operator" class="section level4 unnumbered">
 <h4>The Pipe Operator <code>%&gt;%</code><a class="anchor" aria-label="anchor" href="#the-pipe-operator"><i class="fas fa-link"></i></a>
@@ -272,10 +276,10 @@
 <p>The pipe operator <code>%&gt;%</code> passes the result of one function into the next. This allows you to build operations in readable, sequential steps.</p>
 <p>Instead of:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="va">Gender</span><span class="op">)</span>, avg_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gaming_anxiety</span>, <span class="va">Gender</span><span class="op">)</span>, avg_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Use:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>avg_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -285,120 +289,165 @@
 <p><strong>01. `summarize()</strong></p>
 <p>Calculates summary statistics across the entire dataset or within groups.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>avg_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>02. `count()</strong></p>
 <p>Counts the frequency of unique values in a column.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">Platform</span><span class="op">)</span></span></code></pre></div>
 <p><strong>03. `group_by()</strong></p>
 <p>Groups data by one or more variables, typically followed by <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>04. `ungroup()</strong></p>
 <p>Removes grouping structure after a grouped operation.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><strong>05. `mutate()</strong></p>
 <p>Creates new variables or modifies existing ones.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>hours_per_day <span class="op">=</span> <span class="va">Hours</span> <span class="op">/</span> <span class="fl">7</span><span class="op">)</span></span></code></pre></div>
 <p><strong>06. `rowwise()</strong></p>
 <p>Applies operations across columns within individual rows.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GAD_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">GAD1</span><span class="op">:</span><span class="va">GAD7</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>07. `filter()</strong></p>
 <p>Selects rows based on logical conditions.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Hours</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <p><strong>08. `distinct()</strong></p>
 <p>Returns unique rows based on selected columns.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">Game</span><span class="op">)</span></span></code></pre></div>
 <p><strong>09. `slice()</strong></p>
 <p>Selects rows by position index.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p><strong>10. `slice_sample()</strong></p>
 <p>Randomly selects a number of rows.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p><strong>11. <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code> and `slice_max()</strong></p>
 <p>Selects rows with the minimum or maximum value in a column.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">Age</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">Hours</span><span class="op">)</span></span></code></pre></div>
 <p><strong>12. `arrange()</strong></p>
 <p>Sorts the data by column values in ascending order.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Age</span><span class="op">)</span></span></code></pre></div>
 <p><strong>13. `desc()</strong></p>
 <p>Used inside <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> to sort values in descending order.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">Hours</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>14. `pull()</strong></p>
 <p>Extracts a single column as a vector.</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Platform</span><span class="op">)</span></span></code></pre></div>
 <p><strong>15. `select()</strong></p>
 <p>Selects specific columns from a dataset.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Gender</span>, <span class="va">Age</span>, <span class="va">Platform</span><span class="op">)</span></span></code></pre></div>
 <p><strong>16. `relocate()</strong></p>
 <p>Changes the order of columns in the dataset.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">Hours</span>, .before <span class="op">=</span> <span class="va">Gender</span><span class="op">)</span></span></code></pre></div>
 <p><strong>17. `across()</strong></p>
 <p>Applies a function to multiple columns simultaneously.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="va">GAD1</span><span class="op">:</span><span class="va">GAD7</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>18. `c_across()</strong></p>
 <p>Used inside <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> to perform operations across selected columns in each row.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>SPIN_sum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">SPIN1</span><span class="op">:</span><span class="va">SPIN17</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>19. `rename()</strong></p>
 <p>Renames one or more columns.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Gender_Identity <span class="op">=</span> <span class="va">Gender</span><span class="op">)</span></span></code></pre></div>
 <p><strong>20. `n()</strong></p>
 <p>Returns the count of rows in each group, often used inside <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Platform</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>21. <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>, <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>, `sd()</strong></p>
 <p>Common summary functions used inside <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>            sd_hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-
 </div>
+</div>
+</div>
+<div id="cleaning-the-data-to-include-only-valid-survey-responses" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Cleaning the Data to Include Only Valid Survey Responses<a class="anchor" aria-label="anchor" href="#cleaning-the-data-to-include-only-valid-survey-responses"><i class="fas fa-link"></i></a>
+</h2>
+<p>The full dataset contains <strong>14250 response IDs</strong>, but only <strong>13464 are real, valid survey responses</strong>. Some rows were added to simulate incomplete or fake data to teach cleaning and filtering. These steps will help you remove the simulated responses and retain only the clean, complete data needed for analysis.</p>
+<div id="step-01-identify-the-structure-of-the-data" class="section level3 unnumbered">
+<h3>Step 01: Identify the Structure of the Data<a class="anchor" aria-label="anchor" href="#step-01-identify-the-structure-of-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Before filtering, examine how the dataset is organized. You should look at:
+- Missing values
+- Incomplete rows
+- Common patterns in legitimate responses</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Look at the dimensions of the full dataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">gaming_anxiety</span><span class="op">)</span></span></code></pre></div>
+<p>This should return 14250. But we only want 13464.</p>
+</div>
+<div id="step-02-filter-out-incomplete-responses" class="section level3 unnumbered">
+<h3>Step 02: Filter Out Incomplete Responses<a class="anchor" aria-label="anchor" href="#step-02-filter-out-incomplete-responses"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now, remove simulated responses. We’ll assume that valid responses have:
+- A non-missing value for <strong>GAD1</strong>, <strong>SWL1</strong>, and <strong>SPIN1</strong>
+- A listed <strong>Game</strong> and <strong>Age</strong></p>
+<p>This combination ensures we’re only keeping actual, completed surveys.</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">valid_gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_anxiety</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">if_all</a></span><span class="op">(</span><span class="va">GAD1</span><span class="op">:</span><span class="va">GAD7</span>, <span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">if_all</a></span><span class="op">(</span><span class="va">SWL1</span><span class="op">:</span><span class="va">SWL5</span>, <span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">SPIN1</span><span class="op">)</span>,</span>
+<span>    <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Game</span><span class="op">)</span>,</span>
+<span>    <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Age</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+</div>
+<div id="step-03-check-your-work" class="section level3 unnumbered">
+<h3>Step 03: Check Your Work<a class="anchor" aria-label="anchor" href="#step-03-check-your-work"><i class="fas fa-link"></i></a>
+</h3>
+<p>After filtering, check that the dataset now contains exactly 13464 responses.</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">valid_gaming_data</span><span class="op">)</span></span></code></pre></div>
+<p>You now have a clean version of the dataset that includes only complete and authentic responses. This version—<strong><code>valid_gaming_data</code></strong>—is the one you’ll use in the next chapters on descriptive statistics, inferential tests, and data visualization.</p>
+
 </div>
 </div>
 </div>
@@ -427,6 +476,13 @@
 </li>
 <li>
 <a class="nav-link" href="#manipulating-data"><span class="header-section-number">8.4</span> Manipulating Data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#the-dplyr-package">The dplyr Package</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#cleaning-the-data-to-include-only-valid-survey-responses"><span class="header-section-number">8.5</span> Cleaning the Data to Include Only Valid Survey Responses</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#step-01-identify-the-structure-of-the-data">Step 01: Identify the Structure of the Data</a></li>
+<li><a class="nav-link" href="#step-02-filter-out-incomplete-responses">Step 02: Filter Out Incomplete Responses</a></li>
+<li><a class="nav-link" href="#step-03-check-your-work">Step 03: Check Your Work</a></li>
+</ul>
 </li>
 </ul>
 

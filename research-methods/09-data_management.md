@@ -141,7 +141,7 @@ The `read.csv()` function is part of base R and can be used to import CSV files 
 
 ``` r
 # Reading the IMDb_Economist_tv_ratings dataset using read.csv from base R
-csv_base <- read.csv("https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv", header = TRUE, stringsAsFactors = FALSE)
+csv_base <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
 
 This code imports the dataset from the URL provided. The `header = TRUE` argument indicates that the first row contains variable names, and `stringsAsFactors = FALSE` prevents character strings from being converted to factors.
@@ -160,7 +160,7 @@ The `readr` package provides an alternative function, `read_csv()`, which offers
 library(readr)
 
 # Reading the IMDb_Economist_tv_ratings dataset using read_csv from readr
-csv_readr <- read_csv("https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv")
+csv_readr <- read_csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv")
 ```
 
 The `read_csv()` function is faster than `read.csv()` and automatically detects data types, making it easier to handle larger datasets efficiently.
@@ -179,7 +179,7 @@ For very large datasets, `fread()` from the `data.table` package is a faster alt
 library(data.table)
 
 # Reading the IMDb_Economist_tv_ratings dataset using fread from data.table
-csv_datatable <- fread("https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv")
+csv_datatable <- fread("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv")
 ```
 
 The `fread()` function provides high-speed reading for large CSV files, making it ideal for processing extensive datasets.
@@ -198,7 +198,7 @@ The fastest method for reading rectangular data that I know of is `vroom()` from
 library(vroom)
 
 # Reading the IMDb_Economist_tv_ratings dataset using fread from data.table
-csv_vroom <- vroom("https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv")
+csv_vroom <- vroom("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv")
 ```
 
 The `vroom()` function provides the fastest current read for .csv files.
@@ -225,7 +225,11 @@ library(dplyr)
 Load the **gaming_anxiety** dataset from an online file
 
 ``` r
-gaming_anxiety <- read_csv("https://sim-lab-siue.github.io/mc451-fall24/_book/data/gaming-anxiety.csv")
+# Load the data.table package
+library("data.table")
+
+#@ Load the gaming_anxiety dataset
+gaming_anxiety <- fread("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv")
 ```
 
 #### The Pipe Operator `%>%` {.unnumbered}
@@ -235,110 +239,110 @@ The pipe operator `%>%` passes the result of one function into the next. This al
 Instead of:
 
 ``` r
-summarize(group_by(gaming_data, Gender), avg_age = mean(Age, na.rm = TRUE))
+summarize(group_by(gaming_anxiety, Gender), avg_age = mean(Age, na.rm = TRUE))
 ```
 
 Use:
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   group_by(Gender) %>%
   summarize(avg_age = mean(Age, na.rm = TRUE))
 ```
 
 #### Important `dplyr` Commands {.unnumbered}
 
-**01. \`summarize()**
+**01. `summarize()**
 
 Calculates summary statistics across the entire dataset or within groups.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   summarize(avg_hours = mean(Hours, na.rm = TRUE))
 ```
 
-**02. \`count()**
+**02. `count()**
 
 Counts the frequency of unique values in a column.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   count(Platform)
 ```
 
-**03. \`group_by()**
+**03. `group_by()**
 
 Groups data by one or more variables, typically followed by `summarize()` or `mutate()`.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   group_by(Gender) %>%
   summarize(mean_age = mean(Age, na.rm = TRUE))
 ```
 
-**04. \`ungroup()**
+**04. `ungroup()**
 
 Removes grouping structure after a grouped operation.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   group_by(Gender) %>%
   summarize(mean_age = mean(Age, na.rm = TRUE)) %>%
   ungroup()
 ```
 
-**05. \`mutate()**
+**05. `mutate()**
 
 Creates new variables or modifies existing ones.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   mutate(hours_per_day = Hours / 7)
 ```
 
-**06. \`rowwise()**
+**06. `rowwise()**
 
 Applies operations across columns within individual rows.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   rowwise() %>%
   mutate(GAD_score = mean(c_across(GAD1:GAD7), na.rm = TRUE))
 ```
 
-**07. \`filter()**
+**07. `filter()**
 
 Selects rows based on logical conditions.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   filter(Hours > 20)
 ```
 
-**08. \`distinct()**
+**08. `distinct()**
 
 Returns unique rows based on selected columns.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   distinct(Game)
 ```
 
-**09. \`slice()**
+**09. `slice()**
 
 Selects rows by position index.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   slice(1:5)
 ```
 
-**10. \`slice_sample()**
+**10. `slice_sample()**
 
 Randomly selects a number of rows.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   slice_sample(n = 5)
 ```
 
@@ -347,92 +351,92 @@ gaming_data %>%
 Selects rows with the minimum or maximum value in a column.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   slice_min(Age)
 
-gaming_data %>%
+gaming_anxiety %>%
   slice_max(Hours)
 ```
 
-**12. \`arrange()**
+**12. `arrange()**
 
 Sorts the data by column values in ascending order.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   arrange(Age)
 ```
 
-**13. \`desc()**
+**13. `desc()**
 
 Used inside `arrange()` to sort values in descending order.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   arrange(desc(Hours))
 ```
 
-**14. \`pull()**
+**14. `pull()**
 
 Extracts a single column as a vector.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   pull(Platform)
 ```
 
-**15. \`select()**
+**15. `select()**
 
 Selects specific columns from a dataset.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   select(Gender, Age, Platform)
 ```
 
-**16. \`relocate()**
+**16. `relocate()**
 
 Changes the order of columns in the dataset.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   relocate(Hours, .before = Gender)
 ```
 
-**17. \`across()**
+**17. `across()**
 
 Applies a function to multiple columns simultaneously.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   mutate(across(GAD1:GAD7, ~ .x * 2))
 ```
 
-**18. \`c_across()**
+**18. `c_across()**
 
 Used inside `rowwise()` to perform operations across selected columns in each row.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   rowwise() %>%
   mutate(SPIN_sum = sum(c_across(SPIN1:SPIN17), na.rm = TRUE))
 ```
 
-**19. \`rename()**
+**19. `rename()**
 
 Renames one or more columns.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   rename(Gender_Identity = Gender)
 ```
 
-**20. \`n()**
+**20. `n()**
 
 Returns the count of rows in each group, often used inside `summarize()`.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   group_by(Platform) %>%
   summarize(count = n())
 ```
@@ -442,7 +446,58 @@ gaming_data %>%
 Common summary functions used inside `summarize()` or `mutate()`.
 
 ``` r
-gaming_data %>%
+gaming_anxiety %>%
   summarize(mean_hours = mean(Hours, na.rm = TRUE),
             sd_hours = sd(Hours, na.rm = TRUE))
 ```
+
+
+## Cleaning the Data to Include Only Valid Survey Responses
+
+The full dataset contains **14250 response IDs**, but only **13464 are real, valid survey responses**. Some rows were added to simulate incomplete or fake data to teach cleaning and filtering. These steps will help you remove the simulated responses and retain only the clean, complete data needed for analysis.
+
+
+### Step 01: Identify the Structure of the Data {.unnumbered}
+
+Before filtering, examine how the dataset is organized. You should look at:
+- Missing values
+- Incomplete rows
+- Common patterns in legitimate responses
+
+``` r
+library(dplyr)
+
+# Look at the dimensions of the full dataset
+nrow(gaming_anxiety)
+```
+
+This should return 14250. But we only want 13464.
+
+### Step 02: Filter Out Incomplete Responses {.unnumbered}
+
+Now, remove simulated responses. We’ll assume that valid responses have:
+- A non-missing value for **GAD1**, **SWL1**, and **SPIN1**
+- A listed **Game** and **Age**
+
+This combination ensures we're only keeping actual, completed surveys.
+
+``` r
+valid_gaming_data <- gaming_anxiety %>%
+  filter(
+    if_all(GAD1:GAD7, ~ !is.na(.x)),
+    if_all(SWL1:SWL5, ~ !is.na(.x)),
+    !is.na(SPIN1),
+    !is.na(Game),
+    !is.na(Age)
+  )
+```
+
+### Step 03: Check Your Work {.unnumbered}
+
+After filtering, check that the dataset now contains exactly 13464 responses.
+
+``` r
+nrow(valid_gaming_data)
+```
+
+You now have a clean version of the dataset that includes only complete and authentic responses. This version—**`valid_gaming_data`**—is the one you'll use in the next chapters on descriptive statistics, inferential tests, and data visualization.

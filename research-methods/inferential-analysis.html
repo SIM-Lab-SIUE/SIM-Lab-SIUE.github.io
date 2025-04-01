@@ -84,7 +84,7 @@
 <h3>Loading Necessary R Packages<a class="anchor" aria-label="anchor" href="#loading-necessary-r-packages"><i class="fas fa-link"></i></a>
 </h3>
 <p>The following packages are required to execute the analyses presented in this chapter. Each package plays a unique role in data manipulation, visualization, or statistical testing, which will be clarified in the sections that follow.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install and load necessary packages</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://r-datatable.com">"data.table"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"data.table"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
@@ -107,7 +107,7 @@
 <h3>Loading the Datasets<a class="anchor" aria-label="anchor" href="#loading-the-datasets"><i class="fas fa-link"></i></a>
 </h3>
 <p>The analyses in this chapter utilize four distinct datasets from various domains in media studies, loaded from external sources to ensure reproducibility. The datasets include <code>anime</code>, <code>horror_movies</code>, <code>survivor</code>, and <code>video_games</code>, each of which has a corresponding data dictionary to help interpret variables and structure. Below, we load these datasets and briefly describe their contents.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load datasets</span></span>
 <span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
 <span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
@@ -118,7 +118,7 @@
 <h3>Drop Scientific Notation<a class="anchor" aria-label="anchor" href="#drop-scientific-notation"><i class="fas fa-link"></i></a>
 </h3>
 <p>The following option allows you to stop scientific notation.</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>scipen <span class="op">=</span> <span class="fl">999</span><span class="op">)</span> </span></code></pre></div>
 <p><strong>Dataset Overviews</strong>:
 - <strong>Anime (<code>tidy_anime.csv</code>)</strong>: Contains information on anime titles, genres, ratings, and related features. This dataset provides insights into audience preferences and trends within anime viewership.
@@ -139,7 +139,7 @@
 <p>The test requires two categorical variables, each with at least two levels. Here, we use: - <strong><code>genre_names</code></strong>: Representing two combinations of genres in the horror movie dataset. - <strong><code>vote_average_category</code></strong>: A categorical version of movie ratings, binned into “Low,” “Medium,” and “High.”</p>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, we filter the <code>horror_movies</code> dataset to focus on movies that fall under either <strong>Horror, Thriller</strong> or <strong>Comedy, Horror</strong> genres. We then categorize the movie ratings into low, medium, and high categories before calculating the crosstab table and performing the chi-square test. After the chi-square test, we use <code>cramers_v</code> from the <code>effectsize</code> package to calculate the effect size.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter for desired genres and create a binned category for vote_average</span></span>
 <span><span class="va">thriller_comedy</span> <span class="op">&lt;-</span> <span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">genre_names</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Horror, Thriller"</span>, <span class="st">"Comedy, Horror"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -205,7 +205,7 @@ Cramer's V (adj.) |       95% CI
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, we use the <code>horror_movies</code> dataset to test whether the mean rating deviates from the IMDb average rating of 6.2. We then calculate Cohen’s <span class="math inline">\(d\)</span> effect size using the <code>effectsize</code> package to quantify the size of this difference.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Perform single sample t-test</span></span>
 <span><span class="va">t_test_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span>, mu <span class="op">=</span> <span class="fl">6.2</span><span class="op">)</span></span>
 <span></span>
@@ -257,7 +257,7 @@ d     |         95% CI
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, we use the <code>anime</code> dataset to test whether ratings differ between anime based on manga and original anime. After performing the t-test, we use the <code>t_to_d</code> function to calculate Cohen’s <span class="math inline">\(d\)</span> effect size for the difference.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter for two source types</span></span>
 <span><span class="va">original_manga</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Manga"</span>, <span class="st">"Original"</span><span class="op">)</span><span class="op">)</span></span>
@@ -311,7 +311,7 @@ d    |       95% CI
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, we test for significant differences between premier and finale viewership, then calculate Cohen’s <span class="math inline">\(d\)</span> for paired samples to quantify the effect size.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Perform paired samples t-test</span></span>
 <span><span class="va">paired_t_test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">survivor</span><span class="op">$</span><span class="va">viewers_premier</span>, <span class="va">survivor</span><span class="op">$</span><span class="va">viewers_finale</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -370,7 +370,7 @@ d     |        95% CI
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, one-way ANOVA tests whether average metascores differ across the top three publishers in the <code>video_games</code> dataset. After performing the ANOVA, we calculate effect size using <code>eta_squared</code> from the <code>effectsize</code> package. Since the ANOVA is significant, we also run a post hoc Tukey HSD test using the <code>emmeans</code> package to identify specific differences between publishers.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter for top publishers</span></span>
 <span><span class="va">top_game_publishers</span> <span class="op">&lt;-</span> <span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">publisher</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SEGA"</span>, <span class="st">"Ubisoft"</span>, <span class="st">"Square Enix"</span><span class="op">)</span><span class="op">)</span></span>
@@ -447,7 +447,7 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, two-way ANOVA tests the effect of <code>genre_names</code> and <code>original_language</code> on <code>vote_average</code> for <strong>Comedy, Horror</strong> and <strong>Horror, Thriller</strong> films across the top three non-English languages. We calculate effect size (partial eta-squared) using the <code>effectsize</code> package and conduct post hoc comparisons with the <code>emmeans</code> package to examine specific group differences within the interaction.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter for top non-English languages for selected genres</span></span>
 <span><span class="va">thriller_comedy_languages</span> <span class="op">&lt;-</span> <span class="va">thriller_comedy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">original_language</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"es"</span>, <span class="st">"ja"</span>, <span class="st">"de"</span><span class="op">)</span><span class="op">)</span></span>
@@ -543,7 +543,7 @@ P value adjustment: tukey method for comparing a family of 6 estimates </code></
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, ANCOVA tests if score differences by <code>source</code> persist when controlling for <code>genre</code>. We calculate partial eta-squared as the effect size using the <code>effectsize</code> package. Additionally, we perform a post hoc Tukey HSD test using the <code>emmeans</code> package to examine specific pairwise differences between sources.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Perform ANCOVA</span></span>
 <span><span class="va">ancova_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">source</span> <span class="op">+</span> <span class="va">genre</span>, data <span class="op">=</span> <span class="va">original_manga</span><span class="op">)</span></span>
 <span></span>
@@ -621,7 +621,7 @@ Results are averaged over the levels of: genre </code></pre>
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>This example performs simple linear regression to predict <code>metascore</code> based on <code>price</code> in the <code>video_games</code> dataset.</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Perform simple linear regression</span></span>
 <span><span class="va">lm_simple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">metascore</span> <span class="op">~</span> <span class="va">price</span>, data <span class="op">=</span> <span class="va">video_games</span><span class="op">)</span></span>
 <span></span>
@@ -673,7 +673,7 @@ F-statistic: 81.87 on 1 and 2689 DF,  p-value: &lt; 0.00000000000000022</code></
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>In this example, multiple linear regression predicts <code>score</code> based on <code>scored_by</code>, <code>start_date</code>, and <code>members</code>.</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Convert date to date data type</span></span>
 <span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">start_date</span><span class="op">)</span><span class="op">)</span></span>
@@ -731,7 +731,7 @@ F-statistic: 1.009e+04 on 3 and 77516 DF,  p-value: &lt; 0.00000000000000022</co
 </ul>
 <p><em>R Code for Analysis</em></p>
 <p>This example uses logistic regression to predict the probability of an anime being currently airing based on <code>rank</code> and <code>members</code>.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Perform logistic regression</span></span>
 <span><span class="va">logit_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">airing</span> <span class="op">~</span> <span class="va">rank</span> <span class="op">+</span> <span class="va">members</span>, data <span class="op">=</span> <span class="va">anime</span>, family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></span>
 <span></span>

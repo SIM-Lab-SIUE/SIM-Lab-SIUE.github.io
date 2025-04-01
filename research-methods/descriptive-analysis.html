@@ -76,14 +76,14 @@
 <p><a href="files/09-descriptive_stats-chunks.Rmd">[Chunk Version]</a></p>
 <p>Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution of data points. For media and mass communication research, descriptive statistics help answer fundamental questions about viewer ratings, playtimes, episode counts, and even word frequencies in media content. This chapter introduces common descriptive statistics concepts, illustrates them with examples, and provides R code using user-friendly packages like <code>dplyr</code>, <code>skimr</code>, <code>psych</code>, and <code>DescTools</code>.</p>
 <p>We will begin by loading the necessary libraries. This includes downloading and installing them if necessary.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://r-datatable.com">"data.table"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"data.table"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/skimr/">"skimr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"skimr"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://personality-project.org/r/psych/">"psych"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"psych"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://andrisignorell.github.io/DescTools/">"DescTools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DescTools"</span><span class="op">)</span></span></code></pre></div>
 <p>We will then load the relevant datasets:</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
 <span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
 <span><span class="va">richmondway</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv'</span><span class="op">)</span></span>
@@ -110,7 +110,7 @@
 </h4>
 <p>The mean is especially useful for <strong>interval</strong> or <strong>ratio data</strong>, where the numbers represent measurable quantities. For example, in media research, the mean viewer rating of a TV show can offer insight into how audiences generally feel about it. Similarly, calculating the average playtime of video games helps researchers understand user engagement.</p>
 <p>Let’s calculate the mean using the <code>dplyr</code> package. In the <strong>horror_movies</strong> dataset, the <code>vote_average</code> variable represents movie ratings:</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the mean vote average</span></span>
 <span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_vote_avg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -124,7 +124,7 @@
 </ul>
 <p>In this example, you will see the average rating across all horror movies in the dataset, which helps summarize audience sentiment.</p>
 <p>We can also calculate the mean playtime for video games in the <strong>video_games</strong> dataset:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the mean playtime</span></span>
 <span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -148,7 +148,7 @@
 </h4>
 <p>The median is often preferred when the dataset has extreme values. For example, if we’re analyzing the number of episodes in anime series, there are a few long-running shows that might inflate the mean, making it less representative of a typical series. The median offers a better “typical” value in such cases.</p>
 <p>Let’s calculate the median using <code>dplyr</code>. In the <strong>anime</strong> dataset, the <code>episodes</code> variable represents the number of episodes in each series:</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the median number of episodes</span></span>
 <span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>median_episodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">episodes</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -162,7 +162,7 @@
 </ul>
 <p>In this example, we are calculating the middle value of the episode count, which offers a clear sense of how long a typical anime series runs without the influence of extreme values.</p>
 <p>We can also calculate the median playtime for video games:</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the median playtime</span></span>
 <span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>median_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">median_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -186,7 +186,7 @@
 </h4>
 <p>The mode is particularly useful for <strong>categorical data</strong> in media research. For example, if you want to find out which genre of horror movie is most common, the mode provides that information.</p>
 <p>We will use the <code>DescTools</code> package to calculate the mode in a straightforward way. In the <strong>horror_movies</strong> dataset, the <code>genre_names</code> variable contains the genre of each movie. Here’s how to calculate the mode:</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the mode of genre names</span></span>
 <span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_genre <span class="op">=</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/Mode.html">Mode</a></span><span class="op">(</span><span class="va">genre_names</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -200,7 +200,7 @@ Horror</code></pre>
 </ul>
 <p>In this case, the most frequent genre will tell you what type of horror movie is most commonly produced.</p>
 <p>For the <strong>anime</strong> dataset, you can calculate the mode for the <code>score</code> variable:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the mode of anime scores</span></span>
 <span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_score <span class="op">=</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/Mode.html">Mode</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -239,7 +239,7 @@ Horror</code></pre>
 </h4>
 <p>The range gives a quick sense of the spread in the data. In media research, the range could show the difference between the highest and lowest user ratings or playtimes.</p>
 <p>Here’s how to calculate the range for <strong>anime</strong> scores using <code>dplyr</code>:</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the range of anime scores</span></span>
 <span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>range_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -252,7 +252,7 @@ Horror</code></pre>
 <strong>Range</strong>: The range is the difference between the highest and lowest score, which is <strong>9</strong>. This indicates that anime scores in this dataset range from a minimum score of <strong>1</strong> to a maximum score of <strong>10</strong>.</li>
 </ul>
 <p>For <strong>video games</strong> playtime:</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the range of playtime</span></span>
 <span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>range_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -275,7 +275,7 @@ Horror</code></pre>
 </h4>
 <p>Variance gives a sense of the overall variability in the data. In media research, it helps understand whether viewer ratings are tightly clustered or widely spread.</p>
 <p>Here’s how to calculate variance for horror movie ratings:</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the variance of horror movie ratings</span></span>
 <span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>var_vote_avg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -298,7 +298,7 @@ Horror</code></pre>
 </h4>
 <p>The standard deviation is widely used in media research because it shows how consistent or variable audience ratings or playtimes are.</p>
 <p>Here’s how to calculate the standard deviation for <strong>anime</strong> scores:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the standard deviation of anime scores</span></span>
 <span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -322,7 +322,7 @@ Horror</code></pre>
 </h4>
 <p>The IQR is a great way to assess the <strong>spread of typical values</strong> in a dataset without being influenced by extreme values. In media research, the IQR could help determine typical viewership ranges for television shows or typical ratings for movies, excluding unusually high or low values that may distort the analysis.</p>
 <p>Let’s calculate the IQR for <strong>video games</strong> playtime using <code>dplyr</code>:</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the IQR for playtime in video games</span></span>
 <span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>IQR_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -380,7 +380,7 @@ Horror</code></pre>
 <span class="header-section-number">9.3.1</span> Convert the date columns to a proper date format<a class="anchor" aria-label="anchor" href="#convert-the-date-columns-to-a-proper-date-format"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> to ensure your date and time data are in the correct format.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Convert date columns to Date format</span></span>
 <span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">start_date</span>, format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span><span class="op">)</span>,</span>
@@ -392,7 +392,7 @@ Horror</code></pre>
 <span class="header-section-number">9.3.2</span> Run <code>skim()</code> after fixing the dates<a class="anchor" aria-label="anchor" href="#run-skim-after-fixing-the-dates"><i class="fas fa-link"></i></a>
 </h3>
 <p>Once the dates are properly formatted, you can run <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> again to get a summary of the dataset:</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Quick summary of the anime dataset</span></span>
 <span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output 1 (General Summary)</strong>:
@@ -415,7 +415,7 @@ Horror</code></pre>
 </h2>
 <p>The <code>psych</code> package also offers advanced functions for summary statistics, which are especially useful in media research. This package simplifies descriptive and inferential statistics and makes it easy to calculate multiple statistics at once.</p>
 <p>Here’s how to calculate a wide range of descriptive statistics for the <strong>horror_movies</strong> dataset:</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary statistics using psych</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
@@ -430,7 +430,7 @@ X1    1   32540   3.34  2.88    4       3.17   3.71   0    10   10   0.13  -1.18
 - <strong>Kurtosis (-1.18)</strong>: Negative kurtosis indicates the distribution is flatter than normal (fewer extreme values).</p>
 <p>This command provides the mean, standard deviation, min/max values, and additional metrics like skewness and kurtosis, which can help you understand the shape and distribution of the data.</p>
 <p>For the <strong>video_games</strong> dataset:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary statistics for video game playtime</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
