@@ -46,6 +46,7 @@ uses-and-gratification-theory
 designing-quantitative-research
 research-design
 data-collection-techniques
+selecting-and-adapting-research-scales
 introduction-to-r-and-rstudio
 what-is-r-and-rstudio
 why-use-r-and-rstudio
