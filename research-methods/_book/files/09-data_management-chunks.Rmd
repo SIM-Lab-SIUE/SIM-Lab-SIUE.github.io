@@ -6,52 +6,51 @@ editor_options:
 
 # Data Management
 
-[[Chunk Version]](_book/files/09-data_management-chunks.Rmd)
+[[Chunk Version]](_book/files/08-data_management-chunks.Rmd)
 
 ## Defining Data
 
 ### What is Data? {.unnumbered}
 
-In research, data refers to information collected to answer questions, test hypotheses, or explore patterns. Data can take many forms—numbers, text, or categories—and understanding these forms is essential for effective analysis. In RStudio, data is organized in tables called **data frames**, where rows represent individual observations and columns represent variables.
+In research, data refers to information collected to answer questions, test hypotheses, or explore patterns. Data can take many forms---numbers, text, images---and understanding these forms is essential for effective analysis. In RStudio, data is organized in tables (data frames), where rows represent individual observations, and columns represent variables.
 
 ### What is Data in Mass Communication Research? {.unnumbered}
 
-In mass communication research, data often comes from audience surveys, digital platforms, gaming environments, or content analyses. The **`gaming-anxiety.csv`** dataset is an example of survey data collected from gamers, which includes psychological scale responses (e.g., anxiety, satisfaction with life), game behaviors (e.g., hours played, streaming frequency), and demographics (e.g., age, gender, location). These data can be used to study relationships between psychological well-being and gaming behavior.
+In mass communication research, data can come from various sources, including audience metrics, media content, or public opinion surveys. For example, the **IMDb_Economist_tv_ratings.csv** dataset contains information about TV shows, such as titles, seasons, average ratings, audience share, and genres. These data points can be used to analyze audience preferences, media reception, or trends across different types of programming.
 
 ### Qualitative vs. Quantitative Data {.unnumbered}
 
-In the **`gaming-anxiety.csv`** dataset, variables can be classified as either qualitative or quantitative.
+In mass communication research, data can be classified as either qualitative or quantitative.
 
-- **Qualitative Data**: Qualitative data are non-numerical and typically describe categories or characteristics. In this dataset, `Game`, `Platform`, `Playstyle`, and `Gender` are qualitative variables. These variables describe how respondents play games or how they identify, without involving numeric values.
+-   **Qualitative Data**: Qualitative data are non-numerical and often textual or categorical. In the **IMDb_Economist_tv_ratings.csv** dataset, variables such as `title` and `genres` are qualitative. These data provide descriptive details, helping researchers interpret cultural themes or trends in media content. For example, the `genres` variable includes values like "Drama," "Mystery," and "Sci-Fi," which categorize each show based on its narrative content.
 
-- **Quantitative Data**: Quantitative data are numerical and allow for statistical analysis. In this dataset, variables such as `Age`, `Hours` (spent gaming per week), `GAD1` to `GAD7` (General Anxiety Disorder items), and `SWL1` to `SWL5` (Satisfaction With Life items) are quantitative. These values allow researchers to calculate scores and identify patterns in gamer well-being.
+-   **Quantitative Data**: Quantitative data are numerical and can be measured or counted. These data are used to perform statistical analyses. In the **IMDb_Economist_tv_ratings.csv** dataset, variables such as `av_rating` (average rating) and `share` (audience share) are quantitative. These values allow researchers to explore trends and relationships using statistical methods, such as analyzing how audience ratings vary by genre or season.
 
 ## Variables and Observations
 
-In RStudio, datasets are displayed in tabular format where **columns represent variables** and **rows represent observations**.
+In RStudio, datasets are organized in a tabular format, where **columns represent variables** and **rows represent observations**.
 
-- **Variables**: Variables are measurable characteristics or data fields. In the `gaming-anxiety.csv` dataset, variables include `Age`, `Game`, `GAD1`, `SWL2`, and `SPIN_T`. Each variable corresponds to a different question or category from the survey. For example, `GAD1` records how often a respondent felt nervous, while `Platform` indicates their gaming device.
+-   **Variables**: Variables represent the characteristics or attributes being measured. In the **IMDb_Economist_tv_ratings.csv** dataset, variables include `title`, `seasonNumber`, `av_rating`, `share`, and `genres`. Each variable holds a specific type of information. For example, the `av_rating` variable represents the average IMDb rating for each TV show, while `genres` lists the categories of the show.
 
-- **Observations**: Observations are the individual entries or survey responses. Each row in `gaming-anxiety.csv` represents one gamer’s full set of responses, including their psychological scores, gaming behavior, and demographic information. These are the units of analysis.
+-   **Observations**: Observations are individual data points in the dataset. In this dataset, each row represents a unique combination of a TV show and its season. For example, one observation might represent Season 1 of "12 Monkeys," with its corresponding `av_rating` and `share`. These rows are the building blocks for data analysis, as they provide the raw material that is examined and processed.
 
 ### Explanation of Data Types {.unnumbered}
 
-The dataset includes a variety of data types, each requiring different analytical techniques:
+Different types of data are used in mass communication research, each requiring different methods of analysis. Here's how the data types in the **IMDb_Economist_tv_ratings.csv** dataset break down:
 
-- **Nominal Data**: These are unordered categories. For example, `Game`, `Gender`, and `Platform` are nominal because they describe types without implying rank.
+-   **Nominal Data**: Nominal data are qualitative and label variables without any inherent order. The `title` variable is an example of nominal data, as it categorizes the different TV shows without implying any ranking or hierarchy.
 
-- **Ordinal Data**: These categories have a logical order. While not directly labeled as such, variables like `highestleague` or Likert-scale items (e.g., from the `whyplay` or `GADE` questions) might represent ordinal responses, depending on how the data were collected.
+-   **Ordinal Data**: Ordinal data are categorical but have a defined order. While there are no ordinal variables in this specific dataset, an example might be a variable representing user rankings (e.g., "Poor," "Average," "Good").
 
-- **Discrete Data**: Discrete numeric data are countable and often whole numbers. Variables such as `streams` (number of times streamed) and `SPIN_T` (Social Phobia Inventory total score) are discrete because they represent count-based values.
+-   **Discrete Data**: Discrete data represent ordered values where the differences between values are meaningful, but there is no true zero point. In this dataset, `av_rating` could be considered interval data, as it represents IMDb ratings on a scale where the differences between values are consistent, but there is no absolute zero.
 
-- **Continuous Data**: These are numeric values that can take any value in a range. `Hours` (hours spent gaming per week) and `Age` are continuous, as they represent measurements that can vary on a spectrum.
+-   **Continuous Data**: Continuous data can take any value within a given range. The `share` variable (audience share) is an example of continuous data because it represents the percentage of the total audience, which can vary across a continuous spectrum.
 
-- **Dichotomous or Binary Data**: These variables have only two values (e.g., Yes/No, Accept/Reject). In this dataset, `accept` is an example of a dichotomous variable indicating whether the participant accepted the terms of the study.
+-   **Dichotomous or Binary Data**: Dichotomous data have only two possible values, such as "yes/no" or "true/false." Although this dataset does not contain any binary variables, a typical example might be whether a show was renewed for another season (Yes/No).
 
 ## Inputting Data
 
-In RStudio, entering or importing data is an essential first step in any research project. Most datasets, like `gaming-anxiety.csv`, come in **CSV (comma-separated values)** format, which can be easily read into R using functions like `read_csv()` from the `readr` package.
-
+In RStudio, entering and importing data are essential tasks for conducting research. This section introduces DataEditR for manual data input and covers methods for importing data from external files like CSVs. The **IMDb_Economist_tv_ratings.csv** dataset is used in the examples below, which contains information about TV shows, including titles, seasons, ratings, and genres.
 
 ### Data Structures in R {.unnumbered}
 
@@ -65,25 +64,25 @@ Vectors can be created using the `c()` function, which combines elements into a 
 
 *Creating a numeric vector*
 
-``` r
+```{r}
 numeric_vector <- c(1, 2, 3, 4, 5)
 ```
 
 *Creating a character vector*
 
-``` r
+```{r}
 character_vector <- c("apple", "banana", "cherry")
 ```
 
 *Creating a logical vector*
 
-``` r
+```{r}
 logical_vector <- c(TRUE, FALSE, TRUE)
 ```
 
 You can perform various operations on vectors like addition, subtraction, or applying a function to each element.
 
-``` r
+```{r}
 # Adding two vectors
 sum_vector <- numeric_vector + c(1, 1, 1, 1, 1)
 
@@ -97,14 +96,14 @@ Data frames serve as the fundamental data structure for data analysis in R. They
 
 Data frames can be created using the `data.frame()` function.
 
-``` r
+```{r}
 # Creating a data frame
 df <- data.frame(Name = c("Alice", "Bob"), Age = c(23, 45), Gender = c("F", "M"))
 ```
 
 Various operations like subsetting, merging, and sorting can be performed on data frames.
 
-``` r
+```{r}
 # Subsetting data frame by column
 subset_df <- df[, c("Name", "Age")]
 ```
@@ -115,14 +114,14 @@ Lists are an ordered collection of objects, which can be of different types and 
 
 Lists can be created using the `list()` function.
 
-``` r
+```{r}
 # Creating a list
 my_list <- list(Name = "Alice", Age = 23, Scores = c(90, 85, 88))
 ```
 
 Lists can be modified by adding, deleting, or updating list elements.
 
-``` r
+```{r}
 # Updating a list element
 my_list$Name <- "Bob"
 
@@ -140,7 +139,7 @@ When working with larger datasets, such as CSV files, importing data into R is m
 
 The `read.csv()` function is part of base R and can be used to import CSV files directly into your environment:
 
-``` r
+```{r}
 # Reading the IMDb_Economist_tv_ratings dataset using read.csv from base R
 csv_base <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/gaming-anxiety.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
@@ -153,7 +152,7 @@ Use `write.csv()` to write a data frame to a csv.
 
 The `readr` package provides an alternative function, `read_csv()`, which offers better performance and flexibility:
 
-``` r
+```{r}
 # Install the readr package if it's not already installed
 # install.packages("readr")
 
@@ -172,7 +171,7 @@ Use `write_csv()` to write a data frame to a csv.
 
 For very large datasets, `fread()` from the `data.table` package is a faster alternative:
 
-``` r
+```{r}
 # Install the data.table package if it's not already installed
 # install.packages("data.table")
 
@@ -191,7 +190,7 @@ Use `fwrite()` to write a data frame to a csv.
 
 The fastest method for reading rectangular data that I know of is `vroom()` from the `vroom` package:
 
-``` r
+```{r}
 # Install the data.table package if it's not already installed
 # install.packages("vroom")
 
@@ -218,14 +217,14 @@ Data manipulation is a crucial aspect of preparing datasets for analysis. In RSt
 
 To get started, load the tidyverse (or specifically `dplyr`) into your R environment:
 
-``` r
+```{r}
 # Load the dplyr package
 library(dplyr)
 ```
 
 Load the **gaming_anxiety** dataset from an online file
 
-``` r
+```{r}
 # Load the data.table package
 library("data.table")
 
@@ -239,13 +238,13 @@ The pipe operator `%>%` passes the result of one function into the next. This al
 
 Instead of:
 
-``` r
+```{r}
 summarize(group_by(gaming_anxiety, Gender), avg_age = mean(Age, na.rm = TRUE))
 ```
 
 Use:
 
-``` r
+```{r}
 gaming_anxiety %>%
   group_by(Gender) %>%
   summarize(avg_age = mean(Age, na.rm = TRUE))
@@ -257,7 +256,7 @@ gaming_anxiety %>%
 
 Calculates summary statistics across the entire dataset or within groups.
 
-``` r
+```{r}
 gaming_anxiety %>%
   summarize(avg_hours = mean(Hours, na.rm = TRUE))
 ```
@@ -266,7 +265,7 @@ gaming_anxiety %>%
 
 Counts the frequency of unique values in a column.
 
-``` r
+```{r}
 gaming_anxiety %>%
   count(Platform)
 ```
@@ -275,7 +274,7 @@ gaming_anxiety %>%
 
 Groups data by one or more variables, typically followed by `summarize()` or `mutate()`.
 
-``` r
+```{r}
 gaming_anxiety %>%
   group_by(Gender) %>%
   summarize(mean_age = mean(Age, na.rm = TRUE))
@@ -285,7 +284,7 @@ gaming_anxiety %>%
 
 Removes grouping structure after a grouped operation.
 
-``` r
+```{r}
 gaming_anxiety %>%
   group_by(Gender) %>%
   summarize(mean_age = mean(Age, na.rm = TRUE)) %>%
@@ -296,7 +295,7 @@ gaming_anxiety %>%
 
 Creates new variables or modifies existing ones.
 
-``` r
+```{r}
 gaming_anxiety %>%
   mutate(hours_per_day = Hours / 7)
 ```
@@ -305,7 +304,7 @@ gaming_anxiety %>%
 
 Applies operations across columns within individual rows.
 
-``` r
+```{r}
 gaming_anxiety %>%
   rowwise() %>%
   mutate(GAD_score = mean(c_across(GAD1:GAD7), na.rm = TRUE))
@@ -315,7 +314,7 @@ gaming_anxiety %>%
 
 Selects rows based on logical conditions.
 
-``` r
+```{r}
 gaming_anxiety %>%
   filter(Hours > 20)
 ```
@@ -324,7 +323,7 @@ gaming_anxiety %>%
 
 Returns unique rows based on selected columns.
 
-``` r
+```{r}
 gaming_anxiety %>%
   distinct(Game)
 ```
@@ -333,7 +332,7 @@ gaming_anxiety %>%
 
 Selects rows by position index.
 
-``` r
+```{r}
 gaming_anxiety %>%
   slice(1:5)
 ```
@@ -342,7 +341,7 @@ gaming_anxiety %>%
 
 Randomly selects a number of rows.
 
-``` r
+```{r}
 gaming_anxiety %>%
   slice_sample(n = 5)
 ```
@@ -351,7 +350,7 @@ gaming_anxiety %>%
 
 Selects rows with the minimum or maximum value in a column.
 
-``` r
+```{r}
 gaming_anxiety %>%
   slice_min(Age)
 
@@ -363,7 +362,7 @@ gaming_anxiety %>%
 
 Sorts the data by column values in ascending order.
 
-``` r
+```{r}
 gaming_anxiety %>%
   arrange(Age)
 ```
@@ -372,7 +371,7 @@ gaming_anxiety %>%
 
 Used inside `arrange()` to sort values in descending order.
 
-``` r
+```{r}
 gaming_anxiety %>%
   arrange(desc(Hours))
 ```
@@ -381,7 +380,7 @@ gaming_anxiety %>%
 
 Extracts a single column as a vector.
 
-``` r
+```{r}
 gaming_anxiety %>%
   pull(Platform)
 ```
@@ -390,7 +389,7 @@ gaming_anxiety %>%
 
 Selects specific columns from a dataset.
 
-``` r
+```{r}
 gaming_anxiety %>%
   select(Gender, Age, Platform)
 ```
@@ -399,7 +398,7 @@ gaming_anxiety %>%
 
 Changes the order of columns in the dataset.
 
-``` r
+```{r}
 gaming_anxiety %>%
   relocate(Hours, .before = Gender)
 ```
@@ -408,7 +407,7 @@ gaming_anxiety %>%
 
 Applies a function to multiple columns simultaneously.
 
-``` r
+```{r}
 gaming_anxiety %>%
   mutate(across(GAD1:GAD7, ~ .x * 2))
 ```
@@ -417,7 +416,7 @@ gaming_anxiety %>%
 
 Used inside `rowwise()` to perform operations across selected columns in each row.
 
-``` r
+```{r}
 gaming_anxiety %>%
   rowwise() %>%
   mutate(SPIN_sum = sum(c_across(SPIN1:SPIN17), na.rm = TRUE))
@@ -427,7 +426,7 @@ gaming_anxiety %>%
 
 Renames one or more columns.
 
-``` r
+```{r}
 gaming_anxiety %>%
   rename(Gender_Identity = Gender)
 ```
@@ -436,7 +435,7 @@ gaming_anxiety %>%
 
 Returns the count of rows in each group, often used inside `summarize()`.
 
-``` r
+```{r}
 gaming_anxiety %>%
   group_by(Platform) %>%
   summarize(count = n())
@@ -446,7 +445,7 @@ gaming_anxiety %>%
 
 Common summary functions used inside `summarize()` or `mutate()`.
 
-``` r
+```{r}
 gaming_anxiety %>%
   summarize(mean_hours = mean(Hours, na.rm = TRUE),
             sd_hours = sd(Hours, na.rm = TRUE))
@@ -465,7 +464,7 @@ Before filtering, examine how the dataset is organized. You should look at:
 - Incomplete rows
 - Common patterns in legitimate responses
 
-``` r
+```{r}
 library(dplyr)
 
 # Look at the dimensions of the full dataset
@@ -482,7 +481,7 @@ Now, remove simulated responses. We’ll assume that valid responses have:
 
 This combination ensures we're only keeping actual, completed surveys.
 
-``` r
+```{r}
 valid_gaming_data <- gaming_anxiety %>%
   filter(
     if_all(GAD1:GAD7, ~ !is.na(.x)),
@@ -497,7 +496,7 @@ valid_gaming_data <- gaming_anxiety %>%
 
 After filtering, check that the dataset now contains exactly 13464 responses.
 
-``` r
+```{r}
 nrow(valid_gaming_data)
 ```
 

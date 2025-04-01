@@ -73,7 +73,7 @@
 <h1>
 <span class="header-section-number">8</span> Data Management<a class="anchor" aria-label="anchor" href="#data-management"><i class="fas fa-link"></i></a>
 </h1>
-<p><a href="_book/files/08-data_management-chunks.Rmd">[Chunk Version]</a></p>
+<p><a href="_book/files/09-data_management-chunks.Rmd">[Chunk Version]</a></p>
 <div id="defining-data" class="section level2" number="8.1">
 <h2>
 <span class="header-section-number">8.1</span> Defining Data<a class="anchor" aria-label="anchor" href="#defining-data"><i class="fas fa-link"></i></a>
@@ -81,20 +81,20 @@
 <div id="what-is-data" class="section level3 unnumbered">
 <h3>What is Data?<a class="anchor" aria-label="anchor" href="#what-is-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>In research, data refers to information collected to answer questions, test hypotheses, or explore patterns. Data can take many forms—numbers, text, images—and understanding these forms is essential for effective analysis. In RStudio, data is organized in tables (data frames), where rows represent individual observations, and columns represent variables.</p>
+<p>In research, data refers to information collected to answer questions, test hypotheses, or explore patterns. Data can take many forms—numbers, text, or categories—and understanding these forms is essential for effective analysis. In RStudio, data is organized in tables called <strong>data frames</strong>, where rows represent individual observations and columns represent variables.</p>
 </div>
 <div id="what-is-data-in-mass-communication-research" class="section level3 unnumbered">
 <h3>What is Data in Mass Communication Research?<a class="anchor" aria-label="anchor" href="#what-is-data-in-mass-communication-research"><i class="fas fa-link"></i></a>
 </h3>
-<p>In mass communication research, data can come from various sources, including audience metrics, media content, or public opinion surveys. For example, the <strong>IMDb_Economist_tv_ratings.csv</strong> dataset contains information about TV shows, such as titles, seasons, average ratings, audience share, and genres. These data points can be used to analyze audience preferences, media reception, or trends across different types of programming.</p>
+<p>In mass communication research, data often comes from audience surveys, digital platforms, gaming environments, or content analyses. The <strong><code>gaming-anxiety.csv</code></strong> dataset is an example of survey data collected from gamers, which includes psychological scale responses (e.g., anxiety, satisfaction with life), game behaviors (e.g., hours played, streaming frequency), and demographics (e.g., age, gender, location). These data can be used to study relationships between psychological well-being and gaming behavior.</p>
 </div>
 <div id="qualitative-vs.-quantitative-data" class="section level3 unnumbered">
 <h3>Qualitative vs. Quantitative Data<a class="anchor" aria-label="anchor" href="#qualitative-vs.-quantitative-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>In mass communication research, data can be classified as either qualitative or quantitative.</p>
+<p>In the <strong><code>gaming-anxiety.csv</code></strong> dataset, variables can be classified as either qualitative or quantitative.</p>
 <ul>
-<li><p><strong>Qualitative Data</strong>: Qualitative data are non-numerical and often textual or categorical. In the <strong>IMDb_Economist_tv_ratings.csv</strong> dataset, variables such as <code>title</code> and <code>genres</code> are qualitative. These data provide descriptive details, helping researchers interpret cultural themes or trends in media content. For example, the <code>genres</code> variable includes values like “Drama,” “Mystery,” and “Sci-Fi,” which categorize each show based on its narrative content.</p></li>
-<li><p><strong>Quantitative Data</strong>: Quantitative data are numerical and can be measured or counted. These data are used to perform statistical analyses. In the <strong>IMDb_Economist_tv_ratings.csv</strong> dataset, variables such as <code>av_rating</code> (average rating) and <code>share</code> (audience share) are quantitative. These values allow researchers to explore trends and relationships using statistical methods, such as analyzing how audience ratings vary by genre or season.</p></li>
+<li><p><strong>Qualitative Data</strong>: Qualitative data are non-numerical and typically describe categories or characteristics. In this dataset, <code>Game</code>, <code>Platform</code>, <code>Playstyle</code>, and <code>Gender</code> are qualitative variables. These variables describe how respondents play games or how they identify, without involving numeric values.</p></li>
+<li><p><strong>Quantitative Data</strong>: Quantitative data are numerical and allow for statistical analysis. In this dataset, variables such as <code>Age</code>, <code>Hours</code> (spent gaming per week), <code>GAD1</code> to <code>GAD7</code> (General Anxiety Disorder items), and <code>SWL1</code> to <code>SWL5</code> (Satisfaction With Life items) are quantitative. These values allow researchers to calculate scores and identify patterns in gamer well-being.</p></li>
 </ul>
 </div>
 </div>
@@ -102,21 +102,21 @@
 <h2>
 <span class="header-section-number">8.2</span> Variables and Observations<a class="anchor" aria-label="anchor" href="#variables-and-observations"><i class="fas fa-link"></i></a>
 </h2>
-<p>In RStudio, datasets are organized in a tabular format, where <strong>columns represent variables</strong> and <strong>rows represent observations</strong>.</p>
+<p>In RStudio, datasets are displayed in tabular format where <strong>columns represent variables</strong> and <strong>rows represent observations</strong>.</p>
 <ul>
-<li><p><strong>Variables</strong>: Variables represent the characteristics or attributes being measured. In the <strong>IMDb_Economist_tv_ratings.csv</strong> dataset, variables include <code>title</code>, <code>seasonNumber</code>, <code>av_rating</code>, <code>share</code>, and <code>genres</code>. Each variable holds a specific type of information. For example, the <code>av_rating</code> variable represents the average IMDb rating for each TV show, while <code>genres</code> lists the categories of the show.</p></li>
-<li><p><strong>Observations</strong>: Observations are individual data points in the dataset. In this dataset, each row represents a unique combination of a TV show and its season. For example, one observation might represent Season 1 of “12 Monkeys,” with its corresponding <code>av_rating</code> and <code>share</code>. These rows are the building blocks for data analysis, as they provide the raw material that is examined and processed.</p></li>
+<li><p><strong>Variables</strong>: Variables are measurable characteristics or data fields. In the <code>gaming-anxiety.csv</code> dataset, variables include <code>Age</code>, <code>Game</code>, <code>GAD1</code>, <code>SWL2</code>, and <code>SPIN_T</code>. Each variable corresponds to a different question or category from the survey. For example, <code>GAD1</code> records how often a respondent felt nervous, while <code>Platform</code> indicates their gaming device.</p></li>
+<li><p><strong>Observations</strong>: Observations are the individual entries or survey responses. Each row in <code>gaming-anxiety.csv</code> represents one gamer’s full set of responses, including their psychological scores, gaming behavior, and demographic information. These are the units of analysis.</p></li>
 </ul>
 <div id="explanation-of-data-types" class="section level3 unnumbered">
 <h3>Explanation of Data Types<a class="anchor" aria-label="anchor" href="#explanation-of-data-types"><i class="fas fa-link"></i></a>
 </h3>
-<p>Different types of data are used in mass communication research, each requiring different methods of analysis. Here’s how the data types in the <strong>IMDb_Economist_tv_ratings.csv</strong> dataset break down:</p>
+<p>The dataset includes a variety of data types, each requiring different analytical techniques:</p>
 <ul>
-<li><p><strong>Nominal Data</strong>: Nominal data are qualitative and label variables without any inherent order. The <code>title</code> variable is an example of nominal data, as it categorizes the different TV shows without implying any ranking or hierarchy.</p></li>
-<li><p><strong>Ordinal Data</strong>: Ordinal data are categorical but have a defined order. While there are no ordinal variables in this specific dataset, an example might be a variable representing user rankings (e.g., “Poor,” “Average,” “Good”).</p></li>
-<li><p><strong>Discrete Data</strong>: Discrete data represent ordered values where the differences between values are meaningful, but there is no true zero point. In this dataset, <code>av_rating</code> could be considered interval data, as it represents IMDb ratings on a scale where the differences between values are consistent, but there is no absolute zero.</p></li>
-<li><p><strong>Continuous Data</strong>: Continuous data can take any value within a given range. The <code>share</code> variable (audience share) is an example of continuous data because it represents the percentage of the total audience, which can vary across a continuous spectrum.</p></li>
-<li><p><strong>Dichotomous or Binary Data</strong>: Dichotomous data have only two possible values, such as “yes/no” or “true/false.” Although this dataset does not contain any binary variables, a typical example might be whether a show was renewed for another season (Yes/No).</p></li>
+<li><p><strong>Nominal Data</strong>: These are unordered categories. For example, <code>Game</code>, <code>Gender</code>, and <code>Platform</code> are nominal because they describe types without implying rank.</p></li>
+<li><p><strong>Ordinal Data</strong>: These categories have a logical order. While not directly labeled as such, variables like <code>highestleague</code> or Likert-scale items (e.g., from the <code>whyplay</code> or <code>GADE</code> questions) might represent ordinal responses, depending on how the data were collected.</p></li>
+<li><p><strong>Discrete Data</strong>: Discrete numeric data are countable and often whole numbers. Variables such as <code>streams</code> (number of times streamed) and <code>SPIN_T</code> (Social Phobia Inventory total score) are discrete because they represent count-based values.</p></li>
+<li><p><strong>Continuous Data</strong>: These are numeric values that can take any value in a range. <code>Hours</code> (hours spent gaming per week) and <code>Age</code> are continuous, as they represent measurements that can vary on a spectrum.</p></li>
+<li><p><strong>Dichotomous or Binary Data</strong>: These variables have only two values (e.g., Yes/No, Accept/Reject). In this dataset, <code>accept</code> is an example of a dichotomous variable indicating whether the participant accepted the terms of the study.</p></li>
 </ul>
 </div>
 </div>
@@ -124,7 +124,7 @@
 <h2>
 <span class="header-section-number">8.3</span> Inputting Data<a class="anchor" aria-label="anchor" href="#inputting-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>In RStudio, entering and importing data are essential tasks for conducting research. This section introduces DataEditR for manual data input and covers methods for importing data from external files like CSVs. The <strong>IMDb_Economist_tv_ratings.csv</strong> dataset is used in the examples below, which contains information about TV shows, including titles, seasons, ratings, and genres.</p>
+<p>In RStudio, entering or importing data is an essential first step in any research project. Most datasets, like <code>gaming-anxiety.csv</code>, come in <strong>CSV (comma-separated values)</strong> format, which can be easily read into R using functions like <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> from the <code>readr</code> package.</p>
 <div id="data-structures-in-r" class="section level3 unnumbered">
 <h3>Data Structures in R<a class="anchor" aria-label="anchor" href="#data-structures-in-r"><i class="fas fa-link"></i></a>
 </h3>
