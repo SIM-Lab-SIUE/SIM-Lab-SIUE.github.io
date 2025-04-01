@@ -43,7 +43,6 @@ social-exchange-theory
 social-identity-theory
 social-information-processing-theory
 uses-and-gratification-theory
-selecting-and-adapting-research-scales
 designing-quantitative-research
 research-design
 data-collection-techniques
