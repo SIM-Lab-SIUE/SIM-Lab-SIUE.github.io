@@ -1,7 +1,5 @@
 # Descriptive Analysis
 
-[[Chunk Version]](files/10-descriptive_stats-chunks.Rmd)
-
 This chapter introduces the foundations of **descriptive statistics**, a crucial first step in any quantitative research process. Descriptive statistics allow researchers to **organize, summarize, and interpret** raw data in a meaningful way. Whether analyzing survey results, social media behavior, content patterns, or experimental responses, these techniques help transform large, unstructured datasets into understandable information.
 
 The examples in this chapter use real survey data collected in 2015 from over 13,000 online gamers. The dataset includes psychological measures (such as anxiety, life satisfaction, and social phobia), gaming habits (such as hours played and streaming activity), and demographic information (such as age, gender, and location). These examples illustrate how descriptive statistics can provide initial insights before moving on to deeper inferential analyses.
@@ -50,7 +48,7 @@ There are three main ways to describe the center of a dataset:
 
 ---
 
-#### 1. **Mean** – The Arithmetic Average {.unnumbered}
+#### 1. **Mean** – The Arithmetic Average
 
 The **mean** is the most commonly used measure of central tendency. It is calculated by adding all of the values in a dataset and dividing by the number of values.
 
@@ -64,7 +62,7 @@ The mean is useful because it incorporates all values in the dataset. However, i
 
 ---
 
-#### 2. **Median** – The Middle Value {.unnumbered}
+#### 2. **Median** – The Middle Value
 
 The **median** is the middle value in a list of numbers ordered from smallest to largest. If there is an odd number of values, it is the exact center. If there is an even number, the median is the average of the two middle values.
 
@@ -79,7 +77,7 @@ The **median is more resistant to outliers** than the mean and is often a better
 
 ---
 
-#### 3. **Mode** – The Most Frequent Value {.unnumbered}
+#### 3. **Mode** – The Most Frequent Value
 
 The **mode** is the value that appears most often in a dataset. Unlike the mean and median, the mode can be used with both numerical and categorical data.
 
@@ -95,16 +93,16 @@ Note: A dataset can have no mode (if all values are unique), one mode (unimodal)
 
 We will now compute the **mean**, **median**, and **mode** for the variable `Hours`, which represents the number of hours each participant reported playing games in a typical week.
 
-#### 🧮 Load Required Packages {.unnumbered}
+#### 🧮 Load Required Packages
 
-```r
+```{r}
 library(dplyr)   # For data manipulation
 library(psych)   # For advanced descriptive functions
 ```
 
-#### 📂 Load the Dataset {.unnumbered}
+#### 📂 Load the Dataset
 
-```r
+```{r}
 gaming_data <- read.csv("data.csv", encoding = "ISO-8859-1")
 ```
 
@@ -112,9 +110,9 @@ We use `read.csv()` to import the dataset, and we specify the encoding (`ISO-885
 
 ---
 
-#### ✅ Compute the Mean {.unnumbered}
+#### ✅ Compute the Mean
 
-```r
+```{r}
 mean(gaming_data$Hours, na.rm = TRUE)
 ```
 
@@ -124,9 +122,9 @@ mean(gaming_data$Hours, na.rm = TRUE)
 
 ---
 
-#### ✅ Compute the Median {.unnumbered}
+#### ✅ Compute the Median
 
-```r
+```{r}
 median(gaming_data$Hours, na.rm = TRUE)
 ```
 
@@ -134,9 +132,9 @@ median(gaming_data$Hours, na.rm = TRUE)
 
 ---
 
-#### ✅ Compute the Mode {.unnumbered}
+#### ✅ Compute the Mode
 
-```r
+```{r}
 describe(gaming_data$Hours)$mode
 ```
 
@@ -147,9 +145,9 @@ describe(gaming_data$Hours)$mode
 
 ---
 
-### 📊 Sample Output (Based on Real Data) {.unnumbered}
+### 📊 Sample Output (Based on Real Data)
 
-```r
+```{r}
 mean(gaming_data$Hours, na.rm = TRUE)
 # [1] 22.25
 
@@ -162,7 +160,7 @@ describe(gaming_data$Hours)$mode
 
 ---
 
-### When to Use Each Measure {.unnumbered}
+### When to Use Each Measure
 
 | Measure | Best Used When... | Strengths | Limitations |
 |--------|-------------------|-----------|-------------|
@@ -197,13 +195,13 @@ Both groups have the same mean (12), but Group B’s gaming hours vary much more
 
 ---
 
-#### Key Measures of Dispersion {.unnumbered}
+#### Key Measures of Dispersion
 
 There are several ways to quantify variability in a dataset. The most common are:
 
 ---
 
-#### 1. **Range** – The Total Spread {.unnumbered}
+#### 1. **Range** – The Total Spread
 
 The **range** is the simplest measure of dispersion. It shows the distance between the smallest and largest values in a dataset.
 
@@ -217,7 +215,7 @@ The **range** is the simplest measure of dispersion. It shows the distance betwe
 
 ---
 
-#### 2. **Variance** – The Average Squared Deviation {.unnumbered}
+#### 2. **Variance** – The Average Squared Deviation
 
 The **variance** tells us how far each value in the dataset is from the mean, on average. It is calculated by:
 
@@ -235,7 +233,7 @@ The **variance** tells us how far each value in the dataset is from the mean, on
 
 ---
 
-#### 3. **Standard Deviation (SD)** – The Average Distance from the Mean {.unnumbered}
+#### 3. **Standard Deviation (SD)** – The Average Distance from the Mean
 
 The **standard deviation** is the square root of the variance. It tells you, in the same units as your original data, how far the typical value is from the mean.
 
@@ -251,20 +249,20 @@ Let’s calculate the **range**, **variance**, and **standard deviation** for th
 
 ---
 
-#### 📦 Step 1: Load Required Packages {.unnumbered}
+#### 📦 Step 1: Load Required Packages
 
 If you haven’t already loaded your packages, begin with:
 
-```r
+```{r}
 library(dplyr)
 library(psych)
 ```
 
 ---
 
-#### 📂 Step 2: Load the Dataset {.unnumbered}
+#### 📂 Step 2: Load the Dataset
 
-```r
+```{r}
 gaming_data <- read.csv("data.csv", encoding = "ISO-8859-1")
 ```
 
@@ -272,9 +270,9 @@ This loads the dataset of over 13,000 gamers from a 2015 survey.
 
 ---
 
-#### ✅ Step 3: Compute Dispersion Measures {.unnumbered}
+#### ✅ Step 3: Compute Dispersion Measures
 
-```r
+```{r}
 # Standard deviation
 sd(gaming_data$Hours, na.rm = TRUE)
 
@@ -292,9 +290,9 @@ range(gaming_data$Hours, na.rm = TRUE)
 
 ---
 
-### 🧪 Sample Output {.unnumbered}
+### 🧪 Sample Output
 
-```r
+```{r}
 sd(gaming_data$Hours, na.rm = TRUE)
 # [1] 70.2845
 
@@ -307,7 +305,7 @@ range(gaming_data$Hours, na.rm = TRUE)
 
 ---
 
-### Interpretation {.unnumbered}
+### Interpretation
 
 - **Standard Deviation (70.28)**: On average, gamers’ weekly hours deviate from the mean by about 70 hours. This is quite large and suggests significant variation in how much participants play.
 - **Variance (4939.91)**: This value is large, but harder to interpret directly because it is in squared units (hours²).
@@ -315,7 +313,7 @@ range(gaming_data$Hours, na.rm = TRUE)
 
 ---
 
-### Summary Table {.unnumbered}
+### Summary Table
 
 | Statistic            | Value     | Interpretation |
 |----------------------|-----------|----------------|
@@ -325,7 +323,7 @@ range(gaming_data$Hours, na.rm = TRUE)
 
 ---
 
-### Why Dispersion Matters {.unnumbered}
+### Why Dispersion Matters
 
 Understanding variability is critical in mass communication research. For example:
 - If two media campaigns have the same average reach but different levels of audience variability, one may be more consistent while the other is more polarized.
@@ -352,11 +350,11 @@ To summarize categorical variables, researchers use **frequencies** and **propor
 
 ---
 
-#### Counting Gender Identities in the Dataset {.unnumbered}
+#### Counting Gender Identities in the Dataset
 
 Let’s start by counting how many participants in the survey identified as Male, Female, or Other.
 
-```r
+```{r}
 # Frequency of gender identities
 table(gaming_data$Gender)
 ```
@@ -375,11 +373,11 @@ Out of 13,464 participants:
 
 ---
 
-#### Calculating Proportions of Each Category {.unnumbered}
+#### Calculating Proportions of Each Category
 
 To make these numbers easier to interpret, we convert them into proportions (i.e., percentages of the total).
 
-```r
+```{r}
 # Proportions of gender identities
 prop.table(table(gaming_data$Gender))
 ```
@@ -400,7 +398,7 @@ These proportions help researchers quickly assess sample composition and detect 
 
 ---
 
-### Summary {.unnumbered}
+### Summary
 
 | Gender | Frequency | Proportion |
 |--------|-----------|------------|
@@ -420,7 +418,7 @@ The [`psych`](https://cran.r-project.org/web/packages/psych/) package provides t
 
 You can use the `describe()` function from the `psych` package to produce a complete summary of multiple variables at once.
 
-```r
+```{r}
 # Descriptive statistics for all GAD items
 psych::describe(gaming_data[, c("GAD1", "GAD2", "GAD3", "GAD4", "GAD5", "GAD6", "GAD7")])
 ```
@@ -446,13 +444,13 @@ These values let us evaluate whether items are consistently used and where most 
 
 ---
 
-### **Exploring Key Psychometric Properties** {.unnumbered}
+### **Exploring Key Psychometric Properties**
 
 We can use `rowwise()` and `mutate()` to calculate total or average scores for a scale across its items.
 
 #### Create a Composite Score for GAD
 
-```r
+```{r}
 # Create average GAD score for each participant
 gaming_data <- gaming_data %>%
   rowwise() %>%
@@ -466,7 +464,7 @@ This code:
 
 We can now describe the resulting composite variable:
 
-```r
+```{r}
 describe(gaming_data$GAD_score)
 ```
 
@@ -480,11 +478,11 @@ This tells us that the average GAD score across all participants was **0.74** on
 
 ---
 
-### **Reporting Descriptive Statistics for Psychological Scales** {.unnumbered}
+### **Reporting Descriptive Statistics for Psychological Scales**
 
 The same method can be used to compute scale scores for other psychological measures in the dataset.
 
-```r
+```{r}
 # Compute average scores for SWL and SPIN
 gaming_data <- gaming_data %>%
   rowwise() %>%
@@ -498,11 +496,11 @@ Now you have three scale scores: `GAD_score`, `SWL_score`, and `SPIN_score`.
 
 ---
 
-### **Preparing Summarized Data for Visualization and Further Analysis** {.unnumbered}
+### **Preparing Summarized Data for Visualization and Further Analysis**
 
 You can also group participants and summarize their data. For example, we can compare anxiety and gameplay hours by gender.
 
-```r
+```{r}
 gaming_data %>%
   group_by(Gender) %>%
   summarize(
@@ -526,7 +524,7 @@ From this, we observe:
 
 ---
 
-## Creating Tables {.unnumbered}
+## Creating Tables
 
 Once you have calculated your descriptive statistics, the next step is to **present your findings clearly and effectively**. Tables are one of the most common ways to summarize and report results in research articles, presentations, and interactive dashboards.
 
@@ -545,7 +543,7 @@ All examples use the `gaming_data` dataset, which includes demographics, psychol
 
 [`reactable`](https://glin.github.io/reactable/) is a package that creates interactive HTML tables with sorting, searching, and filtering features. These are ideal for dashboards, websites, or exploratory analysis in R Markdown documents.
 
-```r
+```{r}
 library(reactable)
 
 reactable(gaming_data %>% 
@@ -553,7 +551,7 @@ reactable(gaming_data %>%
   head(10))
 ```
 
-#### What this code does: {.unnumbered}
+#### What this code does:
 - Selects the first 10 participants (`head(10)`)
 - Displays their gender, age, weekly gaming hours, and GAD score
 - Renders the result as an interactive table
@@ -566,7 +564,7 @@ You can sort columns by clicking on headers, which is useful when browsing datas
 
 [`gtsummary`](https://www.danieldsjoberg.com/gtsummary/) is designed to generate clean, publication-quality summary tables. It is especially useful for comparing groups (e.g., comparing means by gender).
 
-```r
+```{r}
 library(gtsummary)
 
 gaming_data %>%
@@ -575,7 +573,7 @@ gaming_data %>%
   add_p()
 ```
 
-#### What this code does: {.unnumbered}
+#### What this code does:
 - Selects relevant variables for summary
 - Groups the data by `Gender` (e.g., Male, Female, Other)
 - Computes descriptive statistics for each group
@@ -589,7 +587,7 @@ This type of table is perfect for inclusion in research papers where you compare
 
 [`kableExtra`](https://haozhu233.github.io/kableExtra/) enhances basic R tables (created using `knitr::kable`) with borders, alignment, and styling options. These are ideal for PDF or HTML reports generated in R Markdown.
 
-```r
+```{r}
 library(knitr)
 library(kableExtra)
 
@@ -601,7 +599,7 @@ kable(summary_table, caption = "Average Scores by Gender") %>%
   kable_styling()
 ```
 
-#### What this code does: {.unnumbered}
+#### What this code does:
 - Groups data by gender
 - Calculates the **mean Age, Hours, and GAD score** for each group
 - Creates a basic table using `kable()`
@@ -615,7 +613,7 @@ This is an excellent tool for customizing tables to match journal or classroom s
 
 [`flextable`](https://davidgohel.github.io/flextable/) is designed for outputting tables to Word documents and PowerPoint presentations. If you’re preparing a research poster or a report for a non-technical audience, this package is a powerful choice.
 
-```r
+```{r}
 library(flextable)
 
 summary_table %>%
@@ -623,7 +621,7 @@ summary_table %>%
   set_caption("Average Hours and Anxiety Scores by Gender")
 ```
 
-#### What this code does: {.unnumbered}
+#### What this code does:
 - Uses the `summary_table` previously created
 - Converts it into a `flextable` object
 - Adds a caption for clarity

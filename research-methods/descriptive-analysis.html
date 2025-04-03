@@ -6,20 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 10 Descriptive Analysis | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
-<meta name="description" content="[Chunk Version] Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution...">
-<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta name="description" content="[Chunk Version] This chapter introduces the foundations of descriptive statistics, a crucial first step in any quantitative research process. Descriptive statistics allow researchers to organize,...">
+<meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Descriptive Analysis | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/descriptive-analysis.html">
 <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
-<meta property="og:description" content="[Chunk Version] Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution...">
+<meta property="og:description" content="[Chunk Version] This chapter introduces the foundations of descriptive statistics, a crucial first step in any quantitative research process. Descriptive statistics allow researchers to organize,...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 10 Descriptive Analysis | An Introduction to Research Methods in Mass Media">
-<meta name="twitter:description" content="[Chunk Version] Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution...">
+<meta name="twitter:description" content="[Chunk Version] This chapter introduces the foundations of descriptive statistics, a crucial first step in any quantitative research process. Descriptive statistics allow researchers to organize,...">
 <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -74,418 +74,808 @@
 <h1>
 <span class="header-section-number">10</span> Descriptive Analysis<a class="anchor" aria-label="anchor" href="#descriptive-analysis"><i class="fas fa-link"></i></a>
 </h1>
-<p><a href="files/09-descriptive_stats-chunks.Rmd">[Chunk Version]</a></p>
-<p>Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution of data points. For media and mass communication research, descriptive statistics help answer fundamental questions about viewer ratings, playtimes, episode counts, and even word frequencies in media content. This chapter introduces common descriptive statistics concepts, illustrates them with examples, and provides R code using user-friendly packages like <code>dplyr</code>, <code>skimr</code>, <code>psych</code>, and <code>DescTools</code>.</p>
-<p>We will begin by loading the necessary libraries. This includes downloading and installing them if necessary.</p>
+<p><a href="files/10-descriptive_stats-chunks.Rmd">[Chunk Version]</a></p>
+<p>This chapter introduces the foundations of <strong>descriptive statistics</strong>, a crucial first step in any quantitative research process. Descriptive statistics allow researchers to <strong>organize, summarize, and interpret</strong> raw data in a meaningful way. Whether analyzing survey results, social media behavior, content patterns, or experimental responses, these techniques help transform large, unstructured datasets into understandable information.</p>
+<p>The examples in this chapter use real survey data collected in 2015 from over 13,000 online gamers. The dataset includes psychological measures (such as anxiety, life satisfaction, and social phobia), gaming habits (such as hours played and streaming activity), and demographic information (such as age, gender, and location). These examples illustrate how descriptive statistics can provide initial insights before moving on to deeper inferential analyses.</p>
+<hr>
+<div id="overview-1" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Descriptive statistics are used to <strong>summarize the main features of a dataset</strong>. Instead of analyzing each data point individually, descriptive statistics allow researchers to observe patterns, identify central tendencies, and assess variability. These tools are especially useful when preparing data for publication, visualization, or further statistical testing.</p>
+<p>In mass communication research, descriptive statistics can answer questions such as:</p>
+<ul>
+<li>What is the average number of hours spent consuming media per day?</li>
+<li>How many participants in a study identified as politically independent?</li>
+<li>What percentage of respondents report high levels of life satisfaction?</li>
+<li>How widely do responses vary on a measure of media trust?</li>
+</ul>
+<p>By answering these types of questions, descriptive statistics play a foundational role in understanding audiences, assessing user behaviors, and exploring communication phenomena.</p>
+<p>Descriptive statistics are particularly important for:</p>
+<ul>
+<li>
+<strong>Characterizing samples</strong>: Understanding the demographic and behavioral characteristics of your respondents.</li>
+<li>
+<strong>Exploring variables</strong>: Summarizing psychological measures, behavioral indicators, or content metrics.</li>
+<li>
+<strong>Checking assumptions</strong>: Determining whether your data meet the requirements for later inferential tests.</li>
+<li>
+<strong>Communicating results</strong>: Reporting clear and concise summaries in research papers, visualizations, and presentations.</li>
+</ul>
+<p>For example, a researcher studying the effects of gaming on well-being may begin by reporting the <strong>mean number of hours participants spend gaming per week</strong>, the <strong>standard deviation of their anxiety scores</strong>, and the <strong>frequency distribution of platforms used (e.g., PC, console, mobile)</strong>. These summary statistics offer a snapshot of the sample and lay the groundwork for deeper analyses that follow.</p>
+<p>Descriptive statistics are not used to draw conclusions beyond the data at hand. They do not test hypotheses or estimate population parameters. Instead, their power lies in providing a <strong>clear and organized view of what the data reveal</strong>—who the participants are, what they do, and how they respond.</p>
+<p>The next sections walk you through the core types of descriptive statistics, how to compute them in R, and how to interpret the results in the context of media and communication research.</p>
+<hr>
+</div>
+<div id="basic-descriptive-statistics" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Basic Descriptive Statistics<a class="anchor" aria-label="anchor" href="#basic-descriptive-statistics"><i class="fas fa-link"></i></a>
+</h2>
+<p>Descriptive statistics help researchers make sense of raw data. While a spreadsheet of thousands of survey responses can feel overwhelming, descriptive statistics reduce that complexity by summarizing the data into clear, interpretable values. This section focuses on the <strong>measures of central tendency</strong>, which describe where the “center” of the data lies.</p>
+<hr>
+<div id="measures-of-central-tendency" class="section level3 unnumbered">
+<h3>
+<strong>Measures of Central Tendency</strong><a class="anchor" aria-label="anchor" href="#measures-of-central-tendency"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Central tendency</strong> refers to the central or typical value of a distribution. When we ask, “How much does the average person play video games per week?” or “What is the typical life satisfaction score in a sample of gamers?”, we are referring to central tendency.</p>
+<p>There are three main ways to describe the center of a dataset:</p>
+<hr>
+<div id="mean-the-arithmetic-average" class="section level4 unnumbered">
+<h4>1. <strong>Mean</strong> – The Arithmetic Average<a class="anchor" aria-label="anchor" href="#mean-the-arithmetic-average"><i class="fas fa-link"></i></a>
+</h4>
+<p>The <strong>mean</strong> is the most commonly used measure of central tendency. It is calculated by adding all of the values in a dataset and dividing by the number of values.</p>
+<p>For example, if five gamers report playing 5, 10, 15, 20, and 25 hours per week, the mean would be:</p>
+<p><span class="math display">\[
+\text{Mean} = \frac{5 + 10 + 15 + 20 + 25}{5} = \frac{75}{5} = 15
+\]</span></p>
+<p>The mean is useful because it incorporates all values in the dataset. However, it can be heavily influenced by extreme scores (called <strong>outliers</strong>). For instance, if one gamer reports playing 100 hours per week, it will raise the mean significantly, even if most people play much less.</p>
+<hr>
+</div>
+<div id="median-the-middle-value" class="section level4 unnumbered">
+<h4>2. <strong>Median</strong> – The Middle Value<a class="anchor" aria-label="anchor" href="#median-the-middle-value"><i class="fas fa-link"></i></a>
+</h4>
+<p>The <strong>median</strong> is the middle value in a list of numbers ordered from smallest to largest. If there is an odd number of values, it is the exact center. If there is an even number, the median is the average of the two middle values.</p>
+<p>Using the earlier example:
+- Ordered hours: 5, 10, 15, 20, 25
+- Median: 15 (the third number in the list)</p>
+<p>If someone reported 100 hours, the new list would be: 5, 10, 15, 20, 25, 100<br>
+- Median = (15 + 20)/2 = 17.5 (since there’s an even number of values)</p>
+<p>The <strong>median is more resistant to outliers</strong> than the mean and is often a better indicator of central tendency for skewed data (where most responses cluster at one end).</p>
+<hr>
+</div>
+<div id="mode-the-most-frequent-value" class="section level4 unnumbered">
+<h4>3. <strong>Mode</strong> – The Most Frequent Value<a class="anchor" aria-label="anchor" href="#mode-the-most-frequent-value"><i class="fas fa-link"></i></a>
+</h4>
+<p>The <strong>mode</strong> is the value that appears most often in a dataset. Unlike the mean and median, the mode can be used with both numerical and categorical data.</p>
+<p>Examples:
+- If most players report gaming on “PC,” then PC is the mode of the <code>Platform</code> variable.
+- If most participants report 20 hours of gameplay per week, then 20 is the mode of the <code>Hours</code> variable.</p>
+<p>Note: A dataset can have no mode (if all values are unique), one mode (unimodal), or multiple modes (multimodal).</p>
+<hr>
+</div>
+</div>
+<div id="calculating-central-tendency-in-r" class="section level3 unnumbered">
+<h3>Calculating Central Tendency in R<a class="anchor" aria-label="anchor" href="#calculating-central-tendency-in-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>We will now compute the <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong> for the variable <code>Hours</code>, which represents the number of hours each participant reported playing games in a typical week.</p>
+<div id="load-required-packages" class="section level4 unnumbered">
+<h4>🧮 Load Required Packages<a class="anchor" aria-label="anchor" href="#load-required-packages"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://r-datatable.com">"data.table"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"data.table"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/skimr/">"skimr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"skimr"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://personality-project.org/r/psych/">"psych"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"psych"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://andrisignorell.github.io/DescTools/">"DescTools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DescTools"</span><span class="op">)</span></span></code></pre></div>
-<p>We will then load the relevant datasets:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>   <span class="co"># For data manipulation</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span>   <span class="co"># For advanced descriptive functions</span></span></code></pre></div>
+</div>
+<div id="load-the-dataset" class="section level4 unnumbered">
+<h4>📂 Load the Dataset<a class="anchor" aria-label="anchor" href="#load-the-dataset"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
-<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
-<span><span class="va">richmondway</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv'</span><span class="op">)</span></span>
-<span><span class="va">television</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv"</span><span class="op">)</span></span>
-<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
-<p>You can access the data descriptions for each of these data sets on their respective TidyTuesday page.</p>
-<ol style="list-style-type: decimal">
-<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md">Anime Dataset</a></li>
-<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md">Horror Movies</a></li>
-<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-09-26/readme.md">Roy Kent F**k count</a></li>
-<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-01-08/readme.md">TV’s golden age is real</a></li>
-<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md">Video Games Dataset</a></li>
-</ol>
-<div id="measures-of-central-tendency" class="section level2" number="10.1">
-<h2>
-<span class="header-section-number">10.1</span> Measures of Central Tendency<a class="anchor" aria-label="anchor" href="#measures-of-central-tendency"><i class="fas fa-link"></i></a>
-</h2>
-<div id="mean-arithmetic-average" class="section level3 unnumbered">
-<h3>Mean (Arithmetic Average)<a class="anchor" aria-label="anchor" href="#mean-arithmetic-average"><i class="fas fa-link"></i></a>
-</h3>
-<p>The <strong>mean</strong> is the sum of all values divided by the number of values in a dataset. It is a widely used statistic that provides an “average” for the data. However, the mean is <strong>sensitive to outliers</strong>—extremely high or low values that can distort the result.</p>
-<div id="why-the-mean-is-important" class="section level4 unnumbered">
-<h4>Why the Mean Is Important<a class="anchor" aria-label="anchor" href="#why-the-mean-is-important"><i class="fas fa-link"></i></a>
+<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data.csv"</span>, encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">)</span></span></code></pre></div>
+<p>We use <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> to import the dataset, and we specify the encoding (<code>ISO-8859-1</code>) to avoid any problems with special characters that might be present in the file.</p>
+<hr>
+</div>
+<div id="compute-the-mean" class="section level4 unnumbered">
+<h4>✅ Compute the Mean<a class="anchor" aria-label="anchor" href="#compute-the-mean"><i class="fas fa-link"></i></a>
 </h4>
-<p>The mean is especially useful for <strong>interval</strong> or <strong>ratio data</strong>, where the numbers represent measurable quantities. For example, in media research, the mean viewer rating of a TV show can offer insight into how audiences generally feel about it. Similarly, calculating the average playtime of video games helps researchers understand user engagement.</p>
-<p>Let’s calculate the mean using the <code>dplyr</code> package. In the <strong>horror_movies</strong> dataset, the <code>vote_average</code> variable represents movie ratings:</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the mean vote average</span></span>
-<span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_vote_avg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>mean_vote_avg
-3.335728</code></pre>
-<p><strong>Explanation:</strong></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
-<strong>Mean</strong>: The mean (or average) vote rating for horror movies in this dataset is approximately <strong>3.34</strong>. This value gives us a general idea of the overall audience rating for horror movies. It is the sum of all ratings divided by the total number of movies.</li>
+<code>gaming_data$Hours</code> selects the <code>Hours</code> column.</li>
+<li>
+<code>na.rm = TRUE</code> tells R to ignore any missing values (NA = Not Available).</li>
+<li>This command calculates the arithmetic average number of hours played per week across all participants.</li>
 </ul>
-<p>In this example, you will see the average rating across all horror movies in the dataset, which helps summarize audience sentiment.</p>
-<p>We can also calculate the mean playtime for video games in the <strong>video_games</strong> dataset:</p>
+<hr>
+</div>
+<div id="compute-the-median" class="section level4 unnumbered">
+<h4>✅ Compute the Median<a class="anchor" aria-label="anchor" href="#compute-the-median"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>This command finds the middle value of the <code>Hours</code> variable, once the values are sorted from smallest to largest.</li>
+</ul>
+<hr>
+</div>
+<div id="compute-the-mode" class="section level4 unnumbered">
+<h4>✅ Compute the Mode<a class="anchor" aria-label="anchor" href="#compute-the-mode"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the mean playtime</span></span>
-<span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>mean_playtime
-9.057274</code></pre>
-<p><strong>Explanation:</strong></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span><span class="op">)</span><span class="op">$</span><span class="va">mode</span></span></code></pre></div>
 <ul>
+<li>The <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code>psych</code> package gives a full summary of a numeric variable.</li>
 <li>
-<strong>Mean Playtime</strong>: The average playtime for video games in this dataset is about <strong>9.06 hours</strong>. This provides insight into the typical amount of time players spend on a game.</li>
+<code>$mode</code> extracts just the mode value from the output.</li>
 </ul>
-<p>This calculation helps identify the average time spent playing video games, which is crucial for understanding player behavior.</p>
+<p>⚠️ <strong>Important Note</strong>: If there is no clear mode—meaning no single value appears more often than others—the mode will return <code>NULL</code>. This is not an error, but a sign that your data may be evenly distributed or multimodal.</p>
+<hr>
 </div>
 </div>
-<div id="median" class="section level3 unnumbered">
-<h3>Median<a class="anchor" aria-label="anchor" href="#median"><i class="fas fa-link"></i></a>
+<div id="sample-output-based-on-real-data" class="section level3 unnumbered">
+<h3>📊 Sample Output (Based on Real Data)<a class="anchor" aria-label="anchor" href="#sample-output-based-on-real-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>The <strong>median</strong> is the middle value in an ordered dataset. It divides the dataset into two halves and is a <strong>robust</strong> measure of central tendency, especially when dealing with outliers. The median is useful when you are dealing with <strong>skewed distributions</strong> where the mean may not be representative.</p>
-<div id="why-the-median-is-important" class="section level4 unnumbered">
-<h4>Why the Median Is Important<a class="anchor" aria-label="anchor" href="#why-the-median-is-important"><i class="fas fa-link"></i></a>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># [1] 22.25</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># [1] 20</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span><span class="op">)</span><span class="op">$</span><span class="va">mode</span></span>
+<span><span class="co"># NULL (no mode detected due to high variability or uniform frequency)</span></span></code></pre></div>
+<hr>
+</div>
+<div id="when-to-use-each-measure" class="section level3 unnumbered">
+<h3>When to Use Each Measure<a class="anchor" aria-label="anchor" href="#when-to-use-each-measure"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="15%">
+<col width="37%">
+<col width="21%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th>Measure</th>
+<th>Best Used When…</th>
+<th>Strengths</th>
+<th>Limitations</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mean</strong></td>
+<td>Data are evenly distributed without outliers</td>
+<td>Uses all data points</td>
+<td>Sensitive to extreme values</td>
+</tr>
+<tr class="even">
+<td><strong>Median</strong></td>
+<td>Data are skewed or contain outliers</td>
+<td>Robust to outliers</td>
+<td>Does not use all values</td>
+</tr>
+<tr class="odd">
+<td><strong>Mode</strong></td>
+<td>Identifying the most common response</td>
+<td>Works with any data type</td>
+<td>May not exist or may be multiple</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="summary" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>Understanding <strong>measures of central tendency</strong> helps researchers answer key questions about what is typical in their dataset. Whether reporting on media use, psychological scores, or demographics, central tendency offers a simple yet powerful summary.</p>
+<p>In the next section, we will explore <strong>measures of dispersion</strong>, which tell us how much variability exists in our data—an equally important aspect of descriptive analysis.</p>
+<hr>
+</div>
+<div id="measures-of-dispersion" class="section level3 unnumbered">
+<h3>
+<strong>Measures of Dispersion</strong><a class="anchor" aria-label="anchor" href="#measures-of-dispersion"><i class="fas fa-link"></i></a>
+</h3>
+<p>While <strong>measures of central tendency</strong> tell us where the center of the data lies, <strong>measures of dispersion</strong> describe how spread out the values are around that center. In other words, dispersion helps answer questions like:</p>
+<ul>
+<li>Do most people play a similar number of hours per week?</li>
+<li>Are participants’ anxiety scores tightly clustered or widely scattered?</li>
+<li>How much variability exists in responses?</li>
+</ul>
+<p>Understanding dispersion is essential for interpreting how consistent or diverse your data are. Two datasets can have the same mean but very different spreads. For example, imagine two groups of gamers:</p>
+<ul>
+<li>Group A: 10, 11, 12, 13, 14 hours/week (low dispersion)</li>
+<li>Group B: 2, 7, 12, 17, 22 hours/week (high dispersion)</li>
+</ul>
+<p>Both groups have the same mean (12), but Group B’s gaming hours vary much more.</p>
+<hr>
+<div id="key-measures-of-dispersion" class="section level4 unnumbered">
+<h4>Key Measures of Dispersion<a class="anchor" aria-label="anchor" href="#key-measures-of-dispersion"><i class="fas fa-link"></i></a>
 </h4>
-<p>The median is often preferred when the dataset has extreme values. For example, if we’re analyzing the number of episodes in anime series, there are a few long-running shows that might inflate the mean, making it less representative of a typical series. The median offers a better “typical” value in such cases.</p>
-<p>Let’s calculate the median using <code>dplyr</code>. In the <strong>anime</strong> dataset, the <code>episodes</code> variable represents the number of episodes in each series:</p>
+<p>There are several ways to quantify variability in a dataset. The most common are:</p>
+<hr>
+</div>
+<div id="range-the-total-spread" class="section level4 unnumbered">
+<h4>1. <strong>Range</strong> – The Total Spread<a class="anchor" aria-label="anchor" href="#range-the-total-spread"><i class="fas fa-link"></i></a>
+</h4>
+<p>The <strong>range</strong> is the simplest measure of dispersion. It shows the distance between the smallest and largest values in a dataset.</p>
+<p><span class="math display">\[
+\text{Range} = \text{Maximum Value} - \text{Minimum Value}
+\]</span></p>
+<ul>
+<li>Example: If the lowest number of hours played is 0 and the highest is 8000, the range is 8000 hours.</li>
+<li>Strength: Easy to compute.</li>
+<li>Limitation: Extremely sensitive to outliers (e.g., one person reporting an exaggerated number of hours).</li>
+</ul>
+<hr>
+</div>
+<div id="variance-the-average-squared-deviation" class="section level4 unnumbered">
+<h4>2. <strong>Variance</strong> – The Average Squared Deviation<a class="anchor" aria-label="anchor" href="#variance-the-average-squared-deviation"><i class="fas fa-link"></i></a>
+</h4>
+<p>The <strong>variance</strong> tells us how far each value in the dataset is from the mean, on average. It is calculated by:</p>
+<ol style="list-style-type: decimal">
+<li>Subtracting the mean from each value</li>
+<li>Squaring the result (to avoid negative numbers)</li>
+<li>Averaging those squared differences</li>
+</ol>
+<p><span class="math display">\[
+\text{Variance} = \frac{\sum (x_i - \bar{x})^2}{n - 1}
+\]</span></p>
+<ul>
+<li>High variance means the values are spread out.</li>
+<li>Low variance means the values are close to the mean.</li>
+<li>Limitation: Because variance uses squared differences, the units are not intuitive (e.g., hours²).</li>
+</ul>
+<hr>
+</div>
+<div id="standard-deviation-sd-the-average-distance-from-the-mean" class="section level4 unnumbered">
+<h4>3. <strong>Standard Deviation (SD)</strong> – The Average Distance from the Mean<a class="anchor" aria-label="anchor" href="#standard-deviation-sd-the-average-distance-from-the-mean"><i class="fas fa-link"></i></a>
+</h4>
+<p>The <strong>standard deviation</strong> is the square root of the variance. It tells you, in the same units as your original data, how far the typical value is from the mean.</p>
+<ul>
+<li>SD is widely used because it is easy to interpret and scales with the data.</li>
+<li>A small SD means most responses are close to the mean.</li>
+<li>A large SD means responses vary widely.</li>
+</ul>
+<hr>
+</div>
+</div>
+<div id="calculating-dispersion-in-r" class="section level3 unnumbered">
+<h3>Calculating Dispersion in R<a class="anchor" aria-label="anchor" href="#calculating-dispersion-in-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s calculate the <strong>range</strong>, <strong>variance</strong>, and <strong>standard deviation</strong> for the variable <code>Hours</code>, which records how many hours per week each participant reported gaming.</p>
+<hr>
+<div id="step-1-load-required-packages" class="section level4 unnumbered">
+<h4>📦 Step 1: Load Required Packages<a class="anchor" aria-label="anchor" href="#step-1-load-required-packages"><i class="fas fa-link"></i></a>
+</h4>
+<p>If you haven’t already loaded your packages, begin with:</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the median number of episodes</span></span>
-<span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>median_episodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">episodes</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>median_episodes
-12</code></pre>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>
-<strong>Median</strong>: The median number of episodes in the anime dataset is <strong>12</strong>. The median represents the middle value, meaning half of the anime series have fewer than 12 episodes, and the other half have more. The median is useful when data has extreme values (outliers) that could skew the mean.</li>
-</ul>
-<p>In this example, we are calculating the middle value of the episode count, which offers a clear sense of how long a typical anime series runs without the influence of extreme values.</p>
-<p>We can also calculate the median playtime for video games:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span></span></code></pre></div>
+<hr>
+</div>
+<div id="step-2-load-the-dataset" class="section level4 unnumbered">
+<h4>📂 Step 2: Load the Dataset<a class="anchor" aria-label="anchor" href="#step-2-load-the-dataset"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data.csv"</span>, encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">)</span></span></code></pre></div>
+<p>This loads the dataset of over 13,000 gamers from a 2015 survey.</p>
+<hr>
+</div>
+<div id="step-3-compute-dispersion-measures" class="section level4 unnumbered">
+<h4>✅ Step 3: Compute Dispersion Measures<a class="anchor" aria-label="anchor" href="#step-3-compute-dispersion-measures"><i class="fas fa-link"></i></a>
+</h4>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the median playtime</span></span>
-<span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>median_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">median_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>median_playtime
-0</code></pre>
-<p><strong>Explanation:</strong></p>
+<code class="sourceCode R"><span><span class="co"># Standard deviation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Variance</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Range (returns minimum and maximum values)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
-<strong>Median Playtime</strong>: The median playtime is <strong>0</strong>. This result suggests that many games may not have much playtime recorded, or playtimes could be concentrated near zero. The median here indicates that at least half of the games have very little or no recorded playtime.</li>
+<code>na.rm = TRUE</code> tells R to ignore missing data (e.g., respondents who skipped the question).</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> computes the standard deviation.</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> computes the variance.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/range.html">range()</a></code> gives the minimum and maximum values.</li>
 </ul>
-<p>This helps understand the typical amount of time players engage with video games, unaffected by particularly short or long playtimes.</p>
+<hr>
 </div>
 </div>
-<div id="mode" class="section level3 unnumbered">
-<h3>Mode<a class="anchor" aria-label="anchor" href="#mode"><i class="fas fa-link"></i></a>
+<div id="sample-output" class="section level3 unnumbered">
+<h3>🧪 Sample Output<a class="anchor" aria-label="anchor" href="#sample-output"><i class="fas fa-link"></i></a>
 </h3>
-<p>The <strong>mode</strong> is the value that occurs most frequently in a dataset. It is the only measure of central tendency that can be used with <strong>nominal</strong> or <strong>categorical data</strong>, where the values don’t have a specific order.</p>
-<div id="why-the-mode-is-important" class="section level4 unnumbered">
-<h4>Why the Mode Is Important<a class="anchor" aria-label="anchor" href="#why-the-mode-is-important"><i class="fas fa-link"></i></a>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># [1] 70.2845</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># [1] 4939.911</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># [1]    0 8000</span></span></code></pre></div>
+<hr>
+</div>
+<div id="interpretation" class="section level3 unnumbered">
+<h3>Interpretation<a class="anchor" aria-label="anchor" href="#interpretation"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Standard Deviation (70.28)</strong>: On average, gamers’ weekly hours deviate from the mean by about 70 hours. This is quite large and suggests significant variation in how much participants play.</li>
+<li>
+<strong>Variance (4939.91)</strong>: This value is large, but harder to interpret directly because it is in squared units (hours²).</li>
+<li>
+<strong>Range (0 to 8000)</strong>: At least one participant reported 0 hours, and one reported 8000. The extreme value of 8000 is likely an outlier—possibly due to a data entry error or exaggeration.</li>
+</ul>
+<hr>
+</div>
+<div id="summary-table" class="section level3 unnumbered">
+<h3>Summary Table<a class="anchor" aria-label="anchor" href="#summary-table"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="44%">
+<col width="22%">
+<col width="32%">
+</colgroup>
+<thead><tr class="header">
+<th>Statistic</th>
+<th>Value</th>
+<th>Interpretation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Standard Deviation</td>
+<td>70.28</td>
+<td>Large spread in gaming hours</td>
+</tr>
+<tr class="even">
+<td>Variance</td>
+<td>4939.91</td>
+<td>Used in advanced stats; not intuitive by itself</td>
+</tr>
+<tr class="odd">
+<td>Range</td>
+<td>0 to 8000</td>
+<td>Suggests presence of extreme outliers</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="why-dispersion-matters" class="section level3 unnumbered">
+<h3>Why Dispersion Matters<a class="anchor" aria-label="anchor" href="#why-dispersion-matters"><i class="fas fa-link"></i></a>
+</h3>
+<p>Understanding variability is critical in mass communication research. For example:
+- If two media campaigns have the same average reach but different levels of audience variability, one may be more consistent while the other is more polarized.
+- In psychological scales like anxiety or satisfaction, dispersion helps determine whether scores cluster tightly (indicating a uniform experience) or are widely spread (indicating diverse experiences).</p>
+<p>Dispersion also informs the <strong>reliability</strong> of averages. A mean without knowing the standard deviation can be misleading.</p>
+<hr>
+<p>In the next section, we’ll explore how to describe <strong>categorical variables</strong> like gender, platform, and playstyle using frequencies and proportions.</p>
+<hr>
+</div>
+<div id="describing-categorical-data" class="section level3 unnumbered">
+<h3>
+<strong>Describing Categorical Data</strong><a class="anchor" aria-label="anchor" href="#describing-categorical-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>So far, we’ve explored numeric variables like hours played and psychological scale scores. But what about variables that contain words instead of numbers—like a participant’s <strong>gender</strong>, <strong>gaming platform</strong>, or <strong>playstyle</strong>? These are known as <strong>categorical variables</strong>.</p>
+<p>Categorical data consist of values that represent types or categories rather than numbers. This kind of data is especially common in survey research. For example, respondents might choose a gender identity (“Male”, “Female”, “Other”), a gaming platform (“PC”, “Console”, “Mobile”), or their favorite game genre (“Shooter”, “Role-Playing”, “Strategy”).</p>
+<p>To summarize categorical variables, researchers use <strong>frequencies</strong> and <strong>proportions</strong>:</p>
+<ul>
+<li>A <strong>frequency</strong> is simply a count of how many participants fall into each category.</li>
+<li>A <strong>proportion</strong> shows what percentage of the total participants each category represents.</li>
+</ul>
+<hr>
+<div id="counting-gender-identities-in-the-dataset" class="section level4 unnumbered">
+<h4>Counting Gender Identities in the Dataset<a class="anchor" aria-label="anchor" href="#counting-gender-identities-in-the-dataset"><i class="fas fa-link"></i></a>
 </h4>
-<p>The mode is particularly useful for <strong>categorical data</strong> in media research. For example, if you want to find out which genre of horror movie is most common, the mode provides that information.</p>
-<p>We will use the <code>DescTools</code> package to calculate the mode in a straightforward way. In the <strong>horror_movies</strong> dataset, the <code>genre_names</code> variable contains the genre of each movie. Here’s how to calculate the mode:</p>
+<p>Let’s start by counting how many participants in the survey identified as Male, Female, or Other.</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the mode of genre names</span></span>
-<span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_genre <span class="op">=</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/Mode.html">Mode</a></span><span class="op">(</span><span class="va">genre_names</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>mode_genre
-Horror</code></pre>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>
-<strong>Mode</strong>: The mode represents the most frequently occurring value in a dataset. In this case, the most common genre in the horror movies dataset is “Horror,” which makes sense since we are analyzing horror movies.</li>
-</ul>
-<p>In this case, the most frequent genre will tell you what type of horror movie is most commonly produced.</p>
-<p>For the <strong>anime</strong> dataset, you can calculate the mode for the <code>score</code> variable:</p>
+<code class="sourceCode R"><span><span class="co"># Frequency of gender identities</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span></code></pre></div>
+<p>This command returns a table showing how many times each gender appears in the dataset:</p>
+<pre><code>Female   Male  Other 
+   713  12699     52 </code></pre>
+<p>Out of 13,464 participants:
+- 713 identified as <strong>Female</strong>
+- 12,699 identified as <strong>Male</strong>
+- 52 identified as <strong>Other</strong></p>
+<hr>
+</div>
+<div id="calculating-proportions-of-each-category" class="section level4 unnumbered">
+<h4>Calculating Proportions of Each Category<a class="anchor" aria-label="anchor" href="#calculating-proportions-of-each-category"><i class="fas fa-link"></i></a>
+</h4>
+<p>To make these numbers easier to interpret, we convert them into proportions (i.e., percentages of the total).</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the mode of anime scores</span></span>
-<span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_score <span class="op">=</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/Mode.html">Mode</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>mode_score
-7.41</code></pre>
-<p>This provides insight into the most common rating that anime viewers give to the shows they watch.</p>
+<code class="sourceCode R"><span><span class="co"># Proportions of gender identities</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>This returns the following:</p>
+<pre><code>   Female       Male      Other 
+0.05296    0.94318   0.00386</code></pre>
+<p>Interpreted:
+- 5.3% of respondents identified as Female
+- 94.3% identified as Male
+- 0.4% identified as Other</p>
+<p>These proportions help researchers quickly assess sample composition and detect any imbalance (e.g., a male-dominated sample in this case). Proportions are especially useful when comparing groups or visualizing results in bar charts or pie graphs.</p>
+<hr>
 </div>
 </div>
-<div id="comparing-mean-median-and-mode" class="section level3 unnumbered">
-<h3>Comparing Mean, Median, and Mode<a class="anchor" aria-label="anchor" href="#comparing-mean-median-and-mode"><i class="fas fa-link"></i></a>
+<div id="summary-1" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>Each of these measures provides a different perspective on the data:</p>
-<ul>
-<li>
-<strong>Mean</strong>: Useful when the data are normally distributed and without extreme outliers.</li>
-<li>
-<strong>Median</strong>: Best used when the data have skewed distributions or contain outliers.</li>
-<li>
-<strong>Mode</strong>: Ideal for nominal or categorical data where you want to know the most common value.</li>
-</ul>
-<p>By choosing the right measure, you can better interpret mass communication data and provide clearer insights into media consumption and audience behavior.</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Gender</th>
+<th>Frequency</th>
+<th>Proportion</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Male</td>
+<td>12,699</td>
+<td>94.3%</td>
+</tr>
+<tr class="even">
+<td>Female</td>
+<td>713</td>
+<td>5.3%</td>
+</tr>
+<tr class="odd">
+<td>Other</td>
+<td>52</td>
+<td>0.4%</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
 </div>
 </div>
-<div id="measures-of-dispersion" class="section level2" number="10.2">
+<div id="using-psych-for-descriptive-statistics" class="section level2" number="10.3">
 <h2>
-<span class="header-section-number">10.2</span> Measures of Dispersion<a class="anchor" aria-label="anchor" href="#measures-of-dispersion"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Using <code>psych</code> for Descriptive Statistics<a class="anchor" aria-label="anchor" href="#using-psych-for-descriptive-statistics"><i class="fas fa-link"></i></a>
 </h2>
-<p>While measures of central tendency tell us about the “center” of the data, <strong>measures of dispersion</strong> provide insights into how spread out the data are. This section covers <strong>range</strong>, <strong>variance</strong>, <strong>standard deviation</strong>, and <strong>interquartile range</strong> (IQR).</p>
-<div id="range" class="section level3 unnumbered">
-<h3>Range<a class="anchor" aria-label="anchor" href="#range"><i class="fas fa-link"></i></a>
+<p>The <a href="https://cran.r-project.org/web/packages/psych/"><code>psych</code></a> package provides tools for describing and analyzing psychological and survey data. It is especially helpful for working with <strong>scales</strong>, like the GAD (Generalized Anxiety Disorder) scale, the SWL (Satisfaction with Life) scale, or the SPIN (Social Phobia Inventory). These instruments typically consist of multiple items rated on Likert scales, which are averaged or summed to produce a total score.</p>
+<hr>
+<div id="generating-descriptive-reports" class="section level3 unnumbered">
+<h3>
+<strong>Generating Descriptive Reports</strong><a class="anchor" aria-label="anchor" href="#generating-descriptive-reports"><i class="fas fa-link"></i></a>
 </h3>
-<p>The <strong>range</strong> is the simplest measure of dispersion, calculated as the difference between the highest and lowest values. While it’s easy to calculate, the range is sensitive to outliers.</p>
-<div id="why-the-range-is-important" class="section level4 unnumbered">
-<h4>Why the Range Is Important<a class="anchor" aria-label="anchor" href="#why-the-range-is-important"><i class="fas fa-link"></i></a>
-</h4>
-<p>The range gives a quick sense of the spread in the data. In media research, the range could show the difference between the highest and lowest user ratings or playtimes.</p>
-<p>Here’s how to calculate the range for <strong>anime</strong> scores using <code>dplyr</code>:</p>
+<p>You can use the <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code>psych</code> package to produce a complete summary of multiple variables at once.</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the range of anime scores</span></span>
-<span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>range_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>range_score
-9</code></pre>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>
-<strong>Range</strong>: The range is the difference between the highest and lowest score, which is <strong>9</strong>. This indicates that anime scores in this dataset range from a minimum score of <strong>1</strong> to a maximum score of <strong>10</strong>.</li>
-</ul>
-<p>For <strong>video games</strong> playtime:</p>
+<code class="sourceCode R"><span><span class="co"># Descriptive statistics for all GAD items</span></span>
+<span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GAD1"</span>, <span class="st">"GAD2"</span>, <span class="st">"GAD3"</span>, <span class="st">"GAD4"</span>, <span class="st">"GAD5"</span>, <span class="st">"GAD6"</span>, <span class="st">"GAD7"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<p>This command generates the following for each item:
+- <strong>n</strong>: Number of valid responses
+- <strong>mean</strong>: Average score
+- <strong>sd</strong>: Standard deviation
+- <strong>median</strong>: Middle value
+- <strong>min</strong>/<strong>max</strong>: Range of possible scores (usually 0–3)
+- <strong>skew</strong> and <strong>kurtosis</strong>: Shape of the distribution
+- <strong>se</strong>: Standard error of the mean</p>
+<p>Sample output (simplified):</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Item</th>
+<th>n</th>
+<th>mean</th>
+<th>sd</th>
+<th>median</th>
+<th>min</th>
+<th>max</th>
+<th>skew</th>
+<th>kurtosis</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>GAD1</td>
+<td>13464</td>
+<td>0.86</td>
+<td>0.93</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>0.92</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td>GAD2</td>
+<td>13464</td>
+<td>0.67</td>
+<td>0.92</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>1.24</td>
+<td>0.53</td>
+</tr>
+<tr class="odd">
+<td>GAD3</td>
+<td>13464</td>
+<td>0.97</td>
+<td>0.98</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>0.74</td>
+<td>-0.51</td>
+</tr>
+</tbody>
+</table></div>
+<p>These values let us evaluate whether items are consistently used and where most responses fall.</p>
+<hr>
+</div>
+<div id="exploring-key-psychometric-properties" class="section level3 unnumbered">
+<h3>
+<strong>Exploring Key Psychometric Properties</strong><a class="anchor" aria-label="anchor" href="#exploring-key-psychometric-properties"><i class="fas fa-link"></i></a>
+</h3>
+<p>We can use <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to calculate total or average scores for a scale across its items.</p>
+<div id="create-a-composite-score-for-gad" class="section level4" number="10.3.0.1">
+<h4>
+<span class="header-section-number">10.3.0.1</span> Create a Composite Score for GAD<a class="anchor" aria-label="anchor" href="#create-a-composite-score-for-gad"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create average GAD score for each participant</span></span>
+<span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GAD_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">GAD1</span><span class="op">:</span><span class="va">GAD7</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>This code:
+- Uses <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> to calculate scores for each participant individually
+- Uses <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> to access all 7 GAD items
+- Calculates the <strong>average GAD score</strong> per participant</p>
+<p>We can now describe the resulting composite variable:</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the range of playtime</span></span>
-<span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>range_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>range_playtime
-5670</code></pre>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>
-<strong>Range</strong>: The difference between the maximum and minimum playtime is <strong>5670 hours</strong>, indicating a wide variation in playtimes. Some games have very high playtimes, while others have little or no recorded playtime.</li>
-</ul>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">GAD_score</span><span class="op">)</span></span></code></pre></div>
+<p>Sample summary:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>n</th>
+<th>mean</th>
+<th>sd</th>
+<th>median</th>
+<th>min</th>
+<th>max</th>
+<th>skew</th>
+<th>kurtosis</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>13464</td>
+<td>0.74</td>
+<td>0.67</td>
+<td>0.57</td>
+<td>0</td>
+<td>3</td>
+<td>1.17</td>
+<td>0.92</td>
+</tr></tbody>
+</table></div>
+<p>This tells us that the average GAD score across all participants was <strong>0.74</strong> on a 0–3 scale, suggesting that symptoms of anxiety were relatively low on average in this sample.</p>
+<hr>
 </div>
 </div>
-<div id="variance" class="section level3 unnumbered">
-<h3>Variance<a class="anchor" aria-label="anchor" href="#variance"><i class="fas fa-link"></i></a>
+<div id="reporting-descriptive-statistics-for-psychological-scales" class="section level3 unnumbered">
+<h3>
+<strong>Reporting Descriptive Statistics for Psychological Scales</strong><a class="anchor" aria-label="anchor" href="#reporting-descriptive-statistics-for-psychological-scales"><i class="fas fa-link"></i></a>
 </h3>
-<p>Variance measures how far data points are from the mean. It is calculated by averaging the squared deviations from the mean.</p>
-<div id="why-variance-is-important" class="section level4 unnumbered">
-<h4>Why Variance Is Important<a class="anchor" aria-label="anchor" href="#why-variance-is-important"><i class="fas fa-link"></i></a>
-</h4>
-<p>Variance gives a sense of the overall variability in the data. In media research, it helps understand whether viewer ratings are tightly clustered or widely spread.</p>
-<p>Here’s how to calculate variance for horror movie ratings:</p>
+<p>The same method can be used to compute scale scores for other psychological measures in the dataset.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Compute average scores for SWL and SPIN</span></span>
+<span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    SWL_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">SWL1</span><span class="op">:</span><span class="va">SWL5</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    SPIN_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">SPIN1</span><span class="op">:</span><span class="va">SPIN17</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p>Now you have three scale scores: <code>GAD_score</code>, <code>SWL_score</code>, and <code>SPIN_score</code>.</p>
+<hr>
+</div>
+<div id="preparing-summarized-data-for-visualization-and-further-analysis" class="section level3 unnumbered">
+<h3>
+<strong>Preparing Summarized Data for Visualization and Further Analysis</strong><a class="anchor" aria-label="anchor" href="#preparing-summarized-data-for-visualization-and-further-analysis"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can also group participants and summarize their data. For example, we can compare anxiety and gameplay hours by gender.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the variance of horror movie ratings</span></span>
-<span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>var_vote_avg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>var_vote_avg
-8.271386</code></pre>
-<p><strong>Explanation:</strong></p>
+<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    avg_GAD <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">GAD_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    avg_Hours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p>Sample output:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Gender</th>
+<th>avg_GAD</th>
+<th>avg_Hours</th>
+<th>count</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Female</td>
+<td>1.09</td>
+<td>19.21</td>
+<td>713</td>
+</tr>
+<tr class="even">
+<td>Male</td>
+<td>0.72</td>
+<td>21.73</td>
+<td>12699</td>
+</tr>
+<tr class="odd">
+<td>Other</td>
+<td>1.37</td>
+<td>194.33</td>
+<td>52</td>
+</tr>
+</tbody>
+</table></div>
+<p>From this, we observe:
+- Female respondents reported slightly higher anxiety and slightly lower weekly gaming hours than males.
+- Participants identifying as Other reported both the highest anxiety and extremely high gaming hours, although the small sample size (n = 52) suggests caution in interpreting this result.</p>
+<hr>
+</div>
+</div>
+<div id="creating-tables" class="section level2 unnumbered">
+<h2>Creating Tables<a class="anchor" aria-label="anchor" href="#creating-tables"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once you have calculated your descriptive statistics, the next step is to <strong>present your findings clearly and effectively</strong>. Tables are one of the most common ways to summarize and report results in research articles, presentations, and interactive dashboards.</p>
+<p>This section introduces several R packages that help you create attractive, professional, and informative tables. Each package serves a different purpose:</p>
 <ul>
 <li>
-<strong>Variance</strong>: The variance of the horror movie ratings is <strong>8.27</strong>. Variance measures how much the ratings spread out from the average. A higher variance means there’s a lot of variability in the ratings (some movies are rated very high, others very low).</li>
+<code>reactable</code> for interactive HTML tables</li>
+<li>
+<code>gtsummary</code> for APA-style summary tables</li>
+<li>
+<code>kableExtra</code> for custom formatting in reports</li>
+<li>
+<code>flextable</code> for exporting to Word or PowerPoint</li>
 </ul>
-</div>
-</div>
-<div id="standard-deviation" class="section level3 unnumbered">
-<h3>Standard Deviation<a class="anchor" aria-label="anchor" href="#standard-deviation"><i class="fas fa-link"></i></a>
+<p>All examples use the <code>gaming_data</code> dataset, which includes demographics, psychological scale scores, and gaming habits of over 13,000 online gamers.</p>
+<hr>
+<div id="reactable-interactive-tables-for-web-apps" class="section level3 unnumbered">
+<h3>
+<code>reactable</code> – Interactive Tables for Web Apps<a class="anchor" aria-label="anchor" href="#reactable-interactive-tables-for-web-apps"><i class="fas fa-link"></i></a>
 </h3>
-<p>The <strong>standard deviation</strong> is the square root of the variance. It provides a more interpretable measure of variability since it is expressed in the same units as the data.</p>
-<div id="why-standard-deviation-is-important" class="section level4 unnumbered">
-<h4>Why Standard Deviation Is Important<a class="anchor" aria-label="anchor" href="#why-standard-deviation-is-important"><i class="fas fa-link"></i></a>
+<p><a href="https://glin.github.io/reactable/"><code>reactable</code></a> is a package that creates interactive HTML tables with sorting, searching, and filtering features. These are ideal for dashboards, websites, or exploratory analysis in R Markdown documents.</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glin.github.io/reactable/">reactable</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://glin.github.io/reactable/reference/reactable.html">reactable</a></span><span class="op">(</span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Gender</span>, <span class="va">Age</span>, <span class="va">Hours</span>, <span class="va">GAD_score</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div id="what-this-code-does" class="section level4 unnumbered">
+<h4>What this code does:<a class="anchor" aria-label="anchor" href="#what-this-code-does"><i class="fas fa-link"></i></a>
 </h4>
-<p>The standard deviation is widely used in media research because it shows how consistent or variable audience ratings or playtimes are.</p>
-<p>Here’s how to calculate the standard deviation for <strong>anime</strong> scores:</p>
+<ul>
+<li>Selects the first 10 participants (<code>head(10)</code>)</li>
+<li>Displays their gender, age, weekly gaming hours, and GAD score</li>
+<li>Renders the result as an interactive table</li>
+</ul>
+<p>You can sort columns by clicking on headers, which is useful when browsing datasets with many rows.</p>
+<hr>
+</div>
+</div>
+<div id="gtsummary-publication-ready-summary-tables" class="section level3 unnumbered">
+<h3>
+<code>gtsummary</code> – Publication-Ready Summary Tables<a class="anchor" aria-label="anchor" href="#gtsummary-publication-ready-summary-tables"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://www.danieldsjoberg.com/gtsummary/"><code>gtsummary</code></a> is designed to generate clean, publication-quality summary tables. It is especially useful for comparing groups (e.g., comparing means by gender).</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the standard deviation of anime scores</span></span>
-<span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>sd_score
-0.973677</code></pre>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>
-<strong>Standard Deviation</strong>: The standard deviation is <strong>0.97</strong>, which tells us how much anime scores deviate from the mean score. A smaller standard deviation would indicate that most anime scores are close to the mean, while a larger standard deviation would show that scores are spread out.</li>
-</ul>
-<p>Continuing from where we left off, let’s elaborate on <strong>Interquartile Range (IQR)</strong> and why it’s particularly useful in descriptive analysis, followed by a broader summary of how students can interpret these measures of dispersion in mass communication and media research.</p>
-</div>
-</div>
-<div id="interquartile-range-iqr" class="section level3 unnumbered">
-<h3>Interquartile Range (IQR)<a class="anchor" aria-label="anchor" href="#interquartile-range-iqr"><i class="fas fa-link"></i></a>
-</h3>
-<p>The <strong>IQR</strong> is calculated by subtracting the 25th percentile (Q1) from the 75th percentile (Q3) of the data. This measure focuses on the central spread of the data, providing a more robust understanding of variability, especially in the presence of outliers or skewed distributions.</p>
-<div id="why-iqr-is-important" class="section level4 unnumbered">
-<h4>Why IQR Is Important<a class="anchor" aria-label="anchor" href="#why-iqr-is-important"><i class="fas fa-link"></i></a>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Gender</span>, <span class="va">Age</span>, <span class="va">Hours</span>, <span class="va">GAD_score</span>, <span class="va">SWL_score</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html">tbl_summary</a></span><span class="op">(</span>by <span class="op">=</span> <span class="va">Gender</span>, missing <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/add_p.html">add_p</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div id="what-this-code-does-1" class="section level4 unnumbered">
+<h4>What this code does:<a class="anchor" aria-label="anchor" href="#what-this-code-does-1"><i class="fas fa-link"></i></a>
 </h4>
-<p>The IQR is a great way to assess the <strong>spread of typical values</strong> in a dataset without being influenced by extreme values. In media research, the IQR could help determine typical viewership ranges for television shows or typical ratings for movies, excluding unusually high or low values that may distort the analysis.</p>
-<p>Let’s calculate the IQR for <strong>video games</strong> playtime using <code>dplyr</code>:</p>
+<ul>
+<li>Selects relevant variables for summary</li>
+<li>Groups the data by <code>Gender</code> (e.g., Male, Female, Other)</li>
+<li>Computes descriptive statistics for each group</li>
+<li>Adds <strong>p-values</strong> to test whether the differences between groups are statistically significant</li>
+</ul>
+<p>This type of table is perfect for inclusion in research papers where you compare subgroups on key variables.</p>
+<hr>
+</div>
+</div>
+<div id="kableextra-enhanced-tables-for-academic-writing" class="section level3 unnumbered">
+<h3>
+<code>kableExtra</code> – Enhanced Tables for Academic Writing<a class="anchor" aria-label="anchor" href="#kableextra-enhanced-tables-for-academic-writing"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://haozhu233.github.io/kableExtra/"><code>kableExtra</code></a> enhances basic R tables (created using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable</a></code>) with borders, alignment, and styling options. These are ideal for PDF or HTML reports generated in R Markdown.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">summary_table</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Age</span>, <span class="va">Hours</span>, <span class="va">GAD_score</span><span class="op">)</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">.x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">summary_table</span>, caption <span class="op">=</span> <span class="st">"Average Scores by Gender"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div id="what-this-code-does-2" class="section level4 unnumbered">
+<h4>What this code does:<a class="anchor" aria-label="anchor" href="#what-this-code-does-2"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>Groups data by gender</li>
+<li>Calculates the <strong>mean Age, Hours, and GAD score</strong> for each group</li>
+<li>Creates a basic table using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code>
+</li>
+<li>Applies styling using <code><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling()</a></code> for better formatting</li>
+</ul>
+<p>This is an excellent tool for customizing tables to match journal or classroom submission guidelines.</p>
+<hr>
+</div>
+</div>
+<div id="flextable-word-and-powerpoint-integration" class="section level3 unnumbered">
+<h3>
+<code>flextable</code> – Word and PowerPoint Integration<a class="anchor" aria-label="anchor" href="#flextable-word-and-powerpoint-integration"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://davidgohel.github.io/flextable/"><code>flextable</code></a> is designed for outputting tables to Word documents and PowerPoint presentations. If you’re preparing a research poster or a report for a non-technical audience, this package is a powerful choice.</p>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate the IQR for playtime in video games</span></span>
-<span><span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>IQR_playtime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>IQR_playtime
-0</code></pre>
-<p><strong>Explanation:</strong></p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ardata-fr.github.io/flextable-book/">flextable</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">summary_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html">flextable</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/set_caption.html">set_caption</a></span><span class="op">(</span><span class="st">"Average Hours and Anxiety Scores by Gender"</span><span class="op">)</span></span></code></pre></div>
+<div id="what-this-code-does-3" class="section level4 unnumbered">
+<h4>What this code does:<a class="anchor" aria-label="anchor" href="#what-this-code-does-3"><i class="fas fa-link"></i></a>
+</h4>
 <ul>
-<li>
-<strong>IQR (Interquartile Range)</strong>: The IQR is <strong>0</strong>, which means that the middle 50% of the data (from the 25th to the 75th percentile) has the same value, indicating that most of the recorded playtimes are likely very small or close to zero.</li>
+<li>Uses the <code>summary_table</code> previously created</li>
+<li>Converts it into a <code>flextable</code> object</li>
+<li>Adds a caption for clarity</li>
 </ul>
-<p>This calculation focuses on the middle 50% of playtime values, which can reveal what the “typical” playtime for most users looks like, while ignoring extreme playtimes that might distort the analysis.</p>
+<p><code>flextable</code> outputs can be directly exported to Word or PowerPoint using the <code>officer</code> package, making it easy to integrate formatted results into a polished deliverable.</p>
+<hr>
 </div>
 </div>
-<div id="summary-of-dispersion-measures" class="section level3 unnumbered">
-<h3>Summary of Dispersion Measures<a class="anchor" aria-label="anchor" href="#summary-of-dispersion-measures"><i class="fas fa-link"></i></a>
+<div id="summary-2" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-2"><i class="fas fa-link"></i></a>
 </h3>
-<p>Measures of dispersion complement measures of central tendency by providing insights into how spread out or variable the data is. Here’s a breakdown of when to use each:</p>
-<ul>
-<li>
-<strong>Range</strong>: Gives the simplest view of spread but is sensitive to outliers.
-<ul>
-<li>Example: The range of anime ratings helps determine the difference between the highest and lowest user scores.</li>
-</ul>
-</li>
-<li>
-<strong>Variance</strong>: Quantifies overall variability by measuring how far each value is from the mean.
-<ul>
-<li>Example: The variance in movie ratings reveals how much viewer opinion varies for different horror films.</li>
-</ul>
-</li>
-<li>
-<strong>Standard Deviation</strong>: A more interpretable measure of dispersion, expressed in the same units as the data. It shows how closely clustered values are around the mean.
-<ul>
-<li>Example: The standard deviation of video game playtime helps understand how consistent or varied player engagement is.</li>
-</ul>
-</li>
-<li>
-<strong>Interquartile Range (IQR)</strong>: Focuses on the middle 50% of the data, excluding outliers. It is useful for skewed datasets.
-<ul>
-<li>Example: The IQR of horror movie ratings tells us the spread of typical viewer ratings, without being skewed by a few extremely high or low ratings.</li>
-</ul>
-</li>
-</ul>
-<p>Together, these measures of dispersion provide a more complete picture of the dataset, helping researchers to assess whether their data is tightly clustered or spread out, consistent or varied, and to what extent outliers are influencing the results.</p>
-</div>
-</div>
-<div id="using-skimr-for-quick-descriptive-analysis" class="section level2" number="10.3">
-<h2>
-<span class="header-section-number">10.3</span> Using <code>skimr</code> for Quick Descriptive Analysis<a class="anchor" aria-label="anchor" href="#using-skimr-for-quick-descriptive-analysis"><i class="fas fa-link"></i></a>
-</h2>
-<p>The <code>skimr</code> package offers a quick and comprehensive summary of a dataset, including both central tendency and dispersion measures. It’s a great tool for providing students with an overview of their data before diving deeper into analysis.</p>
-<div id="convert-the-date-columns-to-a-proper-date-format" class="section level3" number="10.3.1">
-<h3>
-<span class="header-section-number">10.3.1</span> Convert the date columns to a proper date format<a class="anchor" aria-label="anchor" href="#convert-the-date-columns-to-a-proper-date-format"><i class="fas fa-link"></i></a>
-</h3>
-<p>You can use <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> to ensure your date and time data are in the correct format.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Convert date columns to Date format</span></span>
-<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">start_date</span>, format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span><span class="op">)</span>,</span>
-<span>         end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">end_date</span>, format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>This assumes the dates are in “YYYY-MM-DD” format. If they are in another format, adjust the <code>format</code> argument accordingly.</p>
-</div>
-<div id="run-skim-after-fixing-the-dates" class="section level3" number="10.3.2">
-<h3>
-<span class="header-section-number">10.3.2</span> Run <code>skim()</code> after fixing the dates<a class="anchor" aria-label="anchor" href="#run-skim-after-fixing-the-dates"><i class="fas fa-link"></i></a>
-</h3>
-<p>Once the dates are properly formatted, you can run <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> again to get a summary of the dataset:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Quick summary of the anime dataset</span></span>
-<span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output 1 (General Summary)</strong>:
-- <strong>Name</strong>: anime
-- <strong>Number of rows</strong>: 77,911 (number of observations)
-- <strong>Number of columns</strong>: 28 (number of variables)
-- <strong>Data types</strong>: Most columns are character (17), with 8 numeric, 2 date, and 1 logical.</p>
-<p><strong>Output 2 (Column Details)</strong>:
-- This part of the output provides detailed information about individual columns. For example:
-- <strong>name</strong>: No missing values, with 13,628 unique entries.
-- <strong>episodes</strong>: Has 987 missing values, median is 12 episodes, and the max is 3,057 episodes.</p>
-<p><strong>Explanation</strong>:
-- <strong>skim()</strong> gives a comprehensive overview of the dataset, including missing values, column types, unique values, and basic statistics like min, max, and median. This helps you quickly understand the structure and quality of the data before analyzing it further.</p>
-<p>This command will give you a detailed summary of each variable, including counts, missing values, mean, median, standard deviation, min/max values, and more. The <code>skimr</code> package is particularly useful because it provides a concise summary in an easy-to-read format, making it ideal for exploratory data analysis.</p>
-</div>
-</div>
-<div id="using-the-psych-package-for-descriptive-statistics" class="section level2" number="10.4">
-<h2>
-<span class="header-section-number">10.4</span> Using the <code>psych</code> Package for Descriptive Statistics<a class="anchor" aria-label="anchor" href="#using-the-psych-package-for-descriptive-statistics"><i class="fas fa-link"></i></a>
-</h2>
-<p>The <code>psych</code> package also offers advanced functions for summary statistics, which are especially useful in media research. This package simplifies descriptive and inferential statistics and makes it easy to calculate multiple statistics at once.</p>
-<p>Here’s how to calculate a wide range of descriptive statistics for the <strong>horror_movies</strong> dataset:</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Summary statistics using psych</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>vars  n      mean  sd   median  trimmed  mad  min  max  range  skew  kurtosis  se
-X1    1   32540   3.34  2.88    4       3.17   3.71   0    10   10   0.13  -1.18  0.02</code></pre>
-<p><strong>Explanation</strong>:
-- <strong>Mean (3.34)</strong>: Average rating for horror movies.
-- <strong>Median (4)</strong>: The middle value, showing that half the movies have a rating lower than 4, and half have a rating higher.
-- <strong>Standard Deviation (2.88)</strong>: This shows there’s a wide range of ratings, as ratings deviate quite a bit from the average.
-- <strong>Range (10)</strong>: Movies are rated between 0 and 10.
-- <strong>Skew (0.13)</strong>: A slightly positive skew, meaning the data is somewhat skewed to the right (a few high ratings).
-- <strong>Kurtosis (-1.18)</strong>: Negative kurtosis indicates the distribution is flatter than normal (fewer extreme values).</p>
-<p>This command provides the mean, standard deviation, min/max values, and additional metrics like skewness and kurtosis, which can help you understand the shape and distribution of the data.</p>
-<p>For the <strong>video_games</strong> dataset:</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Summary statistics for video game playtime</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Output:</strong></p>
-<pre><code>vars  n      mean   sd    median trimmed   mad   min  max   range skew  kurtosis  se
-X1    1    26679   9.06  117.94  0        0       0     5670  5670  27.03  948.55  0.72</code></pre>
-<p><strong>Explanation</strong>:
-- <strong>Mean Playtime (9.06 hours)</strong>: On average, people spend around 9 hours playing video games, though this average may not represent typical behavior because of the extreme variation in playtime.
-- <strong>Median Playtime (0 hours)</strong>: This indicates that at least 50% of the video games have a playtime of zero, meaning many games in the dataset might not have much recorded playtime or are rarely played.
-- <strong>Standard Deviation (117.94 hours)</strong>: This large value suggests that there is a significant variation in playtime among video games. While many games have little to no playtime, some have extremely high playtimes.
-- <strong>Range (5,670 hours)</strong>: The difference between the longest and shortest playtimes is 5,670 hours, showing that a few games have very long playtimes.
-- <strong>Skewness (27.03)</strong>: The highly positive skew indicates that most of the playtimes are clustered at the lower end (near zero), with a few extreme values pulling the distribution to the right.
-- <strong>Kurtosis (948.55)</strong>: The extremely high kurtosis value suggests the distribution has heavy tails and outliers, meaning that a few games with very long playtimes are significantly influencing the distribution.
-- <strong>Standard Error (SE = 0.72)</strong>: This represents the average error in the estimation of the mean. Given the large standard deviation and skew, the standard error is relatively low, but the distribution remains highly variable.</p>
-<p>This command gives you a broad view of the central tendencies and variability in the dataset, helping you spot trends and outliers before performing more advanced analyses.</p>
-</div>
-<div id="interpreting-descriptive-statistics-in-media-research" class="section level2" number="10.5">
-<h2>
-<span class="header-section-number">10.5</span> Interpreting Descriptive Statistics in Media Research<a class="anchor" aria-label="anchor" href="#interpreting-descriptive-statistics-in-media-research"><i class="fas fa-link"></i></a>
-</h2>
-<div id="putting-it-all-together" class="section level3 unnumbered">
-<h3>Putting It All Together<a class="anchor" aria-label="anchor" href="#putting-it-all-together"><i class="fas fa-link"></i></a>
-</h3>
-<p>In mass communication research, descriptive statistics help answer fundamental questions about media content, viewer engagement, and user behavior. By calculating measures of central tendency and dispersion, students can gain valuable insights into how media is consumed, rated, and discussed.</p>
-<p>For instance:</p>
-<ul>
-<li>
-<strong>Viewer Ratings</strong>: Understanding the mean and standard deviation of movie ratings can help researchers identify whether certain films are polarizing or generally well-received.</li>
-<li>
-<strong>Playtime</strong>: Analyzing the IQR of video game playtime can reveal the most common engagement patterns, highlighting whether most players engage briefly or deeply with the content.</li>
-<li>
-<strong>Media Content</strong>: Finding the mode of genres or themes can help researchers pinpoint what type of content is most frequently produced and consumed.</li>
-</ul>
-<p>Descriptive statistics form the backbone of media research, offering a clear, structured way to summarize complex data and make it interpretable. Whether you’re analyzing anime ratings, video game playtimes, or horror movie genres, these tools provide a foundation for deeper statistical analyses and meaningful insights.</p>
-</div>
-<div id="summary-and-learning-points-for-beginners" class="section level3 unnumbered">
-<h3>Summary and Learning Points for Beginners:<a class="anchor" aria-label="anchor" href="#summary-and-learning-points-for-beginners"><i class="fas fa-link"></i></a>
-</h3>
-<p>In these examples, you have explored various descriptive statistics for data sets related to horror movies, anime, and video games. Here’s a recap of the key statistics covered:</p>
-<ul>
-<li>
-<strong>Mean</strong>: A measure of central tendency that provides the “average” value of the dataset.</li>
-<li>
-<strong>Median</strong>: The middle value of the data, useful when there are outliers or skewed data distributions.</li>
-<li>
-<strong>Mode</strong>: The most frequently occurring value, particularly useful for categorical data.</li>
-<li>
-<strong>Range</strong>: The difference between the maximum and minimum values, showing how spread out the data is.</li>
-<li>
-<strong>Variance and Standard Deviation</strong>: Measures of how much the data varies or deviates from the mean. The standard deviation is often preferred because it is in the same units as the data.</li>
-<li>
-<strong>Interquartile Range (IQR)</strong>: A measure of the spread of the middle 50% of the data, used to understand variability without being influenced by extreme values.</li>
-<li>
-<strong>Skewness and Kurtosis</strong>: Skewness describes the symmetry of the data, while kurtosis indicates whether the data has heavy tails or outliers compared to a normal distribution.</li>
-</ul>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="19%">
+<col width="55%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th>Package</th>
+<th>Best For</th>
+<th>Output Format</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>reactable</code></td>
+<td>Interactive web-based data exploration</td>
+<td>HTML</td>
+</tr>
+<tr class="even">
+<td><code>gtsummary</code></td>
+<td>APA-style summary tables with statistics</td>
+<td>HTML, PDF</td>
+</tr>
+<tr class="odd">
+<td><code>kableExtra</code></td>
+<td>Custom tables for academic reports</td>
+<td>PDF, HTML</td>
+</tr>
+<tr class="even">
+<td><code>flextable</code></td>
+<td>Exporting to Word or PowerPoint</td>
+<td>DOCX, PPTX</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each tool supports a different stage of the research process, from internal data review to final presentation. As you progress through the course, you’ll use these packages to report your survey results with professionalism and clarity.</p>
+
 </div>
 </div>
 </div>
@@ -496,34 +886,39 @@ X1    1    26679   9.06  117.94  0        0       0     5670  5670  27.03  948.5
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#descriptive-analysis"><span class="header-section-number">10</span> Descriptive Analysis</a></li>
+<li><a class="nav-link" href="#overview-1"><span class="header-section-number">10.1</span> Overview</a></li>
 <li>
-<a class="nav-link" href="#measures-of-central-tendency"><span class="header-section-number">10.1</span> Measures of Central Tendency</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#mean-arithmetic-average">Mean (Arithmetic Average)</a></li>
-<li><a class="nav-link" href="#median">Median</a></li>
-<li><a class="nav-link" href="#mode">Mode</a></li>
-<li><a class="nav-link" href="#comparing-mean-median-and-mode">Comparing Mean, Median, and Mode</a></li>
+<a class="nav-link" href="#basic-descriptive-statistics"><span class="header-section-number">10.2</span> Basic Descriptive Statistics</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#measures-of-central-tendency">Measures of Central Tendency</a></li>
+<li><a class="nav-link" href="#calculating-central-tendency-in-r">Calculating Central Tendency in R</a></li>
+<li><a class="nav-link" href="#sample-output-based-on-real-data">📊 Sample Output (Based on Real Data)</a></li>
+<li><a class="nav-link" href="#when-to-use-each-measure">When to Use Each Measure</a></li>
+<li><a class="nav-link" href="#summary">Summary</a></li>
+<li><a class="nav-link" href="#measures-of-dispersion">Measures of Dispersion</a></li>
+<li><a class="nav-link" href="#calculating-dispersion-in-r">Calculating Dispersion in R</a></li>
+<li><a class="nav-link" href="#sample-output">🧪 Sample Output</a></li>
+<li><a class="nav-link" href="#interpretation">Interpretation</a></li>
+<li><a class="nav-link" href="#summary-table">Summary Table</a></li>
+<li><a class="nav-link" href="#why-dispersion-matters">Why Dispersion Matters</a></li>
+<li><a class="nav-link" href="#describing-categorical-data">Describing Categorical Data</a></li>
+<li><a class="nav-link" href="#summary-1">Summary</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#measures-of-dispersion"><span class="header-section-number">10.2</span> Measures of Dispersion</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#range">Range</a></li>
-<li><a class="nav-link" href="#variance">Variance</a></li>
-<li><a class="nav-link" href="#standard-deviation">Standard Deviation</a></li>
-<li><a class="nav-link" href="#interquartile-range-iqr">Interquartile Range (IQR)</a></li>
-<li><a class="nav-link" href="#summary-of-dispersion-measures">Summary of Dispersion Measures</a></li>
+<a class="nav-link" href="#using-psych-for-descriptive-statistics"><span class="header-section-number">10.3</span> Using psych for Descriptive Statistics</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#generating-descriptive-reports">Generating Descriptive Reports</a></li>
+<li><a class="nav-link" href="#exploring-key-psychometric-properties">Exploring Key Psychometric Properties</a></li>
+<li><a class="nav-link" href="#reporting-descriptive-statistics-for-psychological-scales">Reporting Descriptive Statistics for Psychological Scales</a></li>
+<li><a class="nav-link" href="#preparing-summarized-data-for-visualization-and-further-analysis">Preparing Summarized Data for Visualization and Further Analysis</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#using-skimr-for-quick-descriptive-analysis"><span class="header-section-number">10.3</span> Using skimr for Quick Descriptive Analysis</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#convert-the-date-columns-to-a-proper-date-format"><span class="header-section-number">10.3.1</span> Convert the date columns to a proper date format</a></li>
-<li><a class="nav-link" href="#run-skim-after-fixing-the-dates"><span class="header-section-number">10.3.2</span> Run skim() after fixing the dates</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#using-the-psych-package-for-descriptive-statistics"><span class="header-section-number">10.4</span> Using the psych Package for Descriptive Statistics</a></li>
-<li>
-<a class="nav-link" href="#interpreting-descriptive-statistics-in-media-research"><span class="header-section-number">10.5</span> Interpreting Descriptive Statistics in Media Research</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#putting-it-all-together">Putting It All Together</a></li>
-<li><a class="nav-link" href="#summary-and-learning-points-for-beginners">Summary and Learning Points for Beginners:</a></li>
+<a class="nav-link" href="#creating-tables">Creating Tables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reactable-interactive-tables-for-web-apps">reactable – Interactive Tables for Web Apps</a></li>
+<li><a class="nav-link" href="#gtsummary-publication-ready-summary-tables">gtsummary – Publication-Ready Summary Tables</a></li>
+<li><a class="nav-link" href="#kableextra-enhanced-tables-for-academic-writing">kableExtra – Enhanced Tables for Academic Writing</a></li>
+<li><a class="nav-link" href="#flextable-word-and-powerpoint-integration">flextable – Word and PowerPoint Integration</a></li>
+<li><a class="nav-link" href="#summary-2">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -542,7 +937,7 @@ X1    1    26679   9.06  117.94  0        0       0     5670  5670  27.03  948.5
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-01.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

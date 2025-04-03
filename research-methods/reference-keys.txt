@@ -64,13 +64,10 @@ inputting-data
 manipulating-data
 cleaning-the-data-to-include-only-valid-survey-responses
 descriptive-analysis
-measures-of-central-tendency
-measures-of-dispersion
-using-skimr-for-quick-descriptive-analysis
-convert-the-date-columns-to-a-proper-date-format
-run-skim-after-fixing-the-dates
-using-the-psych-package-for-descriptive-statistics
-interpreting-descriptive-statistics-in-media-research
+overview-1
+basic-descriptive-statistics
+using-psych-for-descriptive-statistics
+create-a-composite-score-for-gad
 inferential-analysis
 introduction-1
 chi-square-test-of-independence
