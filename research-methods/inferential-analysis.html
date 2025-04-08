@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 11 Inferential Analysis | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
-<meta name="description" content="[Chunk Version]  11.1 Introduction In mass communication research, inferential statistics enable researchers to draw conclusions about larger populations based on data collected from smaller...">
+<meta name="description" content="[Chunk Version] Goal: Teach students how to conduct and interpret hypothesis tests that generalize findings beyond the current sample, using tidyverse-friendly methods.  11.1 🎯 Learning Objectives...">
 <meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="Chapter 11 Inferential Analysis | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/inferential-analysis.html">
 <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
-<meta property="og:description" content="[Chunk Version]  11.1 Introduction In mass communication research, inferential statistics enable researchers to draw conclusions about larger populations based on data collected from smaller...">
+<meta property="og:description" content="[Chunk Version] Goal: Teach students how to conduct and interpret hypothesis tests that generalize findings beyond the current sample, using tidyverse-friendly methods.  11.1 🎯 Learning Objectives...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 11 Inferential Analysis | An Introduction to Research Methods in Mass Media">
-<meta name="twitter:description" content="[Chunk Version]  11.1 Introduction In mass communication research, inferential statistics enable researchers to draw conclusions about larger populations based on data collected from smaller...">
+<meta name="twitter:description" content="[Chunk Version] Goal: Teach students how to conduct and interpret hypothesis tests that generalize findings beyond the current sample, using tidyverse-friendly methods.  11.1 🎯 Learning Objectives...">
 <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -74,703 +74,864 @@
 <h1>
 <span class="header-section-number">11</span> Inferential Analysis<a class="anchor" aria-label="anchor" href="#inferential-analysis"><i class="fas fa-link"></i></a>
 </h1>
-<p><a href="files/10-inferential_stats-chunk.Rmd">[Chunk Version]</a></p>
-<div id="introduction-1" class="section level2" number="11.1">
+<p>[<a href="https://sim-lab-siue.github.io/research-methods/files/10-inferential_stats-chunk.Rmd">Chunk Version</a>]</p>
+<p><strong>Goal</strong>: Teach students how to conduct and interpret hypothesis tests that generalize findings beyond the current sample, using <code>tidyverse</code>-friendly methods.</p>
+<hr>
+<div id="learning-objectives" class="section level2" number="11.1">
 <h2>
-<span class="header-section-number">11.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.1</span> 🎯 Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"><i class="fas fa-link"></i></a>
 </h2>
-<p>In mass communication research, inferential statistics enable researchers to draw conclusions about larger populations based on data collected from smaller samples. Unlike descriptive statistics, which summarize data points, inferential statistics focus on making inferences or predictions that extend beyond immediate observations. These statistical tools allow researchers to test hypotheses, assess relationships among variables, and predict behaviors within audiences, media, and broader communication phenomena.</p>
-<p>This chapter introduces several key inferential analyses commonly used in media studies, including the Chi-Square Test of Independence, T-tests, Analysis of Variance (ANOVA), and Regression Analysis. Each analysis type serves specific research purposes, ranging from comparing categorical data to exploring relationships and predicting outcomes. Together, these techniques equip researchers with the tools needed to address a wide range of research questions in communication studies, helping to reveal underlying patterns and connections in media interactions and audience behavior.</p>
-<div id="loading-necessary-r-packages" class="section level3 unnumbered">
-<h3>Loading Necessary R Packages<a class="anchor" aria-label="anchor" href="#loading-necessary-r-packages"><i class="fas fa-link"></i></a>
+<p>By the end of this section, students will be able to:</p>
+<ul>
+<li>Explain what inferential statistics are and why they are used</li>
+<li>Conduct and interpret common tests: t-tests, ANOVA, correlation, and regression</li>
+<li>Report p-values and effect sizes using tidy output</li>
+<li>Use either base R or the <code>infer</code> package for hypothesis testing</li>
+</ul>
+<hr>
+</div>
+<div id="overview-2" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> 🧭 Overview<a class="anchor" aria-label="anchor" href="#overview-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>While <strong>descriptive statistics</strong> summarize what happened in a dataset, <strong>inferential statistics</strong> help us make claims about a larger population based on that sample. In media research, inferential tests are used to answer questions such as:</p>
+<ul>
+<li>Do men and women differ in anxiety?</li>
+<li>Does time spent gaming predict life satisfaction?</li>
+<li>Are different gaming platforms associated with different social anxiety levels?</li>
+</ul>
+<p>Each of these requires comparing <strong>groups</strong> or assessing <strong>relationships</strong>, which is the foundation of inferential analysis.</p>
+<hr>
+</div>
+<div id="t-tests-comparing-two-groups" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> 4.1 T-Tests: Comparing Two Groups<a class="anchor" aria-label="anchor" href="#t-tests-comparing-two-groups"><i class="fas fa-link"></i></a>
+</h2>
+<div id="what-is-a-t-test" class="section level3" number="11.3.1">
+<h3>
+<span class="header-section-number">11.3.1</span> 💡 What Is a T-Test?<a class="anchor" aria-label="anchor" href="#what-is-a-t-test"><i class="fas fa-link"></i></a>
 </h3>
-<p>The following packages are required to execute the analyses presented in this chapter. Each package plays a unique role in data manipulation, visualization, or statistical testing, which will be clarified in the sections that follow.</p>
+<p>A <strong>t-test</strong> is a statistical method used to determine whether the means of two groups are statistically different. In mass communication research, t-tests are commonly used to test whether psychological traits or media behaviors differ between groups—such as comparing <strong>anxiety</strong>, <strong>life satisfaction</strong>, or <strong>social phobia</strong> between <strong>gender identities</strong>.</p>
+<p>We will walk through three independent samples t-tests using the <code>gaming_data</code> dataset.</p>
+<hr>
+</div>
+<div id="example-research-question" class="section level3" number="11.3.2">
+<h3>
+<span class="header-section-number">11.3.2</span> 🧪 Example Research Question<a class="anchor" aria-label="anchor" href="#example-research-question"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>RQ2</strong> – <em>Do reported anxiety, satisfaction with life, or social phobia levels differ by gender identity?</em></p>
+<p>We will compare participants who identified as <strong>Male</strong> and those who identified as <strong>Other</strong>. Participants identifying as <strong>Female</strong> are excluded from this analysis, either due to incomplete data or low cell size.</p>
+<hr>
+</div>
+<div id="required-packages" class="section level3 unnumbered">
+<h3>📦 Required Packages<a class="anchor" aria-label="anchor" href="#required-packages"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install and load necessary packages</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://r-datatable.com">"data.table"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"data.table"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://personality-project.org/r/psych/">"psych"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"psych"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://andrisignorell.github.io/DescTools/">"DescTools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DescTools"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://easystats.github.io/effectsize/">"effectsize"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"effectsize"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://rvlenth.github.io/emmeans/">"emmeans"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"emmeans"</span><span class="op">)</span></span></code></pre></div>
-<ul>
-<li>
-<strong>data.table</strong>: Efficiently handles large datasets, particularly useful when working with substantial media-related data files.</li>
-<li>
-<strong>dplyr</strong>: Facilitates data manipulation and cleaning, ensuring datasets are structured appropriately for each analysis type.</li>
-<li>
-<strong>psych</strong>: Provides functions for descriptive statistics and inferential tests essential in social science research.</li>
-<li>
-<strong>DescTools</strong>: Extends base R functionality, offering additional tools for hypothesis testing and statistical analysis.</li>
-</ul>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>   <span class="co"># for data manipulation</span></span></code></pre></div>
+<hr>
 </div>
-<div id="loading-the-datasets" class="section level3 unnumbered">
-<h3>Loading the Datasets<a class="anchor" aria-label="anchor" href="#loading-the-datasets"><i class="fas fa-link"></i></a>
+<div id="load-and-prepare-the-dataset" class="section level3 unnumbered">
+<h3>📂 Load and Prepare the Dataset<a class="anchor" aria-label="anchor" href="#load-and-prepare-the-dataset"><i class="fas fa-link"></i></a>
 </h3>
-<p>The analyses in this chapter utilize four distinct datasets from various domains in media studies, loaded from external sources to ensure reproducibility. The datasets include <code>anime</code>, <code>horror_movies</code>, <code>survivor</code>, and <code>video_games</code>, each of which has a corresponding data dictionary to help interpret variables and structure. Below, we load these datasets and briefly describe their contents.</p>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load datasets</span></span>
-<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
-<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
-<span><span class="va">survivor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-06-01/summary.csv"</span><span class="op">)</span></span>
-<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"gaming_anxiety.csv"</span>, encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Standardize Gender categories</span></span>
+<span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Gender <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"male"</span>, <span class="va">Gender</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Male"</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="va">Gender</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Female"</span>,</span>
+<span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Other"</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<hr>
 </div>
-<div id="drop-scientific-notation" class="section level3 unnumbered">
-<h3>Drop Scientific Notation<a class="anchor" aria-label="anchor" href="#drop-scientific-notation"><i class="fas fa-link"></i></a>
+</div>
+<div id="t-test-results" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> 📈 T-Test Results<a class="anchor" aria-label="anchor" href="#t-test-results"><i class="fas fa-link"></i></a>
+</h2>
+<div id="t-test-1-gad_t-generalized-anxiety" class="section level3" number="11.4.1">
+<h3>
+<span class="header-section-number">11.4.1</span> ✅ T-Test #1: GAD_T (Generalized Anxiety)<a class="anchor" aria-label="anchor" href="#t-test-1-gad_t-generalized-anxiety"><i class="fas fa-link"></i></a>
 </h3>
-<p>The following option allows you to stop scientific notation.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>scipen <span class="op">=</span> <span class="fl">999</span><span class="op">)</span> </span></code></pre></div>
-<p><strong>Dataset Overviews</strong>:
-- <strong>Anime (<code>tidy_anime.csv</code>)</strong>: Contains information on anime titles, genres, ratings, and related features. This dataset provides insights into audience preferences and trends within anime viewership.
-- <strong>Horror Movies (<code>horror_movies.csv</code>)</strong>: Focuses on horror film attributes, including genre, average rating, and viewer demographics, useful for examining genre-specific patterns.
-- <strong>Survivor (<code>summary.csv</code>)</strong>: Summarizes data from the reality TV show <em>Survivor</em>, with details on seasons, contestants, and competition outcomes. This dataset aids in studying audience interest and media representation in reality TV.
-- <strong>Video Games (<code>video_games.csv</code>)</strong>: Offers data on video game titles, genres, release dates, and player ratings. This dataset supports research on gaming trends, player behavior, and genre appeal.</p>
-<p>These datasets provide a diverse foundation for practicing various inferential analyses throughout this chapter. Researchers can consult the respective data dictionaries to understand variable meanings and data structures, as these resources will aid in interpreting results from the analyses to follow.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">GAD_T</span> <span class="op">~</span> <span class="va">Gender</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span></code></pre></div>
+<div id="output-summary" class="section level4" number="11.4.1.1">
+<h4>
+<span class="header-section-number">11.4.1.1</span> Output Summary:<a class="anchor" aria-label="anchor" href="#output-summary"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<strong>Male Mean</strong> = 5.19</li>
+<li>
+<strong>Other Mean</strong> = 7.71</li>
+<li>
+<strong>t(99.74)</strong> = -3.86, <strong>p</strong> &lt; .001</li>
+<li>
+<strong>95% CI</strong>: [-3.81, -1.22]</li>
+</ul>
+</div>
+<div id="interpretation-1" class="section level4" number="11.4.1.2">
+<h4>
+<span class="header-section-number">11.4.1.2</span> Interpretation:<a class="anchor" aria-label="anchor" href="#interpretation-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Participants identifying as <em>Other</em> reported significantly higher anxiety (GAD) scores compared to those identifying as <em>Male</em>. The difference in means was over 2.5 points on the scale, with a very low probability that this occurred by chance.</p>
+</div>
+<div id="apa-style-write-up" class="section level4" number="11.4.1.3">
+<h4>
+<span class="header-section-number">11.4.1.3</span> APA-style Write-up:<a class="anchor" aria-label="anchor" href="#apa-style-write-up"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>An independent samples t-test found that participants identifying as Other (M = 7.71) reported significantly higher anxiety scores than male participants (M = 5.19), <em>t</em>(99.74) = -3.86, <em>p</em> &lt; .001, 95% CI [-3.81, -1.22].</p>
+</blockquote>
+<hr>
 </div>
 </div>
-<div id="chi-square-test-of-independence" class="section level2" number="11.2">
-<h2>
-<span class="header-section-number">11.2</span> Chi-Square Test of Independence<a class="anchor" aria-label="anchor" href="#chi-square-test-of-independence"><i class="fas fa-link"></i></a>
-</h2>
-<p>The Chi-Square Test of Independence assesses whether a statistically significant association exists between two categorical variables. This non-parametric test does not assume a normal distribution, making it ideal for categorical data. The chi-square test reveals whether certain groups show distinct preferences or behaviors.</p>
-<p><em>Analysis Overview</em></p>
-<p>The Chi-Square Test of Independence examines the association between categorical variables by comparing observed frequencies with expected frequencies if the variables were independent. In this example, we analyze whether two major genre combinations—<strong>Horror, Thriller</strong> and <strong>Comedy, Horror</strong>—are associated with different levels of average movie ratings.</p>
-<p><em>Type of Data</em></p>
-<p>The test requires two categorical variables, each with at least two levels. Here, we use: - <strong><code>genre_names</code></strong>: Representing two combinations of genres in the horror movie dataset. - <strong><code>vote_average_category</code></strong>: A categorical version of movie ratings, binned into “Low,” “Medium,” and “High.”</p>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, we filter the <code>horror_movies</code> dataset to focus on movies that fall under either <strong>Horror, Thriller</strong> or <strong>Comedy, Horror</strong> genres. We then categorize the movie ratings into low, medium, and high categories before calculating the crosstab table and performing the chi-square test. After the chi-square test, we use <code>cramers_v</code> from the <code>effectsize</code> package to calculate the effect size.</p>
+<div id="t-test-2-swl_t-satisfaction-with-life" class="section level3" number="11.4.2">
+<h3>
+<span class="header-section-number">11.4.2</span> ✅ T-Test #2: SWL_T (Satisfaction With Life)<a class="anchor" aria-label="anchor" href="#t-test-2-swl_t-satisfaction-with-life"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Filter for desired genres and create a binned category for vote_average</span></span>
-<span><span class="va">thriller_comedy</span> <span class="op">&lt;-</span> <span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">genre_names</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Horror, Thriller"</span>, <span class="st">"Comedy, Horror"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vote_average_category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">vote_average</span>, </span>
-<span>                                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span>,</span>
-<span>                                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Crosstab of genre and vote average category</span></span>
-<span><span class="va">table_genre_ratings</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">thriller_comedy</span><span class="op">$</span><span class="va">genre_names</span>, <span class="va">thriller_comedy</span><span class="op">$</span><span class="va">vote_average_category</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">table_genre_ratings</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Perform chi-square test</span></span>
-<span><span class="va">chi_square_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">table_genre_ratings</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">chi_square_result</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Cramér's V)</span></span>
-<span><span class="va">effect_size_chi_square</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/phi.html">cramers_v</a></span><span class="op">(</span><span class="va">chi_square_result</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_chi_square</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output of the chi-square test provides the following information:</p>
-<pre><code>    Pearson's Chi-squared test
-
-data:  table_genre_ratings
-X-squared = 26.392, df = 2, p-value = 0.000001858
-
-# Crosstab Output
-                    Low Medium High
-  Comedy, Horror    448   1059  202
-  Horror, Thriller  575   1668  190
-
-# Effect Size Output (Cramér's V)
-Cramer's V (adj.) |       95% CI
---------------------------------
-0.08              | [0.05, 1.00]</code></pre>
-<p><em>Output Explanation</em></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">SWL_T</span> <span class="op">~</span> <span class="va">Gender</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span></code></pre></div>
+<div id="output-summary-1" class="section level4" number="11.4.2.1">
+<h4>
+<span class="header-section-number">11.4.2.1</span> Output Summary:<a class="anchor" aria-label="anchor" href="#output-summary-1"><i class="fas fa-link"></i></a>
+</h4>
 <ul>
 <li>
-<strong>X-squared</strong>: This test statistic reflects the degree of association between genre and rating category. A higher X-squared value suggests a greater difference between observed and expected counts.</li>
+<strong>Male Mean</strong> = 19.79</li>
 <li>
-<strong>df</strong>: Degrees of freedom, calculated as <span class="math inline">\((\text{rows} - 1) \times (\text{columns} - 1)\)</span>, which in this case equals 2.</li>
+<strong>Other Mean</strong> = 16.09</li>
 <li>
-<strong>p-value</strong>: A significant p-value (e.g., <span class="math inline">\(p = 1.858 \times 10^{-6}\)</span>) indicates a statistically significant association between genre and rating category.</li>
+<strong>t(99.12)</strong> = 4.60, <strong>p</strong> &lt; .001</li>
 <li>
-<strong>Cramér’s</strong> <span class="math inline">\(V\)</span>: The effect size measure for chi-square tests of independence. In this example, a Cramér’s <span class="math inline">\(V\)</span> of 0.05 suggests a small effect size, indicating that while the association is statistically significant, the relationship between genre and rating categories is weak.</li>
+<strong>95% CI</strong>: [2.10, 5.30]</li>
 </ul>
-<p><strong>Additional Interpretation</strong>: A significant p-value indicates that genre and rating categories are associated, suggesting that certain genres tend to have specific rating distributions. However, a small Cramér’s <span class="math inline">\(V\)</span> effect size (0.05) suggests that this association, while statistically significant, is not practically strong. Researchers might explore additional variables or contexts for more robust associations.</p>
 </div>
-<div id="t-tests" class="section level2" number="11.3">
-<h2>
-<span class="header-section-number">11.3</span> T-tests<a class="anchor" aria-label="anchor" href="#t-tests"><i class="fas fa-link"></i></a>
-</h2>
-<p>T-tests are statistical methods used to compare the means of one or more groups. In mass communication research, t-tests can help evaluate differences in viewer engagement, ratings, or preferences between distinct groups or conditions. T-tests rely on assumptions such as normally distributed data and homogeneity of variances, making them ideal for continuous data.</p>
-<div id="single-sample-t-test" class="section level3 unnumbered">
-<h3>Single Sample T-test<a class="anchor" aria-label="anchor" href="#single-sample-t-test"><i class="fas fa-link"></i></a>
+<div id="interpretation-2" class="section level4" number="11.4.2.2">
+<h4>
+<span class="header-section-number">11.4.2.2</span> Interpretation:<a class="anchor" aria-label="anchor" href="#interpretation-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>Participants identifying as <em>Male</em> reported significantly higher life satisfaction than those identifying as <em>Other</em>. The difference was statistically significant with a large effect size.</p>
+</div>
+<div id="apa-style-write-up-1" class="section level4" number="11.4.2.3">
+<h4>
+<span class="header-section-number">11.4.2.3</span> APA-style Write-up:<a class="anchor" aria-label="anchor" href="#apa-style-write-up-1"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>Male participants (M = 19.79) reported significantly higher life satisfaction than those identifying as Other (M = 16.09), <em>t</em>(99.12) = 4.60, <em>p</em> &lt; .001, 95% CI [2.10, 5.30].</p>
+</blockquote>
+<hr>
+</div>
+</div>
+<div id="t-test-3-spin_t-social-phobia-inventory" class="section level3" number="11.4.3">
+<h3>
+<span class="header-section-number">11.4.3</span> ✅ T-Test #3: SPIN_T (Social Phobia Inventory)<a class="anchor" aria-label="anchor" href="#t-test-3-spin_t-social-phobia-inventory"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>Analysis Overview</em></p>
-<p>The single sample t-test compares the mean of a single group to a known value or population mean. This test is suitable when researchers want to determine if the average score of a sample differs significantly from a theoretical or historical benchmark.</p>
-<p><strong>Example</strong>: Comparing the mean rating of horror movies to the average IMDb rating of 6.2 to see if horror movies are rated differently on average.</p>
-<p><em>Type of Data</em></p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">SPIN_T</span> <span class="op">~</span> <span class="va">Gender</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span></code></pre></div>
+<div id="output-summary-2" class="section level4" number="11.4.3.1">
+<h4>
+<span class="header-section-number">11.4.3.1</span> Output Summary:<a class="anchor" aria-label="anchor" href="#output-summary-2"><i class="fas fa-link"></i></a>
+</h4>
 <ul>
-<li>Continuous data for the sample mean.</li>
-<li>A known comparison mean (population mean).</li>
+<li>
+<strong>Male Mean</strong> = 19.79</li>
+<li>
+<strong>Other Mean</strong> = 25.38</li>
+<li>
+<strong>t(95.85)</strong> = -3.20, <strong>p</strong> = .002</li>
+<li>
+<strong>95% CI</strong>: [-9.04, -2.12]</li>
 </ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, we use the <code>horror_movies</code> dataset to test whether the mean rating deviates from the IMDb average rating of 6.2. We then calculate Cohen’s <span class="math inline">\(d\)</span> effect size using the <code>effectsize</code> package to quantify the size of this difference.</p>
+</div>
+<div id="interpretation-3" class="section level4" number="11.4.3.2">
+<h4>
+<span class="header-section-number">11.4.3.2</span> Interpretation:<a class="anchor" aria-label="anchor" href="#interpretation-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>Participants identifying as <em>Other</em> reported significantly higher levels of social phobia than male participants. The difference is statistically significant and suggests a meaningful difference in social anxiety symptoms between the two groups.</p>
+</div>
+<div id="apa-style-write-up-2" class="section level4" number="11.4.3.3">
+<h4>
+<span class="header-section-number">11.4.3.3</span> APA-style Write-up:<a class="anchor" aria-label="anchor" href="#apa-style-write-up-2"><i class="fas fa-link"></i></a>
+</h4>
+<blockquote>
+<p>A significant difference was found in social phobia scores, with participants identifying as Other (M = 25.38) scoring higher than male participants (M = 19.79), <em>t</em>(95.85) = -3.20, <em>p</em> = .002, 95% CI [-9.04, -2.12].</p>
+</blockquote>
+<hr>
+</div>
+</div>
+</div>
+<div id="recap-of-key-terms" class="section level2" number="11.5">
+<h2>
+<span class="header-section-number">11.5</span> 🔁 Recap of Key Terms<a class="anchor" aria-label="anchor" href="#recap-of-key-terms"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="25%">
+<col width="75%">
+</colgroup>
+<thead><tr class="header">
+<th>Term</th>
+<th>Meaning</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>t-value</strong></td>
+<td>Measures how far apart the means are, in standard error units</td>
+</tr>
+<tr class="even">
+<td><strong>Degrees of freedom (df)</strong></td>
+<td>Adjusted sample size for variance</td>
+</tr>
+<tr class="odd">
+<td><strong>p-value</strong></td>
+<td>Probability that the observed difference is due to random chance</td>
+</tr>
+<tr class="even">
+<td><strong>Confidence interval (CI)</strong></td>
+<td>Range of likely values for the true difference in means</td>
+</tr>
+<tr class="odd">
+<td><strong>Mean (M)</strong></td>
+<td>The group’s average score</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="summary-table-1" class="section level2" number="11.6">
+<h2>
+<span class="header-section-number">11.6</span> ✅ Summary Table<a class="anchor" aria-label="anchor" href="#summary-table-1"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="22%">
+</colgroup>
+<thead><tr class="header">
+<th>Outcome Variable</th>
+<th>Male Mean</th>
+<th>Other Mean</th>
+<th>t(df)</th>
+<th>p-value</th>
+<th>95% CI</th>
+<th>Interpretation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>GAD_T (Anxiety)</td>
+<td>5.19</td>
+<td>7.71</td>
+<td>-3.86</td>
+<td>&lt; .001</td>
+<td>[-3.81, -1.22]</td>
+<td>Other group more anxious</td>
+</tr>
+<tr class="even">
+<td>SWL_T (Satisfaction)</td>
+<td>19.79</td>
+<td>16.09</td>
+<td>4.60</td>
+<td>&lt; .001</td>
+<td>[2.10, 5.30]</td>
+<td>Males more satisfied with life</td>
+</tr>
+<tr class="odd">
+<td>SPIN_T (Social Phobia)</td>
+<td>19.79</td>
+<td>25.38</td>
+<td>-3.20</td>
+<td>.002</td>
+<td>[-9.04, -2.12]</td>
+<td>Other group has higher social anxiety</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="anova-comparing-more-than-two-groups" class="section level2" number="11.7">
+<h2>
+<span class="header-section-number">11.7</span> 4.2 ANOVA: Comparing More Than Two Groups<a class="anchor" aria-label="anchor" href="#anova-comparing-more-than-two-groups"><i class="fas fa-link"></i></a>
+</h2>
+<div id="what-is-anova" class="section level3" number="11.7.1">
+<h3>
+<span class="header-section-number">11.7.1</span> 💡 What Is ANOVA?<a class="anchor" aria-label="anchor" href="#what-is-anova"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Analysis of Variance (ANOVA)</strong> is a statistical test used to determine whether the <strong>means of three or more independent groups</strong> are significantly different from one another. While t-tests compare two group means, ANOVA can assess multiple groups in one test, reducing the risk of Type I errors from multiple comparisons.</p>
+<hr>
+</div>
+<div id="research-question" class="section level3" number="11.7.2">
+<h3>
+<span class="header-section-number">11.7.2</span> 🧪 Research Question<a class="anchor" aria-label="anchor" href="#research-question"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>RQ4</strong> – <em>Does the type of gaming platform (PC, Console, or Smartphone/Tablet) affect social phobia levels among players?</em></p>
+<p>We use the <strong>SPIN_T</strong> variable (total score on the Social Phobia Inventory) as the outcome and <strong>Platform</strong> (Console, PC, Smartphone/Tablet) as the grouping variable.</p>
+<hr>
+</div>
+<div id="required-packages-1" class="section level3" number="11.7.3">
+<h3>
+<span class="header-section-number">11.7.3</span> 📦 Required Packages<a class="anchor" aria-label="anchor" href="#required-packages-1"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Perform single sample t-test</span></span>
-<span><span class="va">t_test_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span>, mu <span class="op">=</span> <span class="fl">6.2</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display test results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">t_test_single</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Cohen's d)</span></span>
-<span><span class="va">effect_size_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/t_to_r.html">t_to_d</a></span><span class="op">(</span><span class="va">t_test_single</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">t_test_single</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_single</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output for the single sample t-test includes the t-statistic, degrees of freedom, p-value, and confidence interval. Example output:</p>
-<pre><code>    One Sample t-test
-
-data:  horror_movies$vote_average
-t = -179.65, df = 32539, p-value &lt; 0.00000000000000022
-alternative hypothesis: true mean is not equal to 6.2
-95 percent confidence interval:
- 3.304479 3.366978
-sample estimates:
-mean of x 
- 3.335728 
-
-d     |         95% CI
-----------------------
--1.99 | [-2.02, -1.97]</code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>t</strong>: The t-statistic indicates the strength and direction of the difference.</li>
-<li>
-<strong>df</strong>: Degrees of freedom, which equals the sample size minus one.</li>
-<li>
-<strong>p-value</strong>: A p-value below the threshold (e.g., 0.05) suggests that the sample mean significantly differs from 6.2.</li>
-<li>
-<strong>Confidence Interval</strong>: Provides a range within which the true mean difference is likely to fall.</li>
-<li>
-<strong>Cohen’s</strong> <span class="math inline">\(d\)</span>: An effect size of -1.98 indicates a large effect, meaning that the difference between the horror movie ratings and the IMDb average is not only statistically significant but also substantial.</li>
-</ul>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>   <span class="co"># For data wrangling</span></span></code></pre></div>
+<hr>
 </div>
-<div id="independent-samples-t-test" class="section level3 unnumbered">
-<h3>Independent Samples T-test<a class="anchor" aria-label="anchor" href="#independent-samples-t-test"><i class="fas fa-link"></i></a>
+<div id="run-the-anova-test" class="section level3" number="11.7.4">
+<h3>
+<span class="header-section-number">11.7.4</span> 📂 Run the ANOVA Test<a class="anchor" aria-label="anchor" href="#run-the-anova-test"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>Analysis Overview</em></p>
-<p>The independent samples t-test compares the means of two separate groups. This test is appropriate for analyzing differences between independent groups, such as comparing viewer ratings between anime based on manga and original anime.</p>
-<p><em>Type of Data</em></p>
-<ul>
-<li>Continuous data for each group.</li>
-<li>Two independent groups.</li>
-</ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, we use the <code>anime</code> dataset to test whether ratings differ between anime based on manga and original anime. After performing the t-test, we use the <code>t_to_d</code> function to calculate Cohen’s <span class="math inline">\(d\)</span> effect size for the difference.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Filter for two source types</span></span>
-<span><span class="va">original_manga</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Manga"</span>, <span class="st">"Original"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Perform independent samples t-test</span></span>
-<span><span class="va">t_test_independent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">original_manga</span><span class="op">$</span><span class="va">score</span> <span class="op">~</span> <span class="va">original_manga</span><span class="op">$</span><span class="va">source</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display test results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">t_test_independent</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Cohen's d) for independent samples t-test</span></span>
-<span><span class="va">effect_size_independent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/t_to_r.html">t_to_d</a></span><span class="op">(</span><span class="va">t_test_independent</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">t_test_independent</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_independent</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output for the independent samples t-test includes the t-statistic, degrees of freedom, p-value, and confidence interval. Example output:</p>
-<pre><code>    Welch Two Sample t-test
-
-data:  original_manga$score by original_manga$source
-t = 65.474, df = 28574, p-value &lt; 0.00000000000000022
-alternative hypothesis: true difference in means between group Manga and group Original is not equal to 0
-95 percent confidence interval:
- 0.6240156 0.6625298
-sample estimates:
-   mean in group Manga mean in group Original 
-              7.317174               6.673901 
-
-d    |       95% CI
--------------------
-0.77 | [0.75, 0.80]</code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>t</strong>: Indicates the direction of the difference.</li>
-<li>
-<strong>p-value</strong>: A significant p-value suggests a meaningful difference in ratings between manga-based and original anime.</li>
-<li>
-<strong>Confidence Interval</strong>: Indicates the range of the mean difference.</li>
-<li>
-<strong>Cohen’s</strong> <span class="math inline">\(d\)</span>: An effect size of 0.82 indicates a large effect, suggesting that manga-based and original anime differ substantially in average ratings.</li>
-</ul>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">anova_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">SPIN_T</span> <span class="op">~</span> <span class="va">Platform</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_model</span><span class="op">)</span></span></code></pre></div>
+<div id="output" class="section level4" number="11.7.4.1">
+<h4>
+<span class="header-section-number">11.7.4.1</span> Output:<a class="anchor" aria-label="anchor" href="#output"><i class="fas fa-link"></i></a>
+</h4>
+<pre><code>              Df  Sum Sq Mean Sq F value Pr(&gt;F)  
+Platform        2    1278   639.1   3.521 0.0296 *
+Residuals   13475 2446360   181.5                 
+721 observations deleted due to missingness</code></pre>
+<hr>
 </div>
-<div id="paired-samples-t-test" class="section level3 unnumbered">
-<h3>Paired Samples T-test<a class="anchor" aria-label="anchor" href="#paired-samples-t-test"><i class="fas fa-link"></i></a>
+</div>
+<div id="interpretation-4" class="section level3" number="11.7.5">
+<h3>
+<span class="header-section-number">11.7.5</span> 🔍 Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-4"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>Analysis Overview</em></p>
-<p>The paired samples t-test compares two related measurements, such as pre- and post-test scores for the same group. This test is useful for evaluating changes within a single sample over time or across conditions.</p>
-<p><strong>Example</strong>: Comparing viewers for the premier and finale episodes of a season in the <code>survivor</code> dataset to assess shifts in viewer interest.</p>
-<p><em>Type of Data</em></p>
 <ul>
-<li>Continuous data from the same subjects or matched pairs in two conditions.</li>
+<li>The <strong>F statistic is 3.52</strong> with <strong>2 and 13,475 degrees of freedom</strong>
+</li>
+<li>The <strong>p-value is .030</strong>, which is <strong>statistically significant at the .05 level</strong>
+</li>
+<li>This suggests that there is a <strong>significant difference in SPIN_T scores across at least one pair of platforms</strong>
+</li>
 </ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, we test for significant differences between premier and finale viewership, then calculate Cohen’s <span class="math inline">\(d\)</span> for paired samples to quantify the effect size.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Perform paired samples t-test</span></span>
-<span><span class="va">paired_t_test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">survivor</span><span class="op">$</span><span class="va">viewers_premier</span>, <span class="va">survivor</span><span class="op">$</span><span class="va">viewers_finale</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display test results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">paired_t_test_result</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Cohen's d) for paired samples t-test</span></span>
-<span><span class="va">effect_size_paired</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/t_to_r.html">t_to_d</a></span><span class="op">(</span><span class="va">paired_t_test_result</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">paired_t_test_result</span><span class="op">$</span><span class="va">parameter</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_paired</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output for the paired samples t-test includes the t-statistic, degrees of freedom, p-value, and confidence interval for the mean difference.</p>
-<pre><code>    Paired t-test
-
-data:  survivor$viewers_premier and survivor$viewers_finale
-t = -0.76096, df = 39, p-value = 0.4513
-alternative hypothesis: true mean difference is not equal to 0
-95 percent confidence interval:
- -2.764596  1.253096
-sample estimates:
-mean difference 
-       -0.75575 
-
-d     |        95% CI
----------------------
--0.12 | [-0.44, 0.19]</code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>t</strong>: Reflects the difference in means between paired scores.</li>
-<li>
-<strong>p-value</strong>: A significant p-value would indicate a significant difference between premier and finale viewership.</li>
-<li>
-<strong>Confidence Interval</strong>: Indicates the range of the mean difference between conditions.</li>
-<li>
-<strong>Cohen’s</strong> <span class="math inline">\(d\)</span>: An effect size of -0.12 suggests a small effect, indicating that the difference between premier and finale viewership is minimal and not practically significant.</li>
-</ul>
+<p>However, ANOVA alone does not tell us which specific groups differ. For that, we run a post-hoc test.</p>
+<hr>
+</div>
+<div id="tukey-hsd-post-hoc-test" class="section level3" number="11.7.6">
+<h3>
+<span class="header-section-number">11.7.6</span> ✅ Tukey HSD Post-Hoc Test<a class="anchor" aria-label="anchor" href="#tukey-hsd-post-hoc-test"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova_model</span><span class="op">)</span></span></code></pre></div>
+<div id="output-1" class="section level4" number="11.7.6.1">
+<h4>
+<span class="header-section-number">11.7.6.1</span> Output:<a class="anchor" aria-label="anchor" href="#output-1"><i class="fas fa-link"></i></a>
+</h4>
+<pre><code>$Platform
+                                                 diff       lwr       upr     p adj
+PC-Console (PS, Xbox, ...)                  -1.666     -3.808     0.477     0.162
+Smartphone / Tablet-Console (PS, Xbox, ...)  3.907     -3.154    10.967     0.397
+Smartphone / Tablet-PC                       5.572     -1.167    12.311     0.128</code></pre>
+<hr>
 </div>
 </div>
-<div id="analysis-of-variance-anova" class="section level2" number="11.4">
+<div id="post-hoc-interpretation" class="section level3" number="11.7.7">
+<h3>
+<span class="header-section-number">11.7.7</span> 📘 Post-Hoc Interpretation<a class="anchor" aria-label="anchor" href="#post-hoc-interpretation"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>None</strong> of the pairwise comparisons reach statistical significance (<em>p</em> &gt; .05)</li>
+<li>However, the <strong>Smartphone/Tablet</strong> group shows the <strong>highest average SPIN_T score</strong>
+</li>
+<li>The comparison between <strong>Smartphone/Tablet and PC</strong> approaches significance (<em>p</em> = 0.128), suggesting a potentially meaningful difference that might reach significance in a larger sample</li>
+</ul>
+<hr>
+</div>
+<div id="group-descriptive-statistics" class="section level3" number="11.7.8">
+<h3>
+<span class="header-section-number">11.7.8</span> 📊 Group Descriptive Statistics<a class="anchor" aria-label="anchor" href="#group-descriptive-statistics"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Platform</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_SPIN <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">SPIN_T</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            sd_SPIN <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">SPIN_T</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Platform</th>
+<th>Mean SPIN_T</th>
+<th>SD</th>
+<th>n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Console (PS, Xbox, …)</td>
+<td>21.46</td>
+<td>13.77</td>
+<td>234</td>
+</tr>
+<tr class="even">
+<td>PC</td>
+<td>19.79</td>
+<td>13.46</td>
+<td>13,941</td>
+</tr>
+<tr class="odd">
+<td>Smartphone / Tablet</td>
+<td>25.36</td>
+<td>19.03</td>
+<td>24</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="apa-7-style-summary" class="section level3" number="11.7.9">
+<h3>
+<span class="header-section-number">11.7.9</span> 📝 APA 7-Style Summary<a class="anchor" aria-label="anchor" href="#apa-7-style-summary"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>A one-way ANOVA revealed a statistically significant difference in social phobia scores across gaming platforms, <em>F</em>(2, 13,475) = 3.52, <em>p</em> = .030. Although Tukey post-hoc comparisons did not reveal statistically significant pairwise differences, participants who played primarily on smartphones or tablets (M = 25.36, SD = 19.03) had higher average SPIN_T scores than those on consoles (M = 21.46, SD = 13.77) or PCs (M = 19.79, SD = 13.46).</p>
+</blockquote>
+<hr>
+</div>
+<div id="summary-3" class="section level3" number="11.7.10">
+<h3>
+<span class="header-section-number">11.7.10</span> 🧠 Summary<a class="anchor" aria-label="anchor" href="#summary-3"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="28%">
+<col width="18%">
+<col width="18%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Comparison</th>
+<th>p-value</th>
+<th>Significant?</th>
+<th>Notes</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>PC vs. Console</td>
+<td>0.162</td>
+<td>No</td>
+<td>Slight difference, not significant</td>
+</tr>
+<tr class="even">
+<td>Smartphone/Tablet vs. Console</td>
+<td>0.397</td>
+<td>No</td>
+<td>Large difference, but high variability</td>
+</tr>
+<tr class="odd">
+<td>Smartphone/Tablet vs. PC</td>
+<td>0.128</td>
+<td>No</td>
+<td>Largest mean difference, small sample</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="teaching-tip" class="section level3" number="11.7.11">
+<h3>
+<span class="header-section-number">11.7.11</span> 🔁 Teaching Tip<a class="anchor" aria-label="anchor" href="#teaching-tip"><i class="fas fa-link"></i></a>
+</h3>
+<p>Although ANOVA found a significant result, the <strong>small sample size for Smartphone/Tablet users (n = 24)</strong> likely reduced statistical power in the post-hoc tests. This is a teachable moment about:</p>
+<ul>
+<li>Power and sample size</li>
+<li>The importance of examining both <strong>p-values</strong> and <strong>descriptive statistics</strong>
+</li>
+<li>Reporting trends responsibly when full significance isn’t reached</li>
+</ul>
+<hr>
+</div>
+</div>
+<div id="correlation-examining-associations-between-two-variables" class="section level2" number="11.8">
 <h2>
-<span class="header-section-number">11.4</span> Analysis of Variance (ANOVA)<a class="anchor" aria-label="anchor" href="#analysis-of-variance-anova"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.8</span> 4.3 Correlation: Examining Associations Between Two Variables<a class="anchor" aria-label="anchor" href="#correlation-examining-associations-between-two-variables"><i class="fas fa-link"></i></a>
 </h2>
-<p>ANOVA (Analysis of Variance) tests whether significant differences exist among the means of three or more groups. Unlike t-tests, which compare only two groups, ANOVA enables researchers to examine multiple groups simultaneously, making it ideal for comparing variables across different demographic or experimental conditions in mass communication research.</p>
-<div id="one-way-anova" class="section level3 unnumbered">
-<h3>One-Way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"><i class="fas fa-link"></i></a>
+<div id="what-is-correlation" class="section level3" number="11.8.1">
+<h3>
+<span class="header-section-number">11.8.1</span> 💡 What Is Correlation?<a class="anchor" aria-label="anchor" href="#what-is-correlation"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>Analysis Overview</em></p>
-<p>One-way ANOVA assesses differences in a continuous dependent variable across multiple levels of a single categorical independent variable. This test is useful when examining the effect of one factor on an outcome, such as differences in viewer ratings across various genres or publishers.</p>
-<p><strong>Example</strong>: Using the <code>video_games</code> dataset, we test whether metascores vary significantly across top publishers.</p>
-<p><em>Type of Data</em></p>
+<p>A <strong>correlation</strong> is a statistical method that tests whether two numeric variables move together in a predictable pattern. In media and communication research, correlations can help us examine whether, for example, the amount of time someone spends gaming is related to their psychological well-being.</p>
+<p>Correlations are used when both variables are <strong>continuous</strong> and measured on an interval or ratio scale (e.g., hours, scale scores).</p>
+<hr>
+</div>
+<div id="research-question-1" class="section level3" number="11.8.2">
+<h3>
+<span class="header-section-number">11.8.2</span> 🧪 Research Question<a class="anchor" aria-label="anchor" href="#research-question-1"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>RQ3</strong> – <em>Are hours spent gaming associated with anxiety, satisfaction with life, or social phobia?</em></p>
+<p>To answer this question, we will test three <strong>Pearson correlations</strong>:</p>
 <ul>
 <li>
-<strong>Dependent Variable</strong>: Continuous data (e.g., metascores).</li>
+<strong>Hours ~ GAD_T</strong> (Generalized Anxiety Disorder)</li>
 <li>
-<strong>Independent Variable</strong>: Categorical with three or more levels (e.g., publishers).</li>
+<strong>Hours ~ SWL_T</strong> (Satisfaction With Life)</li>
+<li>
+<strong>Hours ~ SPIN_T</strong> (Social Phobia Inventory)</li>
 </ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, one-way ANOVA tests whether average metascores differ across the top three publishers in the <code>video_games</code> dataset. After performing the ANOVA, we calculate effect size using <code>eta_squared</code> from the <code>effectsize</code> package. Since the ANOVA is significant, we also run a post hoc Tukey HSD test using the <code>emmeans</code> package to identify specific differences between publishers.</p>
+<hr>
+</div>
+<div id="required-r-code" class="section level3" number="11.8.3">
+<h3>
+<span class="header-section-number">11.8.3</span> ✅ Required R Code<a class="anchor" aria-label="anchor" href="#required-r-code"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Filter for top publishers</span></span>
-<span><span class="va">top_game_publishers</span> <span class="op">&lt;-</span> <span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">publisher</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SEGA"</span>, <span class="st">"Ubisoft"</span>, <span class="st">"Square Enix"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Perform one-way ANOVA</span></span>
-<span><span class="va">one_way_aov_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">metascore</span> <span class="op">~</span> <span class="va">publisher</span>, data <span class="op">=</span> <span class="va">top_game_publishers</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display ANOVA summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">one_way_aov_results</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Eta-squared)</span></span>
-<span><span class="va">effect_size_one_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">eta_squared</a></span><span class="op">(</span><span class="va">one_way_aov_results</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_one_way</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Post Hoc Test - Tukey HSD</span></span>
-<span><span class="va">posthoc_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvlenth.github.io/emmeans/reference/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">one_way_aov_results</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">publisher</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">posthoc_results</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output for one-way ANOVA includes the F-statistic, degrees of freedom, p-value, and effect size. Example output:</p>
-<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)
-publisher     2    207  103.53   1.322  0.269
-Residuals   171  13387   78.29               
-185 observations deleted due to missingness
-
-For one-way between subjects designs, partial eta squared is equivalent to
-  eta squared. Returning eta squared.
-  
-# Effect Size for ANOVA
-
-Parameter | Eta2 |       95% CI
--------------------------------
-publisher | 0.02 | [0.00, 1.00]
-
-- One-sided CIs: upper bound fixed at [1.00].$emmeans
- publisher   emmean    SE  df lower.CL upper.CL
- SEGA          76.2 1.350 171     73.5     78.8
- Square Enix   74.6 1.290 171     72.0     77.1
- Ubisoft       77.2 0.965 171     75.3     79.1
-
-Confidence level used: 0.95 
-
-$contrasts
- contrast              estimate   SE  df t.ratio p.value
- SEGA - Square Enix        1.57 1.87 171   0.839  0.6792
- SEGA - Ubisoft           -1.05 1.66 171  -0.634  0.8017
- Square Enix - Ubisoft    -2.62 1.61 171  -1.625  0.2380
-
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>F-statistic</strong>: Represents the ratio of variance between groups to variance within groups. Higher F values indicate stronger group effects.</li>
-<li>
-<strong>p-value</strong>: If the p-value is below the significance threshold (e.g., 0.05), we reject the null hypothesis, concluding that there are significant differences among publishers. In this example, however, the p-value (0.269) suggests that the differences in metascores between publishers are not statistically significant.</li>
-<li>
-<strong>Eta-squared</strong>: The effect size measure for ANOVA, Eta-squared, shows the proportion of variance in metascores explained by the publisher. Here, an Eta-squared of 0.02 suggests a very small effect size, indicating that publisher has minimal influence on metascores.</li>
-<li>
-<strong>Tukey HSD Post Hoc</strong>: Provides pairwise comparisons between each publisher’s metascores. None of the comparisons here are statistically significant, as indicated by the high p-values (e.g., <span class="math inline">\(p = 0.6792\)</span> for SEGA vs. Square Enix).</li>
-</ul>
-<p>Overall, the non-significant p-value, small effect size, and lack of significant pairwise differences suggest that metascores do not vary significantly across these publishers, and publisher is likely not a strong predictor of metascore variability in this dataset.</p>
-</div>
-<div id="two-way-anova" class="section level3 unnumbered">
-<h3>Two-Way ANOVA<a class="anchor" aria-label="anchor" href="#two-way-anova"><i class="fas fa-link"></i></a>
-</h3>
-<p><em>Analysis Overview</em></p>
-<p>Two-way ANOVA assesses the effect of two independent variables and their interaction on a continuous dependent variable. This test is suitable when researchers wish to understand not only the main effects of each factor but also whether there is an interaction effect between them.</p>
-<p><strong>Example</strong>: Examining the impact of genre (<code>genre_names</code>) and language (<code>original_language</code>) on horror movie ratings in the <code>thriller_comedy</code> data subset.</p>
-<p><em>Type of Data</em></p>
-<ul>
-<li>
-<strong>Dependent Variable</strong>: Continuous data (e.g., movie ratings).</li>
-<li>
-<strong>Independent Variables</strong>: Two categorical variables, each with two or more levels.</li>
-</ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, two-way ANOVA tests the effect of <code>genre_names</code> and <code>original_language</code> on <code>vote_average</code> for <strong>Comedy, Horror</strong> and <strong>Horror, Thriller</strong> films across the top three non-English languages. We calculate effect size (partial eta-squared) using the <code>effectsize</code> package and conduct post hoc comparisons with the <code>emmeans</code> package to examine specific group differences within the interaction.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Filter for top non-English languages for selected genres</span></span>
-<span><span class="va">thriller_comedy_languages</span> <span class="op">&lt;-</span> <span class="va">thriller_comedy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">original_language</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"es"</span>, <span class="st">"ja"</span>, <span class="st">"de"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Perform two-way ANOVA</span></span>
-<span><span class="va">aov_results_two_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">vote_average</span> <span class="op">~</span> <span class="va">genre_names</span> <span class="op">*</span> <span class="va">original_language</span>, data <span class="op">=</span> <span class="va">thriller_comedy_languages</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display ANOVA summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">aov_results_two_way</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Partial Eta-squared)</span></span>
-<span><span class="va">effect_size_two_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">eta_squared</a></span><span class="op">(</span><span class="va">aov_results_two_way</span>, partial <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_two_way</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Post Hoc Test - Tukey HSD for interaction term</span></span>
-<span><span class="va">posthoc_results_two_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvlenth.github.io/emmeans/reference/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_results_two_way</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">genre_names</span> <span class="op">*</span> <span class="va">original_language</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">posthoc_results_two_way</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output for two-way ANOVA includes the F-statistic and p-value for each main effect and interaction term, as well as the effect size.</p>
-<pre><code>                               Df Sum Sq Mean Sq F value Pr(&gt;F)  
-genre_names                     1     48   48.23   6.053 0.0142 *
-original_language               2      4    2.22   0.279 0.7567  
-genre_names:original_language   2     16    7.76   0.974 0.3784  
-Residuals                     488   3888    7.97                 
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-# Effect Size for ANOVA (Type I)
-
-Parameter                     | Eta2 (partial) |       95% CI
--------------------------------------------------------------
-genre_names                   |           0.01 | [0.00, 1.00]
-original_language             |       1.14e-03 | [0.00, 1.00]
-genre_names:original_language |       3.98e-03 | [0.00, 1.00]
-
-- One-sided CIs: upper bound fixed at [1.00].$emmeans
- genre_names      original_language emmean    SE  df lower.CL upper.CL
- Comedy, Horror   de                  2.95 0.342 488     2.27     3.62
- Horror, Thriller de                  4.15 0.416 488     3.33     4.97
- Comedy, Horror   es                  3.26 0.266 488     2.74     3.78
- Horror, Thriller es                  3.87 0.238 488     3.40     4.34
- Comedy, Horror   ja                  3.29 0.395 488     2.52     4.07
- Horror, Thriller ja                  3.46 0.326 488     2.82     4.10
-
-Confidence level used: 0.95 
-
-$contrasts
- contrast                                  estimate    SE  df t.ratio p.value
- Comedy, Horror de - Horror, Thriller de    -1.2051 0.539 488  -2.236  0.2230
- Comedy, Horror de - Comedy, Horror es      -0.3140 0.433 488  -0.725  0.9789
- Comedy, Horror de - Horror, Thriller es    -0.9210 0.417 488  -2.210  0.2349
- Comedy, Horror de - Comedy, Horror ja      -0.3451 0.523 488  -0.660  0.9861
- Comedy, Horror de - Horror, Thriller ja    -0.5156 0.473 488  -1.091  0.8850
- Horror, Thriller de - Comedy, Horror es     0.8911 0.494 488   1.805  0.4634
- Horror, Thriller de - Horror, Thriller es   0.2841 0.479 488   0.593  0.9915
- Horror, Thriller de - Comedy, Horror ja     0.8600 0.574 488   1.498  0.6655
- Horror, Thriller de - Horror, Thriller ja   0.6895 0.529 488   1.304  0.7826
- Comedy, Horror es - Horror, Thriller es    -0.6070 0.356 488  -1.703  0.5303
- Comedy, Horror es - Comedy, Horror ja      -0.0311 0.476 488  -0.065  1.0000
- Comedy, Horror es - Horror, Thriller ja    -0.2016 0.420 488  -0.480  0.9969
- Horror, Thriller es - Comedy, Horror ja     0.5759 0.461 488   1.249  0.8125
- Horror, Thriller es - Horror, Thriller ja   0.4054 0.403 488   1.005  0.9162
- Comedy, Horror ja - Horror, Thriller ja    -0.1705 0.512 488  -0.333  0.9995
-
-P value adjustment: tukey method for comparing a family of 6 estimates </code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>Main Effects</strong>: The F-statistics and p-values for <code>genre_names</code> and <code>original_language</code> show whether each has a statistically significant effect on <code>vote_average</code>. Here, <code>genre_names</code> is significant (<span class="math inline">\(p = 0.0142\)</span>), indicating that genres differ in their ratings, whereas <code>original_language</code> does not have a significant effect (<span class="math inline">\(p = 0.7567\)</span>).</li>
-<li>
-<strong>Interaction Effect</strong>: The F-statistic and p-value for <code>genre_names:original_language</code> suggest that the interaction between genre and language is not statistically significant (<span class="math inline">\(p = 0.3784\)</span>), meaning that the effect of genre on ratings does not vary substantially by language.</li>
-<li>
-<strong>Partial Eta-squared</strong>: The effect sizes indicate that <code>genre_names</code> has a small effect (0.01), while <code>original_language</code> and the interaction term have very small effect sizes, suggesting that their influence on ratings is minimal.</li>
-<li>
-<strong>Tukey HSD Post Hoc</strong>: Provides pairwise comparisons for each level within the interaction, identifying any significant differences between combinations of genres and languages. In this example, none of the pairwise comparisons are significant, indicating that while genres differ overall, no specific genre-language combinations differ significantly in terms of ratings.</li>
-</ul>
-<p>The results suggest a significant effect of genre on ratings with a small effect size, but no significant effect of language or interaction between genre and language. This implies that genre has a modest influence on ratings, while language and genre-language interactions do not contribute meaningfully to rating differences.</p>
-</div>
-<div id="ancova-analysis-of-covariance" class="section level3 unnumbered">
-<h3>ANCOVA (Analysis of Covariance)<a class="anchor" aria-label="anchor" href="#ancova-analysis-of-covariance"><i class="fas fa-link"></i></a>
-</h3>
-<p><em>Analysis Overview</em></p>
-<p>ANCOVA extends ANOVA by including one or more continuous covariates. This technique assesses group differences while controlling for potential confounding variables, making it useful for isolating the effect of categorical variables on a dependent variable.</p>
-<p><strong>Example</strong>: Using the <code>anime</code> dataset, we examine whether anime ratings differ by <code>source</code>, while controlling for <code>genre</code> as an additional factor.</p>
-<p><em>Type of Data</em></p>
-<ul>
-<li>
-<strong>Dependent Variable</strong>: Continuous data (e.g., anime scores).</li>
-<li>
-<strong>Independent Variable</strong>: Categorical with two or more levels (e.g., source).</li>
-<li>
-<strong>Covariate</strong>: Continuous or categorical variable to control for confounding effects (e.g., genre).</li>
-</ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, ANCOVA tests if score differences by <code>source</code> persist when controlling for <code>genre</code>. We calculate partial eta-squared as the effect size using the <code>effectsize</code> package. Additionally, we perform a post hoc Tukey HSD test using the <code>emmeans</code> package to examine specific pairwise differences between sources.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Perform ANCOVA</span></span>
-<span><span class="va">ancova_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">source</span> <span class="op">+</span> <span class="va">genre</span>, data <span class="op">=</span> <span class="va">original_manga</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display ANCOVA summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ancova_results</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate effect size (Partial Eta-squared)</span></span>
-<span><span class="va">effect_size_ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">eta_squared</a></span><span class="op">(</span><span class="va">ancova_results</span>, partial <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_ancova</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Post Hoc Test - Tukey HSD for source</span></span>
-<span><span class="va">posthoc_results_ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvlenth.github.io/emmeans/reference/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">ancova_results</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">source</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">posthoc_results_ancova</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The ANCOVA output includes the F-statistic and p-values for the main effects of <code>source</code> and <code>genre</code>, indicating if group differences persist after accounting for the covariate.</p>
-<p>Example output:</p>
-<pre><code>               Df Sum Sq Mean Sq F value              Pr(&gt;F)    
-source          1   4338    4338  5526.7 &lt;0.0000000000000002 ***
-genre          40   4189     105   133.4 &lt;0.0000000000000002 ***
-Residuals   43588  34213       1                                
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-90 observations deleted due to missingness
-# Effect Size for ANOVA (Type I)
-
-Parameter | Eta2 (partial) |       95% CI
------------------------------------------
-source    |           0.11 | [0.11, 1.00]
-genre     |           0.11 | [0.10, 1.00]
-
-- One-sided CIs: upper bound fixed at [1.00].$emmeans
- source   emmean      SE    df lower.CL upper.CL
- Manga     7.195 0.00875 43588    7.178    7.212
- Original  6.656 0.00963 43588    6.637    6.675
-
-Results are averaged over the levels of: genre 
-Confidence level used: 0.95 
-
-$contrasts
- contrast         estimate      SE    df t.ratio p.value
- Manga - Original    0.539 0.00944 43588  57.099  &lt;.0001
-
-Results are averaged over the levels of: genre </code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>Main Effect (source)</strong>: A significant main effect for <code>source</code> (<span class="math inline">\(p &lt; 2e-16\)</span>) suggests that ratings differ across anime sources, even after accounting for the covariate <code>genre</code>.</li>
-<li>
-<strong>Covariate (genre)</strong>: The significant effect of <code>genre</code> (<span class="math inline">\(p &lt; 2e-16\)</span>) indicates that genre also impacts ratings, contributing to the variance in <code>score</code>.</li>
-<li>
-<strong>Partial Eta-squared</strong>: The partial eta-squared values for <code>source</code> and <code>genre</code> are both 0.11, suggesting a moderate effect size, indicating that both source type and genre explain a meaningful portion of the variance in anime ratings.</li>
-<li>
-<strong>Tukey HSD Post Hoc</strong>: The pairwise comparison between <code>Manga</code> and <code>Original</code> (estimated difference of 0.539, <span class="math inline">\(p &lt; .0001\)</span>) shows a significant difference, with <code>Manga</code> scoring higher on average than <code>Original</code>, averaged over all genres.</li>
-</ul>
-<p>These results imply that both <code>source</code> type and genre are significant predictors of anime ratings. The moderate effect sizes indicate that <code>source</code> and <code>genre</code> each contribute meaningfully to explaining the variation in ratings, with <code>Manga</code> showing higher ratings than <code>Original</code> even after accounting for genre differences.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, <span class="va">gaming_data</span><span class="op">$</span><span class="va">GAD_T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, <span class="va">gaming_data</span><span class="op">$</span><span class="va">SWL_T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, <span class="va">gaming_data</span><span class="op">$</span><span class="va">SPIN_T</span><span class="op">)</span></span></code></pre></div>
+<p>The function <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code> computes the <strong>Pearson product-moment correlation</strong>, which estimates the linear relationship between two numeric variables.</p>
+<hr>
 </div>
 </div>
-<div id="regression-analysis" class="section level2" number="11.5">
+<div id="results-and-interpretation" class="section level2" number="11.9">
 <h2>
-<span class="header-section-number">11.5</span> Regression Analysis<a class="anchor" aria-label="anchor" href="#regression-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.9</span> 📊 Results and Interpretation<a class="anchor" aria-label="anchor" href="#results-and-interpretation"><i class="fas fa-link"></i></a>
 </h2>
-<p>Regression analysis examines relationships between a dependent variable and one or more independent variables, enabling researchers to model and predict outcomes. In mass communication research, regression analysis can help identify factors that influence viewer ratings, engagement, or other media-related outcomes. This section covers simple linear regression, multiple linear regression, and logistic regression, each suited to different research contexts and types of data.</p>
-<div id="simple-linear-regression" class="section level3 unnumbered">
-<h3>Simple Linear Regression<a class="anchor" aria-label="anchor" href="#simple-linear-regression"><i class="fas fa-link"></i></a>
+<div id="hours-and-gad_t-general-anxiety" class="section level3" number="11.9.1">
+<h3>
+<span class="header-section-number">11.9.1</span> ✅ Hours and GAD_T (General Anxiety)<a class="anchor" aria-label="anchor" href="#hours-and-gad_t-general-anxiety"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>Analysis Overview</em></p>
-<p>Simple linear regression models the relationship between a single independent variable and a dependent variable. This model assumes a linear relationship, with changes in the independent variable predicting proportional changes in the dependent variable.</p>
-<p><strong>Example</strong>: Using the <code>video_games</code> dataset, we examine the relationship between <code>price</code> and <code>metascore</code>, hypothesizing that games with higher prices may have different review scores.</p>
-<p><em>Type of Data</em></p>
+<pre><code>t = 1.576, df = 14057, p = 0.115
+cor = 0.013
+95% CI: [-0.003, 0.030]</code></pre>
 <ul>
 <li>
-<strong>Dependent Variable</strong>: Continuous data (e.g., <code>metascore</code>).</li>
+<strong>Direction</strong>: Slight <strong>positive</strong> association</li>
 <li>
-<strong>Independent Variable</strong>: Continuous data (e.g., <code>price</code>).</li>
+<strong>Magnitude</strong>: Very <strong>weak</strong>
+</li>
+<li>
+<strong>p-value = .115</strong>: Not statistically significant</li>
 </ul>
-<p><em>R Code for Analysis</em></p>
-<p>This example performs simple linear regression to predict <code>metascore</code> based on <code>price</code> in the <code>video_games</code> dataset.</p>
+<p><strong>Interpretation</strong>: There is no statistically significant relationship between weekly hours spent gaming and generalized anxiety. The correlation is close to zero.</p>
+<hr>
+</div>
+<div id="hours-and-swl_t-satisfaction-with-life" class="section level3" number="11.9.2">
+<h3>
+<span class="header-section-number">11.9.2</span> ✅ Hours and SWL_T (Satisfaction with Life)<a class="anchor" aria-label="anchor" href="#hours-and-swl_t-satisfaction-with-life"><i class="fas fa-link"></i></a>
+</h3>
+<pre><code>t = -4.33, df = 14079, p &lt; .001
+cor = -0.036
+95% CI: [-0.053, -0.020]</code></pre>
+<ul>
+<li>
+<strong>Direction</strong>: <strong>Negative</strong>
+</li>
+<li>
+<strong>Magnitude</strong>: <strong>Small</strong>
+</li>
+<li>
+<strong>p-value = .000015</strong>: Statistically significant</li>
+</ul>
+<p><strong>Interpretation</strong>: A weak but statistically significant negative correlation was found between hours spent gaming and satisfaction with life. This suggests that participants who spent more time gaming reported slightly lower satisfaction with life.</p>
+<hr>
+</div>
+<div id="hours-and-spin_t-social-phobia" class="section level3" number="11.9.3">
+<h3>
+<span class="header-section-number">11.9.3</span> ✅ Hours and SPIN_T (Social Phobia)<a class="anchor" aria-label="anchor" href="#hours-and-spin_t-social-phobia"><i class="fas fa-link"></i></a>
+</h3>
+<pre><code>t = 5.69, df = 13397, p &lt; .001
+cor = 0.049
+95% CI: [0.032, 0.066]</code></pre>
+<ul>
+<li>
+<strong>Direction</strong>: <strong>Positive</strong>
+</li>
+<li>
+<strong>Magnitude</strong>: <strong>Small</strong>
+</li>
+<li>
+<strong>p-value &lt; .001</strong>: Statistically significant</li>
+</ul>
+<p><strong>Interpretation</strong>: There is a statistically significant but small positive correlation between hours spent gaming and social phobia scores. Individuals who play more may report slightly higher levels of social anxiety.</p>
+<hr>
+</div>
+<div id="summary-table-2" class="section level3" number="11.9.4">
+<h3>
+<span class="header-section-number">11.9.4</span> 📘 Summary Table<a class="anchor" aria-label="anchor" href="#summary-table-2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="14%">
+<col width="14%">
+<col width="14%">
+<col width="14%">
+<col width="14%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th>Variable Pair</th>
+<th>r</th>
+<th>95% CI</th>
+<th>p-value</th>
+<th>Significant?</th>
+<th>Interpretation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Hours ~ GAD_T</td>
+<td>0.013</td>
+<td>[-0.003, 0.030]</td>
+<td>0.115</td>
+<td>❌ No</td>
+<td>No meaningful relationship</td>
+</tr>
+<tr class="even">
+<td>Hours ~ SWL_T</td>
+<td>-0.036</td>
+<td>[-0.053, -0.020]</td>
+<td>&lt; .001</td>
+<td>✅ Yes</td>
+<td>More hours linked to lower life satisfaction</td>
+</tr>
+<tr class="odd">
+<td>Hours ~ SPIN_T</td>
+<td>0.049</td>
+<td>[0.032, 0.066]</td>
+<td>&lt; .001</td>
+<td>✅ Yes</td>
+<td>More hours linked to higher social phobia</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="apa-7-style-summary-1" class="section level3" number="11.9.5">
+<h3>
+<span class="header-section-number">11.9.5</span> 📝 APA 7-Style Summary<a class="anchor" aria-label="anchor" href="#apa-7-style-summary-1"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Pearson correlation analyses revealed a <strong>significant negative association</strong> between gaming hours and life satisfaction, <em>r</em>(14,079) = –.04, <em>p</em> &lt; .001, and a <strong>significant positive association</strong> between gaming hours and social phobia, <em>r</em>(13,397) = .05, <em>p</em> &lt; .001. No significant relationship was found between gaming hours and anxiety, <em>r</em>(14,057) = .01, <em>p</em> = .115.</p>
+</blockquote>
+<hr>
+</div>
+<div id="correlation-strength-guide" class="section level3" number="11.9.6">
+<h3>
+<span class="header-section-number">11.9.6</span> 🧠 Correlation Strength Guide<a class="anchor" aria-label="anchor" href="#correlation-strength-guide"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>r Value</th>
+<th>Strength</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>0.00–0.09</td>
+<td>None to trivial</td>
+</tr>
+<tr class="even">
+<td>0.10–0.29</td>
+<td>Small</td>
+</tr>
+<tr class="odd">
+<td>0.30–0.49</td>
+<td>Moderate</td>
+</tr>
+<tr class="even">
+<td>0.50–0.69</td>
+<td>Large</td>
+</tr>
+<tr class="odd">
+<td>0.70–1.00</td>
+<td>Very large</td>
+</tr>
+</tbody>
+</table></div>
+<p>All observed relationships in this dataset fall in the <strong>“small”</strong> or <strong>“trivial”</strong> range.</p>
+<hr>
+</div>
+</div>
+<div id="regression-predicting-one-variable-from-others" class="section level2" number="11.10">
+<h2>
+<span class="header-section-number">11.10</span> 4.4 Regression: Predicting One Variable from Others<a class="anchor" aria-label="anchor" href="#regression-predicting-one-variable-from-others"><i class="fas fa-link"></i></a>
+</h2>
+<div id="what-is-linear-regression" class="section level3" number="11.10.1">
+<h3>
+<span class="header-section-number">11.10.1</span> 💡 What Is Linear Regression?<a class="anchor" aria-label="anchor" href="#what-is-linear-regression"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Linear regression</strong> estimates the relationship between one <strong>numeric outcome variable</strong> (also called the <strong>dependent variable</strong>) and one or more <strong>predictors</strong> (also called <strong>independent variables</strong>).</p>
+<p>Regression helps answer questions like:</p>
+<ul>
+<li>Can we <strong>predict</strong> how satisfied someone is with life based on how many hours they play games?</li>
+<li>Does a person’s <strong>gender identity</strong> influence their life satisfaction when controlling for gaming hours?</li>
+</ul>
+<hr>
+</div>
+<div id="research-question-2" class="section level3" number="11.10.2">
+<h3>
+<span class="header-section-number">11.10.2</span> 🧪 Research Question<a class="anchor" aria-label="anchor" href="#research-question-2"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>RQ3 &amp; RQ4</strong> – <em>Do gaming hours and gender identity predict life satisfaction?</em></p>
+<p>We will use the following variables:</p>
+<ul>
+<li>
+<strong>Outcome (dependent variable)</strong>: <code>SWL_T</code> (Satisfaction With Life)</li>
+<li>
+<strong>Predictors (independent variables)</strong>:
+<ul>
+<li>
+<code>Hours</code> (numeric)</li>
+<li>
+<code>Gender</code> (categorical: Male, Female, Other)</li>
+</ul>
+</li>
+</ul>
+<hr>
+</div>
+<div id="code-example" class="section level3" number="11.10.3">
+<h3>
+<span class="header-section-number">11.10.3</span> ✅ Code Example<a class="anchor" aria-label="anchor" href="#code-example"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Fit the regression model</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">SWL_T</span> <span class="op">~</span> <span class="va">Hours</span> <span class="op">+</span> <span class="va">Gender</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre></div>
+<p>This model tests whether <strong>Hours</strong> and <strong>Gender</strong> significantly predict the total <strong>SWL_T</strong> score.</p>
+<hr>
+</div>
+<div id="sample-output-1" class="section level3" number="11.10.4">
+<h3>
+<span class="header-section-number">11.10.4</span> 🧪 Sample Output<a class="anchor" aria-label="anchor" href="#sample-output-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>The following coefficients are from your dataset:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Predictor</th>
+<th>Estimate</th>
+<th>Std. Error</th>
+<th>t value</th>
+<th>Pr(&gt;</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>19.77</td>
+<td>0.12</td>
+<td>166.08</td>
+<td>&lt;.001</td>
+</tr>
+<tr class="even">
+<td>Hours</td>
+<td>-0.02</td>
+<td>0.005</td>
+<td>-4.33</td>
+<td>&lt;.001</td>
+</tr>
+<tr class="odd">
+<td>GenderFemale</td>
+<td>-0.77</td>
+<td>0.22</td>
+<td>-3.46</td>
+<td>&lt;.001</td>
+</tr>
+<tr class="even">
+<td>GenderOther</td>
+<td>-3.45</td>
+<td>0.70</td>
+<td>-4.94</td>
+<td>&lt;.001</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+</div>
+<div id="interpretation-5" class="section level3" number="11.10.5">
+<h3>
+<span class="header-section-number">11.10.5</span> 📘 Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-5"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Intercept</strong> (19.77): The predicted SWL score for a <strong>male participant who plays 0 hours</strong> per week</li>
+<li>
+<strong>Hours</strong> (-0.02): For each additional hour of gaming, SWL_T <strong>decreases by 0.02 points</strong>, on average (<em>p</em> &lt; .001)</li>
+<li>
+<strong>GenderFemale</strong> (-0.77): Female participants score <strong>0.77 points lower</strong> in life satisfaction compared to male participants (<em>p</em> &lt; .001)</li>
+<li>
+<strong>GenderOther</strong> (-3.45): Participants identifying as “Other” score <strong>3.45 points lower</strong> than males (<em>p</em> &lt; .001)</li>
+</ul>
+<p>All coefficients are statistically significant (<em>p</em> &lt; .001), indicating that hours played and gender identity both help predict life satisfaction.</p>
+<hr>
+</div>
+<div id="apa-style-summary" class="section level3" number="11.10.6">
+<h3>
+<span class="header-section-number">11.10.6</span> 📝 APA-Style Summary<a class="anchor" aria-label="anchor" href="#apa-style-summary"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>A linear regression analysis was conducted to predict satisfaction with life (SWL_T) based on gaming hours and gender identity. The model was statistically significant, <em>F</em>(3, N–4) = XX.XX, <em>p</em> &lt; .001. Hours spent gaming negatively predicted life satisfaction, β = –0.02, <em>p</em> &lt; .001. Female participants reported lower life satisfaction than male participants (β = –0.77, <em>p</em> &lt; .001), and participants identifying as “Other” reported the lowest scores (β = –3.45, <em>p</em> &lt; .001).</p>
+</blockquote>
+<hr>
+</div>
+<div id="optional-additions" class="section level3" number="11.10.7">
+<h3>
+<span class="header-section-number">11.10.7</span> 🧠 Optional Additions<a class="anchor" aria-label="anchor" href="#optional-additions"><i class="fas fa-link"></i></a>
+</h3>
+<p>To get tidy, table-ready results:</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre></div>
+<hr>
+</div>
+<div id="summary-takeaways" class="section level3" number="11.10.8">
+<h3>
+<span class="header-section-number">11.10.8</span> 📚 Summary Takeaways<a class="anchor" aria-label="anchor" href="#summary-takeaways"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Regression models <strong>combine multiple predictors</strong> in a single analysis.</li>
+<li>Use regression when you want to <strong>control for other variables</strong>.</li>
+<li>Even <strong>small coefficients</strong> can be meaningful, especially with large samples.</li>
+</ul>
+<hr>
+</div>
+</div>
+<div id="using-infer-simulation-based-inference-optional-advanced" class="section level2" number="11.11">
+<h2>
+<span class="header-section-number">11.11</span> 4.5 Using <code>infer</code>: Simulation-Based Inference (Optional / Advanced)<a class="anchor" aria-label="anchor" href="#using-infer-simulation-based-inference-optional-advanced"><i class="fas fa-link"></i></a>
+</h2>
+<div id="concept" class="section level3" number="11.11.1">
+<h3>
+<span class="header-section-number">11.11.1</span> 💡 Concept<a class="anchor" aria-label="anchor" href="#concept"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <a href="https://infer.netlify.app/"><code>infer</code></a> package teaches inference as <strong>simulation</strong> and <strong>resampling</strong>, not just formulas—ideal for pedagogy.</p>
+<p><strong>Example</strong>: Recreate a t-test via permutation:</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Perform simple linear regression</span></span>
-<span><span class="va">lm_simple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">metascore</span> <span class="op">~</span> <span class="va">price</span>, data <span class="op">=</span> <span class="va">video_games</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/infer">infer</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Display regression summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_simple</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output includes the coefficients, R-squared, and p-value, providing information on the relationship strength and significance.</p>
-<pre><code>Call:
-lm(formula = metascore ~ price, data = video_games)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--51.733  -5.839   1.267   7.373  28.592 
-
-Coefficients:
-            Estimate Std. Error t value            Pr(&gt;|t|)    
-(Intercept) 69.05248    0.37719 183.071 &lt;0.0000000000000002 ***
-price        0.17880    0.01976   9.048 &lt;0.0000000000000002 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 10.82 on 2689 degrees of freedom
-  (23997 observations deleted due to missingness)
-Multiple R-squared:  0.02955,   Adjusted R-squared:  0.02919 
-F-statistic: 81.87 on 1 and 2689 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>Coefficients</strong>: The intercept and slope indicate that for every unit increase in <code>price</code>, the <code>metascore</code> is expected to increase by 0.1788 points, holding other variables constant.</li>
-<li>
-<strong>R-squared</strong>: The R-squared of 0.02955 suggests that approximately 2.96% of the variance in <code>metascore</code> is explained by <code>price</code>, indicating a weak relationship.</li>
-<li>
-<strong>p-value</strong>: A significant p-value (<span class="math inline">\(p &lt; 2.2 \times 10^{-16}\)</span>) suggests that <code>price</code> significantly predicts <code>metascore</code>.</li>
-</ul>
-<p>The small effect size (low R-squared) implies that while <code>price</code> is a statistically significant predictor, it explains only a minor portion of the variation in <code>metascore</code>.</p>
+<span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/specify.html">specify</a></span><span class="op">(</span><span class="va">gad_score</span> <span class="op">~</span> <span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/hypothesize.html">hypothesize</a></span><span class="op">(</span>null <span class="op">=</span> <span class="st">"independence"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/generate.html">generate</a></span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">1000</span>, type <span class="op">=</span> <span class="st">"permute"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/calculate.html">calculate</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"diff in means"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/visualize.html">visualize</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This visualizes how extreme the observed difference is, compared to a simulated null distribution. It helps students see <em>why</em> a p-value matters.</p>
+<hr>
 </div>
-<div id="multiple-linear-regression" class="section level3 unnumbered">
-<h3>Multiple Linear Regression<a class="anchor" aria-label="anchor" href="#multiple-linear-regression"><i class="fas fa-link"></i></a>
-</h3>
-<p><em>Analysis Overview</em></p>
-<p>Multiple linear regression examines the relationship between a dependent variable and two or more independent variables. This analysis helps isolate the effects of each predictor on the outcome, accounting for other factors in the model.</p>
-<p><strong>Example</strong>: Using the <code>anime</code> dataset, we test if <code>score</code> can be predicted based on <code>scored_by</code> (number of reviews), <code>start_date</code>, and <code>members</code> (number of viewers).</p>
-<p><em>Type of Data</em></p>
-<ul>
-<li>
-<strong>Dependent Variable</strong>: Continuous data (e.g., <code>score</code>).</li>
-<li>
-<strong>Independent Variables</strong>: Multiple continuous or categorical variables (e.g., <code>scored_by</code>, <code>start_date</code>, and <code>members</code>).</li>
-</ul>
-<p><em>R Code for Analysis</em></p>
-<p>In this example, multiple linear regression predicts <code>score</code> based on <code>scored_by</code>, <code>start_date</code>, and <code>members</code>.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Convert date to date data type</span></span>
-<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">start_date</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Perform multiple linear regression</span></span>
-<span><span class="va">lm_multiple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">scored_by</span> <span class="op">+</span> <span class="va">start_date</span> <span class="op">+</span> <span class="va">members</span>, data <span class="op">=</span> <span class="va">anime</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display regression summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_multiple</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output includes coefficients, R-squared, and p-values for each predictor, illustrating the relationship between each independent variable and <code>score</code>.</p>
-<pre><code>Call:
-lm(formula = score ~ scored_by + start_date + members, data = anime)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.7225 -0.4363  0.0767  0.5537  3.2840 
-
-Coefficients:
-                 Estimate    Std. Error t value            Pr(&gt;|t|)    
-(Intercept)  6.2131221386  0.0099159036  626.58 &lt;0.0000000000000002 ***
-scored_by   -0.0000127553  0.0000002001  -63.76 &lt;0.0000000000000002 ***
-start_date   0.0000284742  0.0000007224   39.42 &lt;0.0000000000000002 ***
-members      0.0000099941  0.0000001184   84.44 &lt;0.0000000000000002 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.8237 on 77516 degrees of freedom
-  (391 observations deleted due to missingness)
-Multiple R-squared:  0.2808,    Adjusted R-squared:  0.2808 
-F-statistic: 1.009e+04 on 3 and 77516 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>Coefficients</strong>: Estimates show the effect of each predictor on <code>score</code>, holding other variables constant. For example, each unit increase in <code>members</code> corresponds to an increase of 9.994e-06 in <code>score</code>.</li>
-<li>
-<strong>R-squared</strong>: Approximately 28.08% of the variance in <code>score</code> is explained by the model, indicating a moderate relationship.</li>
-<li>
-<strong>p-value</strong>: The p-values indicate that all predictors (<code>scored_by</code>, <code>start_date</code>, and <code>members</code>) significantly contribute to predicting <code>score</code>.</li>
-</ul>
-<p>A moderate R-squared suggests a meaningful, though not strong, model fit. This indicates that these variables together explain a notable portion of the variation in <code>score</code>.</p>
 </div>
-<div id="logistic-regression" class="section level3 unnumbered">
-<h3>Logistic Regression<a class="anchor" aria-label="anchor" href="#logistic-regression"><i class="fas fa-link"></i></a>
+<div id="reporting-results-apa-style" class="section level2" number="11.12">
+<h2>
+<span class="header-section-number">11.12</span> 🧠 Reporting Results (APA Style)<a class="anchor" aria-label="anchor" href="#reporting-results-apa-style"><i class="fas fa-link"></i></a>
+</h2>
+<div id="t-test-template" class="section level3" number="11.12.1">
+<h3>
+<span class="header-section-number">11.12.1</span> T-Test Template:<a class="anchor" aria-label="anchor" href="#t-test-template"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>Analysis Overview</em></p>
-<p>Logistic regression models the probability of a binary outcome based on one or more predictor variables. It is particularly useful in communication studies for predicting categorical outcomes, such as user behavior or preferences.</p>
-<p><strong>Example</strong>: Using the <code>anime</code> dataset, we predict the likelihood of an anime airing (<code>airing</code> as binary outcome) based on <code>rank</code> and <code>members</code>.</p>
-<p><em>Type of Data</em></p>
-<ul>
-<li>
-<strong>Dependent Variable</strong>: Binary or dichotomous (e.g., airing/not airing).</li>
-<li>
-<strong>Independent Variables</strong>: Continuous or categorical predictors (e.g., <code>rank</code>, <code>members</code>).</li>
-</ul>
-<p><em>R Code for Analysis</em></p>
-<p>This example uses logistic regression to predict the probability of an anime being currently airing based on <code>rank</code> and <code>members</code>.</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Perform logistic regression</span></span>
-<span><span class="va">logit_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">airing</span> <span class="op">~</span> <span class="va">rank</span> <span class="op">+</span> <span class="va">members</span>, data <span class="op">=</span> <span class="va">anime</span>, family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display regression summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">logit_model</span><span class="op">)</span></span></code></pre></div>
-<p><em>Analysis Output</em></p>
-<p>The output includes the coefficients, z-values, and p-values for each predictor, indicating their effect on the probability of the outcome.</p>
-<pre><code>Call:
-glm(formula = airing ~ rank + members, family = "binomial", data = anime)
-
-Coefficients:
-                 Estimate    Std. Error z value            Pr(&gt;|z|)    
-(Intercept) -4.6602457047  0.0600857359 -77.560 &lt;0.0000000000000002 ***
-rank         0.0001185663  0.0000074833  15.844 &lt;0.0000000000000002 ***
-members      0.0000001570  0.0000002179   0.721               0.471    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 13892  on 77910  degrees of freedom
-Residual deviance: 13607  on 77908  degrees of freedom
-AIC: 13613
-
-Number of Fisher Scoring iterations: 7</code></pre>
-<p><em>Output Explanation</em></p>
-<ul>
-<li>
-<strong>Coefficients</strong>: The coefficients represent the log odds of the outcome (airing status) for each predictor. For example, each one-unit increase in <code>rank</code> increases the log odds of airing by 1.186e-04.</li>
-<li>
-<strong>z-value and p-value</strong>: The significant p-value for <code>rank</code> (<span class="math inline">\(p &lt; 2e-16\)</span>) indicates that <code>rank</code> is a statistically significant predictor of whether an anime is currently airing. Conversely, the p-value for <code>members</code> (p = 0.471) suggests that <code>members</code> is not a statistically significant predictor in this model.</li>
-<li>
-<strong>Deviance</strong>: The null deviance represents the deviance of a model with only an intercept, while the residual deviance shows the deviance of the fitted model. A lower residual deviance compared to the null deviance indicates that the model with predictors fits better than a model without them. In this case, the reduction from the null deviance (13892) to the residual deviance (13607) indicates an improvement in fit.</li>
-<li>
-<strong>AIC</strong>: The Akaike Information Criterion (AIC) is a measure of model quality that considers both goodness of fit and model complexity. Lower AIC values generally indicate a better-fitting model when comparing similar models.</li>
-</ul>
-<p>Overall, this logistic regression model shows that <code>rank</code> is a significant predictor of an anime’s airing status, whereas <code>members</code> does not significantly contribute to predicting this outcome. The model fit, indicated by the deviance reduction and AIC value, suggests that <code>rank</code> helps explain some of the variability in the airing status of anime, although further predictors may improve the model.</p>
-
+<blockquote>
+<p>A two-sample t-test showed that men (M = 0.72, SD = 0.65) reported significantly lower GAD scores than women (M = 1.09, SD = 0.76), <em>t</em>(1410) = -5.23, <em>p</em> &lt; .001.</p>
+</blockquote>
+</div>
+<div id="regression-template" class="section level3" number="11.12.2">
+<h3>
+<span class="header-section-number">11.12.2</span> Regression Template:<a class="anchor" aria-label="anchor" href="#regression-template"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Regression analysis showed that weekly gaming hours negatively predicted satisfaction with life, <em>B</em> = -0.004, <em>t</em> = -2.15, <em>p</em> = .032, indicating that heavier gamers reported lower life satisfaction.</p>
+</blockquote>
+<hr>
 </div>
 </div>
 </div>
@@ -781,33 +942,76 @@ Number of Fisher Scoring iterations: 7</code></pre>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#inferential-analysis"><span class="header-section-number">11</span> Inferential Analysis</a></li>
+<li><a class="nav-link" href="#learning-objectives"><span class="header-section-number">11.1</span> 🎯 Learning Objectives</a></li>
+<li><a class="nav-link" href="#overview-2"><span class="header-section-number">11.2</span> 🧭 Overview</a></li>
 <li>
-<a class="nav-link" href="#introduction-1"><span class="header-section-number">11.1</span> Introduction</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#loading-necessary-r-packages">Loading Necessary R Packages</a></li>
-<li><a class="nav-link" href="#loading-the-datasets">Loading the Datasets</a></li>
-<li><a class="nav-link" href="#drop-scientific-notation">Drop Scientific Notation</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#chi-square-test-of-independence"><span class="header-section-number">11.2</span> Chi-Square Test of Independence</a></li>
-<li>
-<a class="nav-link" href="#t-tests"><span class="header-section-number">11.3</span> T-tests</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#single-sample-t-test">Single Sample T-test</a></li>
-<li><a class="nav-link" href="#independent-samples-t-test">Independent Samples T-test</a></li>
-<li><a class="nav-link" href="#paired-samples-t-test">Paired Samples T-test</a></li>
+<a class="nav-link" href="#t-tests-comparing-two-groups"><span class="header-section-number">11.3</span> 4.1 T-Tests: Comparing Two Groups</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-is-a-t-test"><span class="header-section-number">11.3.1</span> 💡 What Is a T-Test?</a></li>
+<li><a class="nav-link" href="#example-research-question"><span class="header-section-number">11.3.2</span> 🧪 Example Research Question</a></li>
+<li><a class="nav-link" href="#required-packages">📦 Required Packages</a></li>
+<li><a class="nav-link" href="#load-and-prepare-the-dataset">📂 Load and Prepare the Dataset</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#analysis-of-variance-anova"><span class="header-section-number">11.4</span> Analysis of Variance (ANOVA)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#one-way-anova">One-Way ANOVA</a></li>
-<li><a class="nav-link" href="#two-way-anova">Two-Way ANOVA</a></li>
-<li><a class="nav-link" href="#ancova-analysis-of-covariance">ANCOVA (Analysis of Covariance)</a></li>
+<a class="nav-link" href="#t-test-results"><span class="header-section-number">11.4</span> 📈 T-Test Results</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#t-test-1-gad_t-generalized-anxiety"><span class="header-section-number">11.4.1</span> ✅ T-Test #1: GAD_T (Generalized Anxiety)</a></li>
+<li><a class="nav-link" href="#t-test-2-swl_t-satisfaction-with-life"><span class="header-section-number">11.4.2</span> ✅ T-Test #2: SWL_T (Satisfaction With Life)</a></li>
+<li><a class="nav-link" href="#t-test-3-spin_t-social-phobia-inventory"><span class="header-section-number">11.4.3</span> ✅ T-Test #3: SPIN_T (Social Phobia Inventory)</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#recap-of-key-terms"><span class="header-section-number">11.5</span> 🔁 Recap of Key Terms</a></li>
+<li><a class="nav-link" href="#summary-table-1"><span class="header-section-number">11.6</span> ✅ Summary Table</a></li>
+<li>
+<a class="nav-link" href="#anova-comparing-more-than-two-groups"><span class="header-section-number">11.7</span> 4.2 ANOVA: Comparing More Than Two Groups</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-is-anova"><span class="header-section-number">11.7.1</span> 💡 What Is ANOVA?</a></li>
+<li><a class="nav-link" href="#research-question"><span class="header-section-number">11.7.2</span> 🧪 Research Question</a></li>
+<li><a class="nav-link" href="#required-packages-1"><span class="header-section-number">11.7.3</span> 📦 Required Packages</a></li>
+<li><a class="nav-link" href="#run-the-anova-test"><span class="header-section-number">11.7.4</span> 📂 Run the ANOVA Test</a></li>
+<li><a class="nav-link" href="#interpretation-4"><span class="header-section-number">11.7.5</span> 🔍 Interpretation</a></li>
+<li><a class="nav-link" href="#tukey-hsd-post-hoc-test"><span class="header-section-number">11.7.6</span> ✅ Tukey HSD Post-Hoc Test</a></li>
+<li><a class="nav-link" href="#post-hoc-interpretation"><span class="header-section-number">11.7.7</span> 📘 Post-Hoc Interpretation</a></li>
+<li><a class="nav-link" href="#group-descriptive-statistics"><span class="header-section-number">11.7.8</span> 📊 Group Descriptive Statistics</a></li>
+<li><a class="nav-link" href="#apa-7-style-summary"><span class="header-section-number">11.7.9</span> 📝 APA 7-Style Summary</a></li>
+<li><a class="nav-link" href="#summary-3"><span class="header-section-number">11.7.10</span> 🧠 Summary</a></li>
+<li><a class="nav-link" href="#teaching-tip"><span class="header-section-number">11.7.11</span> 🔁 Teaching Tip</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#regression-analysis"><span class="header-section-number">11.5</span> Regression Analysis</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#simple-linear-regression">Simple Linear Regression</a></li>
-<li><a class="nav-link" href="#multiple-linear-regression">Multiple Linear Regression</a></li>
-<li><a class="nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<a class="nav-link" href="#correlation-examining-associations-between-two-variables"><span class="header-section-number">11.8</span> 4.3 Correlation: Examining Associations Between Two Variables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-is-correlation"><span class="header-section-number">11.8.1</span> 💡 What Is Correlation?</a></li>
+<li><a class="nav-link" href="#research-question-1"><span class="header-section-number">11.8.2</span> 🧪 Research Question</a></li>
+<li><a class="nav-link" href="#required-r-code"><span class="header-section-number">11.8.3</span> ✅ Required R Code</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#results-and-interpretation"><span class="header-section-number">11.9</span> 📊 Results and Interpretation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#hours-and-gad_t-general-anxiety"><span class="header-section-number">11.9.1</span> ✅ Hours and GAD_T (General Anxiety)</a></li>
+<li><a class="nav-link" href="#hours-and-swl_t-satisfaction-with-life"><span class="header-section-number">11.9.2</span> ✅ Hours and SWL_T (Satisfaction with Life)</a></li>
+<li><a class="nav-link" href="#hours-and-spin_t-social-phobia"><span class="header-section-number">11.9.3</span> ✅ Hours and SPIN_T (Social Phobia)</a></li>
+<li><a class="nav-link" href="#summary-table-2"><span class="header-section-number">11.9.4</span> 📘 Summary Table</a></li>
+<li><a class="nav-link" href="#apa-7-style-summary-1"><span class="header-section-number">11.9.5</span> 📝 APA 7-Style Summary</a></li>
+<li><a class="nav-link" href="#correlation-strength-guide"><span class="header-section-number">11.9.6</span> 🧠 Correlation Strength Guide</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#regression-predicting-one-variable-from-others"><span class="header-section-number">11.10</span> 4.4 Regression: Predicting One Variable from Others</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-is-linear-regression"><span class="header-section-number">11.10.1</span> 💡 What Is Linear Regression?</a></li>
+<li><a class="nav-link" href="#research-question-2"><span class="header-section-number">11.10.2</span> 🧪 Research Question</a></li>
+<li><a class="nav-link" href="#code-example"><span class="header-section-number">11.10.3</span> ✅ Code Example</a></li>
+<li><a class="nav-link" href="#sample-output-1"><span class="header-section-number">11.10.4</span> 🧪 Sample Output</a></li>
+<li><a class="nav-link" href="#interpretation-5"><span class="header-section-number">11.10.5</span> 📘 Interpretation</a></li>
+<li><a class="nav-link" href="#apa-style-summary"><span class="header-section-number">11.10.6</span> 📝 APA-Style Summary</a></li>
+<li><a class="nav-link" href="#optional-additions"><span class="header-section-number">11.10.7</span> 🧠 Optional Additions</a></li>
+<li><a class="nav-link" href="#summary-takeaways"><span class="header-section-number">11.10.8</span> 📚 Summary Takeaways</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#using-infer-simulation-based-inference-optional-advanced"><span class="header-section-number">11.11</span> 4.5 Using infer: Simulation-Based Inference (Optional / Advanced)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#concept"><span class="header-section-number">11.11.1</span> 💡 Concept</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#reporting-results-apa-style"><span class="header-section-number">11.12</span> 🧠 Reporting Results (APA Style)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#t-test-template"><span class="header-section-number">11.12.1</span> T-Test Template:</a></li>
+<li><a class="nav-link" href="#regression-template"><span class="header-section-number">11.12.2</span> Regression Template:</a></li>
 </ul>
 </li>
 </ul>
@@ -826,7 +1030,7 @@ Number of Fisher Scoring iterations: 7</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-02.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

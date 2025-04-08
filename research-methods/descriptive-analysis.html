@@ -135,9 +135,7 @@
 <h4>2. <strong>Median</strong> – The Middle Value<a class="anchor" aria-label="anchor" href="#median-the-middle-value"><i class="fas fa-link"></i></a>
 </h4>
 <p>The <strong>median</strong> is the middle value in a list of numbers ordered from smallest to largest. If there is an odd number of values, it is the exact center. If there is an even number, the median is the average of the two middle values.</p>
-<p>Using the earlier example:
-- Ordered hours: 5, 10, 15, 20, 25
-- Median: 15 (the third number in the list)</p>
+<p>Using the earlier example: - Ordered hours: 5, 10, 15, 20, 25 - Median: 15 (the third number in the list)</p>
 <p>If someone reported 100 hours, the new list would be: 5, 10, 15, 20, 25, 100<br>
 - Median = (15 + 20)/2 = 17.5 (since there’s an even number of values)</p>
 <p>The <strong>median is more resistant to outliers</strong> than the mean and is often a better indicator of central tendency for skewed data (where most responses cluster at one end).</p>
@@ -147,9 +145,7 @@
 <h4>3. <strong>Mode</strong> – The Most Frequent Value<a class="anchor" aria-label="anchor" href="#mode-the-most-frequent-value"><i class="fas fa-link"></i></a>
 </h4>
 <p>The <strong>mode</strong> is the value that appears most often in a dataset. Unlike the mean and median, the mode can be used with both numerical and categorical data.</p>
-<p>Examples:
-- If most players report gaming on “PC,” then PC is the mode of the <code>Platform</code> variable.
-- If most participants report 20 hours of gameplay per week, then 20 is the mode of the <code>Hours</code> variable.</p>
+<p>Examples: - If most players report gaming on “PC,” then PC is the mode of the <code>Platform</code> variable. - If most participants report 20 hours of gameplay per week, then 20 is the mode of the <code>Hours</code> variable.</p>
 <p>Note: A dataset can have no mode (if all values are unique), one mode (unimodal), or multiple modes (multimodal).</p>
 <hr>
 </div>
@@ -230,10 +226,10 @@
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="15%">
-<col width="37%">
-<col width="21%">
-<col width="25%">
+<col width="22%">
+<col width="33%">
+<col width="22%">
+<col width="22%">
 </colgroup>
 <thead><tr class="header">
 <th>Measure</th>
@@ -418,9 +414,9 @@
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="44%">
-<col width="22%">
-<col width="32%">
+<col width="43%">
+<col width="25%">
+<col width="31%">
 </colgroup>
 <thead><tr class="header">
 <th>Statistic</th>
@@ -450,9 +446,7 @@
 <div id="why-dispersion-matters" class="section level3 unnumbered">
 <h3>Why Dispersion Matters<a class="anchor" aria-label="anchor" href="#why-dispersion-matters"><i class="fas fa-link"></i></a>
 </h3>
-<p>Understanding variability is critical in mass communication research. For example:
-- If two media campaigns have the same average reach but different levels of audience variability, one may be more consistent while the other is more polarized.
-- In psychological scales like anxiety or satisfaction, dispersion helps determine whether scores cluster tightly (indicating a uniform experience) or are widely spread (indicating diverse experiences).</p>
+<p>Understanding variability is critical in mass communication research. For example: - If two media campaigns have the same average reach but different levels of audience variability, one may be more consistent while the other is more polarized. - In psychological scales like anxiety or satisfaction, dispersion helps determine whether scores cluster tightly (indicating a uniform experience) or are widely spread (indicating diverse experiences).</p>
 <p>Dispersion also informs the <strong>reliability</strong> of averages. A mean without knowing the standard deviation can be misleading.</p>
 <hr>
 <p>In the next section, we’ll explore how to describe <strong>categorical variables</strong> like gender, platform, and playstyle using frequencies and proportions.</p>
@@ -480,10 +474,7 @@
 <p>This command returns a table showing how many times each gender appears in the dataset:</p>
 <pre><code>Female   Male  Other 
    713  12699     52 </code></pre>
-<p>Out of 13,464 participants:
-- 713 identified as <strong>Female</strong>
-- 12,699 identified as <strong>Male</strong>
-- 52 identified as <strong>Other</strong></p>
+<p>Out of 13,464 participants: - 713 identified as <strong>Female</strong> - 12,699 identified as <strong>Male</strong> - 52 identified as <strong>Other</strong></p>
 <hr>
 </div>
 <div id="calculating-proportions-of-each-category" class="section level4 unnumbered">
@@ -496,10 +487,7 @@
 <p>This returns the following:</p>
 <pre><code>   Female       Male      Other 
 0.05296    0.94318   0.00386</code></pre>
-<p>Interpreted:
-- 5.3% of respondents identified as Female
-- 94.3% identified as Male
-- 0.4% identified as Other</p>
+<p>Interpreted: - 5.3% of respondents identified as Female - 94.3% identified as Male - 0.4% identified as Other</p>
 <p>These proportions help researchers quickly assess sample composition and detect any imbalance (e.g., a male-dominated sample in this case). Proportions are especially useful when comparing groups or visualizing results in bar charts or pie graphs.</p>
 <hr>
 </div>
@@ -548,14 +536,7 @@
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Descriptive statistics for all GAD items</span></span>
 <span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GAD1"</span>, <span class="st">"GAD2"</span>, <span class="st">"GAD3"</span>, <span class="st">"GAD4"</span>, <span class="st">"GAD5"</span>, <span class="st">"GAD6"</span>, <span class="st">"GAD7"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<p>This command generates the following for each item:
-- <strong>n</strong>: Number of valid responses
-- <strong>mean</strong>: Average score
-- <strong>sd</strong>: Standard deviation
-- <strong>median</strong>: Middle value
-- <strong>min</strong>/<strong>max</strong>: Range of possible scores (usually 0–3)
-- <strong>skew</strong> and <strong>kurtosis</strong>: Shape of the distribution
-- <strong>se</strong>: Standard error of the mean</p>
+<p>This command generates the following for each item: - <strong>n</strong>: Number of valid responses - <strong>mean</strong>: Average score - <strong>sd</strong>: Standard deviation - <strong>median</strong>: Middle value - <strong>min</strong>/<strong>max</strong>: Range of possible scores (usually 0–3) - <strong>skew</strong> and <strong>kurtosis</strong>: Shape of the distribution - <strong>se</strong>: Standard error of the mean</p>
 <p>Sample output (simplified):</p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -622,10 +603,7 @@
 <span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GAD_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">GAD1</span><span class="op">:</span><span class="va">GAD7</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>This code:
-- Uses <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> to calculate scores for each participant individually
-- Uses <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> to access all 7 GAD items
-- Calculates the <strong>average GAD score</strong> per participant</p>
+<p>This code: - Uses <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> to calculate scores for each participant individually - Uses <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> to access all 7 GAD items - Calculates the <strong>average GAD score</strong> per participant</p>
 <p>We can now describe the resulting composite variable:</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">GAD_score</span><span class="op">)</span></span></code></pre></div>
@@ -714,9 +692,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>From this, we observe:
-- Female respondents reported slightly higher anxiety and slightly lower weekly gaming hours than males.
-- Participants identifying as Other reported both the highest anxiety and extremely high gaming hours, although the small sample size (n = 52) suggests caution in interpreting this result.</p>
+<p>From this, we observe: - Female respondents reported slightly higher anxiety and slightly lower weekly gaming hours than males. - Participants identifying as Other reported both the highest anxiety and extremely high gaming hours, although the small sample size (n = 52) suggests caution in interpreting this result.</p>
 <hr>
 </div>
 </div>
@@ -843,8 +819,8 @@
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
 <col width="19%">
-<col width="55%">
-<col width="25%">
+<col width="59%">
+<col width="21%">
 </colgroup>
 <thead><tr class="header">
 <th>Package</th>
@@ -937,7 +913,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-02.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
