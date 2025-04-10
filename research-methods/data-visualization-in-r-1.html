@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 12 Data Visualization in R | An Introduction to Research Methods in Mass Media</title>
+<title>Chapter 13 Data Visualization in R | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
-<meta name="description" content="[Chunk Version]  12.1 Overview Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical...">
+<meta name="description" content="[Chunk Version]  13.1 Overview Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical...">
 <meta name="generator" content="bookdown 0.41 with bs4_book()">
-<meta property="og:title" content="Chapter 12 Data Visualization in R | An Introduction to Research Methods in Mass Media">
+<meta property="og:title" content="Chapter 13 Data Visualization in R | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/data-visualization-in-r.html">
+<meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/data-visualization-in-r-1.html">
 <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
-<meta property="og:description" content="[Chunk Version]  12.1 Overview Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical...">
+<meta property="og:description" content="[Chunk Version]  13.1 Overview Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 12 Data Visualization in R | An Introduction to Research Methods in Mass Media">
-<meta name="twitter:description" content="[Chunk Version]  12.1 Overview Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical...">
+<meta name="twitter:title" content="Chapter 13 Data Visualization in R | An Introduction to Research Methods in Mass Media">
+<meta name="twitter:description" content="[Chunk Version]  13.1 Overview Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical...">
 <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -59,10 +59,11 @@
 <li><a class="" href="data-management.html"><span class="header-section-number">9</span> Data Management</a></li>
 <li><a class="" href="descriptive-analysis.html"><span class="header-section-number">10</span> Descriptive Analysis</a></li>
 <li><a class="" href="inferential-analysis.html"><span class="header-section-number">11</span> Inferential Analysis</a></li>
-<li><a class="active" href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></li>
-<li><a class="" href="reporting-findings.html"><span class="header-section-number">13</span> Reporting Findings</a></li>
-<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">14</span> Special Topics in Research Methods</a></li>
-<li><a class="" href="appendix-1.html"><span class="header-section-number">15</span> Appendix</a></li>
+<li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></li>
+<li><a class="active" href="data-visualization-in-r-1.html"><span class="header-section-number">13</span> Data Visualization in R</a></li>
+<li><a class="" href="chapter-6-reporting-findings.html"><span class="header-section-number">14</span> Chapter 6: Reporting Findings</a></li>
+<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">15</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="appendix-1.html"><span class="header-section-number">16</span> Appendix</a></li>
 </ul>
 
         <div class="book-extra">
@@ -70,14 +71,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-visualization-in-r" class="section level1" number="12">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-visualization-in-r-1" class="section level1" number="13">
 <h1>
-<span class="header-section-number">12</span> Data Visualization in R<a class="anchor" aria-label="anchor" href="#data-visualization-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13</span> Data Visualization in R<a class="anchor" aria-label="anchor" href="#data-visualization-in-r-1"><i class="fas fa-link"></i></a>
 </h1>
 <p><a href="files/11-data_visualization-chunk.Rmd">[Chunk Version]</a></p>
-<div id="overview-3" class="section level2" number="12.1">
+<div id="overview-3" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">12.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data visualization is a core component of social science research. It allows researchers to explore, communicate, and explain patterns in data using graphical displays. Well-designed graphics reveal trends, support arguments, and make research findings accessible to a wide range of audiences.</p>
 <p>In this chapter, you will learn how to:</p>
@@ -91,13 +92,13 @@
 <p>All visualizations use <code>ggplot2</code>, the foundational R package for the grammar of graphics, and are written using tidyverse principles. Each section includes code, annotated examples, interpretation, and APA-style presentation guidance.</p>
 <hr>
 </div>
-<div id="visualizing-distributions" class="section level2" number="12.2">
+<div id="visualizing-distributions" class="section level2" number="13.2">
 <h2>
-<span class="header-section-number">12.2</span> 5.1 Visualizing Distributions<a class="anchor" aria-label="anchor" href="#visualizing-distributions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2</span> 5.1 Visualizing Distributions<a class="anchor" aria-label="anchor" href="#visualizing-distributions"><i class="fas fa-link"></i></a>
 </h2>
-<div id="purpose" class="section level3" number="12.2.1">
+<div id="purpose" class="section level3" number="13.2.1">
 <h3>
-<span class="header-section-number">12.2.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose"><i class="fas fa-link"></i></a>
 </h3>
 <p>When working with numeric variables, the first step is to understand how the values are distributed. Are most values clustered around a center? Are there extreme outliers? Is the data skewed left or right?</p>
 <p>Visualizations such as <strong>histograms</strong> and <strong>density plots</strong> are effective tools for examining:</p>
@@ -114,9 +115,9 @@
 </ul>
 <hr>
 </div>
-<div id="histograms" class="section level3" number="12.2.2">
+<div id="histograms" class="section level3" number="13.2.2">
 <h3>
-<span class="header-section-number">12.2.2</span> 5.1.1 Histograms<a class="anchor" aria-label="anchor" href="#histograms"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.2</span> 5.1.1 Histograms<a class="anchor" aria-label="anchor" href="#histograms"><i class="fas fa-link"></i></a>
 </h3>
 <p>A <strong>histogram</strong> displays the frequency of observations in specified bins (ranges of values). It helps identify:</p>
 <ul>
@@ -125,9 +126,9 @@
 <li>Where potential cutoffs or outliers lie</li>
 </ul>
 </div>
-<div id="example-histogram-of-weekly-hours-played" class="section level3" number="12.2.3">
+<div id="example-histogram-of-weekly-hours-played" class="section level3" number="13.2.3">
 <h3>
-<span class="header-section-number">12.2.3</span> Example: Histogram of Weekly Hours Played<a class="anchor" aria-label="anchor" href="#example-histogram-of-weekly-hours-played"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.3</span> Example: Histogram of Weekly Hours Played<a class="anchor" aria-label="anchor" href="#example-histogram-of-weekly-hours-played"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load required libraries</span></span>
@@ -146,9 +147,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="interpretation-7" class="section level3" number="12.2.4">
+<div id="interpretation-7" class="section level3" number="13.2.4">
 <h3>
-<span class="header-section-number">12.2.4</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-7"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.4</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-7"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>This plot displays how many participants reported each range of weekly gaming hours.</li>
@@ -176,15 +177,15 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
-<div id="density-plots" class="section level3" number="12.2.5">
+<div id="density-plots" class="section level3" number="13.2.5">
 <h3>
-<span class="header-section-number">12.2.5</span> 5.1.2 Density Plots<a class="anchor" aria-label="anchor" href="#density-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.5</span> 5.1.2 Density Plots<a class="anchor" aria-label="anchor" href="#density-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Density plots</strong> are smoothed versions of histograms that show the probability distribution of a numeric variable. They are useful for comparing shapes across groups.</p>
 </div>
-<div id="example-density-of-gad_t-scores" class="section level3" number="12.2.6">
+<div id="example-density-of-gad_t-scores" class="section level3" number="13.2.6">
 <h3>
-<span class="header-section-number">12.2.6</span> Example: Density of GAD_T Scores<a class="anchor" aria-label="anchor" href="#example-density-of-gad_t-scores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.6</span> Example: Density of GAD_T Scores<a class="anchor" aria-label="anchor" href="#example-density-of-gad_t-scores"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GAD_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -196,9 +197,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="interpretation-8" class="section level3" number="12.2.7">
+<div id="interpretation-8" class="section level3" number="13.2.7">
 <h3>
-<span class="header-section-number">12.2.7</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.7</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-8"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>The curve illustrates where values are most common.</li>
@@ -207,14 +208,14 @@
 </ul>
 <hr>
 </div>
-<div id="comparing-distributions-across-groups" class="section level3" number="12.2.8">
+<div id="comparing-distributions-across-groups" class="section level3" number="13.2.8">
 <h3>
-<span class="header-section-number">12.2.8</span> 5.1.3 Comparing Distributions Across Groups<a class="anchor" aria-label="anchor" href="#comparing-distributions-across-groups"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.8</span> 5.1.3 Comparing Distributions Across Groups<a class="anchor" aria-label="anchor" href="#comparing-distributions-across-groups"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use <strong>grouped density plots</strong> or <strong>facet wrapping</strong> to compare distributions across categories such as gender or platform.</p>
-<div id="example-compare-life-satisfaction-swl_t-by-gender" class="section level4" number="12.2.8.1">
+<div id="example-compare-life-satisfaction-swl_t-by-gender" class="section level4" number="13.2.8.1">
 <h4>
-<span class="header-section-number">12.2.8.1</span> Example: Compare Life Satisfaction (SWL_T) by Gender<a class="anchor" aria-label="anchor" href="#example-compare-life-satisfaction-swl_t-by-gender"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.8.1</span> Example: Compare Life Satisfaction (SWL_T) by Gender<a class="anchor" aria-label="anchor" href="#example-compare-life-satisfaction-swl_t-by-gender"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">SWL_T</span>, fill <span class="op">=</span> <span class="va">Gender</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -226,9 +227,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="alternative-separate-plots-with-facet_wrap" class="section level4" number="12.2.8.2">
+<div id="alternative-separate-plots-with-facet_wrap" class="section level4" number="13.2.8.2">
 <h4>
-<span class="header-section-number">12.2.8.2</span> Alternative: Separate Plots with <code>facet_wrap()</code><a class="anchor" aria-label="anchor" href="#alternative-separate-plots-with-facet_wrap"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.8.2</span> Alternative: Separate Plots with <code>facet_wrap()</code><a class="anchor" aria-label="anchor" href="#alternative-separate-plots-with-facet_wrap"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">SWL_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -243,9 +244,9 @@
 <hr>
 </div>
 </div>
-<div id="summary-of-section-5.1" class="section level3" number="12.2.9">
+<div id="summary-of-section-5.1" class="section level3" number="13.2.9">
 <h3>
-<span class="header-section-number">12.2.9</span> Summary of Section 5.1<a class="anchor" aria-label="anchor" href="#summary-of-section-5.1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.9</span> Summary of Section 5.1<a class="anchor" aria-label="anchor" href="#summary-of-section-5.1"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -271,13 +272,13 @@
 <hr>
 </div>
 </div>
-<div id="visualizing-group-comparisons" class="section level2" number="12.3">
+<div id="visualizing-group-comparisons" class="section level2" number="13.3">
 <h2>
-<span class="header-section-number">12.3</span> 5.2 Visualizing Group Comparisons<a class="anchor" aria-label="anchor" href="#visualizing-group-comparisons"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3</span> 5.2 Visualizing Group Comparisons<a class="anchor" aria-label="anchor" href="#visualizing-group-comparisons"><i class="fas fa-link"></i></a>
 </h2>
-<div id="purpose-1" class="section level3" number="12.3.1">
+<div id="purpose-1" class="section level3" number="13.3.1">
 <h3>
-<span class="header-section-number">12.3.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Many research questions in communication studies and psychology involve <strong>comparing means or distributions across different groups</strong>. For example:</p>
 <ul>
@@ -294,9 +295,9 @@
 <p>This section introduces two primary methods for visualizing these comparisons.</p>
 <hr>
 </div>
-<div id="boxplots" class="section level3" number="12.3.2">
+<div id="boxplots" class="section level3" number="13.3.2">
 <h3>
-<span class="header-section-number">12.3.2</span> 5.2.1 Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.2</span> 5.2.1 Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Boxplots</strong> summarize distributions using five statistics:</p>
 <ul>
@@ -308,9 +309,9 @@
 </ul>
 <p>Outliers are plotted as individual points. The box itself contains the middle 50% of the data.</p>
 </div>
-<div id="example-gad_t-scores-by-gender" class="section level3" number="12.3.3">
+<div id="example-gad_t-scores-by-gender" class="section level3" number="13.3.3">
 <h3>
-<span class="header-section-number">12.3.3</span> Example: GAD_T Scores by Gender<a class="anchor" aria-label="anchor" href="#example-gad_t-scores-by-gender"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.3</span> Example: GAD_T Scores by Gender<a class="anchor" aria-label="anchor" href="#example-gad_t-scores-by-gender"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Gender</span>, y <span class="op">=</span> <span class="va">GAD_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -322,9 +323,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="interpretation-9" class="section level3" number="12.3.4">
+<div id="interpretation-9" class="section level3" number="13.3.4">
 <h3>
-<span class="header-section-number">12.3.4</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.4</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-9"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -335,9 +336,9 @@
 </ul>
 <hr>
 </div>
-<div id="violin-plots" class="section level3" number="12.3.5">
+<div id="violin-plots" class="section level3" number="13.3.5">
 <h3>
-<span class="header-section-number">12.3.5</span> 5.2.2 Violin Plots<a class="anchor" aria-label="anchor" href="#violin-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.5</span> 5.2.2 Violin Plots<a class="anchor" aria-label="anchor" href="#violin-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Violin plots</strong> combine boxplots and density plots to display the <strong>distribution and shape</strong> of the data for each group.</p>
 <p>They are particularly useful when:</p>
@@ -347,9 +348,9 @@
 <li>You’re preparing a figure for publication or presentation</li>
 </ul>
 </div>
-<div id="example-swl_t-scores-by-gender" class="section level3" number="12.3.6">
+<div id="example-swl_t-scores-by-gender" class="section level3" number="13.3.6">
 <h3>
-<span class="header-section-number">12.3.6</span> Example: SWL_T Scores by Gender<a class="anchor" aria-label="anchor" href="#example-swl_t-scores-by-gender"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.6</span> Example: SWL_T Scores by Gender<a class="anchor" aria-label="anchor" href="#example-swl_t-scores-by-gender"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Gender</span>, y <span class="op">=</span> <span class="va">SWL_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -362,9 +363,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="interpretation-10" class="section level3" number="12.3.7">
+<div id="interpretation-10" class="section level3" number="13.3.7">
 <h3>
-<span class="header-section-number">12.3.7</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-10"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.7</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-10"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>The width of the violin at each score level indicates <strong>relative frequency</strong>.</li>
@@ -373,15 +374,15 @@
 </ul>
 <hr>
 </div>
-<div id="group-comparisons-across-platforms" class="section level3" number="12.3.8">
+<div id="group-comparisons-across-platforms" class="section level3" number="13.3.8">
 <h3>
-<span class="header-section-number">12.3.8</span> 5.2.3 Group Comparisons Across Platforms<a class="anchor" aria-label="anchor" href="#group-comparisons-across-platforms"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.8</span> 5.2.3 Group Comparisons Across Platforms<a class="anchor" aria-label="anchor" href="#group-comparisons-across-platforms"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use the same visual tools to compare more than two groups.</p>
 </div>
-<div id="example-spin_t-scores-by-platform" class="section level3" number="12.3.9">
+<div id="example-spin_t-scores-by-platform" class="section level3" number="13.3.9">
 <h3>
-<span class="header-section-number">12.3.9</span> Example: SPIN_T Scores by Platform<a class="anchor" aria-label="anchor" href="#example-spin_t-scores-by-platform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.9</span> Example: SPIN_T Scores by Platform<a class="anchor" aria-label="anchor" href="#example-spin_t-scores-by-platform"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Platform</span>, y <span class="op">=</span> <span class="va">SPIN_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -395,9 +396,9 @@
 <p>If you expect a non-normal distribution or have small group sizes (e.g., few smartphone users), violin plots may be more appropriate.</p>
 <hr>
 </div>
-<div id="optional-add-data-points-with-geom_jitter" class="section level3" number="12.3.10">
+<div id="optional-add-data-points-with-geom_jitter" class="section level3" number="13.3.10">
 <h3>
-<span class="header-section-number">12.3.10</span> Optional: Add Data Points with <code>geom_jitter()</code><a class="anchor" aria-label="anchor" href="#optional-add-data-points-with-geom_jitter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.10</span> Optional: Add Data Points with <code>geom_jitter()</code><a class="anchor" aria-label="anchor" href="#optional-add-data-points-with-geom_jitter"><i class="fas fa-link"></i></a>
 </h3>
 <p>To better show individual data points, add <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> to your plot:</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
@@ -414,9 +415,9 @@
 </ul>
 <hr>
 </div>
-<div id="summary-of-section-5.2" class="section level3" number="12.3.11">
+<div id="summary-of-section-5.2" class="section level3" number="13.3.11">
 <h3>
-<span class="header-section-number">12.3.11</span> Summary of Section 5.2<a class="anchor" aria-label="anchor" href="#summary-of-section-5.2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.11</span> Summary of Section 5.2<a class="anchor" aria-label="anchor" href="#summary-of-section-5.2"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -442,13 +443,13 @@
 <hr>
 </div>
 </div>
-<div id="visualizing-associations" class="section level2" number="12.4">
+<div id="visualizing-associations" class="section level2" number="13.4">
 <h2>
-<span class="header-section-number">12.4</span> 5.3 Visualizing Associations<a class="anchor" aria-label="anchor" href="#visualizing-associations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4</span> 5.3 Visualizing Associations<a class="anchor" aria-label="anchor" href="#visualizing-associations"><i class="fas fa-link"></i></a>
 </h2>
-<div id="purpose-2" class="section level3" number="12.4.1">
+<div id="purpose-2" class="section level3" number="13.4.1">
 <h3>
-<span class="header-section-number">12.4.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose-2"><i class="fas fa-link"></i></a>
 </h3>
 <p>Many research questions in social science explore the relationship between two numeric variables. For example:</p>
 <ul>
@@ -466,15 +467,15 @@
 </ul>
 <hr>
 </div>
-<div id="scatterplots" class="section level3" number="12.4.2">
+<div id="scatterplots" class="section level3" number="13.4.2">
 <h3>
-<span class="header-section-number">12.4.2</span> 5.3.1 Scatterplots<a class="anchor" aria-label="anchor" href="#scatterplots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.2</span> 5.3.1 Scatterplots<a class="anchor" aria-label="anchor" href="#scatterplots"><i class="fas fa-link"></i></a>
 </h3>
 <p>A <strong>scatterplot</strong> displays the relationship between two numeric variables. Each point represents a single observation.</p>
 </div>
-<div id="example-hours-vs.-swl_t" class="section level3" number="12.4.3">
+<div id="example-hours-vs.-swl_t" class="section level3" number="13.4.3">
 <h3>
-<span class="header-section-number">12.4.3</span> Example: Hours vs. SWL_T<a class="anchor" aria-label="anchor" href="#example-hours-vs.-swl_t"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.3</span> Example: Hours vs. SWL_T<a class="anchor" aria-label="anchor" href="#example-hours-vs.-swl_t"><i class="fas fa-link"></i></a>
 </h3>
 <p>We will examine whether gaming hours predict life satisfaction.</p>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
@@ -487,9 +488,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="interpretation-11" class="section level3" number="12.4.4">
+<div id="interpretation-11" class="section level3" number="13.4.4">
 <h3>
-<span class="header-section-number">12.4.4</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-11"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.4</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-11"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Each point represents one participant.</li>
@@ -499,9 +500,9 @@
 </ul>
 <hr>
 </div>
-<div id="adding-a-regression-line" class="section level3" number="12.4.5">
+<div id="adding-a-regression-line" class="section level3" number="13.4.5">
 <h3>
-<span class="header-section-number">12.4.5</span> 5.3.2 Adding a Regression Line<a class="anchor" aria-label="anchor" href="#adding-a-regression-line"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.5</span> 5.3.2 Adding a Regression Line<a class="anchor" aria-label="anchor" href="#adding-a-regression-line"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use <code>geom_smooth(method = "lm")</code> to overlay a <strong>linear regression line</strong>.</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
@@ -521,9 +522,9 @@
 <code>se = TRUE</code> adds a shaded area showing the 95% confidence interval.</li>
 </ul>
 </div>
-<div id="interpretation-12" class="section level3" number="12.4.6">
+<div id="interpretation-12" class="section level3" number="13.4.6">
 <h3>
-<span class="header-section-number">12.4.6</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-12"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.6</span> Interpretation<a class="anchor" aria-label="anchor" href="#interpretation-12"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>A downward slope suggests a <strong>negative correlation</strong> (more hours, less satisfaction).</li>
@@ -532,14 +533,14 @@
 </ul>
 <hr>
 </div>
-<div id="associations-with-anxiety-and-social-phobia" class="section level3" number="12.4.7">
+<div id="associations-with-anxiety-and-social-phobia" class="section level3" number="13.4.7">
 <h3>
-<span class="header-section-number">12.4.7</span> 5.3.3 Associations with Anxiety and Social Phobia<a class="anchor" aria-label="anchor" href="#associations-with-anxiety-and-social-phobia"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.7</span> 5.3.3 Associations with Anxiety and Social Phobia<a class="anchor" aria-label="anchor" href="#associations-with-anxiety-and-social-phobia"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can explore other relationships in the same way.</p>
-<div id="example-hours-vs.-gad_t" class="section level4" number="12.4.7.1">
+<div id="example-hours-vs.-gad_t" class="section level4" number="13.4.7.1">
 <h4>
-<span class="header-section-number">12.4.7.1</span> Example: Hours vs. GAD_T<a class="anchor" aria-label="anchor" href="#example-hours-vs.-gad_t"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.7.1</span> Example: Hours vs. GAD_T<a class="anchor" aria-label="anchor" href="#example-hours-vs.-gad_t"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Hours</span>, y <span class="op">=</span> <span class="va">GAD_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -552,9 +553,9 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="example-hours-vs.-spin_t" class="section level4" number="12.4.7.2">
+<div id="example-hours-vs.-spin_t" class="section level4" number="13.4.7.2">
 <h4>
-<span class="header-section-number">12.4.7.2</span> Example: Hours vs. SPIN_T<a class="anchor" aria-label="anchor" href="#example-hours-vs.-spin_t"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.7.2</span> Example: Hours vs. SPIN_T<a class="anchor" aria-label="anchor" href="#example-hours-vs.-spin_t"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Hours</span>, y <span class="op">=</span> <span class="va">SPIN_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -569,9 +570,9 @@
 <hr>
 </div>
 </div>
-<div id="optional-highlight-outliers" class="section level3" number="12.4.8">
+<div id="optional-highlight-outliers" class="section level3" number="13.4.8">
 <h3>
-<span class="header-section-number">12.4.8</span> 5.3.4 Optional: Highlight Outliers<a class="anchor" aria-label="anchor" href="#optional-highlight-outliers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.8</span> 5.3.4 Optional: Highlight Outliers<a class="anchor" aria-label="anchor" href="#optional-highlight-outliers"><i class="fas fa-link"></i></a>
 </h3>
 <p>If outliers are influencing the regression line, consider limiting the x-axis to a more typical range:</p>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
@@ -588,9 +589,9 @@
 <p>This makes the pattern among most participants more visible by trimming extreme values.</p>
 <hr>
 </div>
-<div id="summary-of-section-5.3" class="section level3" number="12.4.9">
+<div id="summary-of-section-5.3" class="section level3" number="13.4.9">
 <h3>
-<span class="header-section-number">12.4.9</span> Summary of Section 5.3<a class="anchor" aria-label="anchor" href="#summary-of-section-5.3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4.9</span> Summary of Section 5.3<a class="anchor" aria-label="anchor" href="#summary-of-section-5.3"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -620,13 +621,13 @@
 <hr>
 </div>
 </div>
-<div id="enhancing-visuals-with-labels-themes-and-extensions" class="section level2" number="12.5">
+<div id="enhancing-visuals-with-labels-themes-and-extensions" class="section level2" number="13.5">
 <h2>
-<span class="header-section-number">12.5</span> 5.4 Enhancing Visuals with Labels, Themes, and Extensions<a class="anchor" aria-label="anchor" href="#enhancing-visuals-with-labels-themes-and-extensions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5</span> 5.4 Enhancing Visuals with Labels, Themes, and Extensions<a class="anchor" aria-label="anchor" href="#enhancing-visuals-with-labels-themes-and-extensions"><i class="fas fa-link"></i></a>
 </h2>
-<div id="purpose-3" class="section level3" number="12.5.1">
+<div id="purpose-3" class="section level3" number="13.5.1">
 <h3>
-<span class="header-section-number">12.5.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.1</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose-3"><i class="fas fa-link"></i></a>
 </h3>
 <p>A graph is only as good as it is readable. In social science research—especially in publications, presentations, and reports—<strong>well-designed visuals</strong> are essential for communicating results clearly and professionally.</p>
 <p>This section shows you how to:</p>
@@ -639,14 +640,14 @@
 <p>These enhancements are especially useful when visualizing comparisons or trends that require clear explanation.</p>
 <hr>
 </div>
-<div id="adding-labels-and-annotations" class="section level3" number="12.5.2">
+<div id="adding-labels-and-annotations" class="section level3" number="13.5.2">
 <h3>
-<span class="header-section-number">12.5.2</span> 5.4.1 Adding Labels and Annotations<a class="anchor" aria-label="anchor" href="#adding-labels-and-annotations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.2</span> 5.4.1 Adding Labels and Annotations<a class="anchor" aria-label="anchor" href="#adding-labels-and-annotations"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> to define titles, subtitles, and axis labels. Use <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text()</a></code> to add labels for emphasis.</p>
-<div id="example-annotated-scatterplot-with-regression-line" class="section level4" number="12.5.2.1">
+<div id="example-annotated-scatterplot-with-regression-line" class="section level4" number="13.5.2.1">
 <h4>
-<span class="header-section-number">12.5.2.1</span> Example: Annotated Scatterplot with Regression Line<a class="anchor" aria-label="anchor" href="#example-annotated-scatterplot-with-regression-line"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.2.1</span> Example: Annotated Scatterplot with Regression Line<a class="anchor" aria-label="anchor" href="#example-annotated-scatterplot-with-regression-line"><i class="fas fa-link"></i></a>
 </h4>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gaming_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Hours</span>, y <span class="op">=</span> <span class="va">SWL_T</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -669,9 +670,9 @@
 <hr>
 </div>
 </div>
-<div id="highlighting-results-with-gghighlight" class="section level3" number="12.5.3">
+<div id="highlighting-results-with-gghighlight" class="section level3" number="13.5.3">
 <h3>
-<span class="header-section-number">12.5.3</span> 5.4.2 Highlighting Results with <code>gghighlight</code><a class="anchor" aria-label="anchor" href="#highlighting-results-with-gghighlight"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.3</span> 5.4.2 Highlighting Results with <code>gghighlight</code><a class="anchor" aria-label="anchor" href="#highlighting-results-with-gghighlight"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <a href="https://github.com/yutannihilation/gghighlight"><code>gghighlight</code></a> package allows you to emphasize parts of your data based on a condition.</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
@@ -686,9 +687,9 @@
 <p>This is useful when showcasing a specific subset of data.</p>
 <hr>
 </div>
-<div id="avoiding-overlapping-labels-with-ggrepel" class="section level3" number="12.5.4">
+<div id="avoiding-overlapping-labels-with-ggrepel" class="section level3" number="13.5.4">
 <h3>
-<span class="header-section-number">12.5.4</span> 5.4.3 Avoiding Overlapping Labels with <code>ggrepel</code><a class="anchor" aria-label="anchor" href="#avoiding-overlapping-labels-with-ggrepel"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.4</span> 5.4.3 Avoiding Overlapping Labels with <code>ggrepel</code><a class="anchor" aria-label="anchor" href="#avoiding-overlapping-labels-with-ggrepel"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code>ggrepel</code> package makes labels readable by pushing them apart.</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
@@ -707,9 +708,9 @@
 <p>This approach is ideal when highlighting outliers or individuals in small samples.</p>
 <hr>
 </div>
-<div id="enhancing-style-with-ggthemes" class="section level3" number="12.5.5">
+<div id="enhancing-style-with-ggthemes" class="section level3" number="13.5.5">
 <h3>
-<span class="header-section-number">12.5.5</span> 5.4.4 Enhancing Style with <code>ggthemes</code><a class="anchor" aria-label="anchor" href="#enhancing-style-with-ggthemes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.5</span> 5.4.4 Enhancing Style with <code>ggthemes</code><a class="anchor" aria-label="anchor" href="#enhancing-style-with-ggthemes"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code>ggthemes</code> package provides pre-built styles that improve appearance with minimal effort.</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
@@ -734,9 +735,9 @@
 </ul>
 <hr>
 </div>
-<div id="adding-statistical-context-with-ggstatsplot" class="section level3" number="12.5.6">
+<div id="adding-statistical-context-with-ggstatsplot" class="section level3" number="13.5.6">
 <h3>
-<span class="header-section-number">12.5.6</span> 5.4.5 Adding Statistical Context with <code>ggstatsplot</code><a class="anchor" aria-label="anchor" href="#adding-statistical-context-with-ggstatsplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.6</span> 5.4.5 Adding Statistical Context with <code>ggstatsplot</code><a class="anchor" aria-label="anchor" href="#adding-statistical-context-with-ggstatsplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code>ggstatsplot</code> package integrates statistical test results directly into your visuals.</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
@@ -752,9 +753,9 @@
 </ul>
 <hr>
 </div>
-<div id="exporting-plots" class="section level3" number="12.5.7">
+<div id="exporting-plots" class="section level3" number="13.5.7">
 <h3>
-<span class="header-section-number">12.5.7</span> 5.4.6 Exporting Plots<a class="anchor" aria-label="anchor" href="#exporting-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.7</span> 5.4.6 Exporting Plots<a class="anchor" aria-label="anchor" href="#exporting-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can save any <code>ggplot2</code> object using <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>.</p>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
@@ -763,9 +764,9 @@
 <p>You can specify image format (.png, .pdf, .svg) and dimensions.</p>
 <hr>
 </div>
-<div id="summary-of-section-5.4" class="section level3" number="12.5.8">
+<div id="summary-of-section-5.4" class="section level3" number="13.5.8">
 <h3>
-<span class="header-section-number">12.5.8</span> Summary of Section 5.4<a class="anchor" aria-label="anchor" href="#summary-of-section-5.4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.8</span> Summary of Section 5.4<a class="anchor" aria-label="anchor" href="#summary-of-section-5.4"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -809,64 +810,64 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="inferential-analysis.html"><span class="header-section-number">11</span> Inferential Analysis</a></div>
-<div class="next"><a href="reporting-findings.html"><span class="header-section-number">13</span> Reporting Findings</a></div>
+<div class="prev"><a href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></div>
+<div class="next"><a href="chapter-6-reporting-findings.html"><span class="header-section-number">14</span> Chapter 6: Reporting Findings</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-visualization-in-r"><span class="header-section-number">12</span> Data Visualization in R</a></li>
-<li><a class="nav-link" href="#overview-3"><span class="header-section-number">12.1</span> Overview</a></li>
+<li><a class="nav-link" href="#data-visualization-in-r-1"><span class="header-section-number">13</span> Data Visualization in R</a></li>
+<li><a class="nav-link" href="#overview-3"><span class="header-section-number">13.1</span> Overview</a></li>
 <li>
-<a class="nav-link" href="#visualizing-distributions"><span class="header-section-number">12.2</span> 5.1 Visualizing Distributions</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#purpose"><span class="header-section-number">12.2.1</span> Purpose</a></li>
-<li><a class="nav-link" href="#histograms"><span class="header-section-number">12.2.2</span> 5.1.1 Histograms</a></li>
-<li><a class="nav-link" href="#example-histogram-of-weekly-hours-played"><span class="header-section-number">12.2.3</span> Example: Histogram of Weekly Hours Played</a></li>
-<li><a class="nav-link" href="#interpretation-7"><span class="header-section-number">12.2.4</span> Interpretation</a></li>
-<li><a class="nav-link" href="#density-plots"><span class="header-section-number">12.2.5</span> 5.1.2 Density Plots</a></li>
-<li><a class="nav-link" href="#example-density-of-gad_t-scores"><span class="header-section-number">12.2.6</span> Example: Density of GAD_T Scores</a></li>
-<li><a class="nav-link" href="#interpretation-8"><span class="header-section-number">12.2.7</span> Interpretation</a></li>
-<li><a class="nav-link" href="#comparing-distributions-across-groups"><span class="header-section-number">12.2.8</span> 5.1.3 Comparing Distributions Across Groups</a></li>
-<li><a class="nav-link" href="#summary-of-section-5.1"><span class="header-section-number">12.2.9</span> Summary of Section 5.1</a></li>
+<a class="nav-link" href="#visualizing-distributions"><span class="header-section-number">13.2</span> 5.1 Visualizing Distributions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#purpose"><span class="header-section-number">13.2.1</span> Purpose</a></li>
+<li><a class="nav-link" href="#histograms"><span class="header-section-number">13.2.2</span> 5.1.1 Histograms</a></li>
+<li><a class="nav-link" href="#example-histogram-of-weekly-hours-played"><span class="header-section-number">13.2.3</span> Example: Histogram of Weekly Hours Played</a></li>
+<li><a class="nav-link" href="#interpretation-7"><span class="header-section-number">13.2.4</span> Interpretation</a></li>
+<li><a class="nav-link" href="#density-plots"><span class="header-section-number">13.2.5</span> 5.1.2 Density Plots</a></li>
+<li><a class="nav-link" href="#example-density-of-gad_t-scores"><span class="header-section-number">13.2.6</span> Example: Density of GAD_T Scores</a></li>
+<li><a class="nav-link" href="#interpretation-8"><span class="header-section-number">13.2.7</span> Interpretation</a></li>
+<li><a class="nav-link" href="#comparing-distributions-across-groups"><span class="header-section-number">13.2.8</span> 5.1.3 Comparing Distributions Across Groups</a></li>
+<li><a class="nav-link" href="#summary-of-section-5.1"><span class="header-section-number">13.2.9</span> Summary of Section 5.1</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#visualizing-group-comparisons"><span class="header-section-number">12.3</span> 5.2 Visualizing Group Comparisons</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#purpose-1"><span class="header-section-number">12.3.1</span> Purpose</a></li>
-<li><a class="nav-link" href="#boxplots"><span class="header-section-number">12.3.2</span> 5.2.1 Boxplots</a></li>
-<li><a class="nav-link" href="#example-gad_t-scores-by-gender"><span class="header-section-number">12.3.3</span> Example: GAD_T Scores by Gender</a></li>
-<li><a class="nav-link" href="#interpretation-9"><span class="header-section-number">12.3.4</span> Interpretation</a></li>
-<li><a class="nav-link" href="#violin-plots"><span class="header-section-number">12.3.5</span> 5.2.2 Violin Plots</a></li>
-<li><a class="nav-link" href="#example-swl_t-scores-by-gender"><span class="header-section-number">12.3.6</span> Example: SWL_T Scores by Gender</a></li>
-<li><a class="nav-link" href="#interpretation-10"><span class="header-section-number">12.3.7</span> Interpretation</a></li>
-<li><a class="nav-link" href="#group-comparisons-across-platforms"><span class="header-section-number">12.3.8</span> 5.2.3 Group Comparisons Across Platforms</a></li>
-<li><a class="nav-link" href="#example-spin_t-scores-by-platform"><span class="header-section-number">12.3.9</span> Example: SPIN_T Scores by Platform</a></li>
-<li><a class="nav-link" href="#optional-add-data-points-with-geom_jitter"><span class="header-section-number">12.3.10</span> Optional: Add Data Points with geom_jitter()</a></li>
-<li><a class="nav-link" href="#summary-of-section-5.2"><span class="header-section-number">12.3.11</span> Summary of Section 5.2</a></li>
+<a class="nav-link" href="#visualizing-group-comparisons"><span class="header-section-number">13.3</span> 5.2 Visualizing Group Comparisons</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#purpose-1"><span class="header-section-number">13.3.1</span> Purpose</a></li>
+<li><a class="nav-link" href="#boxplots"><span class="header-section-number">13.3.2</span> 5.2.1 Boxplots</a></li>
+<li><a class="nav-link" href="#example-gad_t-scores-by-gender"><span class="header-section-number">13.3.3</span> Example: GAD_T Scores by Gender</a></li>
+<li><a class="nav-link" href="#interpretation-9"><span class="header-section-number">13.3.4</span> Interpretation</a></li>
+<li><a class="nav-link" href="#violin-plots"><span class="header-section-number">13.3.5</span> 5.2.2 Violin Plots</a></li>
+<li><a class="nav-link" href="#example-swl_t-scores-by-gender"><span class="header-section-number">13.3.6</span> Example: SWL_T Scores by Gender</a></li>
+<li><a class="nav-link" href="#interpretation-10"><span class="header-section-number">13.3.7</span> Interpretation</a></li>
+<li><a class="nav-link" href="#group-comparisons-across-platforms"><span class="header-section-number">13.3.8</span> 5.2.3 Group Comparisons Across Platforms</a></li>
+<li><a class="nav-link" href="#example-spin_t-scores-by-platform"><span class="header-section-number">13.3.9</span> Example: SPIN_T Scores by Platform</a></li>
+<li><a class="nav-link" href="#optional-add-data-points-with-geom_jitter"><span class="header-section-number">13.3.10</span> Optional: Add Data Points with geom_jitter()</a></li>
+<li><a class="nav-link" href="#summary-of-section-5.2"><span class="header-section-number">13.3.11</span> Summary of Section 5.2</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#visualizing-associations"><span class="header-section-number">12.4</span> 5.3 Visualizing Associations</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#purpose-2"><span class="header-section-number">12.4.1</span> Purpose</a></li>
-<li><a class="nav-link" href="#scatterplots"><span class="header-section-number">12.4.2</span> 5.3.1 Scatterplots</a></li>
-<li><a class="nav-link" href="#example-hours-vs.-swl_t"><span class="header-section-number">12.4.3</span> Example: Hours vs. SWL_T</a></li>
-<li><a class="nav-link" href="#interpretation-11"><span class="header-section-number">12.4.4</span> Interpretation</a></li>
-<li><a class="nav-link" href="#adding-a-regression-line"><span class="header-section-number">12.4.5</span> 5.3.2 Adding a Regression Line</a></li>
-<li><a class="nav-link" href="#interpretation-12"><span class="header-section-number">12.4.6</span> Interpretation</a></li>
-<li><a class="nav-link" href="#associations-with-anxiety-and-social-phobia"><span class="header-section-number">12.4.7</span> 5.3.3 Associations with Anxiety and Social Phobia</a></li>
-<li><a class="nav-link" href="#optional-highlight-outliers"><span class="header-section-number">12.4.8</span> 5.3.4 Optional: Highlight Outliers</a></li>
-<li><a class="nav-link" href="#summary-of-section-5.3"><span class="header-section-number">12.4.9</span> Summary of Section 5.3</a></li>
+<a class="nav-link" href="#visualizing-associations"><span class="header-section-number">13.4</span> 5.3 Visualizing Associations</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#purpose-2"><span class="header-section-number">13.4.1</span> Purpose</a></li>
+<li><a class="nav-link" href="#scatterplots"><span class="header-section-number">13.4.2</span> 5.3.1 Scatterplots</a></li>
+<li><a class="nav-link" href="#example-hours-vs.-swl_t"><span class="header-section-number">13.4.3</span> Example: Hours vs. SWL_T</a></li>
+<li><a class="nav-link" href="#interpretation-11"><span class="header-section-number">13.4.4</span> Interpretation</a></li>
+<li><a class="nav-link" href="#adding-a-regression-line"><span class="header-section-number">13.4.5</span> 5.3.2 Adding a Regression Line</a></li>
+<li><a class="nav-link" href="#interpretation-12"><span class="header-section-number">13.4.6</span> Interpretation</a></li>
+<li><a class="nav-link" href="#associations-with-anxiety-and-social-phobia"><span class="header-section-number">13.4.7</span> 5.3.3 Associations with Anxiety and Social Phobia</a></li>
+<li><a class="nav-link" href="#optional-highlight-outliers"><span class="header-section-number">13.4.8</span> 5.3.4 Optional: Highlight Outliers</a></li>
+<li><a class="nav-link" href="#summary-of-section-5.3"><span class="header-section-number">13.4.9</span> Summary of Section 5.3</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#enhancing-visuals-with-labels-themes-and-extensions"><span class="header-section-number">12.5</span> 5.4 Enhancing Visuals with Labels, Themes, and Extensions</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#purpose-3"><span class="header-section-number">12.5.1</span> Purpose</a></li>
-<li><a class="nav-link" href="#adding-labels-and-annotations"><span class="header-section-number">12.5.2</span> 5.4.1 Adding Labels and Annotations</a></li>
-<li><a class="nav-link" href="#highlighting-results-with-gghighlight"><span class="header-section-number">12.5.3</span> 5.4.2 Highlighting Results with gghighlight</a></li>
-<li><a class="nav-link" href="#avoiding-overlapping-labels-with-ggrepel"><span class="header-section-number">12.5.4</span> 5.4.3 Avoiding Overlapping Labels with ggrepel</a></li>
-<li><a class="nav-link" href="#enhancing-style-with-ggthemes"><span class="header-section-number">12.5.5</span> 5.4.4 Enhancing Style with ggthemes</a></li>
-<li><a class="nav-link" href="#adding-statistical-context-with-ggstatsplot"><span class="header-section-number">12.5.6</span> 5.4.5 Adding Statistical Context with ggstatsplot</a></li>
-<li><a class="nav-link" href="#exporting-plots"><span class="header-section-number">12.5.7</span> 5.4.6 Exporting Plots</a></li>
-<li><a class="nav-link" href="#summary-of-section-5.4"><span class="header-section-number">12.5.8</span> Summary of Section 5.4</a></li>
+<a class="nav-link" href="#enhancing-visuals-with-labels-themes-and-extensions"><span class="header-section-number">13.5</span> 5.4 Enhancing Visuals with Labels, Themes, and Extensions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#purpose-3"><span class="header-section-number">13.5.1</span> Purpose</a></li>
+<li><a class="nav-link" href="#adding-labels-and-annotations"><span class="header-section-number">13.5.2</span> 5.4.1 Adding Labels and Annotations</a></li>
+<li><a class="nav-link" href="#highlighting-results-with-gghighlight"><span class="header-section-number">13.5.3</span> 5.4.2 Highlighting Results with gghighlight</a></li>
+<li><a class="nav-link" href="#avoiding-overlapping-labels-with-ggrepel"><span class="header-section-number">13.5.4</span> 5.4.3 Avoiding Overlapping Labels with ggrepel</a></li>
+<li><a class="nav-link" href="#enhancing-style-with-ggthemes"><span class="header-section-number">13.5.5</span> 5.4.4 Enhancing Style with ggthemes</a></li>
+<li><a class="nav-link" href="#adding-statistical-context-with-ggstatsplot"><span class="header-section-number">13.5.6</span> 5.4.5 Adding Statistical Context with ggstatsplot</a></li>
+<li><a class="nav-link" href="#exporting-plots"><span class="header-section-number">13.5.7</span> 5.4.6 Exporting Plots</a></li>
+<li><a class="nav-link" href="#summary-of-section-5.4"><span class="header-section-number">13.5.8</span> Summary of Section 5.4</a></li>
 </ul>
 </li>
 </ul>

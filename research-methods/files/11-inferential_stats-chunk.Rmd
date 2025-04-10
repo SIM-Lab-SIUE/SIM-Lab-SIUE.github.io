@@ -48,7 +48,7 @@ _Is there a relationship between gender identity and gaming platform?_
 
 #### Load the Dataset {.unnumbered}
 
-```r
+```{r}
 gaming_data <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/data.csv", encoding = "ISO-8859-1")
 ```
 
@@ -56,7 +56,7 @@ gaming_data <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/
 
 ### Code: Chi-Square Test
 
-```r
+```{r}
 library(tidyverse)
 
 # Tabulate Gender × Platform
@@ -100,7 +100,7 @@ _Is the average anxiety score (GAD_T) in this sample significantly different fro
 
 ### Code: Single Sample T-Test
 
-```r
+```{r}
 t.test(gaming_data$GAD_T, mu = 5)
 ```
 
@@ -146,7 +146,7 @@ Do anxiety scores differ by gender identity?
 
 We will use `t.test()` to test whether the average GAD score differs between gender groups.
 
-```r
+```{r}
 # Load tidyverse
 library(tidyverse)
 
@@ -198,7 +198,7 @@ Does gaming platform (PC, Console, Mobile) affect social anxiety scores (SPIN_T)
 
 ### Example: SPIN_T by Platform
 
-```r
+```{r}
 # Run ANOVA model
 anova_model <- aov(SPIN_T ~ Platform, data = gaming_data)
 summary(anova_model)
@@ -222,7 +222,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 If the ANOVA is significant, you need to run post-hoc tests to identify _which_ groups differ.
 
-```r
+```{r}
 # Tukey post-hoc test
 TukeyHSD(anova_model)
 ```
@@ -261,7 +261,7 @@ _Do anxiety scores differ by gender and platform, and is there an interaction be
 
 ### Code: Two-Way ANOVA
 
-```r
+```{r}
 anova_2way <- aov(GAD_T ~ Gender * Platform, data = gaming_data)
 summary(anova_2way)
 ```
@@ -303,7 +303,7 @@ _Does platform predict social phobia scores after controlling for hours spent ga
 
 ### Code: ANCOVA
 
-```r
+```{r}
 ancova_model <- aov(SPIN_T ~ Platform + Hours, data = gaming_data)
 summary(ancova_model)
 ```
@@ -350,7 +350,7 @@ This technique is foundational in statistical modeling. It is used when:
 
 Do the number of hours spent gaming predict satisfaction with life?
 
-```r
+```{r}
 # Simple linear regression model
 model_simple <- lm(SWL_T ~ Hours, data = gaming_data)
 
@@ -401,7 +401,7 @@ F-statistic: 17.21 on 1 and 13432 DF,  p-value: 3.371e-05
 **Research Question (RQ)**:  
 Do hours and gender predict life satisfaction?
 
-```r
+```{r}
 # Regression model
 model <- lm(SWL_T ~ Hours + Gender, data = gaming_data)
 summary(model)
@@ -445,14 +445,14 @@ _Are hours played and anxiety levels associated with whether someone plays on a 
 
 ### Step 1: Create Binary Outcome
 
-```r
+```{r}
 gaming_data <- gaming_data %>%
   mutate(is_pc = if_else(Platform == "PC", 1, 0))
 ```
 
 ### Step 2: Run Logistic Regression
 
-```r
+```{r}
 log_model <- glm(is_pc ~ Hours + GAD_T, data = gaming_data, family = binomial)
 summary(log_model)
 ```

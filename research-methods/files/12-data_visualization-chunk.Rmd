@@ -1,5 +1,7 @@
 # Data Visualization in R
 
+# Data Visualization in R
+
 [[Chunk Version]](files/11-data_visualization-chunk.Rmd)
 
 ## Overview
@@ -48,7 +50,7 @@ A **histogram** displays the frequency of observations in specified bins (ranges
 
 ### Example: Histogram of Weekly Hours Played
 
-```r
+```{r}
 # Load required libraries
 library(tidyverse)
 
@@ -73,7 +75,7 @@ ggplot(gaming_data, aes(x = Hours)) +
 - A long right tail indicates that some participants report very high playtimes (outliers).
 - If necessary, you can limit the x-axis to reduce the impact of extreme values:
 
-```r
+```{r}
 # Truncate extreme values
 ggplot(gaming_data, aes(x = Hours)) +
   geom_histogram(binwidth = 5, fill = "tomato", color = "white") +
@@ -84,7 +86,7 @@ ggplot(gaming_data, aes(x = Hours)) +
 
 You can also create a filtered data set to use moving forward that removes all users who report impossible weekly gaming hours (i.e., over 168 hours)
 
-```r
+```{r}
 # Filter for reponses higher than 168 hours a week
 gaming_data <- gaming_data %>%
   filter(Hours <= 168)
@@ -106,7 +108,7 @@ ggplot(gaming_data, aes(x = Hours)) +
 
 ### Example: Density of GAD_T Scores
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = GAD_T)) +
   geom_density(fill = "skyblue", alpha = 0.4) +
   labs(
@@ -131,7 +133,7 @@ You can use **grouped density plots** or **facet wrapping** to compare distribut
 
 #### Example: Compare Life Satisfaction (SWL_T) by Gender
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = SWL_T, fill = Gender)) +
   geom_density(alpha = 0.5) +
   labs(
@@ -144,7 +146,7 @@ ggplot(gaming_data, aes(x = SWL_T, fill = Gender)) +
 
 #### Alternative: Separate Plots with `facet_wrap()`
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = SWL_T)) +
   geom_density(fill = "steelblue", alpha = 0.6) +
   facet_wrap(~ Gender) +
@@ -205,7 +207,7 @@ Outliers are plotted as individual points. The box itself contains the middle 50
 
 ### Example: GAD_T Scores by Gender
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
   geom_boxplot(fill = "lightblue") +
   labs(
@@ -237,7 +239,7 @@ They are particularly useful when:
 
 ### Example: SWL_T Scores by Gender
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Gender, y = SWL_T)) +
   geom_violin(fill = "lightcoral", alpha = 0.7) +
   geom_boxplot(width = 0.1, fill = "white") +  # Overlay boxplot
@@ -263,7 +265,7 @@ You can use the same visual tools to compare more than two groups.
 
 ### Example: SPIN_T Scores by Platform
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Platform, y = SPIN_T)) +
   geom_boxplot(fill = "lightgreen") +
   labs(
@@ -282,7 +284,7 @@ If you expect a non-normal distribution or have small group sizes (e.g., few sma
 
 To better show individual data points, add `geom_jitter()` to your plot:
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
   geom_boxplot(fill = "skyblue", outlier.shape = NA) +  # Hide default outliers
   geom_jitter(width = 0.2, alpha = 0.3) +               # Add raw points
@@ -340,7 +342,7 @@ A **scatterplot** displays the relationship between two numeric variables. Each 
 
 We will examine whether gaming hours predict life satisfaction.
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   labs(
@@ -364,7 +366,7 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
 
 You can use `geom_smooth(method = "lm")` to overlay a **linear regression line**.
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "steelblue") +
@@ -393,7 +395,7 @@ You can explore other relationships in the same way.
 
 #### Example: Hours vs. GAD_T
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = GAD_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "darkred") +
@@ -407,7 +409,7 @@ ggplot(gaming_data, aes(x = Hours, y = GAD_T)) +
 
 #### Example: Hours vs. SPIN_T
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = SPIN_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "darkgreen") +
@@ -425,7 +427,7 @@ ggplot(gaming_data, aes(x = Hours, y = SPIN_T)) +
 
 If outliers are influencing the regression line, consider limiting the x-axis to a more typical range:
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "darkblue") +
@@ -478,7 +480,7 @@ Use `labs()` to define titles, subtitles, and axis labels. Use `annotate()` or `
 
 #### Example: Annotated Scatterplot with Regression Line
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", color = "steelblue", se = TRUE) +
@@ -493,7 +495,7 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
 
 You can also annotate directly on the plot:
 
-```r
+```{r}
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", color = "steelblue", se = TRUE) +
@@ -507,7 +509,7 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
 
 The [`gghighlight`](https://github.com/yutannihilation/gghighlight) package allows you to emphasize parts of your data based on a condition.
 
-```r
+```{r}
 # install.packages("gghighlight")
 library(gghighlight)
 
@@ -526,7 +528,7 @@ This is useful when showcasing a specific subset of data.
 
 The `ggrepel` package makes labels readable by pushing them apart.
 
-```r
+```{r}
 # install.packages("ggrepel")
 library(ggrepel)
 
@@ -549,7 +551,7 @@ This approach is ideal when highlighting outliers or individuals in small sample
 
 The `ggthemes` package provides pre-built styles that improve appearance with minimal effort.
 
-```r
+```{r}
 # install.packages("ggthemes")
 library(ggthemes)
 
@@ -573,7 +575,7 @@ Other useful themes include:
 
 The `ggstatsplot` package integrates statistical test results directly into your visuals.
 
-```r
+```{r}
 # install.packages("ggstatsplot")
 library(ggstatsplot)
 
@@ -592,7 +594,7 @@ This creates a publication-ready boxplot with:
 
 You can save any `ggplot2` object using `ggsave()`.
 
-```r
+```{r}
 # Save last plot as a PNG
 ggsave("figures/swl_vs_hours.png", width = 6, height = 4, dpi = 300)
 ```
