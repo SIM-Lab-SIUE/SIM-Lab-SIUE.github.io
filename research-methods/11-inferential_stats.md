@@ -1,62 +1,56 @@
 # Inferential Analysis
 
+[Chunk Version](https://sim-lab-siue.github.io/research-methods/files/11-descriptive_stats-chunks.Rmd)
+
 ## Overview
 
 Descriptive statistics help summarize your dataset. However, they cannot answer questions about whether observed differences or relationships are meaningful beyond the sample. **Inferential statistics** are used to evaluate whether patterns observed in a sample are likely to generalize to the larger population.
 
-In social science research, inferential statistics are used to:
-- Compare means between groups (e.g., do anxiety levels differ by gender?)
-- Evaluate associations between variables (e.g., is time spent gaming associated with social phobia?)
-- Predict outcomes using one or more variables (e.g., does platform use and gender predict satisfaction with life?)
+In social science research, inferential statistics are used to: - Compare means between groups (e.g., do anxiety levels differ by gender?) - Evaluate associations between variables (e.g., is time spent gaming associated with social phobia?) - Predict outcomes using one or more variables (e.g., does platform use and gender predict satisfaction with life?)
 
 This chapter introduces the foundational inferential methods for hypothesis testing in media and communication research. These include:
 
-- Chi-Square Test of Independence
-- Single Sample T-Test
-- Independent Samples T-Test
-- One-Way ANOVA
-- Two-Way ANOVA
-- ANCOVA (Analysis of Covariance)
-- Simple and Multiple Linear Regression
-- Logistic Regression
+-   Chi-Square Test of Independence
+-   Single Sample T-Test
+-   Independent Samples T-Test
+-   One-Way ANOVA
+-   Two-Way ANOVA
+-   ANCOVA (Analysis of Covariance)
+-   Simple and Multiple Linear Regression
+-   Logistic Regression
 
-Each section includes:
-- Conceptual explanation
-- Justification for use
-- Complete R code (tidyverse-compatible)
-- Statistical output and APA-style reporting
-- Notes on assumptions and effect sizes
+Each section includes: - Conceptual explanation - Justification for use - Complete R code (tidyverse-compatible) - Statistical output and APA-style reporting - Notes on assumptions and effect sizes
 
 We use the `gaming_anxiety.csv` dataset for all examples. This dataset includes responses from over 13,000 gamers who completed demographic and psychological scales (GAD, SWL, SPIN), and reported on game habits, platforms, and motivations for play.
 
----
+------------------------------------------------------------------------
 
-## 4.1 Chi-Square Test of Independence
+## Chi-Square Test of Independence
 
-### Concept
+### Concept {.unnumbered}
 
 The **Chi-Square Test of Independence** evaluates whether two categorical variables are statistically associated. It is used when both the independent and dependent variables are nominal (unordered categories).
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
-_Is there a relationship between gender identity and gaming platform?_
+*Is there a relationship between gender identity and gaming platform?*
 
-### Variables
+### Variables {.unnumbered}
 
-- **Gender**: Male, Female, Other
-- **Platform**: PC, Console, Mobile
+-   **Gender**: Male, Female, Other
+-   **Platform**: PC, Console, Mobile
 
 #### Load the Dataset {.unnumbered}
 
-```r
+``` r
 gaming_data <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/data.csv", encoding = "ISO-8859-1")
 ```
 
----
+------------------------------------------------------------------------
 
-### Code: Chi-Square Test
+### Code: Chi-Square Test {.unnumbered}
 
-```r
+``` r
 library(tidyverse)
 
 # Tabulate Gender × Platform
@@ -66,48 +60,48 @@ table_chi <- table(gaming_data$Gender, gaming_data$Platform)
 chisq.test(table_chi)
 ```
 
-### Output
+### Output {.unnumbered}
 
-```
-	Pearson's Chi-squared test
+```         
+    Pearson's Chi-squared test
 
 data:  table_chi
 X-squared = 70.448, df = 4, p-value = 1.826e-14
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- The **p-value** < .001 indicates a **statistically significant association** between gender and gaming platform.
-- This means platform preference differs by gender more than would be expected by chance.
+-   The **p-value** \< .001 indicates a **statistically significant association** between gender and gaming platform.
+-   This means platform preference differs by gender more than would be expected by chance.
 
-### APA Style
+### APA Style {.unnumbered}
 
-> A Chi-Square Test of Independence showed a significant association between gender and gaming platform use, χ²(4, N = 13,000+) = 70.448, *p* = <.001.
+> A Chi-Square Test of Independence showed a significant association between gender and gaming platform use, χ²(4, N = 13,000+) = 70.448, *p* = \<.001.
 
----
+------------------------------------------------------------------------
 
-## 4.2 Single Sample T-Test
+## Single Sample T-Test
 
-### Concept
+### Concept {.unnumbered}
 
 The **Single Sample T-Test** compares the sample mean of one variable to a known or hypothetical population value.
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
-_Is the average anxiety score (GAD_T) in this sample significantly different from the general population mean of 5.0?_
+*Is the average anxiety score (GAD_T) in this sample significantly different from the general population mean of 5.0?*
 
----
+------------------------------------------------------------------------
 
-### Code: Single Sample T-Test
+### Code: Single Sample T-Test {.unnumbered}
 
-```r
+``` r
 t.test(gaming_data$GAD_T, mu = 5)
 ```
 
-### Output
+### Output {.unnumbered}
 
-```
-	One Sample t-test
+```         
+    One Sample t-test
 
 data:  gaming_data$GAD_T
 t = 5.2185, df = 13463, p-value = 1.831e-07
@@ -119,34 +113,34 @@ mean of x
  5.211973 
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- The average GAD score in this sample (5.10) is significantly **higher** than the population average of 5.0.
-- The **p-value** = .011 suggests that this difference is unlikely due to random chance.
+-   The average GAD score in this sample (5.10) is significantly **higher** than the population average of 5.0.
+-   The **p-value** = .011 suggests that this difference is unlikely due to random chance.
 
 ### APA Style
 
-> A single-sample t-test showed that the mean GAD score (M = 5.21) was significantly higher than the population mean of 5.0, *t*(13,463) = 5.22, *p* < .001, 95% CI [5.13, 5.29].
+> A single-sample t-test showed that the mean GAD score (M = 5.21) was significantly higher than the population mean of 5.0, *t*(13,463) = 5.22, *p* \< .001, 95% CI [5.13, 5.29].
 
----
+------------------------------------------------------------------------
 
-## 4.3 Independent Samples T-Test
+## Independent Samples T-Test
 
-### Concept
+### Concept {.unnumbered}
 
 A **t-test** compares the means of two groups to determine whether they are statistically different from each other. It is used when:
 
-- You have one **categorical independent variable** with two groups (e.g., gender)
-- You have one **continuous dependent variable** (e.g., GAD_T)
+-   You have one **categorical independent variable** with two groups (e.g., gender)
+-   You have one **continuous dependent variable** (e.g., GAD_T)
 
-**Research Question (RQ)**:  
+**Research Question (RQ)**:\
 Do anxiety scores differ by gender identity?
 
-### Example: GAD_T by Gender
+### Example: GAD_T by Gender {.unnumbered}
 
 We will use `t.test()` to test whether the average GAD score differs between gender groups.
 
-```r
+``` r
 # Load tidyverse
 library(tidyverse)
 
@@ -158,10 +152,10 @@ gaming_gender_subset <- gaming_data %>%
 t.test(GAD_T ~ Gender, data = gaming_gender_subset)
 ```
 
-### Output
+### Output {.unnumbered}
 
-```
-	Welch Two Sample t-test
+```         
+    Welch Two Sample t-test
 
 data:  GAD_T by Gender
 t = -4.5944, df = 51.177, p-value = 2.864e-05
@@ -173,40 +167,39 @@ sample estimates:
            5.060162            9.576923 
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- **t-value**: The test statistic (t = -3.864) reflects the size of the difference relative to the variability in the data.
-- **p-value**: The probability of observing such a difference by chance (p < .001), indicating a **statistically significant** difference between male and other-identifying participants.
-- **95% CI**: The true difference in population means is likely between -3.81 and -1.22.
-- **Group Means**: Male gamers report lower GAD scores (M = 5.19) than Other-identifying gamers (M = 7.71).
+-   **t-value**: The test statistic (t = -3.864) reflects the size of the difference relative to the variability in the data.
+-   **p-value**: The probability of observing such a difference by chance (p \< .001), indicating a **statistically significant** difference between male and other-identifying participants.
+-   **95% CI**: The true difference in population means is likely between -3.81 and -1.22.
+-   **Group Means**: Male gamers report lower GAD scores (M = 5.19) than Other-identifying gamers (M = 7.71).
 
-### APA Reporting Style
+### APA Reporting Style {.unnumbered}
 
-> A Welch’s t-test indicated a significant difference in anxiety scores between male and other-identifying gamers, *t*(51.18) = -4.59, *p* < .001, 95% CI [-6.49, -2.54]. Other-identifying participants (M = 9.58) reported significantly higher GAD scores than male participants (M = 5.06).
+> A Welch's t-test indicated a significant difference in anxiety scores between male and other-identifying gamers, *t*(51.18) = -4.59, *p* \< .001, 95% CI [-6.49, -2.54]. Other-identifying participants (M = 9.58) reported significantly higher GAD scores than male participants (M = 5.06).
 
----
+------------------------------------------------------------------------
 
+## One-Way ANOVA
 
-## 4.4 One-Way ANOVA
+### Concept {.unnumbered}
 
-### Concept
+**Analysis of Variance (ANOVA)** compares the means of three or more groups. It tests whether *any* of the group means are different from the others.
 
-**Analysis of Variance (ANOVA)** compares the means of three or more groups. It tests whether _any_ of the group means are different from the others.
-
-**Research Question (RQ)**:  
+**Research Question (RQ)**:\
 Does gaming platform (PC, Console, Mobile) affect social anxiety scores (SPIN_T)?
 
-### Example: SPIN_T by Platform
+### Example: SPIN_T by Platform {.unnumbered}
 
-```r
+``` r
 # Run ANOVA model
 anova_model <- aov(SPIN_T ~ Platform, data = gaming_data)
 summary(anova_model)
 ```
 
-### Output
+### Output {.unnumbered}
 
-```
+```         
                Df  Sum Sq Mean Sq F value Pr(>F)  
 Platform        2    1261   630.3   3.477 0.0309 *
 Residuals   12811 2322676   181.3                 
@@ -215,20 +208,21 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 650 observations deleted due to missingness            
 ```
 
-- **F value**: The ratio of between-group to within-group variance
-- **p-value**: Indicates whether at least one group differs from the others (_p_ = .030)
+-   **F value**: The ratio of between-group to within-group variance
+-   **p-value**: Indicates whether at least one group differs from the others (*p* = .030)
 
-### Post-Hoc Test: Tukey’s HSD
+### Post-Hoc Test: Tukey's HSD {.unnumbered}
 
-If the ANOVA is significant, you need to run post-hoc tests to identify _which_ groups differ.
+If the ANOVA is significant, you need to run post-hoc tests to identify *which* groups differ.
 
-```r
+``` r
 # Tukey post-hoc test
 TukeyHSD(anova_model)
 ```
-### Output
 
-```
+### Output {.unnumbered}
+
+```         
   Tukey multiple comparisons of means
     95% family-wise confidence level
 
@@ -241,34 +235,34 @@ Smartphone / Tablet-Console (PS, Xbox, ...)  4.164071 -3.057782 11.385925 0.3667
 Smartphone / Tablet-PC 
 ```
 
-### APA Reporting Style
+### APA Reporting Style {.unnumbered}
 
 > A one-way ANOVA revealed a statistically significant effect of platform on social phobia scores, *F*(2, 12811) = 3.48, *p* = .031. Tukey post-hoc comparisons indicated that while smartphone/tablet users scored higher than console and PC users, no pairwise differences reached statistical significance.
 
----
+------------------------------------------------------------------------
 
-## 4.5 Two-Way ANOVA
+## Two-Way ANOVA
 
-### Concept
+### Concept {.unnumbered}
 
 A **Two-Way ANOVA** tests the effects of **two categorical independent variables** on a **continuous outcome**, including whether there is an **interaction** between them.
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
-_Do anxiety scores differ by gender and platform, and is there an interaction between the two?_
+*Do anxiety scores differ by gender and platform, and is there an interaction between the two?*
 
----
+------------------------------------------------------------------------
 
-### Code: Two-Way ANOVA
+### Code: Two-Way ANOVA {.unnumbered}
 
-```r
+``` r
 anova_2way <- aov(GAD_T ~ Gender * Platform, data = gaming_data)
 summary(anova_2way)
 ```
 
-### Example Output
+### Example Output {.unnumbered}
 
-```
+```         
                    Df Sum Sq Mean Sq F value Pr(>F)    
 Gender              2   5341  2670.4 122.414 <2e-16 ***
 Platform            2     85    42.7   1.958  0.141    
@@ -278,39 +272,39 @@ Residuals       13455 293515    21.8
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- A significant **main effect of gender**: GAD_T varies by gender.
-- No significant effect of platform or the gender × platform interaction.
+-   A significant **main effect of gender**: GAD_T varies by gender.
+-   No significant effect of platform or the gender × platform interaction.
 
 ### APA Style
 
-> A two-way ANOVA revealed a significant main effect of gender on GAD scores, *F*(2, 13455) = 122.41, *p* < .001. No significant main effect was found for platform (*p* = .141), and the interaction between gender and platform was also not significant (*p* = .177).
+> A two-way ANOVA revealed a significant main effect of gender on GAD scores, *F*(2, 13455) = 122.41, *p* \< .001. No significant main effect was found for platform (*p* = .141), and the interaction between gender and platform was also not significant (*p* = .177).
 
----
+------------------------------------------------------------------------
 
-## 4.6 ANCOVA: Analysis of Covariance
+## ANCOVA: Analysis of Covariance
 
-### Concept
+### Concept {.unnumbered}
 
 **ANCOVA** examines the effect of a categorical independent variable on a continuous outcome **while statistically controlling for another continuous variable (covariate).**
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
-_Does platform predict social phobia scores after controlling for hours spent gaming?_
+*Does platform predict social phobia scores after controlling for hours spent gaming?*
 
----
+------------------------------------------------------------------------
 
-### Code: ANCOVA
+### Code: ANCOVA {.unnumbered}
 
-```r
+``` r
 ancova_model <- aov(SPIN_T ~ Platform + Hours, data = gaming_data)
 summary(ancova_model)
 ```
 
-### Output
+### Output {.unnumbered}
 
-```
+```         
                Df  Sum Sq Mean Sq F value   Pr(>F)    
 Platform        2    1188     594   3.288   0.0373 *  
 Hours           1    5561    5561  30.772 2.96e-08 ***
@@ -320,37 +314,36 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 678 observations deleted due to missingness
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- **Platform** still predicts SPIN_T after controlling for hours.
-- **Hours** is also a significant covariate, meaning it explains part of the variance in SPIN_T.
+-   **Platform** still predicts SPIN_T after controlling for hours.
+-   **Hours** is also a significant covariate, meaning it explains part of the variance in SPIN_T.
 
-### APA Style
+### APA Style {.unnumbered}
 
-> An ANCOVA revealed that platform significantly predicted SPIN scores after controlling for hours played, *F*(2, 12782) = 3.29, *p* = .037. Weekly gaming hours also significantly predicted SPIN scores, *F*(1, 12782) = 30.77, *p* < .001.
+> An ANCOVA revealed that platform significantly predicted SPIN scores after controlling for hours played, *F*(2, 12782) = 3.29, *p* = .037. Weekly gaming hours also significantly predicted SPIN scores, *F*(1, 12782) = 30.77, *p* \< .001.
 
----
+------------------------------------------------------------------------
 
-## 4.7 Simple Linear Regression
+## Simple Linear Regression
 
-### Concept
+### Concept {.unnumbered}
 
 **Simple linear regression** models the relationship between a single **predictor (independent variable)** and a **continuous outcome (dependent variable)**. It estimates how much the outcome changes on average when the predictor increases by one unit.
 
-This technique is foundational in statistical modeling. It is used when:
-- You have two numeric variables
-- You want to understand how one variable predicts another
-- You want to assess direction, magnitude, and significance of an association
+This technique is foundational in statistical modeling. It is used when: - You have two numeric variables - You want to understand how one variable predicts another - You want to assess direction, magnitude, and significance of an association
 
 > Linear regression assumes a **linear relationship**, **normally distributed residuals**, and **homoscedasticity** (equal variance of residuals across levels of the predictor).
 
----
+------------------------------------------------------------------------
 
-**Research Question (RQ)**:  
+**Research Question (RQ)**:
 
 Do the number of hours spent gaming predict satisfaction with life?
 
-```r
+### Code: Simple Linear Regression {.unnumbered}
+
+``` r
 # Simple linear regression model
 model_simple <- lm(SWL_T ~ Hours, data = gaming_data)
 
@@ -358,9 +351,9 @@ model_simple <- lm(SWL_T ~ Hours, data = gaming_data)
 summary(model_simple)
 ```
 
-#### Output
+### Output {.unnumbered}
 
-```
+```         
 Call:
 lm(formula = SWL_T ~ Hours, data = gaming_data)
 
@@ -377,31 +370,34 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 Residual standard error: 7.22 on 13432 degrees of freedom
   (30 observations deleted due to missingness)
-Multiple R-squared:  0.001279,	Adjusted R-squared:  0.001205 
+Multiple R-squared:  0.001279,  Adjusted R-squared:  0.001205 
 F-statistic: 17.21 on 1 and 13432 DF,  p-value: 3.371e-05
 ```
 
-- **Intercept** = 19.93: The predicted SWL_T score for someone who plays 0 hours/week
-- **Slope (Hours)** = -0.0034: For every additional hour of gameplay, life satisfaction decreases by 0.0034 points, on average
+-   **Intercept** = 19.93: The predicted SWL_T score for someone who plays 0 hours/week
+-   **Slope (Hours)** = -0.0034: For every additional hour of gameplay, life satisfaction decreases by 0.0034 points, on average
 
----
+------------------------------------------------------------------------
 
-### APA Reporting Style
+### APA Reporting Style {.unnumbered}
 
-> A simple linear regression found that hours spent gaming significantly predicted satisfaction with life, *b* = -0.0037, *t*(13,432) = -4.15, *p* < .001. The model was statistically significant, *F*(1, 13432) = 17.21, *p* < .001, but the effect size was small (*R²* = .0013).
+> A simple linear regression found that hours spent gaming significantly predicted satisfaction with life, *b* = -0.0037, *t*(13,432) = -4.15, *p* \< .001. The model was statistically significant, *F*(1, 13432) = 17.21, *p* \< .001, but the effect size was small (*R²* = .0013).
 
----
+------------------------------------------------------------------------
 
-## 4.8 Multiple Linear Regression
+## Multiple Linear Regression
 
-### Concept
+### Concept {.unnumbered}
 
 **Linear regression** estimates the relationship between one outcome and one or more predictors. It helps you predict an outcome variable (e.g., SWL_T) from explanatory variables (e.g., Hours, Gender).
 
-**Research Question (RQ)**:  
+**Research Question (RQ)**:
+
 Do hours and gender predict life satisfaction?
 
-```r
+### Code: Multiple Linear Regression
+
+``` r
 # Regression model
 model <- lm(SWL_T ~ Hours + Gender, data = gaming_data)
 summary(model)
@@ -410,56 +406,55 @@ library(broom)
 tidy(model)
 ```
 
-### Output (Simplified)
+### Output (Simplified) {.unnumbered}
 
-```
+```         
 term    estimate    std.error   statistic   p.value
-(Intercept)	19.037025769	0.2706934594	70.326878	0.0000000000
-Hours	-0.003168531	0.0008958389	-3.536943	0.0004061515
-GenderMale	0.896374344	0.2776521546	3.228408	0.0012478040
-GenderOther	-3.166372560	1.0572902969	-2.994800	0.0027512578
-
+(Intercept) 19.037025769    0.2706934594    70.326878   0.0000000000
+Hours   -0.003168531    0.0008958389    -3.536943   0.0004061515
+GenderMale  0.896374344 0.2776521546    3.228408    0.0012478040
+GenderOther -3.166372560    1.0572902969    -2.994800   0.0027512578
 ```
 
-- **Intercept**: Predicted SWL_T score when Hours = 0 and Gender = "Male"
-- **Hours**: For each additional hour of gaming, life satisfaction decreases slightly
-- **GenderOther**: Participants identifying as "Other" report significantly lower SWL_T scores than males
+-   **Intercept**: Predicted SWL_T score when Hours = 0 and Gender = "Male"
+-   **Hours**: For each additional hour of gaming, life satisfaction decreases slightly
+-   **GenderOther**: Participants identifying as "Other" report significantly lower SWL_T scores than males
 
-### APA Reporting Style
+### APA Reporting Style {.unnumbered}
 
-> A multiple linear regression was conducted to examine whether weekly hours played and gender identity predicted satisfaction with life. The overall model was statistically significant, *F*(3, 13,430) = 14.36, *p* < .001, but explained only a small proportion of variance in SWL_T (*R²* = .003, adjusted *R²* = .003).
+> A multiple linear regression was conducted to examine whether weekly hours played and gender identity predicted satisfaction with life. The overall model was statistically significant, *F*(3, 13,430) = 14.36, *p* \< .001, but explained only a small proportion of variance in SWL_T (*R²* = .003, adjusted *R²* = .003).
 
-> Weekly hours played significantly predicted satisfaction with life, *b* = –0.0032, *t* = –3.54, *p* < .001, suggesting a very small negative relationship. Gender was also a significant predictor: male participants reported significantly higher SWL_T scores than female participants, *b* = 0.90, *t* = 3.23, *p* = .001, while participants identifying as “Other” reported significantly lower SWL_T scores than females, *b* = –3.17, *t* = –2.99, *p* = .003.
+> Weekly hours played significantly predicted satisfaction with life, *b* = --0.0032, *t* = --3.54, *p* \< .001, suggesting a very small negative relationship. Gender was also a significant predictor: male participants reported significantly higher SWL_T scores than female participants, *b* = 0.90, *t* = 3.23, *p* = .001, while participants identifying as "Other" reported significantly lower SWL_T scores than females, *b* = --3.17, *t* = --2.99, *p* = .003.
 
----
+------------------------------------------------------------------------
 
-## 4.9 Logistic Regression
+## Logistic Regression
 
-### Concept
+### Concept {.unnumbered}
 
 **Logistic Regression** predicts a binary (two-category) outcome from one or more predictors.
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
-_Are hours played and anxiety levels associated with whether someone plays on a PC (vs. other platforms)?_
+*Are hours played and anxiety levels associated with whether someone plays on a PC (vs. other platforms)?*
 
-### Step 1: Create Binary Outcome
+### Create Binary Outcome {.unnumbered}
 
-```r
+``` r
 gaming_data <- gaming_data %>%
   mutate(is_pc = if_else(Platform == "PC", 1, 0))
 ```
 
-### Step 2: Run Logistic Regression
+### Run Logistic Regression {.unnumbered}
 
-```r
+``` r
 log_model <- glm(is_pc ~ Hours + GAD_T, data = gaming_data, family = binomial)
 summary(log_model)
 ```
 
-### Output
+### Output {.unnumbered}
 
-```
+```         
 Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 Call:
 glm(formula = is_pc ~ Hours + GAD_T, family = binomial, data = gaming_data)
@@ -482,26 +477,25 @@ AIC: 2442.9
 Number of Fisher Scoring iterations: 7
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- More hours played = higher odds of being a PC gamer
-- Higher anxiety = slightly lower odds of being a PC gamer
-- Odds ratios (OR < 1) indicate **negative relationships**
+-   More hours played = higher odds of being a PC gamer
+-   Higher anxiety = slightly lower odds of being a PC gamer
+-   Odds ratios (OR \< 1) indicate **negative relationships**
 
-### APA Style
+### APA Style {.unnumbered}
 
 > A logistic regression was conducted to predict the likelihood of being a PC gamer based on hours played and anxiety levels. Neither predictor was statistically significant: Hours played, *b* = 0.0038, *p* = .43; GAD_T, *b* = -0.0199, *p* = .13. The model was not a significant improvement over the null model, *χ²*(2) = 2.72, *p* = .257.
 
----
+------------------------------------------------------------------------
 
 ## Summary
 
 In this chapter, you learned how to:
 
-- Conduct and interpret a full suite of inferential tests
-- Choose tests based on variable type and research question
-- Report statistical results using APA 7 format
-- Control for covariates and model binary outcomes
+-   Conduct and interpret a full suite of inferential tests
+-   Choose tests based on variable type and research question
+-   Report statistical results using APA 7 format
+-   Control for covariates and model binary outcomes
 
-This prepares you for real-world research questions that involve group comparisons, associations, predictions, and interactions—all within the framework of social science methodology.
-
+This prepares you for real-world research questions that involve group comparisons, associations, predictions, and interactions---all within the framework of social science methodology.

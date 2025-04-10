@@ -31,17 +31,17 @@ We use the `gaming_anxiety.csv` dataset for all examples. This dataset includes 
 
 ---
 
-## 4.1 Chi-Square Test of Independence
+## Chi-Square Test of Independence
 
-### Concept
+### Concept {.unnumbered}
 
 The **Chi-Square Test of Independence** evaluates whether two categorical variables are statistically associated. It is used when both the independent and dependent variables are nominal (unordered categories).
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
 _Is there a relationship between gender identity and gaming platform?_
 
-### Variables
+### Variables {.unnumbered}
 
 - **Gender**: Male, Female, Other
 - **Platform**: PC, Console, Mobile
@@ -54,7 +54,7 @@ gaming_data <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/
 
 ---
 
-### Code: Chi-Square Test
+### Code: Chi-Square Test {.unnumbered}
 
 ```{r}
 library(tidyverse)
@@ -66,7 +66,7 @@ table_chi <- table(gaming_data$Gender, gaming_data$Platform)
 chisq.test(table_chi)
 ```
 
-### Output
+### Output {.unnumbered}
 
 ```
 	Pearson's Chi-squared test
@@ -75,36 +75,36 @@ data:  table_chi
 X-squared = 70.448, df = 4, p-value = 1.826e-14
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
 - The **p-value** < .001 indicates a **statistically significant association** between gender and gaming platform.
 - This means platform preference differs by gender more than would be expected by chance.
 
-### APA Style
+### APA Style {.unnumbered}
 
 > A Chi-Square Test of Independence showed a significant association between gender and gaming platform use, χ²(4, N = 13,000+) = 70.448, *p* = <.001.
 
 ---
 
-## 4.2 Single Sample T-Test
+## Single Sample T-Test
 
-### Concept
+### Concept {.unnumbered}
 
 The **Single Sample T-Test** compares the sample mean of one variable to a known or hypothetical population value.
 
-### Research Question (RQ)
+### Research Question (RQ) {.unnumbered}
 
 _Is the average anxiety score (GAD_T) in this sample significantly different from the general population mean of 5.0?_
 
 ---
 
-### Code: Single Sample T-Test
+### Code: Single Sample T-Test {.unnumbered}
 
 ```{r}
 t.test(gaming_data$GAD_T, mu = 5)
 ```
 
-### Output
+### Output {.unnumbered}
 
 ```
 	One Sample t-test
@@ -119,7 +119,7 @@ mean of x
  5.211973 
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
 - The average GAD score in this sample (5.10) is significantly **higher** than the population average of 5.0.
 - The **p-value** = .011 suggests that this difference is unlikely due to random chance.
@@ -130,7 +130,7 @@ mean of x
 
 ---
 
-## 4.3 Independent Samples T-Test
+## Independent Samples T-Test {.unnumbered}
 
 ### Concept
 
