@@ -91,14 +91,14 @@ Note: A dataset can have no mode (if all values are unique), one mode (unimodal)
 
 We will now compute the **mean**, **median**, and **mode** for the variable `Hours`, which represents the number of hours each participant reported playing games in a typical week.
 
-#### 🧮 Load Required Packages {.unnumbered}
+#### Load Required Packages {.unnumbered}
 
 ``` r
 library(dplyr)   # For data manipulation
 library(psych)   # For advanced descriptive functions
 ```
 
-#### 📂 Load the Dataset {.unnumbered}
+#### Load the Dataset {.unnumbered}
 
 ``` r
 gaming_data <- read.csv("data.csv", encoding = "ISO-8859-1")
@@ -106,9 +106,7 @@ gaming_data <- read.csv("data.csv", encoding = "ISO-8859-1")
 
 We use `read.csv()` to import the dataset, and we specify the encoding (`ISO-8859-1`) to avoid any problems with special characters that might be present in the file.
 
-------------------------------------------------------------------------
-
-#### ✅ Compute the Mean {.unnumbered}
+#### Compute the Mean {.unnumbered}
 
 ``` r
 mean(gaming_data$Hours, na.rm = TRUE)
@@ -120,7 +118,7 @@ mean(gaming_data$Hours, na.rm = TRUE)
 
 ------------------------------------------------------------------------
 
-#### ✅ Compute the Median {.unnumbered}
+#### Compute the Median {.unnumbered}
 
 ``` r
 median(gaming_data$Hours, na.rm = TRUE)
@@ -130,7 +128,7 @@ median(gaming_data$Hours, na.rm = TRUE)
 
 ------------------------------------------------------------------------
 
-#### ✅ Compute the Mode {.unnumbered}
+#### Compute the Mode {.unnumbered}
 
 ``` r
 describe(gaming_data$Hours)$mode
@@ -139,11 +137,9 @@ describe(gaming_data$Hours)$mode
 -   The `describe()` function from the `psych` package gives a full summary of a numeric variable.
 -   `$mode` extracts just the mode value from the output.
 
-⚠️ **Important Note**: If there is no clear mode—meaning no single value appears more often than others—the mode will return `NULL`. This is not an error, but a sign that your data may be evenly distributed or multimodal.
+**Important Note**: If there is no clear mode—meaning no single value appears more often than others—the mode will return `NULL`. This is not an error, but a sign that your data may be evenly distributed or multimodal.
 
-------------------------------------------------------------------------
-
-### 📊 Sample Output (Based on Real Data) {.unnumbered}
+### Sample Output (Based on Real Data) {.unnumbered}
 
 ``` r
 mean(gaming_data$Hours, na.rm = TRUE)
@@ -161,7 +157,7 @@ describe(gaming_data$Hours)$mode
 ### When to Use Each Measure {.unnumbered}
 
 | Measure | Best Used When... | Strengths | Limitations |
-|----------------|------------------------|----------------|----------------|
+|-----------------|----------------------|-----------------|-----------------|
 | **Mean** | Data are evenly distributed without outliers | Uses all data points | Sensitive to extreme values |
 | **Median** | Data are skewed or contain outliers | Robust to outliers | Does not use all values |
 | **Mode** | Identifying the most common response | Works with any data type | May not exist or may be multiple |
@@ -247,7 +243,7 @@ Let’s calculate the **range**, **variance**, and **standard deviation** for th
 
 ------------------------------------------------------------------------
 
-#### 📦 Step 1: Load Required Packages {.unnumbered}
+#### Step 1: Load Required Packages {.unnumbered}
 
 If you haven’t already loaded your packages, begin with:
 
@@ -256,9 +252,7 @@ library(dplyr)
 library(psych)
 ```
 
-------------------------------------------------------------------------
-
-#### 📂 Step 2: Load the Dataset {.unnumbered}
+#### Step 2: Load the Dataset {.unnumbered}
 
 ``` r
 gaming_data <- read.csv("data.csv", encoding = "ISO-8859-1")
@@ -268,7 +262,7 @@ This loads the dataset of over 13,000 gamers from a 2015 survey.
 
 ------------------------------------------------------------------------
 
-#### ✅ Step 3: Compute Dispersion Measures {.unnumbered}
+#### Step 3: Compute Dispersion Measures {.unnumbered}
 
 ``` r
 # Standard deviation
@@ -288,7 +282,7 @@ range(gaming_data$Hours, na.rm = TRUE)
 
 ------------------------------------------------------------------------
 
-### 🧪 Sample Output {.unnumbered}
+### Sample Output {.unnumbered}
 
 ``` r
 sd(gaming_data$Hours, na.rm = TRUE)

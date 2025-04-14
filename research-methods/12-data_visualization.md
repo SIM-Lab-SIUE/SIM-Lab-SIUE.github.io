@@ -1,6 +1,6 @@
 # Data Visualization in R
 
-[[Chunk Version]](files/11-data_visualization-chunk.Rmd)
+[[Chunk Version]](files/12-data_visualization-chunk.Rmd)
 
 ## Overview
 
@@ -8,53 +8,53 @@ Data visualization is a core component of social science research. It allows res
 
 In this chapter, you will learn how to:
 
-- Visualize the distribution of variables using histograms and density plots
-- Compare group differences using boxplots and violin plots
-- Explore relationships between variables using scatterplots
-- Use statistical overlays and enhanced labeling with advanced `ggplot2` extensions
-- Create clear, reproducible, and publication-ready figures
+-   Visualize the distribution of variables using histograms and density plots
+-   Compare group differences using boxplots and violin plots
+-   Explore relationships between variables using scatterplots
+-   Use statistical overlays and enhanced labeling with advanced `ggplot2` extensions
+-   Create clear, reproducible, and publication-ready figures
 
 All visualizations use `ggplot2`, the foundational R package for the grammar of graphics, and are written using tidyverse principles. Each section includes code, annotated examples, interpretation, and APA-style presentation guidance.
 
----
+## Visualizing Distributions
 
-## 5.1 Visualizing Distributions
-
-### Purpose
+### Purpose {.unnumbered}
 
 When working with numeric variables, the first step is to understand how the values are distributed. Are most values clustered around a center? Are there extreme outliers? Is the data skewed left or right?
 
 Visualizations such as **histograms** and **density plots** are effective tools for examining:
 
-- Shape (symmetry, skewness)
-- Spread (range, variability)
-- Peaks (modes)
-- Outliers
+-   Shape (symmetry, skewness)
+-   Spread (range, variability)
+-   Peaks (modes)
+-   Outliers
 
 These tools are especially useful when describing:
 
-- Weekly hours spent gaming (`Hours`)
-- Scale scores such as anxiety (`GAD_T`), satisfaction with life (`SWL_T`), or social phobia (`SPIN_T`)
+-   Weekly hours spent gaming (`Hours`)
+-   Scale scores such as anxiety (`GAD_T`), satisfaction with life (`SWL_T`), or social phobia (`SPIN_T`)
 
----
-
-### 5.1.1 Histograms
+### Histograms {.unnumbered}
 
 A **histogram** displays the frequency of observations in specified bins (ranges of values). It helps identify:
 
-- How often values occur
-- Whether the distribution is normal or skewed
-- Where potential cutoffs or outliers lie
+-   How often values occur
+-   Whether the distribution is normal or skewed
+-   Where potential cutoffs or outliers lie
 
-### Example: Histogram of Weekly Hours Played
+### Example: Histogram of Weekly Hours Played {.unnumbered}
 
-```r
+``` r
 # Load required libraries
 library(tidyverse)
+```
 
+``` r
 # Import data
 gaming_data <- read.csv("https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/data.csv", encoding = "ISO-8859-1")
+```
 
+``` r
 # Create histogram of gaming hours
 ggplot(gaming_data, aes(x = Hours)) +
   geom_histogram(binwidth = 10, fill = "steelblue", color = "white") +
@@ -66,14 +66,14 @@ ggplot(gaming_data, aes(x = Hours)) +
   theme_minimal()
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- This plot displays how many participants reported each range of weekly gaming hours.
-- A peak around 10–30 hours suggests a typical playtime.
-- A long right tail indicates that some participants report very high playtimes (outliers).
-- If necessary, you can limit the x-axis to reduce the impact of extreme values:
+-   This plot displays how many participants reported each range of weekly gaming hours.
+-   A peak around 10–30 hours suggests a typical playtime.
+-   A long right tail indicates that some participants report very high playtimes (outliers).
+-   If necessary, you can limit the x-axis to reduce the impact of extreme values:
 
-```r
+``` r
 # Truncate extreme values
 ggplot(gaming_data, aes(x = Hours)) +
   geom_histogram(binwidth = 5, fill = "tomato", color = "white") +
@@ -84,7 +84,7 @@ ggplot(gaming_data, aes(x = Hours)) +
 
 You can also create a filtered data set to use moving forward that removes all users who report impossible weekly gaming hours (i.e., over 168 hours)
 
-```r
+``` r
 # Filter for reponses higher than 168 hours a week
 gaming_data <- gaming_data %>%
   filter(Hours <= 168)
@@ -94,19 +94,15 @@ ggplot(gaming_data, aes(x = Hours)) +
   geom_histogram(binwidth = 5, fill = "green", color = "white") +
   labs(title = "Distribution of Gaming Hours (Capped at 100)", x = "Hours", y = "Count") +
   theme_minimal()
-
 ```
 
-
----
-
-### 5.1.2 Density Plots
+### Density Plots {.unnumbered}
 
 **Density plots** are smoothed versions of histograms that show the probability distribution of a numeric variable. They are useful for comparing shapes across groups.
 
-### Example: Density of GAD_T Scores
+### Example: Density of GAD_T Scores {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = GAD_T)) +
   geom_density(fill = "skyblue", alpha = 0.4) +
   labs(
@@ -117,21 +113,19 @@ ggplot(gaming_data, aes(x = GAD_T)) +
   theme_minimal()
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- The curve illustrates where values are most common.
-- Peaks represent modes, while the width of the curve shows variability.
-- The shape of the distribution (e.g., skewed right) can suggest non-normality.
+-   The curve illustrates where values are most common.
+-   Peaks represent modes, while the width of the curve shows variability.
+-   The shape of the distribution (e.g., skewed right) can suggest non-normality.
 
----
-
-### 5.1.3 Comparing Distributions Across Groups
+### Comparing Distributions Across Groups {.unnumbered}
 
 You can use **grouped density plots** or **facet wrapping** to compare distributions across categories such as gender or platform.
 
-#### Example: Compare Life Satisfaction (SWL_T) by Gender
+#### Example: Compare Life Satisfaction (SWL_T) by Gender {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = SWL_T, fill = Gender)) +
   geom_density(alpha = 0.5) +
   labs(
@@ -142,9 +136,9 @@ ggplot(gaming_data, aes(x = SWL_T, fill = Gender)) +
   theme_minimal()
 ```
 
-#### Alternative: Separate Plots with `facet_wrap()`
+#### Alternative: Separate Plots with `facet_wrap()` {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = SWL_T)) +
   geom_density(fill = "steelblue", alpha = 0.6) +
   facet_wrap(~ Gender) +
@@ -156,56 +150,42 @@ ggplot(gaming_data, aes(x = SWL_T)) +
   theme_minimal()
 ```
 
----
-
-### Summary of Section 5.1
-
-|Tool|Use Case|
-|---|---|
-|Histogram|Examine raw frequencies of numeric variables|
-|Density|Visualize shape and smooth trends|
-|Grouped Plot|Compare distributions across categorical vars|
-
 These visualizations help researchers quickly assess patterns and outliers in scale scores and behavioral data. Before conducting any hypothesis tests, visualizing your variables ensures your assumptions and interpretations are grounded in the structure of your data.
 
----
+## Visualizing Group Comparisons
 
-## 5.2 Visualizing Group Comparisons
-
-### Purpose
+### Purpose {.unnumbered}
 
 Many research questions in communication studies and psychology involve **comparing means or distributions across different groups**. For example:
 
-- Do male and female participants differ in their anxiety scores?
-- Does social phobia vary by gaming platform?
+-   Do male and female participants differ in their anxiety scores?
+-   Does social phobia vary by gaming platform?
 
 When your outcome variable is **continuous** (e.g., scale scores) and your grouping variable is **categorical** (e.g., gender, platform), you can visualize the comparison using **boxplots** or **violin plots**.
 
 These plots help answer:
 
-- Are group means different?
-- Are there differences in spread or outliers?
-- Is one group more variable or skewed than another?
+-   Are group means different?
+-   Are there differences in spread or outliers?
+-   Is one group more variable or skewed than another?
 
 This section introduces two primary methods for visualizing these comparisons.
 
----
-
-### 5.2.1 Boxplots
+### Boxplots {.unnumbered}
 
 **Boxplots** summarize distributions using five statistics:
 
-- Minimum
-- 1st quartile (25th percentile)
-- Median (50th percentile)
-- 3rd quartile (75th percentile)
-- Maximum (excluding outliers)
+-   Minimum
+-   1st quartile (25th percentile)
+-   Median (50th percentile)
+-   3rd quartile (75th percentile)
+-   Maximum (excluding outliers)
 
 Outliers are plotted as individual points. The box itself contains the middle 50% of the data.
 
-### Example: GAD_T Scores by Gender
+### Example: GAD_T Scores by Gender {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
   geom_boxplot(fill = "lightblue") +
   labs(
@@ -218,26 +198,24 @@ ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
 
 ### Interpretation
 
-- **Medians** are represented by bold horizontal lines inside each box.
-- The **interquartile range** (IQR) shows the middle 50% of responses.
-- Circles above or below the whiskers represent **outliers**—participants with unusually high or low anxiety scores.
-- This plot allows you to visually assess whether anxiety differs by gender before performing a statistical test (e.g., t-test or ANOVA).
+-   **Medians** are represented by bold horizontal lines inside each box.
+-   The **interquartile range** (IQR) shows the middle 50% of responses.
+-   Circles above or below the whiskers represent **outliers**—participants with unusually high or low anxiety scores.
+-   This plot allows you to visually assess whether anxiety differs by gender before performing a statistical test (e.g., t-test or ANOVA).
 
----
-
-### 5.2.2 Violin Plots
+### Violin Plots
 
 **Violin plots** combine boxplots and density plots to display the **distribution and shape** of the data for each group.
 
 They are particularly useful when:
 
-- The number of observations varies across groups
-- You want to emphasize distribution shape
-- You're preparing a figure for publication or presentation
+-   The number of observations varies across groups
+-   You want to emphasize distribution shape
+-   You're preparing a figure for publication or presentation
 
-### Example: SWL_T Scores by Gender
+### Example: SWL_T Scores by Gender {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Gender, y = SWL_T)) +
   geom_violin(fill = "lightcoral", alpha = 0.7) +
   geom_boxplot(width = 0.1, fill = "white") +  # Overlay boxplot
@@ -249,21 +227,19 @@ ggplot(gaming_data, aes(x = Gender, y = SWL_T)) +
   theme_minimal()
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- The width of the violin at each score level indicates **relative frequency**.
-- Wider areas represent more common values, while narrower areas represent less frequent scores.
-- Adding a boxplot inside the violin (as shown above) combines precision (medians, quartiles) with shape-based insight.
+-   The width of the violin at each score level indicates **relative frequency**.
+-   Wider areas represent more common values, while narrower areas represent less frequent scores.
+-   Adding a boxplot inside the violin (as shown above) combines precision (medians, quartiles) with shape-based insight.
 
----
-
-### 5.2.3 Group Comparisons Across Platforms
+### Group Comparisons Across Platforms {.unnumbered}
 
 You can use the same visual tools to compare more than two groups.
 
-### Example: SPIN_T Scores by Platform
+### Example: SPIN_T Scores by Platform {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Platform, y = SPIN_T)) +
   geom_boxplot(fill = "lightgreen") +
   labs(
@@ -276,13 +252,11 @@ ggplot(gaming_data, aes(x = Platform, y = SPIN_T)) +
 
 If you expect a non-normal distribution or have small group sizes (e.g., few smartphone users), violin plots may be more appropriate.
 
----
-
-### Optional: Add Data Points with `geom_jitter()`
+### Optional: Add Data Points with `geom_jitter()` {.unnumbered}
 
 To better show individual data points, add `geom_jitter()` to your plot:
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
   geom_boxplot(fill = "skyblue", outlier.shape = NA) +  # Hide default outliers
   geom_jitter(width = 0.2, alpha = 0.3) +               # Add raw points
@@ -292,55 +266,39 @@ ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
 
 This is especially useful when:
 
-- Sample sizes are small
-- You want to emphasize data variability
-- You are preparing exploratory visuals for peer review
-
----
-
-### Summary of Section 5.2
-
-|Plot Type|Best For|
-|---|---|
-|Boxplot|Comparing medians and spread across groups|
-|Violin Plot|Showing distribution shape within groups|
-|Jitter Plot|Adding individual observations to group plots|
+-   Sample sizes are small
+-   You want to emphasize data variability
+-   You are preparing exploratory visuals for peer review
 
 By visually comparing groups before performing inferential tests (such as t-tests or ANOVA), you develop a richer understanding of your data and ensure that your statistical analysis is appropriate for the underlying distribution and group structure.
 
+## Visualizing Associations
 
----
-
-## 5.3 Visualizing Associations
-
-### Purpose
+### Purpose {.unnumbered}
 
 Many research questions in social science explore the relationship between two numeric variables. For example:
 
-- Do people who spend more time gaming report lower life satisfaction?
-    
-- Is there a relationship between hours played and social phobia?
-    
+-   Do people who spend more time gaming report lower life satisfaction?
+
+-   Is there a relationship between hours played and social phobia?
 
 When both variables are **continuous**, the appropriate visualization is a **scatterplot**. You can also use **smoothing lines** to identify trends.
 
 This section teaches how to:
 
-- Create scatterplots using `ggplot2`
-- Add regression lines with `geom_smooth()`
-- Interpret linear trends and potential outliers
+-   Create scatterplots using `ggplot2`
+-   Add regression lines with `geom_smooth()`
+-   Interpret linear trends and potential outliers
 
----
-
-### 5.3.1 Scatterplots
+### Scatterplots {.unnumbered}
 
 A **scatterplot** displays the relationship between two numeric variables. Each point represents a single observation.
 
-### Example: Hours vs. SWL_T
+### Example: Hours vs. SWL_T {.unnumbered}
 
 We will examine whether gaming hours predict life satisfaction.
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   labs(
@@ -351,20 +309,18 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   theme_minimal()
 ```
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- Each point represents one participant.
-- Clusters suggest where most responses fall.
-- Outliers appear as isolated points far from the others.
-- This plot alone does not indicate whether the relationship is statistically significant—it only visualizes it.
+-   Each point represents one participant.
+-   Clusters suggest where most responses fall.
+-   Outliers appear as isolated points far from the others.
+-   This plot alone does not indicate whether the relationship is statistically significant—it only visualizes it.
 
----
-
-### 5.3.2 Adding a Regression Line
+### Adding a Regression Line {.unnumbered}
 
 You can use `geom_smooth(method = "lm")` to overlay a **linear regression line**.
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "steelblue") +
@@ -376,24 +332,22 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   theme_minimal()
 ```
 
-- `method = "lm"` fits a straight line (linear model).
-- `se = TRUE` adds a shaded area showing the 95% confidence interval.
+-   `method = "lm"` fits a straight line (linear model).
+-   `se = TRUE` adds a shaded area showing the 95% confidence interval.
 
-### Interpretation
+### Interpretation {.unnumbered}
 
-- A downward slope suggests a **negative correlation** (more hours, less satisfaction).
-- If the slope is flat, the variables are likely **unrelated**.
-- A narrow confidence band means the estimate is more precise.
+-   A downward slope suggests a **negative correlation** (more hours, less satisfaction).
+-   If the slope is flat, the variables are likely **unrelated**.
+-   A narrow confidence band means the estimate is more precise.
 
----
-
-### 5.3.3 Associations with Anxiety and Social Phobia
+### Associations with Anxiety and Social Phobia {.unnumbered}
 
 You can explore other relationships in the same way.
 
-#### Example: Hours vs. GAD_T
+#### Example: Hours vs. GAD_T {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = GAD_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "darkred") +
@@ -405,9 +359,9 @@ ggplot(gaming_data, aes(x = Hours, y = GAD_T)) +
   theme_minimal()
 ```
 
-#### Example: Hours vs. SPIN_T
+#### Example: Hours vs. SPIN_T {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = SPIN_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "darkgreen") +
@@ -419,13 +373,11 @@ ggplot(gaming_data, aes(x = Hours, y = SPIN_T)) +
   theme_minimal()
 ```
 
----
-
-### 5.3.4 Optional: Highlight Outliers
+### Optional: Highlight Outliers {.unnumbered}
 
 If outliers are influencing the regression line, consider limiting the x-axis to a more typical range:
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = TRUE, color = "darkblue") +
@@ -440,45 +392,30 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
 
 This makes the pattern among most participants more visible by trimming extreme values.
 
----
-
-### Summary of Section 5.3
-
-|Element|Purpose|
-|---|---|
-|Scatterplot|Visualize relationship between two numeric variables|
-|Smoothing Line|Estimate linear trends using regression|
-|Confidence Band|Show uncertainty around the regression estimate|
-|Outlier Control|Improve interpretability by limiting the x-axis|
-
 Scatterplots allow you to explore associations visually before running formal statistical tests. Combined with correlation and regression (covered in Chapters 4 and 6), they provide critical insight into your data.
 
----
+## Enhancing Visuals with Labels, Themes, and Extensions
 
-## 5.4 Enhancing Visuals with Labels, Themes, and Extensions
-
-### Purpose
+### Purpose {.unnumbered}
 
 A graph is only as good as it is readable. In social science research—especially in publications, presentations, and reports—**well-designed visuals** are essential for communicating results clearly and professionally.
 
 This section shows you how to:
 
-- Add labels and annotations
-- Customize themes and fonts
-- Use helpful `ggplot2` extensions to highlight findings
-- Export your figures for use in slides, papers, or web-based reports
+-   Add labels and annotations
+-   Customize themes and fonts
+-   Use helpful `ggplot2` extensions to highlight findings
+-   Export your figures for use in slides, papers, or web-based reports
 
 These enhancements are especially useful when visualizing comparisons or trends that require clear explanation.
 
----
-
-### 5.4.1 Adding Labels and Annotations
+### Adding Labels and Annotations {.unnumbered}
 
 Use `labs()` to define titles, subtitles, and axis labels. Use `annotate()` or `geom_text()` to add labels for emphasis.
 
-#### Example: Annotated Scatterplot with Regression Line
+#### Example: Annotated Scatterplot with Regression Line {.unnumbered}
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", color = "steelblue", se = TRUE) +
@@ -493,7 +430,7 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
 
 You can also annotate directly on the plot:
 
-```r
+``` r
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", color = "steelblue", se = TRUE) +
@@ -501,13 +438,11 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   theme_minimal()
 ```
 
----
-
-### 5.4.2 Highlighting Results with `gghighlight`
+### Highlighting Results with `gghighlight` {.unnumbered}
 
 The [`gghighlight`](https://github.com/yutannihilation/gghighlight) package allows you to emphasize parts of your data based on a condition.
 
-```r
+``` r
 # install.packages("gghighlight")
 library(gghighlight)
 
@@ -520,18 +455,16 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T, color = Gender)) +
 
 This is useful when showcasing a specific subset of data.
 
----
-
-### 5.4.3 Avoiding Overlapping Labels with `ggrepel`
+### Avoiding Overlapping Labels with `ggrepel` {.unnumbered}
 
 The `ggrepel` package makes labels readable by pushing them apart.
 
-```r
+``` r
 # install.packages("ggrepel")
 library(ggrepel)
 
 top_hours <- gaming_data %>%
-  filter(Hours > 200)
+  filter(Hours > 84)
 
 ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
   geom_point(alpha = 0.3) +
@@ -543,13 +476,11 @@ ggplot(gaming_data, aes(x = Hours, y = SWL_T)) +
 
 This approach is ideal when highlighting outliers or individuals in small samples.
 
----
-
-### 5.4.4 Enhancing Style with `ggthemes`
+### Enhancing Style with `ggthemes` {.unnumbered}
 
 The `ggthemes` package provides pre-built styles that improve appearance with minimal effort.
 
-```r
+``` r
 # install.packages("ggthemes")
 library(ggthemes)
 
@@ -562,18 +493,16 @@ ggplot(gaming_data, aes(x = Gender, y = GAD_T)) +
 
 Other useful themes include:
 
-- `theme_minimal()` – clean and simple
-- `theme_classic()` – traditional
-- `theme_bw()` – high-contrast black and white
-- `theme_light()` – soft contrast
+-   `theme_minimal()` – clean and simple
+-   `theme_classic()` – traditional
+-   `theme_bw()` – high-contrast black and white
+-   `theme_light()` – soft contrast
 
----
-
-### 5.4.5 Adding Statistical Context with `ggstatsplot`
+### Adding Statistical Context with `ggstatsplot` {.unnumbered}
 
 The `ggstatsplot` package integrates statistical test results directly into your visuals.
 
-```r
+``` r
 # install.packages("ggstatsplot")
 library(ggstatsplot)
 
@@ -582,35 +511,19 @@ ggbetweenstats(data = gaming_data, x = Gender, y = GAD_T)
 
 This creates a publication-ready boxplot with:
 
-- Group means and confidence intervals
-- p-values and effect sizes
-- Optional interpretation text
+-   Group means and confidence intervals
+-   p-values and effect sizes
+-   Optional interpretation text
 
----
-
-### 5.4.6 Exporting Plots
+### Exporting Plots {.unnumbered}
 
 You can save any `ggplot2` object using `ggsave()`.
 
-```r
+``` r
 # Save last plot as a PNG
 ggsave("figures/swl_vs_hours.png", width = 6, height = 4, dpi = 300)
 ```
 
 You can specify image format (.png, .pdf, .svg) and dimensions.
-
----
-
-### Summary of Section 5.4
-
-|Tool / Package|Functionality|
-|---|---|
-|`labs()`|Titles, subtitles, axis labels|
-|`annotate()`|Add custom text to plot|
-|`ggrepel`|Prevent overlapping labels|
-|`gghighlight`|Emphasize subsets of data|
-|`ggthemes`|Apply pre-made stylistic templates|
-|`ggstatsplot`|Add statistical context (tests, effect sizes, labels)|
-|`ggsave()`|Save plots as high-quality files|
 
 Enhancing your figures ensures that your findings are not only correct, but **clear and compelling**. When you visualize data in research, presentation, or journalism, these enhancements distinguish your work.
