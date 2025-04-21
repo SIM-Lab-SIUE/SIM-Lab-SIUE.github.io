@@ -7,7 +7,7 @@
 <title>Chapter 8 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
 <meta name="description" content="[Chunk Version]  8.1 What is R and RStudio?  What is R? R is an open-source statistical programming language designed for data manipulation, analysis, and visualization. It provides researchers...">
-<meta name="generator" content="bookdown 0.42 with bs4_book()">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/introduction-to-r-and-rstudio.html">
@@ -60,8 +60,8 @@
 <li><a class="" href="descriptive-analysis.html"><span class="header-section-number">10</span> Descriptive Analysis</a></li>
 <li><a class="" href="inferential-analysis.html"><span class="header-section-number">11</span> Inferential Analysis</a></li>
 <li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></li>
-<li><a class="" href="reporting-findings.html"><span class="header-section-number">13</span> Reporting Findings</a></li>
-<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">14</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="reporting-results-using-r.html"><span class="header-section-number">13</span> Reporting Results Using R</a></li>
+<li><a class="" href="writing-a-white-paper-and-press-release.html"><span class="header-section-number">14</span> Writing a White Paper and Press Release</a></li>
 <li><a class="" href="appendix-1.html"><span class="header-section-number">15</span> Appendix</a></li>
 </ul>
 
@@ -239,15 +239,106 @@
 <h3>File Management<a class="anchor" aria-label="anchor" href="#file-management"><i class="fas fa-link"></i></a>
 </h3>
 <p>Effective file management is critical for maintaining an organized and efficient workflow in RStudio. Below are some guidelines for managing different types of files:</p>
-<div id="r-script-vs.-r-markdown" class="section level4 unnumbered">
-<h4>R Script vs. R Markdown<a class="anchor" aria-label="anchor" href="#r-script-vs.-r-markdown"><i class="fas fa-link"></i></a>
+<p>Here is an expanded version of your original section on R Script vs. R Markdown, rewritten for new students with added clarity, practical examples, and step-by-step instructions to support confident usage:</p>
+</div>
+<div id="r-script-vs.-r-markdown" class="section level3 unnumbered">
+<h3>R Script vs. R Markdown<a class="anchor" aria-label="anchor" href="#r-script-vs.-r-markdown"><i class="fas fa-link"></i></a>
+</h3>
+<p>In RStudio, you can write and run code using two main types of files: <strong>R Script</strong> (<code>.R</code>) and <strong>R Markdown</strong> (<code>.Rmd</code>). Understanding the differences between these two file types—and knowing when to use each—is essential for organizing your work, communicating your analysis clearly, and producing reproducible research.</p>
+<div class="float">
+<img src="images/r_rmd_project.png" style="width:100.0%" alt="R Script and R Markdown Roles in Project Flow"><div class="figcaption">R Script and R Markdown Roles in Project Flow</div>
+</div>
+<div id="what-is-an-r-script" class="section level4 unnumbered">
+<h4>What Is an R Script?<a class="anchor" aria-label="anchor" href="#what-is-an-r-script"><i class="fas fa-link"></i></a>
 </h4>
-<p>R scripts (<code>.R</code> files) are text files where you can write and run R commands. These are best used when the focus is purely on data analysis. On the other hand, R Markdown (<code>.Rmd</code> files) allows you to integrate narrative text, R code, and output (e.g., plots, tables) into a single document. R Markdown is useful for generating reproducible reports, making it ideal for assignments, papers, and presentations.</p>
+<p>An <strong>R Script</strong> is a plain text file that contains lines of R code. Think of it as your personal notepad for experimentation and coding. You can use R scripts to test ideas, process datasets, run statistical models, and generate visualizations.</p>
+<p><strong>Typical Uses:</strong></p>
 <ul>
-<li>
-<strong>When to use R Script</strong>: Use an R script when you are solely focused on coding and analyzing data without needing additional explanation or documentation.</li>
-<li>
-<strong>When to use R Markdown</strong>: Use R Markdown when you want to combine text, code, and results in a report format that can be converted into HTML, PDF, or Word documents.</li>
+<li>Running statistical tests</li>
+<li>Cleaning and transforming datasets</li>
+<li>Creating plots or tables</li>
+<li>Writing short snippets of code to test an idea</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple, clean, and fast</li>
+<li>Good for focused tasks or coding-heavy projects</li>
+<li>Ideal when no explanation or formatting is needed</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><strong>How to create one:</strong></p>
+<ol style="list-style-type: decimal">
+<li>In RStudio, go to <code>File</code> &gt; <code>New File</code> &gt; <code>R Script</code>.</li>
+<li>Save with a <code>.R</code> extension (e.g., <code>analysis.R</code>).</li>
+</ol>
+</div>
+<div id="what-is-r-markdown" class="section level4 unnumbered">
+<h4>What Is R Markdown?<a class="anchor" aria-label="anchor" href="#what-is-r-markdown"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>R Markdown</strong> files allow you to combine <strong>narrative text, code, and output</strong>—including plots, tables, and inline statistics—in a single document. These files are perfect for creating <strong>reproducible reports</strong>, where the code and results live alongside your explanation.</p>
+<p><strong>Typical Uses:</strong></p>
+<ul>
+<li>Homework and lab reports</li>
+<li>Project documentation</li>
+<li>Academic papers or professional reports</li>
+<li>Data storytelling and presentations</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Integrates code and text in one place</li>
+<li>Generates polished reports in HTML, PDF, or Word</li>
+<li>Supports inline citations and mathematical notation (e.g., LaTeX)</li>
+</ul>
+<p><strong>Basic Structure of an R Markdown File:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="introduction-to-r-and-rstudio.html#cb2-1" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="introduction-to-r-and-rstudio.html#cb2-2" tabindex="-1"></a><span class="fu">## Summary of Findings</span></span>
+<span id="cb2-3"><a href="introduction-to-r-and-rstudio.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="introduction-to-r-and-rstudio.html#cb2-4" tabindex="-1"></a>Here is a plot of engine displacement vs highway MPG.</span>
+<span id="cb2-5"><a href="introduction-to-r-and-rstudio.html#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="introduction-to-r-and-rstudio.html#cb2-6" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb2-7"><a href="introduction-to-r-and-rstudio.html#cb2-7" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-8"><a href="introduction-to-r-and-rstudio.html#cb2-8" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<pre><code>
+**How to create one:**
+1. Go to `File` &gt; `New File` &gt; `R Markdown…`.
+2. Choose a title and output format (HTML is a good default).
+3. Save with a `.Rmd` extension (e.g., `final_report.Rmd`).
+
+#### When to Use Each File Type {.unnumbered}
+
+| Task                                     | Best File Type   |
+|------------------------------------------|------------------|
+| Quick calculations or testing code       | `.R` (R Script)  |
+| Writing a report with explanation        | `.Rmd` (R Markdown) |
+| Reproducible research with visuals       | `.Rmd`           |
+| Coding without needing output display    | `.R`             |
+| Submitting assignments with visuals/text | `.Rmd`           |
+
+#### Rendering R Markdown {.unnumbered}
+
+After writing an R Markdown file, you can render (i.e., knit) it into a report.
+
+To knit your document:
+- Click the **"Knit"** button in RStudio (top of the editor pane).
+- Choose an output format (HTML is the most flexible to start).
+- R will run all the code chunks and compile your report.
+
+If something goes wrong (e.g., a code error), fix the issue and try knitting again.
+
+#### Additional Tips {.unnumbered}
+
+- Use `#` for comments in R scripts; in R Markdown, use normal paragraphs for writing and triple backticks (```) for code chunks.
+- Use code chunks in R Markdown like this:
+</code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">)</span></span></code></pre></div>
+<p>````</p>
+<ul>
+<li>Keep your R script files clean by breaking large scripts into separate logical sections and using comments to explain steps.</li>
 </ul>
 <div class="float">
 <img src="images/script-md.jpg" style="width:100.0%" alt="R Script on Left and R Markdown on Right"><div class="figcaption">R Script on Left and R Markdown on Right</div>
@@ -287,13 +378,13 @@
 <h3>Installing Packages<a class="anchor" aria-label="anchor" href="#installing-packages"><i class="fas fa-link"></i></a>
 </h3>
 <p>To install a package in R, you need to use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function. This only needs to be done once per package:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span></code></pre></div>
 <p>In RStudio, you can run this code in a code chunk or type it directly into the console. For example, to install a package in R Markdown, use the following code chunk:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span></code></pre></div>
 <p>After installation, load the package into your R session using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
 <p>This makes the package’s functions available for use during your R session.</p>
 </div>
@@ -313,7 +404,7 @@
 <h3>Code Chunks in R Markdown<a class="anchor" aria-label="anchor" href="#code-chunks-in-r-markdown"><i class="fas fa-link"></i></a>
 </h3>
 <p>In R Markdown, code is written inside “chunks.” These chunks execute code and display the output directly in the document. To insert a code chunk in R Markdown, use three backticks followed by <code>{r}</code> to indicate you are writing R code. For example:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># This is a code chunk</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Hello, World!"</span><span class="op">)</span></span></code></pre></div>
 <p><em>Output: “Hello, World!”</em></p>
@@ -323,7 +414,7 @@
 <h3>Manually Inputting Data<a class="anchor" aria-label="anchor" href="#manually-inputting-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>Data can be input directly into R, which is useful for small datasets or examples. Below is how you manually input data as a vector (a list of numbers or words):</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Inputting numerical data</span></span>
 <span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">23</span>, <span class="fl">21</span>, <span class="fl">30</span><span class="op">)</span></span>
 <span></span>
@@ -340,11 +431,11 @@
 <h3>Commenting Code<a class="anchor" aria-label="anchor" href="#commenting-code"><i class="fas fa-link"></i></a>
 </h3>
 <p>In R, comments are created using the <code>#</code> symbol. Anything written after <code>#</code> is ignored by R and is only meant for humans reading the code. Commenting is useful for explaining what each section of the code does or noting important details about the analysis:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># This is a comment</span></span>
 <span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">23</span>, <span class="fl">21</span>, <span class="fl">30</span><span class="op">)</span>  <span class="co"># Vector of ages</span></span></code></pre></div>
 <p>Use comments to explain the purpose of code sections, especially when performing key analyses. For example:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># This code reads data from an online CSV file</span></span>
 <span><span class="va">billboard</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-09-14/billboard.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -352,7 +443,7 @@
 <h3>Organizing Code with Sections<a class="anchor" aria-label="anchor" href="#organizing-code-with-sections"><i class="fas fa-link"></i></a>
 </h3>
 <p>To organize larger scripts, you can use headers or dividers to mark different sections. This makes it easier to navigate the code:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ===========================</span></span>
 <span><span class="co"># Section: Data Preparation</span></span>
 <span><span class="co"># ===========================</span></span></code></pre></div>
@@ -363,7 +454,7 @@
 <h2>
 <span class="header-section-number">8.8</span> Data Preparation<a class="anchor" aria-label="anchor" href="#data-preparation"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code for preparing data goes here</span></span></code></pre></div>
 <div id="keeping-code-tidy" class="section level3 unnumbered">
 <h3>Keeping Code Tidy<a class="anchor" aria-label="anchor" href="#keeping-code-tidy"><i class="fas fa-link"></i></a>
@@ -408,23 +499,23 @@
 </h4>
 <p>You can execute these basic arithmetic operations directly in the R console.</p>
 <p><strong><em>Addition</em></strong></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">+</span> <span class="fl">3</span></span></code></pre></div>
 <p><em>Output: 8</em></p>
 <p><strong><em>Subtraction</em></strong></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">-</span> <span class="fl">3</span></span></code></pre></div>
 <p><em>Output: 2</em></p>
 <p><strong><em>Multiplication</em></strong></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">*</span> <span class="fl">3</span></span></code></pre></div>
 <p><em>Output: 15</em></p>
 <p><strong><em>Division</em></strong></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">/</span> <span class="fl">3</span></span></code></pre></div>
 <p><em>Output: 1.666667</em></p>
 <p><strong><em>Exponentiation</em></strong></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">^</span> <span class="fl">3</span></span></code></pre></div>
 <p><em>Output: 125</em></p>
 </div>
@@ -450,7 +541,7 @@
 <div id="examples-1" class="section level4 unnumbered">
 <h4>Examples<a class="anchor" aria-label="anchor" href="#examples-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Assigning a numerical value to a variable using &lt;-</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
@@ -477,15 +568,15 @@
 </h4>
 <p>Examples of common built-in functions include: dz - <strong><code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code></strong>: Calculates the sum of all the values in a numeric vector. - <strong><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></strong>: Calculates the arithmetic mean of a numeric vector. - <strong><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code></strong>: Calculates the square root of a number.</p>
 <p><strong><em>Using sum function</em></strong></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p><em>Output: 6</em></p>
 <p><strong><em>Using mean function</em></strong></p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><em>Output: 2.5</em></p>
 <p><strong><em>Using sqrt function</em></strong></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">16</span><span class="op">)</span></span></code></pre></div>
 <p><em>Output: 4</em></p>
 
@@ -525,6 +616,7 @@
 <li><a class="nav-link" href="#the-rstudio-interface">The RStudio Interface</a></li>
 <li><a class="nav-link" href="#setting-up-a-new-project">Setting Up a New Project</a></li>
 <li><a class="nav-link" href="#file-management">File Management</a></li>
+<li><a class="nav-link" href="#r-script-vs.-r-markdown">R Script vs. R Markdown</a></li>
 </ul>
 </li>
 <li>
@@ -571,7 +663,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-13.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -157,7 +157,7 @@ describe(gaming_data$Hours)$mode
 ### When to Use Each Measure {.unnumbered}
 
 | Measure | Best Used When... | Strengths | Limitations |
-|-----------------|----------------------|-----------------|-----------------|
+|----|----|----|----|
 | **Mean** | Data are evenly distributed without outliers | Uses all data points | Sensitive to extreme values |
 | **Median** | Data are skewed or contain outliers | Robust to outliers | Does not use all values |
 | **Mode** | Identifying the most common response | Works with any data type | May not exist or may be multiple |
@@ -308,7 +308,7 @@ range(gaming_data$Hours, na.rm = TRUE)
 ### Summary Table {.unnumbered}
 
 | Statistic | Value | Interpretation |
-|-------------------------------|------------------|-----------------------|
+|----|----|----|
 | Standard Deviation | 70.28 | Large spread in gaming hours |
 | Variance | 4939.91 | Used in advanced stats; not intuitive by itself |
 | Range | 0 to 8000 | Suggests presence of extreme outliers |

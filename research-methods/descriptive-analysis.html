@@ -7,7 +7,7 @@
 <title>Chapter 10 Descriptive Analysis | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
 <meta name="description" content="[Chunk Version] This chapter introduces the foundations of descriptive statistics, a crucial first step in any quantitative research process. Descriptive statistics allow researchers to organize,...">
-<meta name="generator" content="bookdown 0.42 with bs4_book()">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Descriptive Analysis | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/descriptive-analysis.html">
@@ -60,8 +60,8 @@
 <li><a class="active" href="descriptive-analysis.html"><span class="header-section-number">10</span> Descriptive Analysis</a></li>
 <li><a class="" href="inferential-analysis.html"><span class="header-section-number">11</span> Inferential Analysis</a></li>
 <li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></li>
-<li><a class="" href="reporting-findings.html"><span class="header-section-number">13</span> Reporting Findings</a></li>
-<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">14</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="reporting-results-using-r.html"><span class="header-section-number">13</span> Reporting Results Using R</a></li>
+<li><a class="" href="writing-a-white-paper-and-press-release.html"><span class="header-section-number">14</span> Writing a White Paper and Press Release</a></li>
 <li><a class="" href="appendix-1.html"><span class="header-section-number">15</span> Appendix</a></li>
 </ul>
 
@@ -157,21 +157,21 @@
 <div id="load-required-packages" class="section level4 unnumbered">
 <h4>Load Required Packages<a class="anchor" aria-label="anchor" href="#load-required-packages"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>   <span class="co"># For data manipulation</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span>   <span class="co"># For advanced descriptive functions</span></span></code></pre></div>
 </div>
 <div id="load-the-dataset" class="section level4 unnumbered">
 <h4>Load the Dataset<a class="anchor" aria-label="anchor" href="#load-the-dataset"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data.csv"</span>, encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">)</span></span></code></pre></div>
 <p>We use <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> to import the dataset, and we specify the encoding (<code>ISO-8859-1</code>) to avoid any problems with special characters that might be present in the file.</p>
 </div>
 <div id="compute-the-mean" class="section level4 unnumbered">
 <h4>Compute the Mean<a class="anchor" aria-label="anchor" href="#compute-the-mean"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
@@ -185,7 +185,7 @@
 <div id="compute-the-median" class="section level4 unnumbered">
 <h4>Compute the Median<a class="anchor" aria-label="anchor" href="#compute-the-median"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>This command finds the middle value of the <code>Hours</code> variable, once the values are sorted from smallest to largest.</li>
@@ -195,7 +195,7 @@
 <div id="compute-the-mode" class="section level4 unnumbered">
 <h4>Compute the Mode<a class="anchor" aria-label="anchor" href="#compute-the-mode"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span><span class="op">)</span><span class="op">$</span><span class="va">mode</span></span></code></pre></div>
 <ul>
 <li>The <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code>psych</code> package gives a full summary of a numeric variable.</li>
@@ -208,7 +208,7 @@
 <div id="sample-output-based-on-real-data" class="section level3 unnumbered">
 <h3>Sample Output (Based on Real Data)<a class="anchor" aria-label="anchor" href="#sample-output-based-on-real-data"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co"># [1] 22.25</span></span>
 <span></span>
@@ -224,10 +224,10 @@
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="23%">
-<col width="30%">
-<col width="23%">
-<col width="23%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
 </colgroup>
 <thead><tr class="header">
 <th>Measure</th>
@@ -342,14 +342,14 @@
 <h4>Step 1: Load Required Packages<a class="anchor" aria-label="anchor" href="#step-1-load-required-packages"><i class="fas fa-link"></i></a>
 </h4>
 <p>If you haven’t already loaded your packages, begin with:</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="step-2-load-the-dataset" class="section level4 unnumbered">
 <h4>Step 2: Load the Dataset<a class="anchor" aria-label="anchor" href="#step-2-load-the-dataset"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data.csv"</span>, encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">)</span></span></code></pre></div>
 <p>This loads the dataset of over 13,000 gamers from a 2015 survey.</p>
 <hr>
@@ -357,7 +357,7 @@
 <div id="step-3-compute-dispersion-measures" class="section level4 unnumbered">
 <h4>Step 3: Compute Dispersion Measures<a class="anchor" aria-label="anchor" href="#step-3-compute-dispersion-measures"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Standard deviation</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -382,7 +382,7 @@
 <div id="sample-output" class="section level3 unnumbered">
 <h3>Sample Output<a class="anchor" aria-label="anchor" href="#sample-output"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Hours</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co"># [1] 70.2845</span></span>
 <span></span>
@@ -410,11 +410,6 @@
 <h3>Summary Table<a class="anchor" aria-label="anchor" href="#summary-table"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="43%">
-<col width="25%">
-<col width="31%">
-</colgroup>
 <thead><tr class="header">
 <th>Statistic</th>
 <th>Value</th>
@@ -465,7 +460,7 @@
 <h4>Counting Gender Identities in the Dataset<a class="anchor" aria-label="anchor" href="#counting-gender-identities-in-the-dataset"><i class="fas fa-link"></i></a>
 </h4>
 <p>Let’s start by counting how many participants in the survey identified as Male, Female, or Other.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Frequency of gender identities</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span></code></pre></div>
 <p>This command returns a table showing how many times each gender appears in the dataset:</p>
@@ -478,7 +473,7 @@
 <h4>Calculating Proportions of Each Category<a class="anchor" aria-label="anchor" href="#calculating-proportions-of-each-category"><i class="fas fa-link"></i></a>
 </h4>
 <p>To make these numbers easier to interpret, we convert them into proportions (i.e., percentages of the total).</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Proportions of gender identities</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>This returns the following:</p>
@@ -530,7 +525,7 @@
 <strong>Generating Descriptive Reports</strong><a class="anchor" aria-label="anchor" href="#generating-descriptive-reports"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use the <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code>psych</code> package to produce a complete summary of multiple variables at once.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Descriptive statistics for all GAD items</span></span>
 <span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GAD1"</span>, <span class="st">"GAD2"</span>, <span class="st">"GAD3"</span>, <span class="st">"GAD4"</span>, <span class="st">"GAD5"</span>, <span class="st">"GAD6"</span>, <span class="st">"GAD7"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <p>This command generates the following for each item: - <strong>n</strong>: Number of valid responses - <strong>mean</strong>: Average score - <strong>sd</strong>: Standard deviation - <strong>median</strong>: Middle value - <strong>min</strong>/<strong>max</strong>: Range of possible scores (usually 0–3) - <strong>skew</strong> and <strong>kurtosis</strong>: Shape of the distribution - <strong>se</strong>: Standard error of the mean</p>
@@ -595,14 +590,14 @@
 <h4>
 <span class="header-section-number">10.3.0.1</span> Create a Composite Score for GAD<a class="anchor" aria-label="anchor" href="#create-a-composite-score-for-gad"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create average GAD score for each participant</span></span>
 <span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GAD_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">GAD1</span><span class="op">:</span><span class="va">GAD7</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>This code: - Uses <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> to calculate scores for each participant individually - Uses <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> to access all 7 GAD items - Calculates the <strong>average GAD score</strong> per participant</p>
 <p>We can now describe the resulting composite variable:</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">GAD_score</span><span class="op">)</span></span></code></pre></div>
 <p>Sample summary:</p>
 <div class="inline-table"><table class="table table-sm">
@@ -636,7 +631,7 @@
 <strong>Reporting Descriptive Statistics for Psychological Scales</strong><a class="anchor" aria-label="anchor" href="#reporting-descriptive-statistics-for-psychological-scales"><i class="fas fa-link"></i></a>
 </h3>
 <p>The same method can be used to compute scale scores for other psychological measures in the dataset.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compute average scores for SWL and SPIN</span></span>
 <span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -652,7 +647,7 @@
 <strong>Preparing Summarized Data for Visualization and Further Analysis</strong><a class="anchor" aria-label="anchor" href="#preparing-summarized-data-for-visualization-and-further-analysis"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can also group participants and summarize their data. For example, we can compare anxiety and gameplay hours by gender.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -715,7 +710,7 @@
 <code>reactable</code> – Interactive Tables for Web Apps<a class="anchor" aria-label="anchor" href="#reactable-interactive-tables-for-web-apps"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://glin.github.io/reactable/"><code>reactable</code></a> is a package that creates interactive HTML tables with sorting, searching, and filtering features. These are ideal for dashboards, websites, or exploratory analysis in R Markdown documents.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glin.github.io/reactable/">reactable</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://glin.github.io/reactable/reference/reactable.html">reactable</a></span><span class="op">(</span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -738,7 +733,7 @@
 <code>gtsummary</code> – Publication-Ready Summary Tables<a class="anchor" aria-label="anchor" href="#gtsummary-publication-ready-summary-tables"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://www.danieldsjoberg.com/gtsummary/"><code>gtsummary</code></a> is designed to generate clean, publication-quality summary tables. It is especially useful for comparing groups (e.g., comparing means by gender).</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -763,7 +758,7 @@
 <code>kableExtra</code> – Enhanced Tables for Academic Writing<a class="anchor" aria-label="anchor" href="#kableextra-enhanced-tables-for-academic-writing"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://haozhu233.github.io/kableExtra/"><code>kableExtra</code></a> enhances basic R tables (created using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable</a></code>) with borders, alignment, and styling options. These are ideal for PDF or HTML reports generated in R Markdown.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
 <span></span>
@@ -792,7 +787,7 @@
 <code>flextable</code> – Word and PowerPoint Integration<a class="anchor" aria-label="anchor" href="#flextable-word-and-powerpoint-integration"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://davidgohel.github.io/flextable/"><code>flextable</code></a> is designed for outputting tables to Word documents and PowerPoint presentations. If you’re preparing a research poster or a report for a non-technical audience, this package is a powerful choice.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ardata-fr.github.io/flextable-book/">flextable</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">summary_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -910,7 +905,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-13.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

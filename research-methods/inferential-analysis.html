@@ -7,7 +7,7 @@
 <title>Chapter 11 Inferential Analysis | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
 <meta name="description" content="Chunk Version  11.1 Overview Descriptive statistics help summarize your dataset. However, they cannot answer questions about whether observed differences or relationships are meaningful beyond the...">
-<meta name="generator" content="bookdown 0.42 with bs4_book()">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Chapter 11 Inferential Analysis | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/inferential-analysis.html">
@@ -60,8 +60,8 @@
 <li><a class="" href="descriptive-analysis.html"><span class="header-section-number">10</span> Descriptive Analysis</a></li>
 <li><a class="active" href="inferential-analysis.html"><span class="header-section-number">11</span> Inferential Analysis</a></li>
 <li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">12</span> Data Visualization in R</a></li>
-<li><a class="" href="reporting-findings.html"><span class="header-section-number">13</span> Reporting Findings</a></li>
-<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">14</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="reporting-results-using-r.html"><span class="header-section-number">13</span> Reporting Results Using R</a></li>
+<li><a class="" href="writing-a-white-paper-and-press-release.html"><span class="header-section-number">14</span> Writing a White Paper and Press Release</a></li>
 <li><a class="" href="appendix-1.html"><span class="header-section-number">15</span> Appendix</a></li>
 </ul>
 
@@ -122,7 +122,7 @@
 <div id="load-the-dataset-1" class="section level4 unnumbered">
 <h4>Load the Dataset<a class="anchor" aria-label="anchor" href="#load-the-dataset-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://github.com/SIM-Lab-SIUE/SIM-Lab-SIUE.github.io/raw/refs/heads/main/research-methods/data/data.csv"</span>, encoding <span class="op">=</span> <span class="st">"ISO-8859-1"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
@@ -130,7 +130,7 @@
 <div id="code-chi-square-test" class="section level3 unnumbered">
 <h3>Code: Chi-Square Test<a class="anchor" aria-label="anchor" href="#code-chi-square-test"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tabulate Gender × Platform</span></span>
@@ -182,7 +182,7 @@ X-squared = 70.448, df = 4, p-value = 1.826e-14</code></pre>
 <div id="code-single-sample-t-test" class="section level3 unnumbered">
 <h3>Code: Single Sample T-Test<a class="anchor" aria-label="anchor" href="#code-single-sample-t-test"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">gaming_data</span><span class="op">$</span><span class="va">GAD_T</span>, mu <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="output-1" class="section level3 unnumbered">
@@ -236,7 +236,7 @@ Do anxiety scores differ by gender identity?</p>
 <h3>Example: GAD_T by Gender<a class="anchor" aria-label="anchor" href="#example-gad_t-by-gender"><i class="fas fa-link"></i></a>
 </h3>
 <p>We will use <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> to test whether the average GAD score differs between gender groups.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load tidyverse</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
@@ -298,7 +298,7 @@ Does gaming platform (PC, Console, Mobile) affect social anxiety scores (SPIN_T)
 <div id="example-spin_t-by-platform" class="section level3 unnumbered">
 <h3>Example: SPIN_T by Platform<a class="anchor" aria-label="anchor" href="#example-spin_t-by-platform"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run ANOVA model</span></span>
 <span><span class="va">anova_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">SPIN_T</span> <span class="op">~</span> <span class="va">Platform</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_model</span><span class="op">)</span></span></code></pre></div>
@@ -323,7 +323,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <h3>Post-Hoc Test: Tukey’s HSD<a class="anchor" aria-label="anchor" href="#post-hoc-test-tukeys-hsd"><i class="fas fa-link"></i></a>
 </h3>
 <p>If the ANOVA is significant, you need to run post-hoc tests to identify <em>which</em> groups differ.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Tukey post-hoc test</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova_model</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -368,7 +368,7 @@ Smartphone / Tablet-PC </code></pre>
 <div id="code-two-way-anova" class="section level3 unnumbered">
 <h3>Code: Two-Way ANOVA<a class="anchor" aria-label="anchor" href="#code-two-way-anova"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">anova_2way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">GAD_T</span> <span class="op">~</span> <span class="va">Gender</span> <span class="op">*</span> <span class="va">Platform</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_2way</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -419,7 +419,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <div id="code-ancova" class="section level3 unnumbered">
 <h3>Code: ANCOVA<a class="anchor" aria-label="anchor" href="#code-ancova"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ancova_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">SPIN_T</span> <span class="op">~</span> <span class="va">Platform</span> <span class="op">+</span> <span class="va">Hours</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ancova_model</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -472,7 +472,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <div id="code-simple-linear-regression" class="section level3 unnumbered">
 <h3>Code: Simple Linear Regression<a class="anchor" aria-label="anchor" href="#code-simple-linear-regression"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Simple linear regression model</span></span>
 <span><span class="va">model_simple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">SWL_T</span> <span class="op">~</span> <span class="va">Hours</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
 <span></span>
@@ -532,7 +532,7 @@ F-statistic: 17.21 on 1 and 13432 DF,  p-value: 3.371e-05</code></pre>
 <h3>
 <span class="header-section-number">11.9.1</span> Code: Multiple Linear Regression<a class="anchor" aria-label="anchor" href="#code-multiple-linear-regression"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression model</span></span>
 <span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">SWL_T</span> <span class="op">~</span> <span class="va">Hours</span> <span class="op">+</span> <span class="va">Gender</span>, data <span class="op">=</span> <span class="va">gaming_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
@@ -586,14 +586,14 @@ GenderOther -3.166372560    1.0572902969    -2.994800   0.0027512578</code></pre
 <div id="create-binary-outcome" class="section level3 unnumbered">
 <h3>Create Binary Outcome<a class="anchor" aria-label="anchor" href="#create-binary-outcome"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gaming_data</span> <span class="op">&lt;-</span> <span class="va">gaming_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>is_pc <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">Platform</span> <span class="op">==</span> <span class="st">"PC"</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="run-logistic-regression" class="section level3 unnumbered">
 <h3>Run Logistic Regression<a class="anchor" aria-label="anchor" href="#run-logistic-regression"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">log_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">is_pc</span> <span class="op">~</span> <span class="va">Hours</span> <span class="op">+</span> <span class="va">GAD_T</span>, data <span class="op">=</span> <span class="va">gaming_data</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">log_model</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -767,7 +767,7 @@ Number of Fisher Scoring iterations: 7</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-13.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2025-04-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

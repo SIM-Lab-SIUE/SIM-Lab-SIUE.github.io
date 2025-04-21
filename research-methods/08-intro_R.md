@@ -122,12 +122,116 @@ RStudio's project management system helps keep your work organized, especially w
 
 Effective file management is critical for maintaining an organized and efficient workflow in RStudio. Below are some guidelines for managing different types of files:
 
-#### R Script vs. R Markdown {.unnumbered}
+Here is an expanded version of your original section on R Script vs. R Markdown, rewritten for new students with added clarity, practical examples, and step-by-step instructions to support confident usage:
 
-R scripts (`.R` files) are text files where you can write and run R commands. These are best used when the focus is purely on data analysis. On the other hand, R Markdown (`.Rmd` files) allows you to integrate narrative text, R code, and output (e.g., plots, tables) into a single document. R Markdown is useful for generating reproducible reports, making it ideal for assignments, papers, and presentations.
+### R Script vs. R Markdown {.unnumbered}
 
--   **When to use R Script**: Use an R script when you are solely focused on coding and analyzing data without needing additional explanation or documentation.
--   **When to use R Markdown**: Use R Markdown when you want to combine text, code, and results in a report format that can be converted into HTML, PDF, or Word documents.
+In RStudio, you can write and run code using two main types of files: **R Script** (`.R`) and **R Markdown** (`.Rmd`). Understanding the differences between these two file types—and knowing when to use each—is essential for organizing your work, communicating your analysis clearly, and producing reproducible research.
+
+![R Script and R Markdown Roles in Project Flow](images/r_rmd_project.png){width="100%"}
+
+#### What Is an R Script? {.unnumbered}
+
+An **R Script** is a plain text file that contains lines of R code. Think of it as your personal notepad for experimentation and coding. You can use R scripts to test ideas, process datasets, run statistical models, and generate visualizations.
+
+**Typical Uses:**
+
+- Running statistical tests
+- Cleaning and transforming datasets
+- Creating plots or tables
+- Writing short snippets of code to test an idea
+
+**Pros:**
+
+- Simple, clean, and fast
+- Good for focused tasks or coding-heavy projects
+- Ideal when no explanation or formatting is needed
+
+**Example:**
+
+```r
+library(ggplot2)
+data(mpg)
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+```
+
+**How to create one:**
+
+1. In RStudio, go to `File` > `New File` > `R Script`.
+2. Save with a `.R` extension (e.g., `analysis.R`).
+
+#### What Is R Markdown? {.unnumbered}
+
+**R Markdown** files allow you to combine **narrative text, code, and output**—including plots, tables, and inline statistics—in a single document. These files are perfect for creating **reproducible reports**, where the code and results live alongside your explanation.
+
+**Typical Uses:**
+
+- Homework and lab reports
+- Project documentation
+- Academic papers or professional reports
+- Data storytelling and presentations
+
+**Pros:**
+
+- Integrates code and text in one place
+- Generates polished reports in HTML, PDF, or Word
+- Supports inline citations and mathematical notation (e.g., LaTeX)
+
+**Basic Structure of an R Markdown File:**
+
+```markdown
+
+## Summary of Findings
+
+Here is a plot of engine displacement vs highway MPG.
+
+``` r
+library(ggplot2)
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+```
+
+```
+
+**How to create one:**
+1. Go to `File` > `New File` > `R Markdown…`.
+2. Choose a title and output format (HTML is a good default).
+3. Save with a `.Rmd` extension (e.g., `final_report.Rmd`).
+
+#### When to Use Each File Type {.unnumbered}
+
+| Task                                     | Best File Type   |
+|------------------------------------------|------------------|
+| Quick calculations or testing code       | `.R` (R Script)  |
+| Writing a report with explanation        | `.Rmd` (R Markdown) |
+| Reproducible research with visuals       | `.Rmd`           |
+| Coding without needing output display    | `.R`             |
+| Submitting assignments with visuals/text | `.Rmd`           |
+
+#### Rendering R Markdown {.unnumbered}
+
+After writing an R Markdown file, you can render (i.e., knit) it into a report.
+
+To knit your document:
+- Click the **"Knit"** button in RStudio (top of the editor pane).
+- Choose an output format (HTML is the most flexible to start).
+- R will run all the code chunks and compile your report.
+
+If something goes wrong (e.g., a code error), fix the issue and try knitting again.
+
+#### Additional Tips {.unnumbered}
+
+- Use `#` for comments in R scripts; in R Markdown, use normal paragraphs for writing and triple backticks (```) for code chunks.
+- Use code chunks in R Markdown like this:
+
+````
+
+``` r
+summary(my_data)
+```
+
+````
+
+- Keep your R script files clean by breaking large scripts into separate logical sections and using comments to explain steps.
 
 ![R Script on Left and R Markdown on Right](images/script-md.jpg){width="100%"}
 
