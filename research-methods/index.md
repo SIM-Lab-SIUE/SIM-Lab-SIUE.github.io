@@ -1,19 +1,18 @@
 ---
 title: "An Introduction to Research Methods in Mass Media"
 author: "Alex P Leith"
-date: "2025-04-21"
+date: "2025-04-22"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
-mainfont: Roboto Mono
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: SIM-Lab-SIUE/mc451-fall24
-url: https://github.com/SIM-Lab-SIUE/mc451-fall24
 cover-image: images/cover.jpg
 description: "This is the textbook for MC 451 at SIU Edwardsville."
+github-repo: SIM-Lab-SIUE/mc451-fall24
+url: https://github.com/SIM-Lab-SIUE/mc451-fall24
 ---
+
 
 # Preface {.unnumbered}
 
