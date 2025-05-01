@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to Research Methods in Mass Media"
 author: "Alex P Leith"
-date: "2025-04-22"
+date: "2025-05-01"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
