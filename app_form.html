@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIUE Equipment Checkout App Questionnaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+        }
+        .siue-red {
+            color: #C41230;
+        }
+        .bg-siue-red {
+            background-color: #C41230;
+        }
+        .border-siue-red {
+            border-color: #C41230;
+        }
+        .focus-ring-siue-red:focus {
+            --tw-ring-color: #C41230;
+        }
+        .form-section {
+            border-left: 4px solid #C41230;
+            padding-left: 1.5rem;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <div class="max-w-4xl mx-auto p-6 md:p-10">
+
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Equipment Checkout App</h1>
+            <h2 class="text-xl md:text-2xl font-semibold siue-red mt-1">Planning Questionnaire</h2>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">To our Broadcast Engineering Team: Please fill out the questions below to help us design the perfect app for the department. Your input is crucial!</p>
+        </header>
+
+        <form id="questionnaire-form" class="space-y-8">
+
+            <!-- Section 1: The Big Picture -->
+            <div class="form-section">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">Section 1: The Big Picture</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label for="s1-q1" class="block text-lg font-semibold text-gray-700">1.1 In your own words, what is the main problem you hope this app will solve?</label>
+                        <p class="text-sm text-gray-500 mb-2">e.g., "Our current paper system is slow," "We lose track of who has what," "It's hard for students to see what's available."</p>
+                        <textarea id="s1-q1" name="problem_to_solve" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-700">1.2 Who will be using this app? Please check all that apply.</label>
+                        <div class="mt-3 space-y-4">
+                            <div class="flex items-start">
+                                <input id="user-student" name="user_student" type="checkbox" class="h-5 w-5 rounded border-gray-300 text-siue-red focus:ring-siue-red">
+                                <label for="user-student" class="ml-3 text-md text-gray-700"><strong>Students:</strong> (e.g., They will look for and check out equipment.)</label>
+                            </div>
+                            <div class="flex items-start">
+                                <input id="user-prof" name="user_professor" type="checkbox" class="h-5 w-5 rounded border-gray-300 text-siue-red focus:ring-siue-red">
+                                <label for="user-prof" class="ml-3 text-md text-gray-700"><strong>Professors</strong></label>
+                            </div>
+                            <div class="flex items-start">
+                                <input id="user-ga" name="user_ga" type="checkbox" class="h-5 w-5 rounded border-gray-300 text-siue-red focus:ring-siue-red">
+                                <label for="user-ga" class="ml-3 text-md text-gray-700"><strong>Graduate Assistants / Teaching Assistants</strong></label>
+                            </div>
+                            <div class="flex items-start">
+                                <input id="user-staff" name="user_staff" type="checkbox" class="h-5 w-5 rounded border-gray-300 text-siue-red focus:ring-siue-red">
+                                <label for="user-staff" class="ml-3 text-md text-gray-700"><strong>Engineering Staff / Equipment Cage Staff:</strong> (e.g., They will approve checkouts and add new gear.)</label>
+                            </div>
+                            <div class="flex items-start">
+                                <input id="user-other-toggle" name="user_other_toggle" type="checkbox" class="h-5 w-5 rounded border-gray-300 text-siue-red focus:ring-siue-red">
+                                <label for="user-other-toggle" class="ml-3 text-md text-gray-700"><strong>Other?</strong> Please describe below:</label>
+                            </div>
+                             <textarea id="user-other-desc" name="user_other_description" rows="2" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red" placeholder="Describe other users here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 2: The Equipment -->
+            <div class="form-section">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">Section 2: The Equipment</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label for="s2-q1" class="block text-lg font-semibold text-gray-700">2.1 Roughly how many individual pieces of equipment are we talking about?</label>
+                        <p class="text-sm text-gray-500 mb-2">e.g., 50 cameras, 100 microphones, etc.</p>
+                        <input type="text" id="s2-q1" name="equipment_count" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red">
+                    </div>
+                    <div>
+                        <label for="s2-q2" class="block text-lg font-semibold text-gray-700">2.2 How do you currently categorize the equipment?</label>
+                         <p class="text-sm text-gray-500 mb-2">e.g., By type like "Cameras," or by class kit like "JOUR 201 Kit."</p>
+                        <textarea id="s2-q2" name="equipment_categories" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s2-q3" class="block text-lg font-semibold text-gray-700">2.3 What specific information do you need to track for each piece of equipment?</label>
+                        <p class="text-sm text-gray-500 mb-2">Examples: Item Name, Make/Model, Serial Number, a picture, condition, accessories included, etc.</p>
+                        <textarea id="s2-q3" name="equipment_details" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s2-q4" class="block text-lg font-semibold text-gray-700">2.4 Do some items get checked out as a "kit" or a bundle? If so, please describe an example.</label>
+                        <p class="text-sm text-gray-500 mb-2">e.g., a camera that always goes out with a specific lens, battery, and memory card.</p>
+                        <textarea id="s2-q4" name="equipment_kits" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: The Checkout & Return Process -->
+            <div class="form-section">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">Section 3: The Process</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label for="s3-q1" class="block text-lg font-semibold text-gray-700">3.1 Walk us through the current checkout process, step-by-step.</label>
+                        <textarea id="s3-q1" name="process_current_checkout" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s3-q2" class="block text-lg font-semibold text-gray-700">3.2 Describe the perfect future checkout process using the app. Does a staff member need to approve it?</label>
+                        <textarea id="s3-q2" name="process_future_checkout" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s3-q3" class="block text-lg font-semibold text-gray-700">3.3 How long can someone keep a piece of equipment?</label>
+                         <p class="text-sm text-gray-500 mb-2">Is it a standard time for everything, or does it vary by item?</p>
+                        <textarea id="s3-q3" name="process_checkout_length" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s3-q4" class="block text-lg font-semibold text-gray-700">3.4 Can students reserve equipment in advance for a specific date? How far in advance?</label>
+                        <textarea id="s3-q4" name="process_reservations" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                     <div>
+                        <label for="s3-q5" class="block text-lg font-semibold text-gray-700">3.5 What happens when equipment is returned late?</label>
+                        <p class="text-sm text-gray-500 mb-2">Is there a fine? A warning? Are they blocked from checking out other things?</p>
+                        <textarea id="s3-q5" name="process_late_returns" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                     <div>
+                        <label for="s3-q6" class="block text-lg font-semibold text-gray-700">3.6 Describe the check-in process. Does staff need to inspect the equipment?</label>
+                        <textarea id="s3-q6" name="process_checkin" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: App Features -->
+            <div class="form-section">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">Section 4: App Features (The Wishlist)</h3>
+                <div class="space-y-6">
+                    <!-- Student Features -->
+                    <div>
+                         <label class="block text-lg font-semibold text-gray-700 mb-4">For Students:</label>
+                         <div class="space-y-4 rounded-md border border-gray-200 p-4">
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Search for specific items</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_search" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_search" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_search" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Browse by category</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_browse" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_browse" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_browse" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                             <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">See item availability & due dates</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_availability" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_availability" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_availability" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Reserve equipment for a future date</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_reserve" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_reserve" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_reserve" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Get email/text reminders when gear is due</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_reminders" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_reminders" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_reminders" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">See their checkout history</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_history" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_history" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_history" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2">
+                                <p class="font-medium text-gray-700 flex-1">A way to report a problem with equipment</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_student_report" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_student_report" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_student_report" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- Staff Features -->
+                    <div>
+                         <label class="block text-lg font-semibold text-gray-700 mb-4">For Staff / Admins:</label>
+                         <div class="space-y-4 rounded-md border border-gray-200 p-4">
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Admin dashboard (overdue, checked out)</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_staff_dashboard" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_staff_dashboard" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_staff_dashboard" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                             <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Add, edit, or remove equipment</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_staff_manage_items" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_staff_manage_items" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_staff_manage_items" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                             <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Check in/out on behalf of a student</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_staff_checkout_for" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_staff_checkout_for" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_staff_checkout_for" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                             <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">Manage users (e.g., block a user)</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_staff_manage_users" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_staff_manage_users" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_staff_manage_users" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2 border-b border-gray-200">
+                                <p class="font-medium text-gray-700 flex-1">See reports (e.g., most popular item)</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_staff_reports" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_staff_reports" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_staff_reports" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                            <!-- Feature Item -->
+                            <div class="md:flex items-center justify-between py-2">
+                                <p class="font-medium text-gray-700 flex-1">Attach user manuals to equipment</p>
+                                <div class="flex space-x-4 mt-2 md:mt-0">
+                                    <label><input type="radio" name="feat_staff_manuals" value="Must-Have" class="mr-1 text-siue-red focus:ring-siue-red">Must-Have</label>
+                                    <label><input type="radio" name="feat_staff_manuals" value="Nice-to-Have" class="mr-1 text-siue-red focus:ring-siue-red">Nice-to-Have</label>
+                                    <label><input type="radio" name="feat_staff_manuals" value="Not Needed" class="mr-1 text-siue-red focus:ring-siue-red">Not Needed</label>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                    <div>
+                        <label for="s4-q1" class="block text-lg font-semibold text-gray-700">4.1 Is there anything else you dream of the app being able to do? Don't be shy!</label>
+                        <textarea id="s4-q1" name="dream_features" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: The Technical Stuff -->
+             <div class="form-section">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900">Section 5: The Technical Stuff</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label for="s5-q1" class="block text-lg font-semibold text-gray-700">5.1 How will the app know who someone is?</label>
+                        <p class="text-sm text-gray-500 mb-2">e.g., Log in with SIUE e-ID, or create new accounts for them?</p>
+                        <textarea id="s5-q1" name="tech_login" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s5-q2" class="block text-lg font-semibold text-gray-700">5.2 Does this app need to connect to any other university systems?</label>
+                        <p class="text-sm text-gray-500 mb-2">e.g., Should it automatically know who students are from the main university list?</p>
+                        <textarea id="s5-q2" name="tech_integration" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                    <div>
+                        <label for="s5-q3" class="block text-lg font-semibold text-gray-700">5.3 What should the app look like?</label>
+                        <p class="text-sm text-gray-500 mb-2">Any preferences for colors (e.g., use SIUE red and black)? Should it have a logo?</p>
+                        <textarea id="s5-q3" name="tech_look_feel" rows="3" class="w-full mt-1 p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus-ring-siue-red focus:border-siue-red"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission -->
+            <div class="pt-8 text-center">
+                <button type="button" id="generate-summary-btn" class="bg-siue-red text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-red-700 transition-colors duration-200 text-lg">
+                    Generate & Copy Summary
+                </button>
+                 <p id="copy-success" class="text-green-600 font-semibold mt-4 hidden">Copied to clipboard!</p>
+            </div>
+            
+        </form>
+
+        <!-- Results Area -->
+        <div id="results-area" class="hidden mt-12">
+            <h3 class="text-2xl font-bold mb-4 text-gray-900">Your Answers</h3>
+            <p class="mb-4 text-gray-600">Your answers have been compiled below. You can now copy this text and paste it into an email or document to share.</p>
+            <div class="relative">
+                <textarea id="summary-output" readonly class="w-full h-96 p-4 border border-gray-300 rounded-md bg-gray-50 font-mono text-sm"></textarea>
+                <button id="copy-btn" class="absolute top-2 right-2 bg-gray-200 text-gray-700 font-semibold py-1 px-3 rounded-md hover:bg-gray-300">Copy</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('generate-summary-btn').addEventListener('click', () => {
+            const form = document.getElementById('questionnaire-form');
+            const elements = form.elements;
+            let summary = 'SIUE Mass Communications Equipment Checkout App: Planning Questionnaire\n';
+            summary += '=========================================================================\n\n';
+
+            const questions = {
+                // Section 1
+                "problem_to_solve": "1.1 Main problem to solve:",
+                "users": "1.2 Who will be using this app?",
+                "user_other_description": "  - Other user description:",
+                // Section 2
+                "equipment_count": "2.1 Rough equipment count:",
+                "equipment_categories": "2.2 Current equipment categories:",
+                "equipment_details": "2.3 Information to track for each item:",
+                "equipment_kits": "2.4 Do items get checked out as kits/bundles?",
+                // Section 3
+                "process_current_checkout": "3.1 Current checkout process:",
+                "process_future_checkout": "3.2 Ideal future checkout process:",
+                "process_checkout_length": "3.3 Equipment checkout length:",
+                "process_reservations": "3.4 Can students reserve in advance?",
+                "process_late_returns": "3.5 What happens on late returns?",
+                "process_checkin": "3.6 Check-in process:",
+                // Section 4
+                "features_student_header": "4.0 Student Features:",
+                "feat_student_search": "  - Search for specific items:",
+                "feat_student_browse": "  - Browse by category:",
+                "feat_student_availability": "  - See item availability & due dates:",
+                "feat_student_reserve": "  - Reserve equipment for a future date:",
+                "feat_student_reminders": "  - Get email/text reminders:",
+                "feat_student_history": "  - See their checkout history:",
+                "feat_student_report": "  - Report a problem with equipment:",
+                "features_staff_header": "\n4.0 Staff/Admin Features:",
+                "feat_staff_dashboard": "  - Admin dashboard:",
+                "feat_staff_manage_items": "  - Add, edit, or remove equipment:",
+                "feat_staff_checkout_for": "  - Check in/out on behalf of a student:",
+                "feat_staff_manage_users": "  - Manage users (e.g., block a user):",
+                "feat_staff_reports": "  - See reports:",
+                "feat_staff_manuals": "  - Attach user manuals to equipment:",
+                "dream_features": "4.1 Other dream features:",
+                // Section 5
+                "tech_login": "5.1 How will users be identified/log in?",
+                "tech_integration": "5.2 Does the app need to connect to other university systems?",
+                "tech_look_feel": "5.3 What should the app look like?",
+            };
+            
+            let currentSection = '';
+            
+            function getSectionHeader(name) {
+                if (name.startsWith('s1') && currentSection !== '1') { currentSection = '1'; return '\n--- Section 1: The Big Picture ---\n'; }
+                if (name.startsWith('s2') && currentSection !== '2') { currentSection = '2'; return '\n--- Section 2: The Equipment ---\n'; }
+                if (name.startsWith('s3') && currentSection !== '3') { currentSection = '3'; return '\n--- Section 3: The Process ---\n'; }
+                if (name.startsWith('s4') && currentSection !== '4') { currentSection = '4'; return '\n--- Section 4: App Features ---\n'; }
+                if (name.startsWith('s5') && currentSection !== '5') { currentSection = '5'; return '\n--- Section 5: The Technical Stuff ---\n'; }
+                return '';
+            }
+
+            // A more structured way to build the summary
+            let answers = {};
+            for (const el of elements) {
+                if (!el.name) continue;
+                if (el.type === 'radio' && el.checked) {
+                    answers[el.name] = el.value;
+                } else if (el.type === 'checkbox' && el.checked) {
+                    const key = el.name.replace('_toggle', '').replace(/_\w+$/, '');
+                    if (!answers[key]) answers[key] = [];
+                    answers[key].push(el.labels[0].textContent.trim());
+                } else if (el.type !== 'radio' && el.type !== 'checkbox' && el.value) {
+                     answers[el.name] = el.value;
+                }
+            }
+
+            summary += '--- Section 1: The Big Picture ---\n';
+            summary += `${questions.problem_to_solve}\n${answers.problem_to_solve || 'N/A'}\n\n`;
+            summary += `${questions.users}\n`;
+            let users = [];
+            if(answers.user_student) users.push('Students');
+            if(answers.user_professor) users.push('Professors');
+            if(answers.user_ga) users.push('Graduate Assistants / Teaching Assistants');
+            if(answers.user_staff) users.push('Engineering Staff / Equipment Cage Staff');
+            if(answers.user_other) users.push('Other');
+            summary += users.length > 0 ? `  - ${users.join('\n  - ')}\n` : '  - No user types selected\n';
+            if(answers.user_other_description) summary += `${questions.user_other_description}\n  ${answers.user_other_description}\n`;
+
+            summary += '\n--- Section 2: The Equipment ---\n';
+            summary += `${questions.equipment_count}\n${answers.equipment_count || 'N/A'}\n\n`;
+            summary += `${questions.equipment_categories}\n${answers.equipment_categories || 'N/A'}\n\n`;
+            summary += `${questions.equipment_details}\n${answers.equipment_details || 'N/A'}\n\n`;
+            summary += `${questions.equipment_kits}\n${answers.equipment_kits || 'N/A'}\n\n`;
+
+            summary += '\n--- Section 3: The Process ---\n';
+            summary += `${questions.process_current_checkout}\n${answers.process_current_checkout || 'N/A'}\n\n`;
+            summary += `${questions.process_future_checkout}\n${answers.process_future_checkout || 'N/A'}\n\n`;
+            summary += `${questions.process_checkout_length}\n${answers.process_checkout_length || 'N/A'}\n\n`;
+            summary += `${questions.process_reservations}\n${answers.process_reservations || 'N/A'}\n\n`;
+            summary += `${questions.process_late_returns}\n${answers.process_late_returns || 'N/A'}\n\n`;
+            summary += `${questions.process_checkin}\n${answers.process_checkin || 'N/A'}\n\n`;
+
+            summary += '\n--- Section 4: App Features ---\n';
+            summary += `${questions.features_student_header}\n`;
+            summary += `${questions.feat_student_search} ${answers.feat_student_search || 'Not answered'}\n`;
+            summary += `${questions.feat_student_browse} ${answers.feat_student_browse || 'Not answered'}\n`;
+            summary += `${questions.feat_student_availability} ${answers.feat_student_availability || 'Not answered'}\n`;
+            summary += `${questions.feat_student_reserve} ${answers.feat_student_reserve || 'Not answered'}\n`;
+            summary += `${questions.feat_student_reminders} ${answers.feat_student_reminders || 'Not answered'}\n`;
+            summary += `${questions.feat_student_history} ${answers.feat_student_history || 'Not answered'}\n`;
+            summary += `${questions.feat_student_report} ${answers.feat_student_report || 'Not answered'}\n`;
+
+            summary += `${questions.features_staff_header}\n`;
+            summary += `${questions.feat_staff_dashboard} ${answers.feat_staff_dashboard || 'Not answered'}\n`;
+            summary += `${questions.feat_staff_manage_items} ${answers.feat_staff_manage_items || 'Not answered'}\n`;
+            summary += `${questions.feat_staff_checkout_for} ${answers.feat_staff_checkout_for || 'Not answered'}\n`;
+            summary += `${questions.feat_staff_manage_users} ${answers.feat_staff_manage_users || 'Not answered'}\n`;
+            summary += `${questions.feat_staff_reports} ${answers.feat_staff_reports || 'Not answered'}\n`;
+            summary += `${questions.feat_staff_manuals} ${answers.feat_staff_manuals || 'Not answered'}\n\n`;
+
+            summary += `${questions.dream_features}\n${answers.dream_features || 'N/A'}\n\n`;
+
+            summary += '\n--- Section 5: The Technical Stuff ---\n';
+            summary += `${questions.tech_login}\n${answers.tech_login || 'N/A'}\n\n`;
+            summary += `${questions.tech_integration}\n${answers.tech_integration || 'N/A'}\n\n`;
+            summary += `${questions.tech_look_feel}\n${answers.tech_look_feel || 'N/A'}\n\n`;
+
+
+            const resultsArea = document.getElementById('results-area');
+            const summaryOutput = document.getElementById('summary-output');
+            summaryOutput.value = summary;
+            resultsArea.classList.remove('hidden');
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+            // Automatically copy to clipboard
+            summaryOutput.select();
+            document.execCommand('copy');
+            const successMsg = document.getElementById('copy-success');
+            successMsg.classList.remove('hidden');
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 3000);
+        });
+
+        document.getElementById('copy-btn').addEventListener('click', () => {
+             const summaryOutput = document.getElementById('summary-output');
+             summaryOutput.select();
+             document.execCommand('copy');
+             const successMsg = document.getElementById('copy-success');
+             successMsg.classList.remove('hidden');
+             setTimeout(() => {
+                 successMsg.classList.add('hidden');
+             }, 3000);
+        });
+    </script>
+
+</body>
+</html>
