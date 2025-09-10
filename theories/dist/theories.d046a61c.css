@@ -1,13 +1,21 @@
+@import "https://fonts.googleapis.com/css2?family=Lexend:wght@100;400;700&family=Public+Sans:wght@100;400;700&display=swap";
 *, :after, :before {
   box-sizing: border-box;
 }
 
 :root {
-  --color-text: #fff;
-  --color-text-alt: #787878;
-  --color-bg: #000;
-  --color-link: #fff;
-  --color-link-hover: #ccc;
+  --white-color: #fff;
+  --10-grey-color: transparent;
+  --90-grey-color: #1a1a1a;
+  --black-color: #000;
+  --accent-one: #ea4335;
+  --header-font: "Lexend";
+  --body-font: "Public Sans";
+  --color-text: var(--90-grey-color);
+  --color-text-alt: var(--10-grey-color);
+  --color-bg: var(--white-color);
+  --color-link: var(--accent-one);
+  --color-link-hover: var(--90-grey-color);
   --page-padding: 2rem;
   --stack-margin: 10rem;
   --slide-gap: 2vh;
@@ -59,7 +67,7 @@ body {
 @keyframes loaderAnim {
   to {
     opacity: 1;
-    transform: scale3d(.5, .5, 1);
+    transform: scale(.5);
   }
 }
 
@@ -112,10 +120,9 @@ a:focus-visible {
 }
 
 .frame {
-  z-index: 100;
   text-align: center;
   width: 100%;
-  padding: 1.5rem 5vw 0;
+  padding: 3rem 5vw;
   position: absolute;
 }
 
@@ -128,7 +135,7 @@ a:focus-visible {
 .frame__title-main {
   margin: 0;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .frame__title-back {
@@ -154,11 +161,11 @@ a:focus-visible {
 }
 
 .frame__logo-title {
+  font-family: var(--header-font), serif;
   margin: 0;
-  font-family: wayfinder-cf, serif;
   font-size: 2.75rem;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 600;
 }
 
 .frame__logo-subtitle {
@@ -186,7 +193,7 @@ a:focus-visible {
   height: var(--stack-item-height);
   cursor: pointer;
   will-change: width, height, transform, opacity;
-  background-position: center;
+  background-position: 50%;
   background-size: cover;
   transition: opacity .3s;
 }
@@ -227,21 +234,22 @@ a:focus-visible {
   margin-bottom: 15vh;
   position: fixed;
   bottom: 0;
-  left: 50vw;
+  left: 33vw;
 }
 
 .title__main {
+  font-family: var(--header-font), serif;
   margin: 0;
-  font-family: wayfinder-cf, serif;
   font-size: 11vw;
-  font-weight: 100;
+  font-weight: 600;
   line-height: 1;
 }
 
 .title__sub {
+  font-family: var(--body-font);
   margin-top: -1.5vw;
   margin-left: .25vw;
-  font-size: clamp(1rem, 2.5vw, 2.5rem);
+  font-size: max(1rem, min(2.5vw, 2.5rem));
   font-weight: 200;
   line-height: 1;
   display: block;
@@ -288,9 +296,9 @@ a:focus-visible {
 
 .content__item-title {
   color: #c87e4f;
+  font-family: var(--header-font), serif;
   margin: 0 0 2rem;
-  font-family: wayfinder-cf, serif;
-  font-size: clamp(2rem, 9vw, 10rem);
+  font-size: max(2rem, min(9vw, 10rem));
   font-weight: 100;
   line-height: 1;
 }
@@ -365,6 +373,7 @@ a:focus-visible {
 
   .frame {
     text-align: left;
+    z-index: 100;
     z-index: 1000;
     max-width: none;
     height: 100vh;
@@ -446,5 +455,132 @@ a:focus-visible {
   .slides .stack__item--current {
     opacity: 1;
   }
+}
+
+:root {
+  --color-text: var(--90-grey-color);
+  --color-text-alt: var(--10-grey-color);
+  --color-bg: var(--white-color);
+  --color-link: var(--accent-one);
+  --color-link-hover: var(--90-grey-color);
+  --page-padding: 2rem;
+  --stack-margin: 10rem;
+  --slide-gap: 2vh;
+  --stack-width: 38vw;
+  --stack-item-height: 8vh;
+  --slide-width: 40vw;
+  --slide-height: 50vh;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-link);
+  font-family: var(--header-font);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 1.75em;
+  font-weight: 800;
+}
+
+.content__item-title {
+  font-family: var(--header-font);
+  color: var(--color-link);
+  text-transform: uppercase;
+  font-size: max(2rem, min(8vw, 5.5rem));
+  font-weight: 700;
+  line-height: 1;
+}
+
+.content__item-description {
+  font-family: var(--body-font);
+  color: var(--color-text);
+  background-color: var(--color-text-alt);
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.content__item-description p {
+  margin: 10px 0;
+  line-height: 1.8em;
+}
+
+.content__item-description strong {
+  color: var(--color-link);
+  font-weight: bold;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+nav {
+  background-color: var(--color-text-alt);
+  text-align: center;
+  padding: 1em;
+}
+
+nav .nav-link {
+  font-family: var(--header-font);
+  color: var(--color-text);
+  text-transform: uppercase;
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+
+nav .nav-link:hover {
+  color: var(--color-link);
+  border-bottom: 2px solid var(--color-link);
+}
+
+footer {
+  background-color: var(--color-text-alt);
+  color: var(--color-text);
+  text-align: center;
+  padding: 2em;
+}
+
+footer a {
+  color: var(--color-link);
+  font-family: var(--header-font);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: var(--color-text);
+  background-color: var(--color-link);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.content__item-title {
+  margin-top: 2rem;
 }
 /*# sourceMappingURL=theories.d046a61c.css.map */
