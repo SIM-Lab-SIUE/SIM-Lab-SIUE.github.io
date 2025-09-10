@@ -5,9 +5,9 @@
   "description": "",
   "scripts": {
     "start": "parcel src/index.html --open",
-    "clean": "rm -rf dist/*",
-    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-maps --public-url ./ --dist-dir ../theories",
-    "build": "npm run clean && npm run build:parcel && mv dist/index.html ../theories/index.html"
+    "clean": "rimraf dist",
+    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-maps --public-url ./ --dist-dir .",
+    "build": "npm run clean && npm run build:parcel"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,9 @@
     "url": "https://github.com/codrops/[NAME]/issues"
   },
   "devDependencies": {
-    "parcel": "^2.5.0"
+    "copyfiles": "^2.4.1",
+    "parcel": "^2.5.0",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "gsap": "^3.10.4",
