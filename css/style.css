@@ -8,6 +8,7 @@
 	--90-grey-color: #1a1a1a;
 	--black-color: #000000;
 	--accent-one: #ea4335;
+	--accent-two: #34a853;
 	--header-font: "Lexend";
 	--body-font: "Public Sans";
 }
@@ -23,26 +24,24 @@ body {
 	line-height: 2em;
 }
 
-
 .wrapper {
 	padding: 50px;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	color: var(--accent-one);
-	font-family: var(--title-font);
+	font-family: var(--header-font);
 	font-weight: 700;
-	font-style: normal;
 	text-transform: uppercase;
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 2.5em;
 	font-weight: 900;
 }
 
 h2 {
-	font-size: 1.5em;
+	font-size: 2em;
 	font-weight: 800;
 }
 
@@ -64,29 +63,71 @@ a:hover {
 	font-weight: 600;
 }
 
+.content__item-title {
+    font-family: var(--header-font);
+    color: var(--accent-one);
+    text-transform: uppercase;
+    font-weight: 700;
+}
 
+.content__item-description {
+    font-family: var(--body-font);
+    color: var(--90-grey-color);
+    background-color: var(--10-grey-color);
+    padding: 20px;
+    border: 2px solid var(--90-grey-color);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.content__item-description p {
+    margin: 10px 0;
+    line-height: 1.8em;
+}
+
+.content__item-description strong {
+    color: var(--accent-one);
+    font-weight: bold;
+}
 
 nav {
-	background-color: var(--10-grey-color);
+    background-color: var(--10-grey-color);
+    padding: 1em;
+    text-align: center;
 }
 
-nav .navbar.nav-item {
-	background-color: var(--10-grey-color) !important;
+nav .nav-link {
+    font-family: var(--header-font);
+    color: var(--90-grey-color);
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin: 0 10px;
 }
 
-nav .navbar-nav .nav-item .nav-link {
-	font-size: 1em;
-	font-family: var(--body-font);
-}
-
-
-nav, footer {
-	padding-bottom: 1em;
-	text-align: center;
+nav .nav-link:hover {
+    color: var(--accent-one);
+    border-bottom: 2px solid var(--accent-one);
 }
 
 footer {
-	padding-top: 2.5em;
+    background-color: var(--10-grey-color);
+    color: var(--90-grey-color);
+    padding: 2em;
+    text-align: center;
+}
+
+footer a {
+    color: var(--accent-one);
+    font-family: var(--header-font);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: var(--90-grey-color);
+    background-color: var(--accent-one);
+    padding: 5px;
+    border-radius: 5px;
 }
 
 nav .nav-link, footer a {
@@ -165,7 +206,7 @@ header h2 {
 }
 
 .student {
-	font-style: 
+	font-style: italic;
 }
 
 .stages {
@@ -296,4 +337,44 @@ box-shadow: 5px 5px var(--accent-two);
 
 #projects-link a:hover, #projects a:hover {
 color: var(--accent-two)
+}
+
+/* Theories Subfolder Styles */
+.theories-header {
+    text-align: center;
+    padding: 2em 0;
+    background-color: var(--accent-one);
+    color: var(--white-color);
+    font-family: var(--header-font);
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.theories-content {
+    padding: 2em;
+    background-color: var(--10-grey-color);
+    border: 1px solid var(--90-grey-color);
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.theories-content p {
+    font-family: var(--body-font);
+    color: var(--90-grey-color);
+    line-height: 1.8em;
+    margin: 10px 0;
+}
+
+.theories-content a {
+    color: var(--accent-one);
+    text-decoration: underline;
+}
+
+.theories-content a:hover {
+    color: var(--90-grey-color);
+    background-color: var(--accent-one);
+    padding: 2px 5px;
+    border-radius: 5px;
 }
