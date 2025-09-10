@@ -6,8 +6,8 @@
   "scripts": {
     "start": "parcel src/index.html --open",
     "clean": "rm -rf dist/*",
-    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-maps --public-url ./",
-    "build": "npm run clean && npm run build:parcel"
+    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-maps --public-url ./ --dist-dir ../theories",
+    "build": "npm run clean && npm run build:parcel && mv dist/index.html ../theories/index.html"
   },
   "repository": {
     "type": "git",
