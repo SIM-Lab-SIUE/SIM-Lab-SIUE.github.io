@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SIM Lab @ SIUE | Social Media Captionizer</title>
+    <meta name="description" content="Practice writing social media captions with the SIM Lab Captionizer. Learn platform-specific best practices and improve your content creation skills.">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .platform-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .platform-icon {
+            font-size: 3rem;
+        }
+        
+        .platform-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-one);
+        }
+
+        .image-frame {
+            width: 100%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 5px;
+            line-height: 0;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .image-credits {
+            font-size: 0.85rem;
+            color: var(--90-grey-color);
+            margin-bottom: 20px;
+            text-align: right;
+            font-family: var(--body-font);
+        }
+
+        .image-credits a {
+            color: var(--accent-one);
+            text-decoration: none;
+        }
+
+        .image-credits a:hover {
+            color: var(--90-grey-color);
+            font-weight: 600;
+        }
+
+        .tips-box {
+            text-align: left;
+            background: var(--10-grey-color);
+            padding: 20px;
+            border-left: 5px solid var(--accent-one);
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .tips-box h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--accent-one);
+            font-family: var(--header-font);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .tips-box ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.8em;
+        }
+
+        .tips-box li {
+            color: var(--90-grey-color);
+            font-family: var(--body-font);
+            margin-bottom: 10px;
+            line-height: 1.6em;
+        }
+
+        textarea {
+            width: 100%;
+            height: 140px;
+            padding: 15px;
+            border: 2px solid var(--90-grey-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--body-font);
+            line-height: 1.6em;
+            box-sizing: border-box;
+            resize: vertical;
+            margin-bottom: 20px;
+            color: var(--90-grey-color);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        textarea::placeholder {
+            color: #bbb;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-one);
+            box-shadow: 0 0 8px rgba(234, 67, 53, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 576px) {
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn-custom {
+                min-width: unset;
+                width: 100%;
+            }
+            
+            .platform-display {
+                gap: 12px;
+            }
+            
+            .platform-name {
+                font-size: 1.25rem;
+            }
+        }
+
+        .btn-custom {
+            padding: 14px 28px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--header-font);
+            text-transform: uppercase;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .btn-custom:active {
+            transform: scale(0.98);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-one);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--90-grey-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(26, 26, 26, 0.15);
+        }
+
+        .btn-refresh {
+            background-color: var(--accent-two);
+            color: white;
+        }
+
+        .btn-refresh:hover {
+            background-color: var(--90-grey-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(26, 26, 26, 0.15);
+        }
+
+        .caption-container {
+            max-width: 800px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm navbar-light pt-3 pb-1 fixed-top">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto nav-fill w-100">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">ABOUT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="projects.html">PROJECTS</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="row">
+                <div class="col-sm-12">
+                    <div class="box-top">
+                        <h4>#tool</h4>
+                    </div>
+                    <div class="text-box">
+                        <h1>Social Media Captionizer</h1>
+                        <p>Practice writing social media captions tailored to different platforms. Learn the best practices for each platform while getting real-time image prompts to inspire your writing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row">
+                <div class="col-lg-8 col-md-12 mx-auto">
+                    <div class="caption-container">
+                        <div class="platform-display">
+                            <i id="platform-icon" class="fab fa-instagram platform-icon"></i>
+                            <span id="platform-name" class="platform-name">Instagram</span>
+                        </div>
+
+                        <div class="image-frame" role="img" aria-label="Challenge image for caption practice">
+                            <img id="challenge-image" src="" alt="Social Media Challenge Image">
+                        </div>
+                        <div class="image-credits" id="image-credits">
+                            Photo by <span id="author">Loading...</span> | <a id="original-link" href="#" target="_blank" rel="noopener noreferrer">View Original</a>
+                        </div>
+
+                        <div class="tips-box">
+                            <h4><i class="fas fa-lightbulb" aria-hidden="true"></i> Platform Best Practices</h4>
+                            <ul id="platform-tips"></ul>
+                        </div>
+                        
+                        <label for="caption-input" class="sr-only">Caption text area</label>
+                        <textarea id="caption-input" placeholder="Type your caption here..." aria-describedby="platform-tips"></textarea>
+                        
+                        <div class="button-group">
+                            <button class="btn-custom btn-submit" onclick="saveCaption()" aria-label="Save your caption">Save Caption</button>
+                            <button class="btn-custom btn-refresh" onclick="generateChallenge()" aria-label="Get a new challenge with a different platform and image">Get New Challenge</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="row">
+                <div class="col-sm-12">
+                    <p>AP Leith &amp; SIM Lab @ SIUE &copy; 2025</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * SIM Lab Captionizer - Platform Data
+         * Stores information about different social media platforms including styling and best practices
+         */
+        const platformData = {
+            'Instagram': {
+                icon: 'fa-instagram',
+                color: '#E1306C',
+                tips: [
+                    'Prioritize aesthetic visuals.',
+                    'Use 5-10 hashtags.',
+                    'Hook users in the first 2 lines.'
+                ]
+            },
+            'LinkedIn': {
+                icon: 'fa-linkedin',
+                color: '#0077B5',
+                tips: [
+                    'Focus on professional insights.',
+                    'Use a conversational yet formal tone.',
+                    'Tag partners to boost reach.'
+                ]
+            },
+            'TikTok': {
+                icon: 'fa-tiktok',
+                color: '#000000',
+                tips: [
+                    'Authentic content over high production.',
+                    'Keep captions very short.',
+                    'Mention current trends.'
+                ]
+            },
+            'Facebook': {
+                icon: 'fa-facebook',
+                color: '#1877F2',
+                tips: [
+                    'Great for community building.',
+                    'Focus on local engagement.',
+                    'Use questions to start conversations.'
+                ]
+            }
+        };
+
+        /**
+         * Generate a new challenge by selecting a random platform and fetching a new image
+         */
+        async function generateChallenge() {
+            document.getElementById('caption-input').value = '';
+            document.getElementById('caption-input').focus();
+
+            const platforms = Object.keys(platformData);
+            const selectedName = platforms[Math.floor(Math.random() * platforms.length)];
+            const platformInfo = platformData[selectedName];
+
+            updatePlatformDisplay(selectedName, platformInfo);
+            await fetchAndDisplayImage();
+        }
+
+        /**
+         * Update the platform icon, name, and tips display
+         * @param {string} platformName - The name of the selected platform
+         * @param {Object} platformInfo - Platform data including icon, color, and tips
+         */
+        function updatePlatformDisplay(platformName, platformInfo) {
+            const iconEl = document.getElementById('platform-icon');
+            iconEl.className = `fab ${platformInfo.icon} platform-icon`;
+            iconEl.style.color = platformInfo.color;
+            
+            document.getElementById('platform-name').textContent = platformName;
+            document.getElementById('platform-tips').innerHTML = platformInfo.tips
+                .map(tip => `<li>${tip}</li>`)
+                .join('');
+        }
+
+        /**
+         * Fetch a random image and its metadata from Picsum Photos API
+         */
+        async function fetchAndDisplayImage() {
+            const randomSeed = Math.floor(Math.random() * 10000);
+            const imageUrl = `https://picsum.photos/seed/${randomSeed}/800/600`;
+            const infoUrl = `https://picsum.photos/seed/${randomSeed}/info`;
+
+            try {
+                const response = await fetch(infoUrl);
+                if (!response.ok) throw new Error('Failed to fetch image metadata');
+                
+                const metadata = await response.json();
+                document.getElementById('challenge-image').src = imageUrl;
+                document.getElementById('author').textContent = metadata.author || 'Unknown';
+                document.getElementById('original-link').href = metadata.url || '#';
+            } catch (error) {
+                console.error('Error fetching image:', error);
+                document.getElementById('author').textContent = 'Picsum Photos';
+            }
+        }
+
+        /**
+         * Save the caption (placeholder functionality)
+         */
+        function saveCaption() {
+            const caption = document.getElementById('caption-input').value.trim();
+            if (caption.length === 0) {
+                alert('Please write a caption before saving.');
+                return;
+            }
+            alert('Caption saved! Keep practicing to improve your social media writing skills.');
+            document.getElementById('caption-input').value = '';
+        }
+
+        /**
+         * Initialize the tool when the page loads
+         */
+        window.addEventListener('load', generateChallenge);
+    </script>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+</body>
+</html>
