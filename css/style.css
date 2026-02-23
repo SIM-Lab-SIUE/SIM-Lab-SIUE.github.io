@@ -11,6 +11,7 @@
 	--accent-two: #34a853;
 	--header-font: "Lexend";
 	--body-font: "Public Sans";
+
 }
 
 /* Global Styles */
@@ -23,6 +24,8 @@ body {
 	font-size: 1em;
 	line-height: 2em;
 }
+
+
 
 .wrapper {
 	padding: 50px;

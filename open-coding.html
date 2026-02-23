@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Open Coding Studio | SIM Lab @ SIUE</title>
+		<meta name="description" content="Open coding worksheet for grounded theory: capture song observations and export to Markdown or QMD.">
+		<link rel="icon" type="image/x-icon" href="img/logo.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+		<style>
+			:root {
+				--ink: #0e2a36;
+				--mid: #1f5a63;
+				--accent: #ff7a00;
+				--paper: #f7f3ee;
+				--panel: #ffffff;
+				--shadow: rgba(14, 42, 54, 0.2);
+				--stroke: rgba(14, 42, 54, 0.15);
+				--grad-a: #e7f5f1;
+				--grad-b: #fde8d7;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				font-family: "Space Grotesk", system-ui, sans-serif;
+				color: var(--ink);
+				background: radial-gradient(circle at top left, var(--grad-a), transparent 55%),
+					radial-gradient(circle at bottom right, var(--grad-b), transparent 45%),
+					var(--paper);
+			}
+
+			.oc-shell {
+				min-height: 100vh;
+				padding: 32px 20px 64px;
+				display: flex;
+				justify-content: center;
+			}
+
+			.oc-wrap {
+				width: min(1100px, 100%);
+				display: flex;
+				flex-direction: column;
+				gap: 24px;
+			}
+
+			header {
+				background: linear-gradient(120deg, #0f3d4a, #1d6b6f 55%, #2f8c80);
+				color: #fff;
+				border-radius: 28px;
+				padding: 28px 32px;
+				position: relative;
+				overflow: hidden;
+				box-shadow: 0 18px 40px rgba(15, 61, 74, 0.25);
+			}
+
+			header::after {
+				content: "";
+				position: absolute;
+				right: -60px;
+				top: -60px;
+				width: 240px;
+				height: 240px;
+				background: radial-gradient(circle, rgba(255, 122, 0, 0.35), transparent 70%);
+				pointer-events: none;
+			}
+
+			header h1 {
+				font-family: "Fraunces", serif;
+				font-size: clamp(2rem, 3vw, 3rem);
+				margin: 0 0 8px;
+			}
+
+			header p {
+				margin: 0;
+				font-size: 1.05rem;
+				max-width: 720px;
+			}
+
+			.nav-bar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 10px;
+			}
+
+			.nav-link {
+				color: #fff;
+				text-decoration: none;
+				font-weight: 600;
+				background: rgba(255, 255, 255, 0.18);
+				padding: 8px 14px;
+				border-radius: 999px;
+			}
+
+			.nav-link:hover {
+				background: rgba(255, 255, 255, 0.32);
+			}
+
+			.card {
+				background: var(--panel);
+				border-radius: 22px;
+				padding: 22px 24px;
+				border: 1px solid var(--stroke);
+				box-shadow: 0 10px 24px var(--shadow);
+				position: relative;
+			}
+
+			.card h2 {
+				margin: 0 0 12px;
+				font-size: 1.4rem;
+				color: var(--mid);
+			}
+
+			.card p {
+				margin: 0 0 12px;
+				color: var(--ink);
+			}
+
+			.step-list {
+				margin: 0;
+				padding-left: 20px;
+				line-height: 1.7;
+			}
+
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				gap: 16px;
+			}
+
+			.field {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+
+			label {
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+
+			input, textarea {
+				font-family: "Space Grotesk", system-ui, sans-serif;
+				font-size: 0.95rem;
+				padding: 10px 12px;
+				border-radius: 12px;
+				border: 1px solid var(--stroke);
+				background: #fbfbf9;
+				color: var(--ink);
+				resize: vertical;
+			}
+
+			textarea {
+				min-height: 90px;
+			}
+
+			fieldset {
+				border: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			fieldset + fieldset {
+				margin-top: 16px;
+			}
+
+			legend {
+				font-weight: 700;
+				font-size: 1.05rem;
+				margin-bottom: 10px;
+				color: var(--mid);
+			}
+
+			.actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				margin-top: 14px;
+			}
+
+			button {
+				border: none;
+				padding: 12px 18px;
+				border-radius: 999px;
+				font-size: 0.95rem;
+				font-weight: 600;
+				cursor: pointer;
+			}
+
+			button.primary {
+				background: var(--accent);
+				color: #fff;
+				box-shadow: 0 8px 16px rgba(255, 122, 0, 0.35);
+			}
+
+			button.secondary {
+				background: var(--mid);
+				color: #fff;
+			}
+
+			button.ghost {
+				background: transparent;
+				border: 1px solid var(--mid);
+				color: var(--mid);
+			}
+
+			.output {
+				margin-top: 12px;
+			}
+
+			.output textarea {
+				min-height: 200px;
+				background: #fdf9f3;
+			}
+
+			.notice {
+				font-size: 0.9rem;
+				color: #2e646a;
+				margin-top: 8px;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				background: rgba(255, 122, 0, 0.18);
+				color: #7a3f00;
+				padding: 6px 12px;
+				border-radius: 999px;
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+
+			.fade-up {
+				opacity: 0;
+				transform: translateY(18px);
+				animation: fadeUp 0.8s ease forwards;
+			}
+
+			.delay-1 { animation-delay: 0.15s; }
+			.delay-2 { animation-delay: 0.3s; }
+			.delay-3 { animation-delay: 0.45s; }
+
+			@keyframes fadeUp {
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.fade-up {
+					animation: none;
+					opacity: 1;
+					transform: none;
+				}
+			}
+
+			@media (max-width: 700px) {
+				header {
+					padding: 22px;
+				}
+
+				.nav-bar {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="oc-shell">
+			<div class="oc-wrap">
+				<header class="fade-up">
+					<div class="nav-bar">
+						<a class="nav-link" href="index.html">SIM Lab Home</a>
+					</div>
+					<h1>From Vibes to Themes</h1>
+					<p>This out-of-class activity helps you capture open coding observations and save a .qmd file for next class.</p>
+				</header>
+
+				<section class="card fade-up delay-1">
+					<h2>Quick Start</h2>
+					<ol class="step-list">
+						<li>Open a song on Spotify or YouTube and paste the link below.</li>
+						<li>In Obsidian, create a new note: [Song Title] - Observations.</li>
+						<li>Listen once for sound (tempo, key) and once for content (lyrics).</li>
+						<li>Find 3 themes: name the vibe and list specific evidence for each.</li>
+						<li>Generate a .qmd file, store it for next class, and post one theme plus evidence to the discussion board.</li>
+					</ol>
+				</section>
+
+				<form id="open-coding-form" class="card fade-up delay-2">
+					<h2>Song Info</h2>
+					<div class="grid">
+						<div class="field">
+							<label for="song-title">Song title</label>
+							<input id="song-title" name="song-title" type="text" placeholder="Example: Ocean Eyes">
+						</div>
+						<div class="field">
+							<label for="song-artist">Artist</label>
+							<input id="song-artist" name="song-artist" type="text" placeholder="Example: Billie Eilish">
+						</div>
+						<div class="field">
+							<label for="song-link">YouTube link</label>
+							<input id="song-link" name="song-link" type="url" placeholder="https://www.youtube.com/watch?v=...">
+						</div>
+					</div>
+
+					<fieldset>
+						<legend>Structured Listening</legend>
+						<div class="grid">
+							<div class="field">
+								<label for="sound-notes">Sound (tempo, key, instrumentation)</label>
+								<textarea id="sound-notes" name="sound-notes" placeholder="What do you hear in the sound?"></textarea>
+							</div>
+							<div class="field">
+								<label for="content-notes">Content (lyrics)</label>
+								<textarea id="content-notes" name="content-notes" placeholder="What do the lyrics or narrative suggest?"></textarea>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Initial Observation Prompts</legend>
+						<div class="grid">
+							<div class="field">
+								<label for="lyrical-themes">Lyrical themes and content</label>
+								<textarea id="lyrical-themes" name="lyrical-themes" placeholder="Relationships, emotions, storytelling, social commentary, lifestyle, escapism, substance use, or violence."></textarea>
+							</div>
+							<div class="field">
+								<label for="emotional-tone">Emotional and affective tone</label>
+								<textarea id="emotional-tone" name="emotional-tone" placeholder="Sentiment, intensity, and mood."></textarea>
+							</div>
+							<div class="field">
+								<label for="structural-elements">Structural and linguistic elements</label>
+								<textarea id="structural-elements" name="structural-elements" placeholder="Perspective, repetition, imagery, metaphor, or lyrical complexity."></textarea>
+							</div>
+							<div class="field">
+								<label for="musical-features">Musical and sonic features</label>
+								<textarea id="musical-features" name="musical-features" placeholder="Tempo, rhythm, instrumentation, vocal style."></textarea>
+							</div>
+							<div class="field">
+								<label for="contextual-factors">Contextual factors</label>
+								<textarea id="contextual-factors" name="contextual-factors" placeholder="Time period, artist persona, cultural context."></textarea>
+							</div>
+							<div class="field">
+								<label for="additional-notes">Additional observations</label>
+								<textarea id="additional-notes" name="additional-notes" placeholder="Any other codes, vibes, or quick notes."></textarea>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Emergent Themes (3)</legend>
+						<div class="grid">
+							<div class="field">
+								<label for="theme-1">Theme 1</label>
+								<input id="theme-1" name="theme-1" type="text" placeholder="Name the theme">
+								<textarea id="theme-1-evidence" name="theme-1-evidence" placeholder="Evidence for this theme"></textarea>
+							</div>
+							<div class="field">
+								<label for="theme-2">Theme 2</label>
+								<input id="theme-2" name="theme-2" type="text" placeholder="Name the theme">
+								<textarea id="theme-2-evidence" name="theme-2-evidence" placeholder="Evidence for this theme"></textarea>
+							</div>
+							<div class="field">
+								<label for="theme-3">Theme 3</label>
+								<input id="theme-3" name="theme-3" type="text" placeholder="Name the theme">
+								<textarea id="theme-3-evidence" name="theme-3-evidence" placeholder="Evidence for this theme"></textarea>
+							</div>
+						</div>
+					</fieldset>
+
+					<div class="actions">
+						<button type="submit" class="primary">Generate Output (Enter)</button>
+						<button type="button" class="secondary" id="copy-markdown">Copy Markdown</button>
+						<button type="button" class="ghost" id="download-qmd">Download .qmd</button>
+					</div>
+					<p class="notice">Tip: Press Enter in any single-line field to generate, or press Ctrl+Enter in a text area.</p>
+
+					<div class="output">
+						<label for="markdown-output">Generated Markdown</label>
+						<textarea id="markdown-output" readonly placeholder="Your Markdown will appear here after you generate output."></textarea>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<script>
+			const form = document.getElementById("open-coding-form");
+			const output = document.getElementById("markdown-output");
+			const copyButton = document.getElementById("copy-markdown");
+			const downloadButton = document.getElementById("download-qmd");
+
+			const getValue = (id) => {
+				const el = document.getElementById(id);
+				return el ? el.value.trim() : "";
+			};
+
+			const normalizeLineBreaks = (text) => text.replace(/\r\n/g, "\n");
+
+			const sectionBlock = (title, content) => {
+				const cleaned = normalizeLineBreaks(content.trim());
+				if (!cleaned) {
+					return "";
+				}
+				return `## ${title}\n${cleaned}\n`;
+			};
+
+			const buildThemes = () => {
+				const themes = [1, 2, 3]
+					.map((index) => {
+						const name = getValue(`theme-${index}`);
+						const evidence = getValue(`theme-${index}-evidence`);
+						if (!name && !evidence) {
+							return "";
+						}
+						const lines = [];
+						lines.push(`- Theme ${index}: ${name || "(untitled)"}`);
+						if (evidence) {
+							lines.push(`  - Evidence: ${normalizeLineBreaks(evidence)}`);
+						}
+						return lines.join("\n");
+					})
+					.filter(Boolean);
+
+				return themes.length ? `## Emergent Themes\n${themes.join("\n")}\n` : "";
+			};
+
+			const buildSongInfo = () => {
+				const title = getValue("song-title");
+				const artist = getValue("song-artist");
+				const link = getValue("song-link");
+				if (!title && !artist && !link) {
+					return "";
+				}
+				const lines = [];
+				if (title) lines.push(`- Title: ${title}`);
+				if (artist) lines.push(`- Artist: ${artist}`);
+				if (link) lines.push(`- YouTube: ${link}`);
+				return `## Song Info\n${lines.join("\n")}\n`;
+			};
+
+			const buildMarkdown = () => {
+				const sound = getValue("sound-notes");
+				const content = getValue("content-notes");
+				const blocks = [];
+				const title = getValue("song-title");
+				const heading = title ? `# ${title} - Observations\n` : "# Song Observations\n";
+
+				blocks.push(heading);
+				blocks.push(buildSongInfo());
+
+				const structured = [];
+				if (sound) {
+					structured.push(`### Sound (tempo, key, instrumentation)\n${normalizeLineBreaks(sound)}`);
+				}
+				if (content) {
+					structured.push(`### Content (lyrics)\n${normalizeLineBreaks(content)}`);
+				}
+				if (structured.length) {
+					blocks.push(`## Structured Listening\n${structured.join("\n\n")}\n`);
+				}
+
+				blocks.push(sectionBlock("Lyrical Themes and Content", getValue("lyrical-themes")));
+				blocks.push(sectionBlock("Emotional and Affective Tone", getValue("emotional-tone")));
+				blocks.push(sectionBlock("Structural and Linguistic Elements", getValue("structural-elements")));
+				blocks.push(sectionBlock("Musical and Sonic Features", getValue("musical-features")));
+				blocks.push(sectionBlock("Contextual Factors", getValue("contextual-factors")));
+				blocks.push(sectionBlock("Additional Observations", getValue("additional-notes")));
+				blocks.push(buildThemes());
+
+				return blocks.filter(Boolean).join("\n").trim() + "\n";
+			};
+
+			const escapeYaml = (value) => value.replace(/"/g, "\\\"");
+
+			const buildQmd = (markdown) => {
+				const title = getValue("song-title");
+				const date = new Date().toISOString().split("T")[0];
+				const yamlTitle = title ? `${title} - Observations` : "Song Observations";
+				return `---\ntitle: "${escapeYaml(yamlTitle)}"\ndate: "${date}"\nformat: gfm\n---\n\n${markdown}`;
+			};
+
+			const slugify = (value) => {
+				const cleaned = value
+					.toLowerCase()
+					.replace(/[^a-z0-9\s-]/g, "")
+					.replace(/\s+/g, "-")
+					.replace(/-+/g, "-")
+					.replace(/^-|-$/g, "");
+				return cleaned || "open-coding";
+			};
+
+			const generateOutput = () => {
+				const markdown = buildMarkdown();
+				output.value = markdown;
+				return markdown;
+			};
+
+			form.addEventListener("submit", (event) => {
+				event.preventDefault();
+				generateOutput();
+			});
+
+			form.addEventListener("keydown", (event) => {
+				if (event.key !== "Enter") {
+					return;
+				}
+				const isTextArea = event.target && event.target.tagName === "TEXTAREA";
+				if (!isTextArea || event.ctrlKey || event.metaKey) {
+					event.preventDefault();
+					generateOutput();
+				}
+			});
+
+			copyButton.addEventListener("click", async () => {
+				const markdown = output.value || generateOutput();
+				if (!markdown) {
+					return;
+				}
+				if (navigator.clipboard && navigator.clipboard.writeText) {
+					await navigator.clipboard.writeText(markdown);
+					copyButton.textContent = "Copied!";
+					setTimeout(() => {
+						copyButton.textContent = "Copy Markdown";
+					}, 1200);
+					return;
+				}
+				output.select();
+				document.execCommand("copy");
+			});
+
+			downloadButton.addEventListener("click", () => {
+				const markdown = output.value || generateOutput();
+				if (!markdown) {
+					return;
+				}
+				const qmdContent = buildQmd(markdown);
+				const title = getValue("song-title");
+				const fileName = `${slugify(title)}-open-coding.qmd`;
+				const blob = new Blob([qmdContent], { type: "text/markdown" });
+				const url = URL.createObjectURL(blob);
+				const link = document.createElement("a");
+				link.href = url;
+				link.download = fileName;
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+				URL.revokeObjectURL(url);
+			});
+		</script>
+	</body>
+</html>
