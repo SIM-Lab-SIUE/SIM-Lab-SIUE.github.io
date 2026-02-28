@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create vite@latest methodosync -- --template react-ts)",
+      "Bash(npm install)",
+      "Bash(npm install -D tailwindcss@^3 postcss autoprefixer)",
+      "Bash(npm install @radix-ui/react-select @radix-ui/react-label @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-tooltip zustand js-yaml exceljs lucide-react)",
+      "Bash(npm install -D @types/js-yaml)",
+      "Bash(npx tailwindcss init -p)",
+      "Bash(echo \"node_modules/:*)",
+      "Bash(npm run build)",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)"
+    ]
+  }
+}
