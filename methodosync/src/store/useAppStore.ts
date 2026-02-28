@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import type { Annotation, CodebookRow, ParsedMDFile, YTPlayerState } from '../types/annotation'
-import { buildAnnotationMarkdown } from '../lib/markdownBuilder'
+import { buildSessionMarkdown } from '../lib/markdownBuilder'
 import { sanitizeVariableName } from '../lib/sanitize'
 
 function generateId(): string {
@@ -43,7 +43,8 @@ interface AppState {
 
   // ── Phase 1: Saved annotations ──────────────────────────────────────
   savedAnnotations: Annotation[]
-  lastSavedMarkdown: string | null
+  // Combined Markdown for the entire session — grows with each save
+  sessionMarkdown: string | null
   saveAnnotation: () => void
 
   // ── Axial category registry ──────────────────────────────────────────
@@ -92,7 +93,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // ── Phase 1: Save annotation ─────────────────────────────────────────
   savedAnnotations: [],
-  lastSavedMarkdown: null,
+  sessionMarkdown: null,
   saveAnnotation: () => {
     const { videoId, capturedTimestamp, draft } = get()
     if (!videoId) return
@@ -104,20 +105,22 @@ export const useAppStore = create<AppState>((set, get) => ({
       ...draft,
     }
 
-    const markdown = buildAnnotationMarkdown(annotation)
+    // Build the combined markdown from ALL annotations (including the new one)
+    const updatedAnnotations = [...get().savedAnnotations, annotation]
+    const markdown = buildSessionMarkdown(videoId, updatedAnnotations)
 
-    set((state) => ({
-      savedAnnotations: [...state.savedAnnotations, annotation],
-      lastSavedMarkdown: markdown,
-    }))
+    set({
+      savedAnnotations: updatedAnnotations,
+      sessionMarkdown: markdown,
+    })
 
     // Register axial category if new
-    const { axialCategory } = draft
-    if (axialCategory) {
-      get().addAxialCategory(axialCategory)
+    if (draft.axialCategory) {
+      get().addAxialCategory(draft.axialCategory)
     }
 
-    get().announce('Annotation saved.')
+    const n = updatedAnnotations.length
+    get().announce(`Annotation ${n} saved.`)
   },
 
   // ── Axial category registry ──────────────────────────────────────────
@@ -143,7 +146,6 @@ export const useAppStore = create<AppState>((set, get) => ({
     const rows: CodebookRow[] = []
 
     parsedFiles.forEach((file) => {
-      // Collect all category strings from this file
       const categories: string[] = []
       if (file.axialCategory) categories.push(file.axialCategory)
       if (file.identifiedCategories) categories.push(...file.identifiedCategories)
