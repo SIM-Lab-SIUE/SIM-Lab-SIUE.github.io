@@ -10,7 +10,8 @@
       "Bash(echo \"node_modules/:*)",
       "Bash(npm run build)",
       "Bash(python3 -c \":*)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(curl -s https://apleith.github.io/)"
     ]
   }
 }

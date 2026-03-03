@@ -1,167 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — SIM Lab @ SIUE</title>
+  <meta name="description" content="Tools, instruments, and learning resources created by the Social &amp; Interactive Media Lab at SIUE.">
+  <link rel="icon" type="image/x-icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>SIM Lab @ SIUE</title>
-		<meta name="description" content="Welcome to the website for the SIM Lab @ SIUE. The SIM Lab is headed by Dr. Alex P. Leith. Leith is an Assistant Professor of the Mass Communications department.">
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-		<link rel="icon" type="image/x-icon" href="img/logo.png">
-		<!-- Bootstrap -->
-		<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet" type="text/css"> </head>
-	</head>
+  <!-- ── Navigation ───────────────────────────────────────── -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="SIM Lab at SIUE — home">SIM LAB <span>@&nbsp;SIUE</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
 
-	<body>
-		<div class="wrapper">
-			<div class="container">
-				<nav class="navbar navbar-expand-sm navbar-light pt-3 pb-1 fixed-top">
-					<div class="container">
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav mr-auto nav-fill w-100">
-								<li class="nav-item">
-									<a class="nav-link" href="index.html">HOME</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="about.html">ABOUT</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="projects.html">PROJECTS</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="methodosync/">METHODOSYNC</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
+  <main id="main">
 
-			<section class="row">
-				<div class="col-sm-12">
-					<div class="box-top">
-						<h4>#overview</h4>
-					</div>
-					<div class="text-box">
-						<h1>Lab Projects</h1>
-						<p>The SIM Lab creates practical tools, research instruments, and learning resources. This page highlights our projects that support students and academics while enhancing our research. These projects reflect our commitment to practical learning and providing valuable resources to students and the academic community.</p>
-					</div>
-				</div>
+    <!-- ── Page Hero ─────────────────────────────────────────── -->
+    <header class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero-accent"  aria-hidden="true"></div>
+      <div class="page-hero-numeral" aria-hidden="true">PR</div>
+      <div class="container">
+        <p class="label" style="color:var(--gold);">SIM Lab @ SIUE</p>
+        <h1 id="page-title">Lab Projects</h1>
+      </div>
+    </header>
 
-				<div class="col-sm-4">
-					<div class="box-top">
-						<h4>#methods</h4>
-					</div>
-					<div class="text-box">
-						<h5>R Package for Courses</h5>
-						<p><a href="https://github.com/SIM-Lab-SIUE/mccoursepack" target="_blank"><img src="img/mccoursepack.png" alt="mccoursepack" class="img-fluid" /></a></p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="box-top">
-						<h4>#theories</h4>
-					</div>
-					<div class="text-box">
-						<h5>Banned Words Checker</h5>
-						<p><a href="https://banned-word-checker.streamlit.app/`" target="_blank"><img src="img/banned-words.png" alt="Theories Page" class="img-fluid" /></a></p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="box-top">
-						<h4>#methods</h4>
-					</div>
-					<div class="text-box">
-						<h5>MC 451 Textbook</h5>
-						<p><a href="research-methods/" target="_blank"><img src="img/cover-banner.png" alt="Countdown with R" class="img-fluid" /></a></p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="box-top">
-						<h4>#owl</h4>
-					</div>
-					<div class="text-box">
-						<h5>Open WebUI Launcher</h5>
-						<p><a href="https://github.com/apleith/open-webui-launcher" target="_blank"><img src="img/owl-splash.png" alt="OWL Project" class="img-fluid" /></a></p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="box-top">
-						<h4>#countdown</h4>
-					</div>
-					<div class="text-box">
-						<h5>Countdown with RStudio</h5>
-						<p><a href="countdown.html" target="_blank"><img src="img/countdown.png" alt="Countdown with R" class="img-fluid" /></a></p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="box-top">
-						<h4>#careers</h4>
-					</div>
-					<div class="text-box">
-						<h5>Career Planning Dashboard</h5>
-						<p><a href="mc-careers-dashboard/" target="_blank"><img src="img/mc_careers.png" alt="Mass Comm Dashboard" class="img-fluid" /></a></p>
-					</div>
-				</div>
-			</section>
+    <!-- ── Projects Grid ─────────────────────────────────────── -->
+    <section class="section-wrap" style="background:var(--ink-1);" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="label">01 — Tools &amp; Resources</p>
+          <div class="section-divider gold"></div>
+          <h2 id="projects-heading">What We Build</h2>
+          <p style="color:var(--muted);margin-top:0.5rem;max-width:60ch;">The SIM Lab creates practical tools, research instruments, and learning resources — built to support students and academics while extending our research.</p>
+        </div>
 
+        <div class="projects-grid" role="list">
 
-			<!-- 
-				KEEP... NOT SURE WHAT TO DO HERE YET
-			<div class="row">
-				<div class="col-sm-12">
-				</div>
-			</div>
+          <article class="project-card" role="listitem">
+            <a href="https://github.com/SIM-Lab-SIUE/mccoursepack" target="_blank" rel="noopener" aria-label="View mccoursepack on GitHub" tabindex="-1">
+              <div class="project-card-img">
+                <img src="img/mccoursepack.png" alt="mccoursepack R package screenshot" loading="lazy">
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag teal">Methods</span>
+              <h3>R Package for Courses</h3>
+              <p>An R package bundling course materials, datasets, and utilities for Mass Communications courses at SIUE — reducing setup friction and standardizing workflows for students.</p>
+              <a href="https://github.com/SIM-Lab-SIUE/mccoursepack" target="_blank" rel="noopener" class="project-link">
+                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
 
-			<div class="row">
+          <article class="project-card" role="listitem">
+            <a href="https://banned-word-checker.streamlit.app/" target="_blank" rel="noopener" aria-label="Open Banned Words Checker app" tabindex="-1">
+              <div class="project-card-img">
+                <img src="img/banned-words.png" alt="Banned Words Checker app screenshot" loading="lazy">
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag vermillion">Content Analysis</span>
+              <h3>Banned Words Checker</h3>
+              <p>A Streamlit web app for detecting banned or flagged terms across text corpora — supporting platform content analysis and trust &amp; safety research workflows.</p>
+              <a href="https://banned-word-checker.streamlit.app/" target="_blank" rel="noopener" class="project-link">
+                Launch App <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
 
-				<div class="col-sm-12">
-					<h1>Areas of Focus</h1>
-				</div>
+          <article class="project-card" role="listitem">
+            <a href="research-methods/" target="_blank" rel="noopener" aria-label="Open MC 451 Research Methods Textbook" tabindex="-1">
+              <div class="project-card-img">
+                <img src="img/cover-banner.png" alt="MC 451 Research Methods textbook cover" loading="lazy">
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag teal">OER Textbook</span>
+              <h3>MC 451 Textbook</h3>
+              <p>An open-access research methods textbook built with Bookdown/R Markdown, used in MC 451 at SIUE. Supported by SIUE's OER Adoption Incentive Program.</p>
+              <a href="research-methods/" target="_blank" rel="noopener" class="project-link">
+                Read the Book <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
 
-				<div class="col-md-4 stages">
-					<h2>Social Platforms</h2>
-					<p>The majority of the research from this lab is focused on social platforms. Our areas of interest range from traditional social media (e.g., Twitter &amp; Reddit) to mixed-media platforms (e.g., YouTube &amp; Twitch).</p>
-				</div>
-				<div class="col-md-4 stages">
-					<h2>Video Games</h2>
-					<p>We are also interested in  video games and their players. We are especially interseted in the role of games in the lives of marginalized communities, including women, LGBTQ, and neuro-atypicals.</p>
-				</div>
-				<div class="col-md-4 stages">
-					<h2>Virtual Reality</h2>
-					<p>The future of Virtual Reality (VR) technology is exciting. We are presently researching its role in findings equity and inclusion for remote work among video game developers. This includes meetings and trainings.</p>
-				</div>
-			</div>-->
+          <article class="project-card" role="listitem">
+            <a href="https://github.com/apleith/open-webui-launcher" target="_blank" rel="noopener" aria-label="View Open WebUI Launcher on GitHub" tabindex="-1">
+              <div class="project-card-img">
+                <img src="img/owl-splash.png" alt="Open WebUI Launcher splash screen" loading="lazy">
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag gold">AI Tools</span>
+              <h3>Open WebUI Launcher</h3>
+              <p>A cross-platform desktop launcher (OWL) for self-hosted Open WebUI instances — simplifying local AI deployment for researchers and educators without technical setup overhead.</p>
+              <a href="https://github.com/apleith/open-webui-launcher" target="_blank" rel="noopener" class="project-link">
+                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
 
+          <article class="project-card" role="listitem">
+            <a href="open-coding.html" aria-label="Open Grounded Theory Coding Studio" tabindex="-1">
+              <div class="project-card-img" style="display:flex;align-items:center;justify-content:center;background:var(--ink-3);">
+                <span style="font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--teal);letter-spacing:-0.03em;">OCS</span>
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag indigo">Qualitative</span>
+              <h3>Open Coding Studio</h3>
+              <p>A browser-based Grounded Theory coding environment — paste in your data, apply open codes, collapse to axial and selective codes, and export structured codebooks. No server required.</p>
+              <a href="open-coding.html" class="project-link">
+                Launch Studio <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
 
-			<footer class="row">
-				<div class="col-sm-12">
-					<p>AP Leith &amp; SIM Lab @ SIUE &copy; 2025</p>
-				</div>
-			</footer>
+          <article class="project-card" role="listitem">
+            <a href="mc-careers-dashboard/" aria-label="Open Mass Comm Careers Dashboard" tabindex="-1">
+              <div class="project-card-img">
+                <img src="img/mc_careers.png" alt="Mass Communications Careers Dashboard screenshot" loading="lazy">
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag gold">Career Planning</span>
+              <h3>Career Planning Dashboard</h3>
+              <p>An interactive dashboard mapping Mass Communications career paths, salary data, and skill requirements — built to help students plan their professional trajectories.</p>
+              <a href="mc-careers-dashboard/" class="project-link">
+                Open Dashboard <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
 
-		</div>
+        </div>
+      </div>
+    </section>
 
-		<!-- body code goes here -->
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/jquery-3.4.1.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap-4.4.1.js"></script>
-		<script>
-			$(".change").on("click", function () {
-				if ($("body").hasClass("dark")) {
-					$("body").removeClass("dark");
-					$(".change img").attr("src", "img/day_mode_large.png").attr("alt", "Day Mode");
-				} else {
-					$("body").addClass("dark");
-					$(".change img").attr("src", "img/night_mode_large.png").attr("alt", "Night Mode");
-				}
-			});
+  </main>
 
-		</script>
-	</body>
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="SIM Lab at SIUE — home">SIM LAB <span>@&nbsp;SIUE</span></a>
+          <p>&copy; 2025 SIM Lab @ SIUE. All rights reserved.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:aleith@siue.edu"><i class="fa-solid fa-envelope" aria-hidden="true"></i> aleith@siue.edu</a>
+          <a href="https://twitter.com/APLeith" target="_blank" rel="noopener"><i class="fa-brands fa-twitter" aria-hidden="true"></i> @APLeith</a>
+          <a href="https://github.com/SIM-Lab-SIUE" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> SIM-Lab-SIUE</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var links  = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }());
+  </script>
+
+</body>
 </html>
