@@ -11,7 +11,8 @@
       "Bash(npm run build)",
       "Bash(python3 -c \":*)",
       "Bash(node -e \":*)",
-      "Bash(curl -s https://apleith.github.io/)"
+      "Bash(curl -s https://apleith.github.io/)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
