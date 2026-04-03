@@ -40,7 +40,7 @@
       <div class="page-hero-accent"   aria-hidden="true"></div>
       <div class="page-hero-numeral"  aria-hidden="true">AB</div>
       <div class="container">
-        <p class="label" style="color:var(--teal);">SIM Lab @ SIUE</p>
+        <p class="label text-teal">SIM Lab @ SIUE</p>
         <h1 id="page-title">About the Lab</h1>
       </div>
     </header>
@@ -63,8 +63,8 @@
 
           <!-- Text + contacts -->
           <div>
-            <p>The SIM Lab @ SIUE is the research home of <a href="https://apleith.github.io" target="_blank" rel="noopener" style="color:var(--cream);border-bottom:1px solid var(--teal);">Dr. Alex P. Leith</a> and his student collaborators at Southern Illinois University Edwardsville. The lab creates a shared umbrella for research in social and interactive media — allowing Leith and other Mass Communications faculty to pursue diverse funding opportunities while advancing project-specific work.</p>
-            <p style="margin-top:var(--space-sm);">Dr. Leith is an Associate Professor (Tenured) in the <a href="https://www.siue.edu/arts-and-sciences/mass-communications/about/leith.shtml" target="_blank" rel="noopener" style="color:var(--cream);border-bottom:1px solid var(--teal);">Department of Mass Communications at SIUE</a> and was Co-PI on a completed $1.6 million NSF initiative (2021&ndash;2025) studying virtual reality and the future of work, in collaboration with the <a href="http://beyondmeet.space/" target="_blank" rel="noopener" style="color:var(--cream);border-bottom:1px solid var(--teal);">Beyond Meet Space</a> research collective.</p>
+            <p>The SIM Lab @ SIUE is the research home of <a href="https://apleith.github.io" target="_blank" rel="noopener" class="text-link">Dr. Alex P. Leith</a> and his student collaborators at Southern Illinois University Edwardsville. The lab creates a shared umbrella for research in social and interactive media — allowing Leith and other Mass Communications faculty to pursue diverse funding opportunities while advancing project-specific work.</p>
+            <p>Dr. Leith is an Associate Professor (Tenured) in the <a href="https://www.siue.edu/arts-and-sciences/mass-communications/about/leith.shtml" target="_blank" rel="noopener" class="text-link">Department of Mass Communications at SIUE</a> and was Co-PI on a completed $1.6 million NSF initiative (2021&ndash;2025) studying virtual reality and the future of work, in collaboration with the <a href="http://beyondmeet.space/" target="_blank" rel="noopener" class="text-link">Beyond Meet Space</a> research collective.</p>
             <aside class="overview-contacts" aria-label="Contact information">
               <p class="label" style="margin-bottom:0.5rem;">Contact</p>
               <a href="mailto:aleith@siue.edu" class="contact-link"><i class="fa-solid fa-envelope" aria-hidden="true"></i> aleith@siue.edu</a>
@@ -78,7 +78,7 @@
     </section>
 
     <!-- ── 02 People ─────────────────────────────────────────── -->
-    <section class="section-wrap" style="background:var(--ink-0);" aria-labelledby="people-heading">
+    <section class="section-wrap bg-ink-0" aria-labelledby="people-heading">
       <div class="container">
         <div class="section-header">
           <p class="label">02 — People</p>
@@ -116,7 +116,7 @@
     </section>
 
     <!-- ── 03 Funding ────────────────────────────────────────── -->
-    <section class="section-wrap" style="background:var(--ink-1);" aria-labelledby="funding-heading">
+    <section class="section-wrap bg-ink-1" aria-labelledby="funding-heading">
       <div class="container">
         <div class="section-header">
           <p class="label">03 — Funding</p>
@@ -402,7 +402,7 @@
     </section>
 
     <!-- ── 05 Open-Source Software ───────────────────────────── -->
-    <section class="section-wrap" style="background:var(--ink-0);" aria-labelledby="software-heading">
+    <section class="section-wrap bg-ink-0" aria-labelledby="software-heading">
       <div class="container">
         <div class="section-header">
           <p class="label">05 — Open-Source Software</p>
@@ -468,13 +468,13 @@
     </section>
 
     <!-- ── 06 Research Datasets ──────────────────────────────── -->
-    <section class="section-wrap" style="background:var(--ink-1);" aria-labelledby="datasets-heading">
+    <section class="section-wrap bg-ink-1" aria-labelledby="datasets-heading">
       <div class="container">
         <div class="section-header">
           <p class="label">06 — Research Datasets</p>
           <div class="section-divider gold"></div>
           <h2 id="datasets-heading">Datasets</h2>
-          <p style="color:var(--muted);margin-top:0.5rem;max-width:60ch;">Large-scale datasets collected under IRB approval and governed by platform terms of service. Access is restricted.</p>
+          <p class="section-subtitle">Large-scale datasets collected under IRB approval and governed by platform terms of service. Access is restricted.</p>
         </div>
 
         <div class="artifact-grid">
@@ -532,18 +532,52 @@
       });
     }());
 
-    // Publication tabs
+    // Publication tabs (WAI-ARIA compliant)
     (function () {
-      var tabs   = document.querySelectorAll('.pub-tab');
+      var tabs   = Array.from(document.querySelectorAll('.pub-tab'));
       var panels = document.querySelectorAll('.pub-panel');
+      if (!tabs.length) return;
+
+      function activateTab(tab) {
+        tabs.forEach(function (t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        panels.forEach(function (p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+        tab.focus();
+        var target = document.getElementById(tab.getAttribute('aria-controls'));
+        if (target) target.classList.add('active');
+      }
+
+      // Set initial tabindex state
+      tabs.forEach(function (t, i) {
+        t.setAttribute('tabindex', i === 0 ? '0' : '-1');
+      });
+
       tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-          panels.forEach(function (p) { p.classList.remove('active'); });
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-          var target = document.getElementById(tab.getAttribute('aria-controls'));
-          if (target) target.classList.add('active');
+        tab.addEventListener('click', function () { activateTab(tab); });
+
+        tab.addEventListener('keydown', function (e) {
+          var index = tabs.indexOf(tab);
+          var next;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            next = tabs[(index + 1) % tabs.length];
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            next = tabs[(index - 1 + tabs.length) % tabs.length];
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            next = tabs[0];
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            next = tabs[tabs.length - 1];
+          }
+          if (next) activateTab(next);
         });
       });
     }());
