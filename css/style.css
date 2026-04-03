@@ -420,7 +420,7 @@ em { font-style: italic; color: var(--muted); }
 /* ── Research areas grid ────────────────────────────────────── */
 .research-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.5px;
   background: var(--ink-3);
   border: 1.5px solid var(--ink-3);
@@ -442,6 +442,7 @@ em { font-style: italic; color: var(--muted); }
 .research-card.teal::before       { background: var(--teal); }
 .research-card.vermillion::before { background: var(--vermillion); }
 .research-card.gold::before       { background: var(--gold); }
+.research-card.indigo::before     { background: var(--indigo); }
 
 .research-card .card-tag {
   font-family: var(--font-display);
@@ -454,6 +455,7 @@ em { font-style: italic; color: var(--muted); }
 .research-card.teal       .card-tag { color: var(--teal); }
 .research-card.vermillion .card-tag { color: var(--vermillion); }
 .research-card.gold       .card-tag { color: var(--gold); }
+.research-card.indigo     .card-tag { color: var(--indigo); }
 
 .research-card h3 { margin-bottom: 0.75rem; }
 
@@ -861,6 +863,129 @@ em { font-style: italic; color: var(--muted); }
   transition: color 0.2s;
 }
 .project-link:hover { color: var(--cream); }
+
+/* ── Featured projects ─────���───────────────────────────────── */
+.featured-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.featured-card {
+  background: var(--ink-2);
+  border: 1.5px solid var(--ink-3);
+  border-left: 5px solid var(--teal);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  position: relative;
+  overflow: hidden;
+}
+.featured-card.vermillion { border-left-color: var(--vermillion); }
+.featured-card.gold       { border-left-color: var(--gold); }
+.featured-card.indigo     { border-left-color: var(--indigo); }
+.featured-card.teal       { border-left-color: var(--teal); }
+
+.featured-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.featured-card-header h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+}
+
+.featured-card-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 72ch;
+  margin-bottom: var(--space-sm);
+}
+
+.featured-subgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.featured-sub {
+  background: var(--ink-3);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 2px;
+}
+
+.featured-sub h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.featured-sub p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: none;
+}
+
+.featured-sub .project-link {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.featured-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+/* ── Artifact cards (software / datasets) ──────────────────── */
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-sm);
+}
+
+.artifact-card {
+  background: var(--ink-2);
+  border: 1.5px solid var(--ink-3);
+  border-top: 3px solid var(--teal);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+.artifact-card.gold       { border-top-color: var(--gold); }
+.artifact-card.vermillion { border-top-color: var(--vermillion); }
+.artifact-card.indigo     { border-top-color: var(--indigo); }
+
+.artifact-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.artifact-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: none;
+}
+
+.artifact-card .artifact-meta {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.artifact-card .project-link {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+}
 
 /* ── Footer ─────────────────────────────────────────────────── */
 .site-footer {

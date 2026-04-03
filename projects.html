@@ -45,119 +45,85 @@
       </div>
     </header>
 
-    <!-- ── Projects Grid ─────────────────────────────────────── -->
-    <section class="section-wrap" style="background:var(--ink-1);" aria-labelledby="projects-heading">
+    <!-- ── 01 Flagship Projects ────────────────────────────────── -->
+    <section class="section-wrap" style="background:var(--ink-1);" aria-labelledby="featured-heading">
       <div class="container">
         <div class="section-header">
-          <p class="label">01 — Tools &amp; Resources</p>
+          <p class="label">01 — Flagship Projects</p>
           <div class="section-divider gold"></div>
-          <h2 id="projects-heading">What We Build</h2>
-          <p style="color:var(--muted);margin-top:0.5rem;max-width:60ch;">The SIM Lab creates open educational resources, research instruments, and practical tools — built to support students and academics in the Mass Communications department at SIUE.</p>
+          <h2 id="featured-heading">Featured Work</h2>
+          <p style="color:var(--muted);margin-top:0.5rem;max-width:60ch;">The lab's major initiatives — spanning open education, qualitative research tooling, and production infrastructure for the department.</p>
         </div>
 
-        <div class="projects-grid" role="list">
+        <div class="featured-grid" role="list">
 
-          <!-- Vibes to Variables -->
-          <article class="project-card" role="listitem">
-            <a href="https://github.com/SIM-Lab-SIUE/vibes-to-variables" target="_blank" rel="noopener" aria-label="View Vibes to Variables on GitHub" tabindex="-1">
-              <div class="project-card-thumb">
-                <span style="color:var(--teal);">V→V</span>
-              </div>
-            </a>
-            <div class="project-card-body">
-              <span class="project-tag teal">OER Textbook</span>
-              <h3>Vibes to Variables</h3>
-              <p>An open educational resource guiding undergrads through a complete research project — from curiosity to a reproducible study — using a real dataset of 1,792 songs. Built with Quarto.</p>
-              <a href="https://github.com/SIM-Lab-SIUE/vibes-to-variables" target="_blank" rel="noopener" class="project-link">
-                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
+          <!-- The Teaching Ecosystem -->
+          <article class="featured-card teal" role="listitem">
+            <div class="featured-card-header">
+              <span class="project-tag teal">Open Science / OER</span>
+              <h3>The Teaching Ecosystem</h3>
             </div>
-          </article>
-
-          <!-- mccoursepack -->
-          <article class="project-card" role="listitem">
-            <a href="https://github.com/SIM-Lab-SIUE/mccoursepack" target="_blank" rel="noopener" aria-label="View mccoursepack on GitHub" tabindex="-1">
-              <div class="project-card-thumb">
-                <span style="color:var(--teal);">cpkR</span>
+            <p class="featured-card-desc">A unified open-education stack for undergraduate research methods at SIUE — a CC BY 4.0 textbook, a course delivery platform, and an R package that ties them together. Built to make methods instruction transparent, reproducible, and accessible.</p>
+            <div class="featured-subgrid">
+              <div class="featured-sub">
+                <h4><i class="fa-solid fa-book-open" aria-hidden="true"></i> From Vibes to Variables</h4>
+                <p>A 22-chapter Quarto Book guiding undergrads from curiosity to a reproducible study using a real dataset of 1,792 songs. Licensed CC BY 4.0.</p>
+                <a href="https://github.com/SIM-Lab-SIUE/vibes-to-variables" target="_blank" rel="noopener" class="project-link">
+                  View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
               </div>
-            </a>
-            <div class="project-card-body">
-              <span class="project-tag teal">R Package</span>
-              <h3>mccoursepack</h3>
-              <p>The companion R package for MC-451 Research Methods. Bundles the <em>Vibes to Variables</em> textbook chapters, weekly assignment templates, and a curated music dataset for hands-on methods instruction.</p>
-              <a href="https://github.com/SIM-Lab-SIUE/mccoursepack" target="_blank" rel="noopener" class="project-link">
-                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
+              <div class="featured-sub">
+                <h4><i class="fa-solid fa-globe" aria-hidden="true"></i> Open Methods Hub</h4>
+                <p>The Quarto website that delivers course materials, weekly modules, and interactive content for MC-451 Research Methods at SIUE.</p>
+                <a href="https://github.com/SIM-Lab-SIUE/open-methods-program" target="_blank" rel="noopener" class="project-link">
+                  View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="featured-sub">
+                <h4><i class="fa-solid fa-cube" aria-hidden="true"></i> coursepackR</h4>
+                <p>The companion R package that bundles textbook chapters, assignment templates, and the curated music dataset for reproducible classroom use.</p>
+                <a href="https://github.com/SIM-Lab-SIUE/mccoursepack" target="_blank" rel="noopener" class="project-link">
+                  View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- MethodoSync -->
-          <article class="project-card" role="listitem">
-            <a href="methodosync/" aria-label="Open MethodoSync app" tabindex="-1">
-              <div class="project-card-thumb">
-                <span style="color:var(--indigo);">MSYNC</span>
-              </div>
-            </a>
-            <div class="project-card-body">
-              <span class="project-tag indigo">Qualitative</span>
+          <article class="featured-card indigo" role="listitem">
+            <div class="featured-card-header">
+              <span class="project-tag indigo">Qualitative Research</span>
               <h3>MethodoSync</h3>
-              <p>A browser-based qualitative research tool for video annotation and codebook generation. Paste transcripts or YouTube links, apply grounded codes, and export structured Markdown codebooks — no server required.</p>
-              <a href="methodosync/" class="project-link">
-                Launch App <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
+            </div>
+            <p class="featured-card-desc">A browser-based qualitative research tool for video annotation and codebook generation. Built with React, TypeScript, and Vite — paste transcripts or YouTube links, apply grounded codes, collapse to axial categories, and export structured Markdown or Excel codebooks. No server required; all processing happens in the browser.</p>
+            <div class="featured-links">
+              <a href="methodosync/" class="btn btn-primary">Launch App <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
           </article>
 
-          <!-- Open Coding Studio -->
-          <article class="project-card" role="listitem">
-            <a href="open-coding.html" aria-label="Open the Open Coding Studio" tabindex="-1">
-              <div class="project-card-thumb">
-                <span style="color:var(--indigo);">OCS</span>
-              </div>
-            </a>
-            <div class="project-card-body">
-              <span class="project-tag indigo">Qualitative</span>
-              <h3>Open Coding Studio</h3>
-              <p>A self-contained, single-file Grounded Theory coding environment. Paste data, apply open codes, collapse to axial and selective codes, and export structured codebooks — no installation or backend required.</p>
-              <a href="open-coding.html" class="project-link">
-                Launch App <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
+          <!-- The Cage -->
+          <article class="featured-card vermillion" role="listitem">
+            <div class="featured-card-header">
+              <span class="project-tag vermillion">Production App</span>
+              <h3>The Cage</h3>
             </div>
+            <p class="featured-card-desc">The MassComm Checkout System — a full-stack production application for managing and reserving departmental production equipment at SIUE. Built with Next.js, TypeScript, and PostgreSQL, featuring Microsoft Entra SSO authentication, QR-based checkout workflows, and a dual-database architecture with Prisma ORM.</p>
           </article>
 
-          <!-- Careers Dashboard -->
-          <article class="project-card" role="listitem">
-            <a href="https://github.com/SIM-Lab-SIUE/mc-careers-dashboard" target="_blank" rel="noopener" aria-label="View MC Careers Dashboard on GitHub" tabindex="-1">
-              <div class="project-card-thumb">
-                <span style="color:var(--gold);">MCC</span>
-              </div>
-            </a>
-            <div class="project-card-body">
-              <span class="project-tag gold">Career Planning</span>
-              <h3>MC Careers Dashboard</h3>
-              <p>An interactive SvelteKit dashboard mapping Mass Communications career paths, salary data, and skill requirements — built to help students plan their professional trajectories.</p>
-              <a href="https://github.com/SIM-Lab-SIUE/mc-careers-dashboard" target="_blank" rel="noopener" class="project-link">
-                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
+        </div>
+      </div>
+    </section>
 
-          <!-- Equipment Checkout -->
-          <article class="project-card" role="listitem">
-            <a href="https://github.com/SIM-Lab-SIUE/equipment-checkout" target="_blank" rel="noopener" aria-label="View Equipment Checkout on GitHub" tabindex="-1">
-              <div class="project-card-thumb">
-                <span style="color:var(--vermillion);">EQP</span>
-              </div>
-            </a>
-            <div class="project-card-body">
-              <span class="project-tag vermillion">Equipment</span>
-              <h3>Equipment Checkout</h3>
-              <p>A web application for managing and reserving production equipment for SIUE Mass Communications students — built with TypeScript to streamline departmental gear logistics.</p>
-              <a href="https://github.com/SIM-Lab-SIUE/equipment-checkout" target="_blank" rel="noopener" class="project-link">
-                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
+    <!-- ── 02 Tools & Resources ──────────────────────────────── -->
+    <section class="section-wrap" style="background:var(--ink-0);" aria-labelledby="tools-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="label">02 — Tools &amp; Resources</p>
+          <div class="section-divider teal"></div>
+          <h2 id="tools-heading">More from the Lab</h2>
+        </div>
+
+        <div class="projects-grid" role="list">
 
           <!-- Comm Theories Explorer -->
           <article class="project-card" role="listitem">
@@ -176,18 +142,52 @@
             </div>
           </article>
 
-          <!-- Liaison Program -->
+          <!-- TASS -->
           <article class="project-card" role="listitem">
-            <a href="https://github.com/SIM-Lab-SIUE/liaison-program" target="_blank" rel="noopener" aria-label="View Liaison Program on GitHub" tabindex="-1">
+            <a href="https://github.com/SIM-DAD/tass" target="_blank" rel="noopener" aria-label="View TASS on GitHub" tabindex="-1">
               <div class="project-card-thumb">
-                <span style="color:var(--gold);">LNK</span>
+                <span style="color:var(--indigo);">TASS</span>
               </div>
             </a>
             <div class="project-card-body">
-              <span class="project-tag gold">Course Site</span>
-              <h3>Liaison Program</h3>
-              <p>The MC Research Methods course website for MC-451 at SIUE, including an integrated Obsidian vault (mc451-liaison-program) for guided research methods instruction.</p>
-              <a href="https://github.com/SIM-Lab-SIUE/liaison-program" target="_blank" rel="noopener" class="project-link">
+              <span class="project-tag indigo">NLP Package</span>
+              <h3>TASS</h3>
+              <p>Text Analysis &amp; Sentiment System — a Python/R NLP package for word count and sentiment analysis of social media data, with extensible custom dictionaries for communication research.</p>
+              <a href="https://github.com/SIM-DAD/tass" target="_blank" rel="noopener" class="project-link">
+                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- MC Careers Dashboard -->
+          <article class="project-card" role="listitem">
+            <a href="https://github.com/SIM-Lab-SIUE/mc-careers-dashboard" target="_blank" rel="noopener" aria-label="View MC Careers Dashboard on GitHub" tabindex="-1">
+              <div class="project-card-thumb">
+                <span style="color:var(--gold);">MCC</span>
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag gold">Career Planning</span>
+              <h3>MC Careers Dashboard</h3>
+              <p>An interactive SvelteKit dashboard mapping Mass Communications career paths, salary data, and skill requirements — built to help students plan their professional trajectories.</p>
+              <a href="https://github.com/SIM-Lab-SIUE/mc-careers-dashboard" target="_blank" rel="noopener" class="project-link">
+                View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Open WebUI Launcher -->
+          <article class="project-card" role="listitem">
+            <a href="https://github.com/SIM-Lab-SIUE/open-webui-launcher" target="_blank" rel="noopener" aria-label="View Open WebUI Launcher on GitHub" tabindex="-1">
+              <div class="project-card-thumb">
+                <span style="color:var(--gold);">OWL</span>
+              </div>
+            </a>
+            <div class="project-card-body">
+              <span class="project-tag gold">DevOps</span>
+              <h3>Open WebUI Launcher</h3>
+              <p>A one-click Python/Docker tool for deploying local LLM instances via Ollama and Open WebUI — with hardware checks and classroom-safe defaults for research and teaching workflows.</p>
+              <a href="https://github.com/SIM-Lab-SIUE/open-webui-launcher" target="_blank" rel="noopener" class="project-link">
                 View on GitHub <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
               </a>
             </div>
@@ -239,7 +239,7 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo" aria-label="SIM Lab at SIUE — home">SIM LAB <span>@&nbsp;SIUE</span></a>
-          <p>&copy; 2025 SIM Lab @ SIUE. All rights reserved.</p>
+          <p>&copy; 2026 SIM Lab @ SIUE. All rights reserved.</p>
         </div>
         <nav class="footer-links" aria-label="Footer links">
           <a href="mailto:aleith@siue.edu"><i class="fa-solid fa-envelope" aria-hidden="true"></i> aleith@siue.edu</a>
