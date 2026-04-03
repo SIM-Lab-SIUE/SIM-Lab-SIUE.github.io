@@ -191,16 +191,15 @@ em { font-style: italic; color: var(--muted); }
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--cream);
-  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
 }
-.nav-logo span { color: var(--teal); }
+.nav-logo img {
+  height: 2rem;
+  width: auto;
+  display: block;
+}
 
 .nav-links {
   display: flex;
@@ -1043,7 +1042,8 @@ em { font-style: italic; color: var(--muted); }
   flex-wrap: wrap;
 }
 
-.footer-brand .nav-logo { display: block; margin-bottom: 0.35rem; }
+.footer-brand .nav-logo { display: inline-flex; margin-bottom: 0.35rem; }
+.footer-brand .nav-logo img { height: 1.5rem; }
 .footer-brand p { font-size: 0.8rem; color: var(--dim); max-width: none; }
 
 .footer-links {
