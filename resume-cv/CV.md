@@ -186,7 +186,7 @@ Departmental Service (SIUE)
 •	Program Coordinator, Faculty Discord Server (Dec 2023–present). Department-internal cross-unit convening space for faculty.
 •	Technology Committee, Chair (Spring 2024–Summer 2024); Member (Apr 2024–present).
 •	Grant Committee, Member (Feb 2024–present).
-•	ACEJMC Reaccreditation, Member (Fall 2022–Fall 2023).
+•	ACEJMC Reaccreditation Committee, Member (Sep 2022–Jan 2024).
 •	Mass Communications Week, Chair (Spring 2021–Spring 2023). Annual department research-and-industry convening event.
 •	Website Committee, Member (Sept 2021–present).
 •	Library Liaison (August 2020–Spring 2024).
