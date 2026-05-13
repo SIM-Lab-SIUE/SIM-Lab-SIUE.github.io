@@ -7,6 +7,7 @@ Academic Appointments
 Associate Professor (Tenured 2025) — Director, SIM Lab @ SIUE
 Department of Mass Communications, College of Arts & Sciences, Southern Illinois University Edwardsville (SIUE), Edwardsville, IL
 Aug 2025 – present
+SIM Lab (Society Interaction Methods Lab) is a research collective spanning communication, education, computing, and games studies. Convenes faculty and students across SIUE units around mediated communication, virtual environments, and computational methods. Affiliated with the Beyond Meet Space (BMS) initiative on virtual presence and remote work, a multi-institutional research partnership.
 Assistant Professor (Tenure-track)
 Department of Mass Communications, College of Arts & Sciences, Southern Illinois University Edwardsville (SIUE), Edwardsville, IL
 Aug 2019 – Jul 2025
@@ -56,21 +57,68 @@ Editorials
 Beyea, D., Foxman, M., Ratan, R., Klebig, B., Leith, A. P., & Chen, V. H. H. (2025). Metaverse-mediated communication: A call for theory-driven XR research [Editorial]. Journal of Media Psychology: Theories, Methods, and Applications, 37(2), 61-63. https://doi.org/10.1027/1864-1105/a000465
 Funding
 External Funding (Completed)
-NSF FW-HTF-R, Co-PI. Virtual Meeting Support for Enhanced Well-Being and Equity for Game Developers. $1,599,851; 2021-2025.
-External Funding (Pending)
-NSF Future CoRe (HCC), PI. Distributed AI Agents for Scalable Interaction Modeling and Feedback Aggregation in Technical Learning. $496,521; 06/2026-05/2030; SIUE.
-Wellcome (University of Zambia), Co-Investigator—SIUE Lead. AI- and IoT-Driven Innovations for Malaria and Insect Vector Surveillance and Control. $800,044; 01/2026-12/2030; UNZA.
+NSF FW-HTF-R Collaborative Research, Co-PI. Virtual Meeting Support for Enhanced Well-Being and Equity for Game Developers. $1,599,851 (SIUE subaward $70,458); 2021-2025. Cross-institutional partnership with Michigan State, University of Oregon, and industry collaborators in the games and virtual-environment sector.
+External Funding (Under Review)
+Spencer Foundation Racial Equity Research Grants, PI. At the Margins of Two Systems: Paraprofessionals, AI Tools, and Multilingual Neurodiverse Learners in K-5 Classrooms. $75,000 (no-IDC ceiling); 09/2026-08/2028. ITA submitted 2026-05-04; full proposal due 2026-07-01.
+Wellcome Discovery Award, Co-Investigator (SIUE Lead, with University of Zambia PI). AI-Driven and IoT-Enabled Innovations for Malaria and Insect Vector Surveillance and Control. $800,044; 01/2026-12/2030.
+External Funding (Submitted, Not Funded)
+NSF Future CoRe (HCC), PI. Distributed AI Agents for Scalable Interaction Modeling and Feedback Aggregation in Technical Learning. $496,521; 06/2026-05/2030; SIUE. Submitted 2025-09-11; decision 2026-05-03.
 NSF Collaborative Research, PI (SIUE site). Improving Equity and Wellbeing in Virtual Classrooms via AI-enhanced Avatars. $49,999; 05/2025-05/2028; SIUE.
+Spencer Foundation, PI. Innovating for Inclusivity: Mixed Reality and Digital Learning Modalities as Educational Equalizers. $249,884; 2025.
+NEH Dangers and Opportunities of Technology, Co-PI (with A. Speno, Co-PI). $149,975; 2024.
 Internal Funding
-Leith, A. P. (2023-2024). OER Adoption, Adaptation, and Implementation Incentive Program. $6,088.
-Leith, A. P. (2021-2022). New Faculty Incentive Program. $2,000.
+Leith, A. P. (2025-2026). OER Faculty Incentive Program: Vibes to Variables (V2V) Courseware Umbrella. $7,792.37. SIUE Online Services & Educational Outreach.
+Leith, A. P. (2024). OER Faculty Incentive Program. $5,110.74. SIUE.
+Leith, A. P. (2023-2024). OER Adoption, Adaptation, and Implementation Incentive Program. $6,088. SIUE.
+Leith, A. P. (2021-2022). New Faculty Incentive Program. $2,000. SIUE.
+Industry & Foundation Research Partnerships
+Beyond Meet Space (BMS) Initiative. Cross-institutional research collective on virtual presence and remote work, founded ~2020. Industry and platform partners include game studios and the VRChat platform; institutional partners across multiple universities. Active research outputs in journals including Computers in Human Behavior Reports, PLOS One, IEEE Transactions on Games, and Frontiers in Communication.
+Graduate Mentoring & Student Supervision
+Cross-unit mentoring at SIUE spanning Mass Communications, Applied Communication Studies, Integrative Studies, Environmental Sciences, and Psychology.
+Master's Project / Thesis Committee Chair
+Michelle Poneleit, Integrative Studies. Oct 2025–present.
+Master's Project / Thesis Committee Member
+Gabriel Simpson, Mass Communications. Nov 2024–May 2025.
+Maria Gomez Torne, Mass Communications. Nov 2024–May 2025.
+Emonvuon Magdalene, Mass Communications. Jun 2024–Jan 2025.
+Andrew Heaslet, Environmental Sciences (cross-unit). "Midwestern Climate Policymaking on Twitter: Policy Entrepreneurs and Framing in the Debate that Led to Illinois' Climate and Equitable Jobs Act." May–Dec 2024.
+Abdurrahman Celik, Mass Communications. "#BrandWars on Instagram: A Deep Analysis of User Comments on Instagram to Have a Better Understanding About Competitive and Comparative Advertising on Social Media." Aug 2023–Jul 2024.
+Ashlyn Smith, Mass Communications. "Modernizing Advertising Techniques for Non-Profit Radio Stations with Social Media: The Case of WSIE." Nov 2021–Aug 2022.
+Kain Henson, Integrative Studies. "Sports Teams' Social Media Strategies and Audience Engagement." Nov 2020–Aug 2021.
+Rachel Berg, Integrative Studies. "The Rebranding of Skinn Fitness Aesthetics to Skinn Aesthetics." Apr 2020–May 2021.
+Graduate Exam Committee
+Claire Chulka, Mass Communications. Feb–Apr 2024.
+Lenny Escarlet Montano Claure, Mass Communications. Jan–Apr 2021.
+Directed Individual / Independent Study
+Amanda Cooper, Mass Communications. "Small Audience Streamer Gender Expectations, Pressures, and Behaviors on Twitch.tv." Aug–Dec 2020.
+URCA Mentor (SIUE Undergraduate Research and Creative Activities)
+Dallas Creech, Mass Communications. Aug–Dec 2020.
+Erin Gheen, Applied Communication Studies (cross-unit). Aug–Dec 2020. Coauthor on Leith & Gheen (2022), Psychology of Popular Media.
+Olivia Buente, Psychology (cross-unit). Aug–Dec 2020.
+Dakota Kasper, Mass Communications. Jan–May 2020.
+Samuel Baker, Psychology (cross-unit). Jan–May 2020. Coauthor on Leith & Baker (2020) NCA paper on machine-learning identification of racial harassment in Twitch chat.
+Senior Assignment Supervision
+Thomas Yancey, Integrative Studies. "Thomas Yancey Website Portfolio." Sep 2021–Feb 2021.
+Stephanie Schrage, Integrative Studies. Jan–May 2020.
+Intellectual Property & Technology Transfer (SIUE)
+GearOut (formerly Control Room / The Cage). Equipment reservation and checkout platform for universities; deployed at SIUE as "MassComm Checkout." 155 files, 21.5K LoC, 57 API routes, 21 models. Sole developer (300+ hours). Disclosed via SIUE OTMIR (Office of Technology Management & Industry Relations); IP package, commercial viability analysis, and licensing-back proposal submitted; OTMIR review meeting 2026-04-13. Repository: github.com/SIM-DAD/gearout.
+BMS Selective Muting Evaluation (with team). MSU Technologies-led Invention Disclosure submitted 2026-05-08; Alex as 1 of 8 contributors at 15% SIUE-affiliated contribution per SIU IP policy. Cross-institutional patent disclosure originating from FW-HTF-R research.
+Intellectual Contributions in Submission (Under Review)
+Leith, A. P., Lim, C., Foxman, M., Beyea, D., & Jeong, D. Dreaming a Virtual Reality: Identifying Interpersonal and Intrapersonal Motivations in VRChat During the COVID-19 Pandemic. International Journal of Communication.
+Lim, C., Ratan, R., Foxman, M., Beyea, D., Jeong, D., & Leith, A. P. Virtual Touch-up: Examining how use of Impression Management features in virtual meetings relates to Zoom Fatigue and VM Perceptions. Behaviour & Information Technology.
+Leith, A. P. When watching isn't enough: Human agents and their influence of gameplay through synchronous text chats. Journal of Gaming & Virtual Worlds.
+Ratan, R., Lin, Q., Lim, C., Lover, A., Han, E., Jang, D., Park, R., Leith, A. P., & Bailenson, J. N. Virtual reality enhances online classes due to social presence, but benefits diminish after about 30 minutes due to fatigue: A longitudinal study of undergraduates. Computers & Education.
+Lim, C., Leith, A. P., Ratan, R., Foxman, M., & Bouzek, D. Supporting underrepresented workers' well-being in virtual meetings: An exploratory study linking uses and gratification, self-determination theory to usage of virtual meeting features. Computers in Human Behavior Reports.
+Beyea, D., Lim, C., Foxman, M., Ratan, R., & Leith, A. P. Videoconferencing fatigue: An analysis of antecedents and the ZEF Scale. Computers in Human Behavior Reports.
+Leith, A. P., Foxman, M., et al. The Platform Flattening of Gendered Affect (P5). Information, Communication & Society. Submitted 2026-04-25.
 Open-Source Software & Datasets
 Open-Source Software
 •	TASS (Text Analysis & Sentiment System, Python/R NLP package) — 2024–present. github.com/SIM-DAD/TASS
 •	Open WebUI Launcher for Local LLMs (Python/Docker) — 2025–present. github.com/apleith/open-webui-launcher
 •	The Cage (Next.js / TypeScript / PostgreSQL / MySQL / Docker production web app) — 2024–present. github.com/SIM-DAD/the-cage
 •	Mass Communications Careers Dashboard (SvelteKit) — 2025–present. github.com/SIM-Lab-SIUE/mc-careers-dashboard
-•	mccoursepack (R package for reproducible course delivery) — 2025–present. github.com/SIM-Lab-SIUE/mccoursepack
+•	mccoursepack (R package for reproducible course delivery; component of the Vibes to Variables (V2V) courseware umbrella, an OER toolkit for teaching research methods to students new to statistics, methods, and coding) — 2025–present. github.com/SIM-Lab-SIUE/mccoursepack
+•	V2V Hub (supplemental research methods website; rebrand and redesign of the legacy Open Methods Hub site) — 2025–present.
 •	DeepSeek-R1 Monorepo (Open WebUI research/instructional AI tools) — 2025–present. github.com/SIM-DAD/DeepSeek-R1-Monorepo
 Research Datasets (restricted access; ToS/IRB governed)
 •	Twitch Chat Logs (Dec 17, 2018–Jan 17, 2019): 117,943 channels; 321,189,309 messages. Access: Restricted.
@@ -95,6 +143,7 @@ Leith, A. P. (2019, October). Playing games for others: Constructing a gameplay 
 Invited Talks
 Leith, A. P., Freberg, K., Wall, M., & Dalton, S. (2020, May). How to teach digital and social media marketing well. Panel presented at the Midwest Digital Marketing Conference. St. Louis, MO.
 Conference Papers (Selected)
+Milik, O., Ratan, R., Chen, V., Pandita, S., Foxman, M., & Leith, A. P. (2025, June). Looking Beyond Meet Space: Presenting a Research Platform in VRChat. International Communication Association 75th Annual Conference. Denver, CO.
 Leith, A. P., Lim, C., Foxman, M., Beyea, D., & Jeong, D. (2025, June). Stress and Coping in VRChat. International Communication Association 75th Annual Conference. Denver, CO.
 Leith, A. P., Foxman, M., Lim, C., & Beyea, D. (2025, June). What ASD finds in VRChat: The potential for VR to address communication barriers for individuals with Autism Spectrum Disorder. ICA 75th Annual Conference. Denver, CO.
 Beyea, D., Lim, C., Lover, A., Foxman, M., Ratan, R., & Leith, A.P. (2024, June). Zoom fatigue? A meta-analytical examination of research on the antecedents of videoconferencing fatigue. ICA 74th Annual Conference. Gold Coast, QLD.
@@ -123,21 +172,28 @@ COM 803: Intro to Quantitative Research Methods (Fall 2011); TC 401: Social Medi
 Adjunct Instructor
 McKendree University: JRN 372: Web and Print Publication Design (Spring 2012); St. Louis College of Pharmacy: EN 3100: Professional Communication (Fall 2011–Spring 2012); SIUE: SPC 105: Public Speaking (Fall 2011), SPC 103: Interpersonal Communication (Fall 2010–Fall 2011)
 Service
-Academic Leadership
-•	Co-Founding Organizer, Meaningful XR (meaningfulxr.org) — Beyond Meet Space Initiative (2023–present)
-•	Co-Editor, Special Issue, Journal of Media Psychology (Summer 2024)
-•	ICA Game Studies Student & Early Career Representative (Spring 2022–Summer 2024)
+Research Culture & Convening (cross-unit / interdisciplinary)
+•	Co-Founding Organizer, Meaningful XR (meaningfulxr.org). Beyond Meet Space initiative; annual conference convening researchers and practitioners around virtual presence, social VR, and mediated communication. 2023–present. Stanford convening Jun 2023–May 2024.
+•	Editor, Journal of Media Psychology (Hogrefe; Theories, Methods, and Applications). Mar 2023–present. Co-Editor of Special Issue on Metaverse-Mediated Communication, 2024.
+•	ICA Game Studies Division, Student & Early Career Representative. Spring 2022–Summer 2024.
+•	ICA Game Studies Division, Board Member. Oct 2021–Jun 2024.
+•	ICA, Discord Moderator. Oct 2021–present. Community-facing role moderating year-round scholarly discussion across ICA divisions.
 Peer Review — Journals
-Communication and Sports • Communication Monographs • Cyberpsychology, Behavior, and Social Networking • Death & Dying • Games & Culture • Information & Management • International Journal of Communication • Mass Communication & Society • Media Psychology • Psychology of Popular Media • Technology, Mind, & Behavior
+Behaviour & Information Technology • Communication and Sports • Communication Monographs • Cyberpsychology, Behavior, and Social Networking • Death & Dying • Games & Culture • Information & Management • International Journal of Communication • Journal of Communication Technology • Journal of Gaming & Virtual Worlds • Mass Communication & Society • Media Psychology • Psychology of Popular Media • Technology, Mind, & Behavior
 Peer Review — Conferences
-CHI PLAY • DiGRA • Global Fusion • HICSS • ICA • Meaningful Play/XR • NCA
+ACM SIGCHI • AEJMC • CHI PLAY • DiGRA • Global Fusion • HICSS • ICA • Meaningful Play/XR • NCA
 Departmental Service (SIUE)
-•	ACEJMC Reaccreditation, Member (Fall 2022–Fall 2023)
-•	Mass Communications Week, Chair (Spring 2021–Spring 2023)
-•	Technology Committee, Chair (Spring 2024–Summer 2024)
-•	Website Committee, Member (Fall 2021–Summer 2024)
-•	Library Liaison (August 2020–Spring 2024)
+•	Program Coordinator, Faculty Discord Server (Dec 2023–present). Department-internal cross-unit convening space for faculty.
+•	Technology Committee, Chair (Spring 2024–Summer 2024); Member (Apr 2024–present).
+•	Grant Committee, Member (Feb 2024–present).
+•	ACEJMC Reaccreditation, Member (Fall 2022–Fall 2023).
+•	Mass Communications Week, Chair (Spring 2021–Spring 2023). Annual department research-and-industry convening event.
+•	Website Committee, Member (Sept 2021–present).
+•	Library Liaison (August 2020–Spring 2024).
+•	Global Fusion Conference Committee, Member (Apr–Nov 2020).
+College Service (SIUE)
+•	Program Review Committee, International Studies (Sept–Dec 2023).
 University Service (SIUE)
-•	Search Committee Member, School of Engineering Dean Search (Spring 2026–present)
-•	Task Force Member, Engagement in Asynchronous Classes (Summer 2020)
-•	Search Committee Member, Director of Student Financial Aid (Spring 2020–Fall 2020)
+•	Search Committee Member, School of Engineering Dean Search (Spring 2026–present).
+•	Task Force Member, Engagement in Asynchronous Classes (Summer 2020).
+•	Search Committee Member, Director of Student Financial Aid (Spring 2020–Fall 2020).
