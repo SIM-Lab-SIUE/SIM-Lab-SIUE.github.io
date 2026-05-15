@@ -59,8 +59,11 @@ AURA-Lab-SIUE.github.io/
 ### [Vibes to Variables](https://github.com/AURA-Lab-SIUE/vibes-to-variables)
 An open educational resource guiding undergraduate Communication and Media Studies students through a complete research project — from hypothesis to reproducible study — using a real dataset of 1,792 songs. Built with Quarto.
 
-### [mccoursepack](https://github.com/AURA-Lab-SIUE/mccoursepack)
-Companion R package for MC-451 Research Methods at SIUE. Bundles *Vibes to Variables* textbook chapters, weekly assignment templates, and a curated music dataset (Billboard/Spotify/Genius).
+### [v2v](https://github.com/AURA-Lab-SIUE/v2v)
+Companion R package for the *From Vibes to Variables* OER textbook (SIUE MC-451 + MC-501). Ships the Twitch dataset and pedagogical helpers introduced chapter by chapter.
+
+### [coursepackR](https://github.com/AURA-Lab-SIUE/coursepackR)
+Shared coursework material for MC-451 and MC-501 — assignment scaffolds and reproducible analysis templates for the research-methods sequence.
 
 ### [MethodoSync](methodosync/)
 Browser-based qualitative research tool for video annotation and codebook generation. Built with Vite + React 18 + TypeScript + Tailwind CSS. No server or account required.
@@ -77,8 +80,11 @@ Web application for managing and reserving production equipment for SIUE Mass Co
 ### [Comm Theories Explorer](theories/)
 Interactive GSAP-animated guide to common mass communication theories, designed to help students identify an appropriate theory for their research project.
 
-### [Liaison Program](https://github.com/AURA-Lab-SIUE/liaison-program)
-MC Research Methods course website for MC-451 at SIUE, including the mc451-liaison-program Obsidian vault integration.
+### [Open Methods Hub](https://github.com/AURA-Lab-SIUE/open-methods-hub)
+MC Research Methods course website for MC-451 at SIUE — the umbrella for the research-methods teaching ecosystem. Companion Obsidian vault at [mc451-liaison-program](https://github.com/AURA-Lab-SIUE/mc451-liaison-program).
+
+### [Open WebUI Launcher](https://github.com/AURA-Lab-SIUE/open-webui-launcher)
+One-click launcher for Open WebUI with DeepSeek-R1 via Docker — a local-AI on-ramp for students and lab researchers.
 
 ### [Hate Raids](https://github.com/AURA-Lab-SIUE/hate-raids)
 R-based data and analysis behind the peer-reviewed Hate Raids paper — examining coordinated harassment events on Twitch.
@@ -90,9 +96,7 @@ Python tool for testing Word documents or PDF submissions against a list of proh
 
 ## Identity System
 
-The AURA Lab visual identity is documented in the [design brief](https://github.com/AURA-Lab-SIUE/.github) maintained by the lab director.
-
-**Headline summary:**
+The AURA Lab visual identity is maintained by the lab director. Headline summary:
 - **Palette:** Deep Graphite (`#0E0E12`) primary background, Warm Chalk (`#F4F0EB`) light alternate, Aura Violet (`#7C3AED`) primary accent, Amber Signal (`#F59E0B`) secondary accent.
 - **Typography:** [Fraunces](https://fonts.google.com/specimen/Fraunces) for display, [Instrument Sans](https://fonts.google.com/specimen/Instrument+Sans) for UI and body, [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) for code and metadata.
 - **Mark:** AURA wordmark in heavy Fraunces, paired with a subtle radial element (the "aura ring") that reads as halo, aperture, and avatar selection indicator at once.
