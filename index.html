@@ -3,151 +3,419 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIM Lab @ SIUE — Social &amp; Interactive Media Lab</title>
-  <meta name="description" content="The Social &amp; Interactive Media Lab at Southern Illinois University Edwardsville — the academic research lab of Dr. Alex P. Leith, Associate Professor of Mass Communications. Peer-reviewed scholarship, open educational resources, and open-source tools in virtual environments, gameplay, livestreaming, and HCI.">
-  <link rel="icon" type="image/svg+xml" href="img/logo-square.svg">
-  <link rel="icon" type="image/x-icon" href="img/logo.png">
+  <title>AURA Lab — Avatars, Users, Relationships, and Affect</title>
+  <meta name="description" content="AURA Lab at Southern Illinois University Edwardsville. A computational communication research collective studying how people form relationships, perform identity, and experience affect across virtual environments, streaming platforms, and digital media. Directed by Dr. Alex P. Leith.">
+  <meta name="theme-color" content="#0E0E12">
+
+  <link rel="icon" type="image/svg+xml" href="img/aura-mark.svg">
+
+  <meta property="og:title" content="AURA Lab">
+  <meta property="og:description" content="Where digital presence becomes research. A computational communication research collective at SIUE.">
+  <meta property="og:type" content="website">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #0E0E12;
+      --surface:   #1A1A22;
+      --chalk:     #F4F0EB;
+      --text:      #F0ECE8;
+      --muted:     #71717A;
+      --violet:    #7C3AED;
+      --amber:     #F59E0B;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    html { background: var(--bg); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: auto;
+      width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem; top: 1rem; width: auto; height: auto;
+      padding: 0.5rem 0.75rem; background: var(--violet); color: var(--text);
+      z-index: 100;
+    }
+
+    /* ── Top bar ───────────────────────────────────────────── */
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+      font-family: 'Instrument Sans';
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 5;
+    }
+    .topbar .brand {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .topbar .brand .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--violet);
+      margin-right: 0.55rem;
+      vertical-align: middle;
+      transform: translateY(-1px);
+    }
+    .topbar .siue a {
+      transition: color 200ms ease;
+    }
+    .topbar .siue a:hover { color: var(--text); }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(2rem, 6vh, 5rem) clamp(1.25rem, 4vw, 3rem);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Radial wash — violet centered, fading to transparent */
+    .hero-wash {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      width: min(1400px, 130vw);
+      aspect-ratio: 1 / 1;
+      background: radial-gradient(circle at center,
+                    rgba(124, 58, 237, 0.22) 0%,
+                    rgba(124, 58, 237, 0.10) 22%,
+                    rgba(124, 58, 237, 0) 55%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(2px);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      width: 100%;
+    }
+
+    .wordmark-wrap {
+      position: relative;
+      display: inline-block;
+      padding: 4rem 2.5rem 3.5rem;
+    }
+
+    /* The aura ring — single-weight SVG circle behind the wordmark */
+    .wordmark-wrap svg.aura {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 115%;
+      height: auto;
+      max-width: none;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .wordmark {
+      position: relative;
+      font-family: 'Fraunces', 'Times New Roman', serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 16vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      font-variation-settings: "opsz" 144;
+      margin: 0;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .lab {
+      display: block;
+      margin: 1.5rem 0 0;
+      font-family: 'Instrument Sans';
+      font-weight: 600;
+      font-size: clamp(0.85rem, 1.4vw, 1rem);
+      letter-spacing: 0.5em;
+      text-indent: 0.5em;
+      text-transform: uppercase;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+    .lab::before, .lab::after {
+      content: "";
+      display: inline-block;
+      width: 1.6rem;
+      height: 1px;
+      background: var(--muted);
+      vertical-align: middle;
+      margin: 0 1.1rem 0.18rem;
+      opacity: 0.6;
+    }
+
+    .tagline {
+      margin: 2.75rem auto 0;
+      max-width: 640px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+      line-height: 1.4;
+      color: var(--text);
+      letter-spacing: 0.005em;
+      font-variation-settings: "opsz" 72;
+    }
+    .tagline .accent { color: var(--violet); }
+
+    .rule {
+      width: 60px;
+      height: 1px;
+      background: var(--muted);
+      opacity: 0.35;
+      margin: 3rem auto 2.25rem;
+      border: 0;
+    }
+
+    .meta {
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .meta .full-name {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 1.1rem;
+    }
+    .meta p { margin: 0 0 1rem; }
+    .meta .director { color: var(--text); font-weight: 500; }
+    .meta .director a { border-bottom: 1px solid rgba(124, 58, 237, 0.4); transition: border-color 200ms ease, color 200ms ease; }
+    .meta .director a:hover { border-color: var(--violet); color: var(--violet); }
+    .meta .soon { color: var(--muted); font-size: 0.9rem; }
+
+    /* ── Contact links ─────────────────────────────────────── */
+    .links {
+      margin: 2.75rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 0.25rem;
+      list-style: none;
+      padding: 0;
+    }
+    .links li { margin: 0; }
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.7rem 1.15rem;
+      border: 1px solid rgba(240, 236, 232, 0.14);
+      border-radius: 999px;
+      font-family: 'Instrument Sans';
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      background: rgba(26, 26, 34, 0.5);
+      backdrop-filter: blur(6px);
+      transition: border-color 200ms ease, color 200ms ease, transform 200ms ease, background 200ms ease;
+    }
+    .links a:hover {
+      border-color: var(--violet);
+      color: var(--violet);
+      transform: translateY(-2px);
+      background: rgba(124, 58, 237, 0.06);
+    }
+    .links a .arr {
+      display: inline-block;
+      transition: transform 200ms ease;
+      opacity: 0.6;
+      font-size: 0.85em;
+    }
+    .links a:hover .arr {
+      transform: translate(2px, -2px);
+      opacity: 1;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      padding: 2rem clamp(1.25rem, 4vw, 3rem) 2.5rem;
+      font-family: 'Instrument Sans';
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      z-index: 5;
+    }
+    footer .sep {
+      display: inline-block;
+      margin: 0 0.85rem;
+      opacity: 0.4;
+    }
+
+    /* ── Reveal animation ──────────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: rise 900ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+      .reveal.d1 { animation-delay: 80ms; }
+      .reveal.d2 { animation-delay: 260ms; }
+      .reveal.d3 { animation-delay: 440ms; }
+      .reveal.d4 { animation-delay: 620ms; }
+      .reveal.d5 { animation-delay: 800ms; }
+      @keyframes rise {
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .wordmark-wrap svg.aura {
+        opacity: 0;
+        animation: glow 1600ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms forwards;
+      }
+      @keyframes glow {
+        to { opacity: 0.55; }
+      }
+    }
+
+    /* ── Small screens ─────────────────────────────────────── */
+    @media (max-width: 540px) {
+      .topbar { padding: 1.1rem 1.25rem; font-size: 0.7rem; }
+      .topbar .siue { font-size: 0.65rem; }
+      .wordmark-wrap { padding: 2rem 0.5rem 2rem; }
+      .lab::before, .lab::after { width: 1rem; margin: 0 0.6rem 0.18rem; }
+      .links a { padding: 0.6rem 0.9rem; font-size: 0.82rem; }
+    }
+  </style>
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- ── Navigation ───────────────────────────────────────── -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="container">
-      <a href="index.html" class="nav-logo" aria-label="SIM Lab at SIUE — home"><img src="img/logo-full.svg" alt="SIM Lab @ SIUE"></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-      <ul class="nav-links" id="navLinks" role="list">
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </div>
-  </nav>
+  <header class="topbar" aria-label="Identification">
+    <span class="brand"><span class="dot" aria-hidden="true"></span>AURA Lab</span>
+    <span class="siue">
+      <a href="https://www.siue.edu" target="_blank" rel="noopener">SIUE · Mass Communications</a>
+    </span>
+  </header>
 
   <main id="main">
 
-    <!-- ── 01 Hero ──────────────────────────────────────────── -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-accent"     aria-hidden="true"></div>
-      <div class="hero-accent-2"   aria-hidden="true"></div>
-      <div class="hero-numeral"    aria-hidden="true">01</div>
+    <div class="hero-wash" aria-hidden="true"></div>
 
-      <div class="container">
-        <p class="hero-eyebrow">Social &amp; Interactive Media Lab</p>
-        <h1 id="hero-heading">
-          SIM<br>Lab <span class="accent">@&nbsp;SIUE</span>
-        </h1>
-        <p class="hero-subtitle">Southern Illinois University Edwardsville</p>
-        <p class="hero-body">
-          The academic research home of
-          <a href="https://apleith.github.io" target="_blank" rel="noopener" class="text-link">Dr. Alex P. Leith</a>,
-          Associate Professor (Tenured) of Mass Communications at SIUE. We study the humans
-          who use social platforms, virtual environments, and interactive media — from Twitch
-          streams to VR workplaces — producing peer-reviewed scholarship, open educational
-          resources, and open-source tools alongside student researchers.
+    <div class="hero-inner">
+
+      <div class="wordmark-wrap reveal d1">
+        <!-- Aura mark: a single-weight ring, with a slight arc accent in violet -->
+        <svg class="aura" viewBox="0 0 600 600" fill="none" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="arcFade" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.15"/>
+            </linearGradient>
+          </defs>
+          <!-- Faint full ring -->
+          <circle cx="300" cy="300" r="240"
+                  stroke="#F0ECE8" stroke-opacity="0.18" stroke-width="1" />
+          <!-- Inner subtle ring -->
+          <circle cx="300" cy="300" r="218"
+                  stroke="#F0ECE8" stroke-opacity="0.08" stroke-width="1" />
+          <!-- Violet accent arc — top-right quadrant -->
+          <path d="M 300 60 A 240 240 0 0 1 540 300"
+                stroke="url(#arcFade)" stroke-width="1.5"
+                stroke-linecap="round" />
+        </svg>
+
+        <h1 class="wordmark" aria-label="AURA Lab">AURA</h1>
+        <span class="lab" aria-hidden="true">Lab</span>
+      </div>
+
+      <p class="tagline reveal d2">
+        Where digital presence becomes <span class="accent">research</span>.
+      </p>
+
+      <hr class="rule reveal d3" />
+
+      <div class="meta reveal d4">
+        <span class="full-name">Avatars · Users · Relationships · Affect</span>
+        <p class="director">
+          A computational communication research group at
+          <a href="https://www.siue.edu/artsandsciences/mass-communications/" target="_blank" rel="noopener">SIUE Mass Communications</a>,
+          directed by
+          <a href="https://apleith.com" target="_blank" rel="noopener">Dr. Alex P. Leith</a>.
         </p>
-        <div class="hero-ctas">
-          <a href="about.html" class="btn btn-primary">Meet the Lab <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a href="https://medium.com/sim-lab-siue" target="_blank" rel="noopener" class="btn btn-outline">Read on Medium <i class="fa-brands fa-medium" aria-hidden="true"></i></a>
-        </div>
+        <p class="soon">
+          The lab and its full site are in development through 2026. In the meantime:
+        </p>
       </div>
-    </section>
 
-    <!-- ── 02 Research Areas ─────────────────────────────────── -->
-    <section aria-labelledby="research-heading" class="section-wrap bg-ink-1">
-      <div class="container">
-        <div class="section-header">
-          <p class="label">02 — Research Focus</p>
-          <div class="section-divider vermillion"></div>
-          <h2 id="research-heading">What We Study</h2>
-        </div>
-        <div class="research-grid" role="list">
-
-          <article class="research-card teal" role="listitem">
-            <p class="card-tag">Virtual Environments</p>
-            <h3>VR &amp; Extended Reality</h3>
-            <p>We examine social interaction and behavior within immersive digital spaces — from videoconferencing fatigue and team cohesion in virtual meetings to social support and accessibility in VRChat communities. Backed by a completed $1.6M NSF initiative on the future of work in VR.</p>
-          </article>
-
-          <article class="research-card vermillion" role="listitem">
-            <p class="card-tag">Platforms &amp; Communities</p>
-            <h3>Gameplay &amp; Livestreaming</h3>
-            <p>We study video game players and the communities that form around gameplay on livestreaming platforms like Twitch — investigating parasocial relationships with streamers, avatar identity, and synchronous chat dynamics.</p>
-          </article>
-
-          <article class="research-card indigo" role="listitem">
-            <p class="card-tag">AI / NLP</p>
-            <h3>AI &amp; Computational Methods</h3>
-            <p>We develop and apply computational tools for communication research — from the TASS natural language processing package for sentiment analysis to distributed AI agent architectures for scalable feedback in technical learning environments.</p>
-          </article>
-
-          <article class="research-card gold" role="listitem">
-            <p class="card-tag">Open Science / OER</p>
-            <h3>Open Science &amp; Education</h3>
-            <p>We build open educational resources and open-source research tools — including interactive textbooks, R packages, and browser-based instruments — to make methods instruction transparent, reproducible, and accessible to all students.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 03 News CTA ───────────────────────────────────────── -->
-    <section class="news-section" aria-labelledby="news-heading">
-      <div class="container">
-        <div class="news-inner">
-          <div class="news-text">
-            <p class="label text-teal">03 — Lab Updates</p>
-            <div class="section-divider teal" style="margin-bottom:1rem"></div>
-            <h2 id="news-heading">Latest from the Lab</h2>
-            <p>Stay updated with our latest news, papers, and announcements on Medium.</p>
-          </div>
-          <a href="https://medium.com/sim-lab-siue" target="_blank" rel="noopener" class="btn btn-outline" style="white-space:nowrap;">
-            Follow on Medium <i class="fa-brands fa-medium" aria-hidden="true"></i>
+      <ul class="links reveal d5" aria-label="Director links">
+        <li>
+          <a href="https://apleith.com/files/Leith_CV.pdf" target="_blank" rel="noopener">
+            Director CV <span class="arr" aria-hidden="true">↗</span>
           </a>
-        </div>
-      </div>
-    </section>
+        </li>
+        <li>
+          <a href="mailto:aleith@siue.edu">
+            aleith@siue.edu <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://orcid.org/0000-0003-1310-6763" target="_blank" rel="noopener">
+            ORCID <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/SIM-Lab-SIUE" target="_blank" rel="noopener">
+            GitHub <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://apleith.com" target="_blank" rel="noopener">
+            apleith.com <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
 
   </main>
 
-  <!-- ── Footer ───────────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo" aria-label="SIM Lab at SIUE — home"><img src="img/logo-full.svg" alt="SIM Lab @ SIUE"></a>
-          <p>&copy; 2026 SIM Lab @ SIUE. All rights reserved.</p>
-        </div>
-        <nav class="footer-links" aria-label="Footer links">
-          <a href="mailto:aleith@siue.edu"><i class="fa-solid fa-envelope" aria-hidden="true"></i> aleith@siue.edu</a>
-          <a href="https://orcid.org/0000-0003-1310-6763" target="_blank" rel="noopener"><i class="fa-brands fa-orcid" aria-hidden="true"></i> ORCID</a>
-          <a href="https://github.com/SIM-Lab-SIUE" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> SIM-Lab-SIUE</a>
-        </nav>
-      </div>
-    </div>
+  <footer>
+    AURA Lab <span class="sep" aria-hidden="true">·</span>
+    Southern Illinois University Edwardsville <span class="sep" aria-hidden="true">·</span>
+    &copy; 2026
   </footer>
-
-  <script>
-    (function () {
-      var toggle = document.getElementById('navToggle');
-      var links  = document.getElementById('navLinks');
-      if (!toggle || !links) return;
-      toggle.addEventListener('click', function () {
-        var open = links.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }());
-  </script>
 
 </body>
 </html>
