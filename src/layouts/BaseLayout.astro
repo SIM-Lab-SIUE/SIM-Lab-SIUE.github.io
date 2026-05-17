@@ -48,5 +48,38 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       <slot />
     </main>
     <Footer />
+
+    <script>
+      import { animate, stagger } from 'motion';
+
+      function reveal() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const h1s = document.querySelectorAll<HTMLElement>('main h1:not([data-revealed]):not(.wordmark)');
+        h1s.forEach((h1) => {
+          h1.dataset.revealed = '1';
+          const text = h1.textContent ?? '';
+          const tokens = text.split(/(\s+)/);
+          h1.innerHTML = '';
+          const spans: HTMLElement[] = [];
+          for (const token of tokens) {
+            const span = document.createElement('span');
+            span.textContent = token;
+            span.style.display = 'inline-block';
+            span.style.opacity = '0';
+            span.style.transform = 'translateY(0.4em)';
+            h1.appendChild(span);
+            if (token.trim()) spans.push(span);
+          }
+          animate(
+            spans,
+            { opacity: 1, transform: 'translateY(0)' },
+            { duration: 0.7, delay: stagger(0.06, { startDelay: 0.1 }), easing: [0.2, 0.7, 0.2, 1] }
+          );
+        });
+      }
+
+      reveal();
+      document.addEventListener('astro:page-load', reveal);
+    </script>
   </body>
 </html>
