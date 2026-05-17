@@ -71,9 +71,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
             if (token.trim()) spans.push(span);
           }
           animate(
-            spans,
-            { opacity: 1, transform: 'translateY(0)' },
-            { duration: 0.7, delay: stagger(0.06, { startDelay: 0.1 }), easing: [0.2, 0.7, 0.2, 1] }
+            spans as any,
+            { opacity: 1, transform: 'translateY(0)' } as any,
+            { duration: 0.7, delay: stagger(0.06, { startDelay: 0.1 }), easing: [0.2, 0.7, 0.2, 1] } as any
           );
         });
       }
