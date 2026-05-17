@@ -6,7 +6,7 @@ subtitle: "Curriculum Vitae"
 **Associate Professor (Tenured), Mass Communications, Southern Illinois University Edwardsville**\
 **Founder & Principal Research Consultant, SIM-DAD LLC**
 
-aleith@siue.edu · apleith.github.io · github.com/apleith · ORCID 0000-0003-1310-6763
+aleith@siue.edu · apleith.com · github.com/apleith · ORCID 0000-0003-1310-6763
 
 ---
 
