@@ -37,7 +37,7 @@ AURA-Lab-SIUE.github.io/
 │   ├── layouts/
 │   │   └── BaseLayout.astro          # <head>, fonts, nav, footer, skip link, View Transitions
 │   ├── components/
-│   │   ├── Nav.astro                 # flat top nav, sticky-on-scroll, transparent over hero
+│   │   ├── Nav.astro                 # flat top nav, sticky-on-scroll, transparent over hero																																																																																																																																																																																																							edx
 │   │   ├── Footer.astro
 │   │   ├── Hero.astro                # word AURA + radial mark + tagline + mouse-tracked wash
 │   │   ├── SectionDivider.astro      # radial gradient wash
