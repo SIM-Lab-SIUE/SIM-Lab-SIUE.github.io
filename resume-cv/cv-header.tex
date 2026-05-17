@@ -1,0 +1,73 @@
+% LaTeX header for CV.md → PDF rendering via pandoc + xelatex
+% Pairs with CV.md in this directory. Usage:
+%   pandoc CV.md -o Leith_CV.pdf --pdf-engine=xelatex \
+%     --include-in-header=cv-header.tex -V geometry:margin=0.65in \
+%     -V mainfont="Cambria" -V sansfont="Calibri" -V monofont="Consolas" \
+%     -V fontsize=10.5pt -V colorlinks=true -V linkcolor=auraviolet \
+%     -V urlcolor=auraviolet
+%
+% Section hierarchy from the CV.md:
+%   \subsection (## in markdown) — major sections: Academic Appointments, Publications, etc.
+%   \subsubsection (### in markdown) — sub-buckets: Editorials, External Funding (Completed), etc.
+
+% ── Colors (AURA Lab palette) ───────────────────────────────────────────────
+\usepackage{xcolor}
+\definecolor{auraviolet}{HTML}{7C3AED}
+\definecolor{deepgraphite}{HTML}{0E0E12}
+\definecolor{ambersignal}{HTML}{F59E0B}
+\definecolor{rulegrey}{HTML}{D6D3D1}
+
+% ── Section styling: lift \subsection visually to act as the top-level section ─
+\usepackage{titlesec}
+\titleformat{\subsection}
+  {\Large\bfseries\sffamily\color{auraviolet}}{}{0pt}
+  {}[\vspace{-3pt}\color{rulegrey}\titlerule]
+\titlespacing*{\subsection}{0pt}{14pt}{6pt}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\sffamily\color{deepgraphite}}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{8pt}{2pt}
+
+% ── Paragraph + list rhythm ─────────────────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 0.5pt}
+
+\usepackage{enumitem}
+\setlist[itemize]{nosep, leftmargin=14pt, label=\textcolor{ambersignal}{\textbullet}}
+
+% ── Footer: name + page number, no header line ──────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize\color{deepgraphite}Alex P. Leith, PhD --- CV}
+\fancyfoot[R]{\footnotesize\color{deepgraphite}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{\footnotesize\color{deepgraphite}Alex P. Leith, PhD --- CV}
+  \fancyfoot[R]{\footnotesize\color{deepgraphite}\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% ── Link styling: subtle, on-brand ──────────────────────────────────────────
+% Defer to \AtBeginDocument because pandoc loads hyperref after this header.
+\AtBeginDocument{%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=auraviolet,
+    urlcolor=auraviolet,
+    citecolor=auraviolet,
+    pdfborder={0 0 0}
+  }%
+  \urlstyle{same}%
+}
+
+% ── Penalize widows + orphans aggressively for cleaner pagination ───────────
+\widowpenalty=10000
+\clubpenalty=10000
+
+% ── Inter-paragraph rhythm for entry-style content ──────────────────────────
+\linespread{1.05}
