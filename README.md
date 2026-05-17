@@ -30,26 +30,27 @@ AURA Lab is a computational communication research group at SIUE that studies ho
 ```
 AURA-Lab-SIUE.github.io/
 │
-├── index.html              # AURA Lab Coming Soon page (live)
-├── img/
-│   └── aura-mark.svg       # Aura ring favicon / icon mark
+├── src/                    # Astro source (v2 site)
+│   ├── layouts/            # BaseLayout
+│   ├── components/         # Nav, Footer, Hero, etc.
+│   ├── pages/              # Astro routes (/, /research, /people, ...)
+│   ├── content/            # YAML + Markdown content collections
+│   └── styles/             # tokens.css + global.css
 │
-│   # Legacy SIM Lab pages — not linked from new index; awaiting rebrand
-├── about.html
-├── projects.html
-├── team.html
-├── research.html
-├── news.html
-├── open-coding.html        # Grounded Theory Coding Studio (self-contained)
+├── public/                 # Static assets (images, favicon, robots.txt)
+├── scripts/                # Build helpers (legacy postbuild copy)
+├── _archive/               # Legacy v1 site preserved for reference
 │
-├── css/
-│   └── style.css           # Legacy SIM Lab styles; new identity uses inline CSS in index.html
-│
+│   # Legacy teaching pages — preserved at original URLs via postbuild copy
 ├── methodosync/            # MethodoSync — React/Vite/TypeScript app
-├── research-methods/       # MC 451 OER textbook (Bookdown/R Markdown)
 ├── intro-to-obsidian/      # Multi-module Obsidian tutorial
-├── theories/               # Comm Theory explorer (Parcel 2 + GSAP)
-└── mc-careers-dashboard/   # Mass Comm Careers Dashboard (SvelteKit)
+├── open-coding.html        # Grounded Theory Coding Studio
+├── captionizer.html        # Caption helper
+├── countdown.html          # In-class countdown timer
+│
+├── astro.config.mjs
+├── tailwind.config.mjs
+└── .github/workflows/      # Deploy to GitHub Pages
 ```
 
 ---
@@ -105,31 +106,53 @@ The AURA Lab visual identity is maintained by the lab director. Headline summary
 
 ## Tech Stack
 
-**Main site (current — Coming Soon page)**
-- Pure HTML5, inline CSS (CSS Grid / Flexbox / custom properties) — no framework
-- Fraunces + Instrument Sans + JetBrains Mono via Google Fonts
-- Inline SVG for the aura mark and favicon
-- Deployed via GitHub Pages from the `main` branch
+**Main site (v2)**
+- [Astro 5](https://astro.build/) (static output)
+- [Tailwind CSS](https://tailwindcss.com/) 3
+- Astro content collections (Zod-validated YAML/Markdown)
+- [Motion One](https://motion.dev/) for staggered word reveals
+- Astro View Transitions for cross-page navigation
+- Fraunces + Instrument Sans + JetBrains Mono via `@fontsource`
+- Deployed to GitHub Pages via GitHub Actions
 
 **MethodoSync** (`methodosync/`)
-- Vite 7 + React 18 + TypeScript
-- Tailwind CSS v3, Zustand, Radix UI, ExcelJS, js-yaml
-- Built output (`index.html` + `assets/`) committed to repo root; source lives in `src/`
+- Vite 7 + React 18 + TypeScript, Tailwind CSS v3, Zustand, Radix UI
+- Built output committed alongside source
 
-**research-methods/**
-- R Bookdown / R Markdown — static HTML textbook
-
-**theories/**
-- Parcel 2 + GSAP animations
+**research-methods/**: R Bookdown — static HTML textbook
+**theories/**: Parcel 2 + GSAP animations
 
 ---
 
 ## Development
 
 ### Main site
-No build step required — edit `index.html` directly and open in a browser. All styles are inline in the head.
 
-### MethodoSync
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # output to ./dist (also copies legacy pages via postbuild)
+npm run check    # type-check + Astro diagnostics
+npm run preview  # serve ./dist locally
+```
+
+### Content workflow
+
+- **Publications:** edit `src/content/publications/pubs.yaml`. Only public-facing entries (DOI, preprint, or in-press) pass schema validation.
+- **News:** add a Markdown file under `src/content/news/` with `date`, `title`, optional `tags`.
+- **Projects:** add a YAML file under `src/content/projects/` with `area`, `status`, `blurb`.
+- **Tools:** edit `src/content/tools/tools.yaml` (research tools) or `src/content/tools/teaching.yaml` (teaching resources).
+- **Director bio + links:** `src/content/people/director.yaml`.
+- **Research-area copy:** Markdown under `src/content/research-areas/`.
+
+### Deployment
+
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds the Astro site and deploys to GitHub Pages. **One-time setup:** GitHub → Settings → Pages → Source: "GitHub Actions".
+
+A future migration to `aura-lab.siue.edu` will add a `public/CNAME` once SIUE IT provisions the subdomain.
+
+### MethodoSync (separate sub-app)
+
 ```bash
 cd methodosync
 npm install
