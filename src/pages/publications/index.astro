@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PubItem from '../../components/PubItem.astro';
+import { getEntry } from 'astro:content';
+
+const pubsEntry = await getEntry('publications', 'pubs');
+const pubs = [...(pubsEntry?.data.entries ?? [])].sort((a, b) => b.year - a.year);
+
+const filters = [
+  { key: 'all', label: 'All' },
+  { key: 'virtual-environments', label: 'Virtual Envs' },
+  { key: 'streaming', label: 'Streaming' },
+  { key: 'methods', label: 'Methods' },
+  { key: 'meetings', label: 'Meetings' },
+];
+---
+<BaseLayout title="Publications" current="publications"
+  description="Public-facing publications from AURA Lab — peer-reviewed articles, preprints, and in-press works.">
+
+  <section class="container-page pt-24 pb-8">
+    <p class="text-muted uppercase tracking-ui text-sm">Articles, preprints, in-press</p>
+    <h1 class="font-display text-5xl md:text-7xl mt-4 leading-none">Publications.</h1>
+    <p class="mt-8 max-w-measure text-lg text-muted">
+      This list includes only public-facing work — peer-reviewed articles, posted
+      preprints, and accepted-in-press manuscripts. In-progress and under-review
+      manuscripts appear only after they ship as preprints.
+    </p>
+  </section>
+
+  <section class="container-page mt-10">
+    <div class="flex flex-wrap gap-3" role="group" aria-label="Filter publications by area">
+      {filters.map((f, i) => (
+        <button class="pill" data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
+      ))}
+    </div>
+
+    <div id="pub-list" class="mt-10 max-w-3xl">
+      {pubs.map(p => <PubItem {...p} />)}
+    </div>
+
+    <p id="empty" class="hidden mt-6 text-muted">No publications in this area yet.</p>
+  </section>
+</BaseLayout>
+
+<script>
+  function wire() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const items = document.querySelectorAll<HTMLElement>('#pub-list > article');
+    const empty = document.getElementById('empty');
+
+    function apply(filter: string) {
+      let shown = 0;
+      items.forEach(el => {
+        const areas = (el.dataset.areas ?? '').split(' ');
+        const match = filter === 'all' || areas.includes(filter);
+        el.style.display = match ? '' : 'none';
+        if (match) shown += 1;
+      });
+      empty?.classList.toggle('hidden', shown > 0);
+    }
+
+    buttons.forEach(b => {
+      b.addEventListener('click', () => {
+        buttons.forEach(x => x.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', 'true');
+        apply(b.dataset.filter ?? 'all');
+      });
+    });
+  }
+  wire();
+  document.addEventListener('astro:page-load', wire);
+</script>
