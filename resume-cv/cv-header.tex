@@ -73,12 +73,12 @@
 \linespread{1.05}
 
 % ── Tighten title block spacing ─────────────────────────────────────────────
-% Default pandoc \maketitle drops the title block well below the top margin
-% and leaves a generous post-title vspace before body content begins. That
-% read as wasted whitespace on page 1. Pull the title up modestly toward
-% the top margin and trim the gap after the (empty) date so the body
-% starts sooner without crowding the subtitle.
+% Default pandoc \maketitle leaves an enormous gap between the subtitle line
+% and the first body paragraph because the empty date block + post-title
+% vspace add up to ~80-100pt of dead air. Pull the title block up toward
+% the top margin and collapse the empty-date region with a stronger
+% negative vspace so the body lands within ~16pt of the subtitle.
 \usepackage{titling}
-\setlength{\droptitle}{-24pt}
+\setlength{\droptitle}{-40pt}
 \predate{\par\begin{center}}
-\postdate{\par\end{center}\vspace{-26pt}}
+\postdate{\par\end{center}\vspace{-44pt}}
