@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsItem from '../../components/NewsItem.astro';
+import { getCollection } from 'astro:content';
+
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const rendered = await Promise.all(news.map(async (entry) => {
+  const { Content } = await entry.render();
+  return { entry, Content };
+}));
+---
+<BaseLayout title="News" current="news"
+  description="Recent news, manuscripts, grants, and tools from AURA Lab.">
+
+  <section class="container-page pt-24 pb-8">
+    <p class="text-muted uppercase tracking-ui text-sm">What's new in the lab</p>
+    <h1 class="font-display text-5xl md:text-7xl mt-4 leading-none">News.</h1>
+  </section>
+
+  <section class="container-page mt-10 max-w-3xl">
+    {rendered.map(({ entry, Content }) => (
+      <NewsItem date={entry.data.date} title={entry.data.title} tags={entry.data.tags}>
+        <Content />
+      </NewsItem>
+    ))}
+  </section>
+</BaseLayout>

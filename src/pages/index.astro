@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ResearchAreaCard from '../components/ResearchAreaCard.astro';
+import PubItem from '../components/PubItem.astro';
+import { getEntry } from 'astro:content';
+
+const pubsEntry = await getEntry('publications', 'pubs');
+const recentPubs = [...(pubsEntry?.data.entries ?? [])]
+  .filter(p => p.featured || p.status === 'published')
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 3);
+
+const areas = [
+  { word: 'Presence', blurb: 'How identity and connection form in VR, streams, and shared virtual rooms.', href: '/research/#virtual-environments' },
+  { word: 'Platform', blurb: 'How affordances and platforms shape what speech, performance, and audiences can be.', href: '/research/#streaming' },
+  { word: 'Affect',   blurb: 'Sentiment, mood, and emotion at corpus scale — and the methods to measure them honestly.', href: '/research/#methods' },
+];
+---
+<BaseLayout title="AURA Lab" current="home">
+  <Hero />
+
+  <a id="below" tabindex="-1"></a>
+
+  <SectionDivider kicker="Three research threads" title="Presence. Platform. Affect." />
+  <section class="container-page grid gap-6 md:grid-cols-3">
+    {areas.map(a => <ResearchAreaCard {...a} />)}
+  </section>
+
+  <SectionDivider kicker="Recent" title="What's been published." />
+  <section class="container-page">
+    <div class="max-w-3xl">
+      {recentPubs.map(p => <PubItem {...p} />)}
+    </div>
+    <p class="mt-8">
+      <a href="/publications/" class="link-underline text-violet">All publications →</a>
+    </p>
+  </section>
+
+  <SectionDivider kicker="Join" title="The first conversation is short." />
+  <section class="container-page">
+    <p class="max-w-measure text-lg">
+      Students and researchers — at SIUE and anywhere else — are welcome to bring a
+      question, an interest, or a dataset. The first conversation is about whether a
+      project is workable and where the friction will be, not about whether the idea
+      is good enough.
+    </p>
+    <p class="mt-6">
+      <a href="mailto:aleith@siue.edu" class="link-underline text-violet">aleith@siue.edu →</a>
+      <span class="ml-6 text-muted">or</span>
+      <a href="/join/" class="link-underline ml-6">Read the longer pitch →</a>
+    </p>
+  </section>
+</BaseLayout>

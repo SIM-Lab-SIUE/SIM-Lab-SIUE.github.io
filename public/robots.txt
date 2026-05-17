@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aura-lab-siue.github.io/sitemap-index.xml

@@ -1,0 +1,6 @@
+title: "Vibes to Variables (V2V)"
+area: "methods"
+status: "active"
+blurb: "Five-component teaching ecosystem for MC 451 / MC 501 — Quarto textbook, R package, hub site, VSCode extension, graduate supplement. CC BY 4.0."
+links:
+  - { label: "v2v R package", href: "https://github.com/AURA-Lab-SIUE/v2v" }

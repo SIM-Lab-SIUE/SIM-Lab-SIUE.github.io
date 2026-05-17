@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionDivider from '../../components/SectionDivider.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import { getEntry } from 'astro:content';
+
+const toolsEntry = await getEntry('tools', 'tools');
+const teachingEntry = await getEntry('tools', 'teaching');
+const toolsData = toolsEntry?.data.entries ?? [];
+const teachingData = teachingEntry?.data.entries ?? [];
+---
+<BaseLayout title="Tools" current="tools"
+  description="Open-source research tools and teaching resources from AURA Lab.">
+
+  <section class="container-page pt-24 pb-8">
+    <p class="text-muted uppercase tracking-ui text-sm">Open-source outputs</p>
+    <h1 class="font-display text-5xl md:text-7xl mt-4 leading-none">Tools.</h1>
+    <p class="mt-8 max-w-measure text-lg text-muted">
+      Code, data, and teaching materials the lab maintains. Everything that can be
+      open is.
+    </p>
+  </section>
+
+  <SectionDivider kicker="Research tools" title="Code we use and share." />
+  <section class="container-page grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {toolsData.map(t => <ToolCard {...t} />)}
+  </section>
+
+  <SectionDivider kicker="Teaching resources" title="Classroom-tested tools." />
+  <section class="container-page grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {teachingData.map(t => <ToolCard {...t} />)}
+  </section>
+</BaseLayout>

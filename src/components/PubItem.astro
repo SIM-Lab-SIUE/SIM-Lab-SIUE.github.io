@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  doi?: string;
+  preprint?: string;
+  status: 'published' | 'in-press' | 'preprint';
+  areas: string[];
+}
+const { title, authors, venue, year, doi, preprint, status, areas } = Astro.props;
+const link = doi ?? preprint;
+const authorsRendered = authors.map(a => a.includes('Leith') ? `<strong>${a}</strong>` : a).join(', ');
+---
+<article class="pub" data-areas={areas.join(' ')}>
+  <h3 class="pub-title">
+    {link ? <a class="link-underline" href={link}>{title}</a> : title}
+  </h3>
+  <p class="meta">
+    <span set:html={authorsRendered} />
+    <span class="dot">·</span>
+    <em>{venue}</em>
+    <span class="dot">·</span>
+    {year}
+    {status === 'in-press' && <span class="badge">In press</span>}
+    {status === 'preprint' && <span class="badge">Preprint</span>}
+  </p>
+  {doi && <p class="doi">{doi.replace('https://doi.org/', 'doi:')}</p>}
+</article>
+
+<style>
+  .pub { padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .pub-title {
+    font-family: theme('fontFamily.display');
+    font-weight: 600;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.25;
+    margin: 0 0 0.4rem;
+  }
+  .meta { color: var(--muted); margin: 0; max-width: none; }
+  .meta .dot { margin: 0 0.5rem; opacity: 0.7; }
+  .badge {
+    display: inline-block;
+    margin-left: 0.6rem;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--violet);
+    color: var(--violet);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .doi {
+    font-family: theme('fontFamily.mono');
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0.4rem 0 0;
+  }
+</style>
