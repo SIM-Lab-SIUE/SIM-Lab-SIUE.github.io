@@ -1,0 +1,138 @@
+---
+interface Props { tagline?: string; }
+const { tagline = 'Where digital presence becomes research.' } = Astro.props;
+const parts = tagline.split('research');
+---
+<section class="hero" aria-label="AURA Lab">
+  <div class="wash" aria-hidden="true"></div>
+
+  <div class="hero-inner container-page">
+    <div class="mark-wrap">
+      <svg class="aura-ring" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="arcFade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.15"/>
+          </linearGradient>
+        </defs>
+        <circle cx="300" cy="300" r="240" stroke="#F0ECE8" stroke-opacity="0.18" stroke-width="1" />
+        <circle cx="300" cy="300" r="218" stroke="#F0ECE8" stroke-opacity="0.08" stroke-width="1" />
+        <path d="M 300 60 A 240 240 0 0 1 540 300" stroke="url(#arcFade)" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <h1 class="wordmark" aria-label="AURA Lab">AURA</h1>
+      <span class="lab-tag" aria-hidden="true">Lab</span>
+    </div>
+
+    <p class="tagline">
+      {parts.map((part, i) => (
+        <>
+          {part}
+          {i < parts.length - 1 && <span class="accent">research</span>}
+        </>
+      ))}
+    </p>
+
+    <p class="full-name">Avatars · Users · Relationships · Affect</p>
+
+    <a href="#below" class="scroll-cue" aria-label="Scroll to content">
+      <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .wash {
+    position: absolute; inset: -10%;
+    background:
+      radial-gradient(circle at var(--mx, 50%) var(--my, 38%),
+        rgba(124, 58, 237, 0.18), transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero-inner {
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1.5rem;
+    padding: 4rem 0;
+  }
+  .mark-wrap {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    padding: 1rem 0;
+  }
+  .aura-ring {
+    position: absolute;
+    width: clamp(280px, 60vw, 560px);
+    aspect-ratio: 1;
+    opacity: 0.55;
+  }
+  .wordmark {
+    font-family: theme('fontFamily.display');
+    font-weight: 900;
+    font-size: clamp(96px, 18vw, 280px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .lab-tag {
+    display: block;
+    font-family: theme('fontFamily.sans');
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--muted);
+    margin-top: 0.4rem;
+  }
+  .tagline {
+    font-family: theme('fontFamily.display');
+    font-weight: 400;
+    font-size: clamp(20px, 2.2vw, 30px);
+    color: var(--text);
+    max-width: 28ch;
+  }
+  .tagline .accent { color: var(--violet); font-style: italic; }
+  .full-name {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.8rem;
+  }
+  .scroll-cue {
+    margin-top: 2rem;
+    color: var(--muted);
+    font-size: 1.2rem;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+</style>
+
+<script>
+  const wash = document.querySelector('.hero .wash');
+  const hero = document.querySelector('.hero');
+  if (wash && hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let raf = 0;
+    hero.addEventListener('pointermove', (e) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const rect = (hero as HTMLElement).getBoundingClientRect();
+        const x = ((e as PointerEvent).clientX - rect.left) / rect.width * 100;
+        const y = ((e as PointerEvent).clientY - rect.top) / rect.height * 100;
+        (wash as HTMLElement).style.setProperty('--mx', `${x}%`);
+        (wash as HTMLElement).style.setProperty('--my', `${y}%`);
+      });
+    });
+  }
+</script>

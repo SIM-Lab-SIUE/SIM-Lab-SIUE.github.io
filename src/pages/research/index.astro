@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionDivider from '../../components/SectionDivider.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import PubItem from '../../components/PubItem.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const areas = (await getCollection('research-areas')).sort((a, b) => a.data.order - b.data.order);
+const projects = await getCollection('projects');
+const pubsEntry = await getEntry('publications', 'pubs');
+const pubs = pubsEntry?.data.entries ?? [];
+
+const rendered = await Promise.all(areas.map(async (area) => {
+  const { Content } = await area.render();
+  const areaProjects = projects.filter(p => p.data.area === area.data.area);
+  const areaPubs = pubs.filter(p => p.areas.includes(area.data.area as any)).slice(0, 3);
+  return { area, Content, areaProjects, areaPubs };
+}));
+---
+<BaseLayout title="Research" current="research"
+  description="AURA Lab research threads — virtual environments, streaming platforms, computational methods, and virtual meetings.">
+
+  <section class="container-page pt-24 pb-8">
+    <p class="text-muted uppercase tracking-ui text-sm">What the lab studies</p>
+    <h1 class="font-display text-5xl md:text-7xl mt-4 leading-none">Research at AURA Lab.</h1>
+    <p class="mt-8 max-w-measure text-lg text-muted">
+      Four threads, one orientation: take the lived experience of platforms, games,
+      and virtual worlds seriously as social phenomena, and bring methods to the
+      questions that actually arise there.
+    </p>
+  </section>
+
+  {rendered.map(({ area, Content, areaProjects, areaPubs }) => (
+    <article id={area.data.area}>
+      <SectionDivider kicker={`Thread 0${area.data.order}`} title={area.data.title} />
+      <div class="container-page grid lg:grid-cols-[1fr_2fr] gap-12">
+        <div>
+          <p class="text-lg max-w-measure">{area.data.blurb}</p>
+          <div class="prose-area mt-6 text-muted max-w-measure">
+            <Content />
+          </div>
+        </div>
+        <div class="grid gap-4">
+          <h3 class="text-xs uppercase tracking-ui text-muted">Active projects</h3>
+          {areaProjects.length === 0 && <p class="text-muted">More soon.</p>}
+          {areaProjects.map(p => <ProjectCard {...p.data} />)}
+
+          {areaPubs.length > 0 && (
+            <>
+              <h3 class="text-xs uppercase tracking-ui text-muted mt-6">Representative publications</h3>
+              <div>
+                {areaPubs.map(p => <PubItem {...p} />)}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </article>
+  ))}
+</BaseLayout>
+
+<style>
+  .prose-area :global(p) { margin: 0.8em 0; }
+</style>

@@ -1,0 +1,41 @@
+---
+interface Props { kicker?: string; title: string; }
+const { kicker, title } = Astro.props;
+---
+<header class="divider container-page">
+  {kicker && <p class="kicker">{kicker}</p>}
+  <h2 class="title">{title}</h2>
+</header>
+
+<style>
+  .divider {
+    padding: 6rem 0 2rem;
+    position: relative;
+  }
+  .divider::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent,
+      rgba(124, 58, 237, 0.35) 20%,
+      rgba(124, 58, 237, 0.35) 80%,
+      transparent);
+  }
+  .kicker {
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.6rem;
+  }
+  .title {
+    font-family: theme('fontFamily.display');
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1.05;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+</style>

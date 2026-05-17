@@ -1,0 +1,38 @@
+---
+interface Props { word: string; blurb: string; href: string; }
+const { word, blurb, href } = Astro.props;
+---
+<a class="card area" href={href}>
+  <span class="word">{word}</span>
+  <p>{blurb}</p>
+  <span class="arr" aria-hidden="true">↗</span>
+</a>
+
+<style>
+  .area {
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+    min-height: 240px;
+    position: relative;
+    overflow: hidden;
+  }
+  .word {
+    font-family: theme('fontFamily.display');
+    font-weight: 900;
+    font-size: clamp(36px, 4vw, 56px);
+    color: var(--text);
+    line-height: 1;
+  }
+  .area p {
+    color: var(--muted);
+    max-width: 36ch;
+  }
+  .arr {
+    position: absolute;
+    top: 1.25rem; right: 1.5rem;
+    color: var(--violet);
+    transition: transform 250ms var(--ease-out);
+  }
+  .area:hover .arr { transform: translate(2px, -2px); }
+</style>
