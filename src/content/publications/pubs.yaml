@@ -1,0 +1,36 @@
+# Public-facing publications only.
+# Inclusion rule: must have at least one of (doi, preprint, or status="in-press" with venue).
+# In-progress/under-review/drafting entries from the Paper Tracker are intentionally excluded.
+# Replace this seed with full Paper Tracker exports before launch.
+
+entries:
+  - title: "Asymmetric Ties in Networked Publics"
+    authors: ["Alex P. Leith"]
+    venue: "New Media & Society"
+    year: 2026
+    status: "in-press"
+    areas: ["streaming", "methods"]
+    featured: true
+
+  - title: "Co-Play: When Watching Isn't Enough"
+    authors: ["Alex P. Leith"]
+    venue: "Journal of Gaming & Virtual Worlds"
+    year: 2025
+    status: "published"
+    areas: ["streaming"]
+    featured: true
+
+  - title: "Virtual Touch-Up: Impression Management in Videoconferencing"
+    authors: ["Beyond Meet Space Team", "Alex P. Leith"]
+    venue: "Behaviour & Information Technology"
+    year: 2025
+    status: "published"
+    areas: ["meetings"]
+
+  - title: "Dreaming a Virtual Reality: VRChat as Interpersonal Space During COVID"
+    authors: ["Alex P. Leith"]
+    venue: "International Journal of Communication"
+    year: 2024
+    status: "published"
+    areas: ["virtual-environments"]
+    featured: true

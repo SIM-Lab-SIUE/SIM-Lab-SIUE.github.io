@@ -6,7 +6,4 @@ export default defineConfig({
   site: 'https://aura-lab-siue.github.io',
   output: 'static',
   integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
-  vite: {
-    build: { cssMinify: 'lightningcss' },
-  },
 });

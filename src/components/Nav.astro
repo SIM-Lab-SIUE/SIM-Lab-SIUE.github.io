@@ -1,0 +1,45 @@
+---
+const { current } = Astro.props;
+const items = [
+  { href: '/research/', label: 'Research', key: 'research' },
+  { href: '/people/', label: 'People', key: 'people' },
+  { href: '/publications/', label: 'Publications', key: 'publications' },
+  { href: '/tools/', label: 'Tools', key: 'tools' },
+  { href: '/news/', label: 'News', key: 'news' },
+  { href: '/join/', label: 'Join', key: 'join' },
+];
+---
+<header class="topbar" aria-label="Site">
+  <div class="container-page flex items-center justify-between py-5">
+    <a href="/" class="brand inline-flex items-center gap-2 text-text font-semibold tracking-ui uppercase text-sm">
+      <span class="dot" aria-hidden="true"></span>
+      AURA Lab
+    </a>
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex gap-6 text-sm uppercase tracking-ui text-muted">
+        {items.map((it) => (
+          <li>
+            <a href={it.href}
+               class={`link-underline ${current === it.key ? 'text-text' : ''}`}
+               aria-current={current === it.key ? 'page' : undefined}>
+              {it.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(8px);
+    background: color-mix(in oklab, var(--bg) 86%, transparent);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--violet);
+  }
+</style>

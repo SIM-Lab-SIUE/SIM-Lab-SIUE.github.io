@@ -1,0 +1,6 @@
+title: "GearOut"
+area: "methods"
+status: "active"
+blurb: "Equipment-reservation platform deployed at SIUE as MassComm Checkout. 300+ developer hours. OTMIR-disclosed; commercial licensing negotiation underway."
+links:
+  - { label: "Repo", href: "https://github.com/AURA-Lab-SIUE/equipment-checkout" }

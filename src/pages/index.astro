@@ -1,6 +1,9 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<html lang="en">
-  <head><meta charset="utf-8" /><title>AURA Lab</title></head>
-  <body><h1>AURA Lab — scaffold OK</h1></body>
-</html>
+<BaseLayout title="AURA Lab" current="home">
+  <section class="container-page py-32">
+    <h1 class="font-display text-6xl">Hello, AURA</h1>
+    <p class="mt-4 text-muted">Layout wired up.</p>
+  </section>
+</BaseLayout>
