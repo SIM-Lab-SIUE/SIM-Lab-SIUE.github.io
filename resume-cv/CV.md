@@ -70,7 +70,7 @@ Brigham Young University – Idaho
 
 Leith, A. P., Lim, C., Foxman, M., Beyea, D., & Jeong, D. C. (2025). Stress and coping in VRChat: A mixed-method case study of the use of VRChat as a coping tool during the COVID-19 pandemic. *Computers in Human Behavior Reports, 20*(100843). https://doi.org/10.1016/j.chbr.2025.100843
 
-Douzek, D., Foxman, M., Lim, C., & Leith, A. P. (2025). Balancing fun and professionalism in game development: the dark and light side of play in virtual meetings. *Frontiers in Communication, 10*. https://doi.org/10.3389/fcomm.2025.1609776
+Bouzek, D., Foxman, M., Lim, C., & Leith, A. P. (2025). Balancing fun and professionalism in game development: the dark and light side of play in virtual meetings. *Frontiers in Communication, 10*. https://doi.org/10.3389/fcomm.2025.1609776
 
 Ratan, R. A., Lin, Q., Lim, C., Park, R., Lover, A., Han, E., Jang, D., Leith, A. P., & Bailenson, J. N. (2025). Time matters in VR: Students benefit from longer VR class duration, but certain outcomes decline after 45 minutes, with large individual variance. *Computers & Education, 14*(3), 466–477. https://doi.org/10.1016/j.compedu.2025.105328
 
@@ -213,7 +213,7 @@ Leith, A. P., Foxman, M., et al. The Platform Flattening of Gendered Affect (P5)
 
 - **TASS** (Text Analysis & Sentiment System, Python/R NLP package) — 2024–present. github.com/SIM-DAD/TASS
 - **Open WebUI Launcher for Local LLMs** (Python/Docker) — 2025–present. github.com/apleith/open-webui-launcher
-- **The Cage** (Next.js / TypeScript / PostgreSQL / MySQL / Docker production web app) — 2024–present. github.com/SIM-DAD/the-cage
+- **GearOut** (formerly Control Room / The Cage) — Equipment reservation and checkout platform for universities; Next.js / TypeScript / PostgreSQL / MySQL / Docker production web app, deployed at SIUE as "MassComm Checkout." 2024–present. github.com/SIM-DAD/gearout
 - **Mass Communications Careers Dashboard** (SvelteKit) — 2025–present. github.com/AURA-Lab-SIUE/mc-careers-dashboard
 - **mccoursepack** (R package for reproducible course delivery; component of the Vibes to Variables (V2V) courseware umbrella, an OER toolkit for teaching research methods to students new to statistics, methods, and coding) — 2025–present. github.com/AURA-Lab-SIUE/mccoursepack
 - **V2V Hub** (supplemental research methods website; rebrand and redesign of the legacy Open Methods Hub site) — 2025–present.

@@ -51,7 +51,7 @@ SELECTED PUBLICATIONS
 –	Lim, C., Leith, A.P., et al. (2025). Meeting needs: VM feature preferences (N=2,448). Computers in Human Behavior Reports, 18, 100673.
 –	Beyea, D., …Leith, A.P. (2025). Zoom fatigue in review: Meta-analysis of 38 studies. Computers in Human Behavior Reports, 17(100571).
 –	Lim, C., …Leith, A.P. (2025). Zoom fatigue, impression management & VM adoption. PLOS One.
-–	Douzek, D., Foxman, M., Lim, C., & Leith, A.P. (2025). Play in virtual meetings: Interview study of 38 game developers. Frontiers in Communication, 10.
+–	Bouzek, D., Foxman, M., Lim, C., & Leith, A.P. (2025). Play in virtual meetings: Interview study of 38 game developers. Frontiers in Communication, 10.
 –	Foxman, M., …Leith, A.P. (2022). Beyond genre: Classifying VR experiences. IEEE Transactions on Games, 14(3).
 –	Leith, A.P. (2021). Parasocial cues on Twitch: NLP analysis of 321M+ messages. Communication Monographs, 88(1).
 –	Ratan, R.A., …Leith, A.P. (2019). Women keep it real: Avatar gender in League of Legends. Cyberpsychology, Behavior, & Social Networking, 22.
